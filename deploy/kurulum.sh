@@ -182,6 +182,14 @@ EOF
   install -d /etc/letsencrypt/renewal-hooks/deploy
   printf '#!/bin/sh\nsystemctl reload nginx\n' > /etc/letsencrypt/renewal-hooks/deploy/nginx-reload
   chmod 755 /etc/letsencrypt/renewal-hooks/deploy/nginx-reload
+  # Önceden alınmış sertifika www'yi kapsamıyorsa genişletilir (doğrulama yukarıda kurulan 80 bloğundan yapılır).
+  if ! openssl x509 -in "$SERTIFIKA" -noout -ext subjectAltName | grep -q "DNS:www.$ALAN"; then
+    echo "Sertifika www.$ALAN adını kapsamıyor; genişletiliyor."
+    if [ -n "$EPOSTA" ]; then eposta_secenegi=(-m "$EPOSTA" --no-eff-email); else eposta_secenegi=(--register-unsafely-without-email); fi
+    certbot certonly --webroot -w /var/www/certbot -d "$ALAN" -d "www.$ALAN" --cert-name "$ALAN" --expand \
+      --non-interactive --agree-tos "${eposta_secenegi[@]}"
+    systemctl reload nginx
+  fi
   echo "HTTPS hazır."
 fi
 
