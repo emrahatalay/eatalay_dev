@@ -1,0 +1,186 @@
+name: deploy
+
+# main'e her gönderimde eatalay.dev sitesini sunucuya yayımlar (deploy/KURULUM.md). Hatim App'in yayın düzeninden uyarlandı.
+# Lint ve tip denetimi burada çalışır; biri başarısızsa yayın yapılmaz.
+# Sunucu x64 + glibc varsayılır (derleme ubuntu-latest'te). Site sunucuda bun ile çalışır. Sırlar tanımlanmadıysa iş atlanır.
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - '**/*.md'
+  workflow_dispatch:
+
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+      DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+      KOK: /srv/eatalay
+      PORT: 3030
+      # Sağlık kontrolünde 200 dönmesi gereken adresler (Türkçe kökte, İngilizce /en altında).
+      YOLLAR: / /en /tr/opengraph-image /en/opengraph-image /robots.txt /sitemap.xml /manifest.webmanifest /icon.svg /images/profile.jpg
+    steps:
+      - name: Sırlar var mı
+        id: sir
+        run: |
+          if [ -z "$DEPLOY_HOST" ] || [ -z "$DEPLOY_USER" ]; then
+            echo "::notice::DEPLOY_HOST / DEPLOY_USER tanımlı değil; yayın atlandı (deploy/KURULUM.md)."
+            echo "var=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "var=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/checkout@v4
+        if: steps.sir.outputs.var == 'true'
+      - uses: oven-sh/setup-bun@v2
+        if: steps.sir.outputs.var == 'true'
+        with:
+          bun-version: 1.4.4
+      # next derleyicisi node ile çalışır (bin dosyasının #! satırı); sunucuda site bun ile çalışır.
+      - uses: actions/setup-node@v4
+        if: steps.sir.outputs.var == 'true'
+        with:
+          node-version: 22
+
+      - name: Bağımlılıklar
+        if: steps.sir.outputs.var == 'true'
+        run: bun install --frozen-lockfile
+
+      - name: Lint ve tip denetimi
+        if: steps.sir.outputs.var == 'true'
+        run: |
+          bun run lint
+          bunx next typegen
+          bun run typecheck
+
+      - name: Derle ve paketle
+        if: steps.sir.outputs.var == 'true'
+        run: |
+          bun run build
+          # standalone çıktısı .next/static ve public/'i içermez; elle kopyalanır.
+          S=.next/standalone
+          test -f $S/server.js
+          mkdir -p $S/.next/static $S/public
+          cp -r .next/static/. $S/.next/static/
+          cp -r public/. $S/public/
+
+      - name: Paket çalışıyor mu
+        if: steps.sir.outputs.var == 'true'
+        # Sunucuya göndermeden önce paket burada bun ile çalıştırılıp ana adreslere bakılır.
+        run: |
+          cd .next/standalone
+          NODE_ENV=production HOSTNAME=0.0.0.0 PORT=3999 bun server.js > /tmp/sunucu.log 2>&1 &
+          for i in $(seq 1 30); do curl -s -o /dev/null http://localhost:3999/ && break; sleep 1; done
+          hata=0
+          for yol in $YOLLAR; do
+            kod="$(curl -s -o /dev/null -w "%{http_code}" "http://localhost:3999$yol")"
+            echo "$yol → $kod"
+            [ "$kod" = "200" ] || hata=1
+          done
+          # next/image iyileştirmesi (sharp) çalışıyor mu
+          resim="$(curl -s http://localhost:3999/ | grep -o '/_next/image?url=[^"]*' | head -1 | sed 's/&amp;/\&/g')"
+          kod="$(curl -s -o /dev/null -w "%{http_code}" -H 'Accept: image/avif,image/webp' "http://localhost:3999$resim")"
+          echo "$resim → $kod"
+          [ -n "$resim" ] && [ "$kod" = "200" ] || hata=1
+          [ "$hata" = 0 ] || { cat /tmp/sunucu.log; exit 1; }
+
+      - name: SSH
+        if: steps.sir.outputs.var == 'true'
+        run: |
+          install -m 700 -d ~/.ssh
+          echo "${{ secrets.DEPLOY_SSH_KEY }}" > ~/.ssh/id_ed25519
+          if [ -n "${{ secrets.DEPLOY_KNOWN_HOSTS }}" ]; then
+            echo "${{ secrets.DEPLOY_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
+          else
+            ssh-keyscan -t ed25519 "$DEPLOY_HOST" > ~/.ssh/known_hosts
+          fi
+          chmod 600 ~/.ssh/id_ed25519 ~/.ssh/known_hosts
+          # Takılan bağlantılar sessizce beklemesin.
+          printf 'Host *\n  ConnectTimeout 20\n  ServerAliveInterval 15\n  ServerAliveCountMax 4\n' > ~/.ssh/config
+          chmod 600 ~/.ssh/config
+
+      - name: Sunucu hazır mı
+        if: steps.sir.outputs.var == 'true'
+        run: |
+          ssh "$DEPLOY_USER@$DEPLOY_HOST" 'uptime; free -m; df -h /
+            export PATH="$PATH:/usr/local/bin:/root/.bun/bin"
+            [ -d /srv/eatalay/releases ] && command -v pm2 >/dev/null && [ -x /root/.bun/bin/bun ] \
+              || { echo "::error::Sunucu hazır değil; önce Actions → sunucu-kurulum çalıştırılmalı (deploy/KURULUM.md)."; exit 1; }
+            pm2 describe eatalay 2>&1 | head -20 || true'
+
+      - name: Yeni sürümü gönder
+        if: steps.sir.outputs.var == 'true'
+        run: |
+          surum="$(git rev-parse --short=12 HEAD)"
+          echo "SURUM=$surum" >> "$GITHUB_ENV"
+          hedef="$DEPLOY_USER@$DEPLOY_HOST"
+          ssh "$hedef" "mkdir -p $KOK/releases/$surum"
+          # Önceki sürümde aynı kalan dosyalar yeniden gönderilmez, sabit bağlantıyla alınır
+          # (--link-dest; ilk yayında current yoktur, rsync uyarıp tam gönderir).
+          rsync -rlptz --delete --timeout=60 --stats --link-dest="$KOK/current/" .next/standalone/ "$hedef:$KOK/releases/$surum/"
+          scp deploy/ecosystem.config.cjs "$hedef:$KOK/ecosystem.config.cjs"
+          scp deploy/bun-guncelle.sh "$hedef:/tmp/eatalay-bun-guncelle.sh"
+          ssh "$hedef" "bash /tmp/eatalay-bun-guncelle.sh"
+
+      - name: Geçiş yap
+        id: gecis
+        if: steps.sir.outputs.var == 'true'
+        # current bağlantısı yeni sürüme çevrilir; önceki sürüm geri dönüş için saklanır.
+        # "degisti" yalnız bağlantı gerçekten değişince yazılır: geri dönüş adımı ona bakar.
+        run: |
+          ssh "$DEPLOY_USER@$DEPLOY_HOST" "set -e
+            cd $KOK
+            readlink current > onceki 2>/dev/null || : > onceki
+            mkdir -p releases/$SURUM/.next/cache
+            ln -sfn releases/$SURUM current.yeni && mv -T current.yeni current"
+          echo "degisti=true" >> "$GITHUB_OUTPUT"
+          ssh "$DEPLOY_USER@$DEPLOY_HOST" "set -e
+            cd $KOK
+            export PATH=\"\$PATH:/usr/local/bin:/root/.bun/bin\"
+            pm2 startOrReload ecosystem.config.cjs --update-env
+            pm2 save"
+
+      - name: Sağlık kontrolü
+        if: steps.sir.outputs.var == 'true'
+        # Önce uygulamaya doğrudan, sonra nginx üzerinden (HTTPS, sunucunun içinden) sorulur. Başarısızsa günlük yazdırılır.
+        run: |
+          ssh "$DEPLOY_USER@$DEPLOY_HOST" "set -e
+            sleep 3
+            export PATH=\"\$PATH:/usr/local/bin:/root/.bun/bin\"
+            hata() { echo \"::error::\$1\"; pm2 describe eatalay || true; pm2 logs eatalay --lines 60 --nostream || true; exit 1; }
+            for yol in $YOLLAR; do
+              kod=\"\$(curl -4 -s -o /dev/null -w '%{http_code}' --retry 5 --retry-delay 2 --retry-all-errors http://localhost:$PORT\$yol || true)\"
+              echo \"\$yol → \$kod\"
+              [ \"\$kod\" = 200 ] || hata \"\$yol: \$kod\"
+            done
+            if [ -f /etc/letsencrypt/live/eatalay.dev/fullchain.pem ]; then
+              kod=\"\$(curl -s -o /dev/null -w '%{http_code}' --resolve eatalay.dev:443:127.0.0.1 https://eatalay.dev/ || true)\"
+              echo \"nginx https://eatalay.dev/ → \$kod\"
+              [ \"\$kod\" = 200 ] || hata \"nginx üzerinden \$kod (proxy_pass 127.0.0.1:$PORT mı?)\"
+            else
+              echo '::warning::HTTPS sertifikası yok; DNS sunucuyu gösterince sunucu-kurulum yeniden çalıştırılmalı.'
+            fi"
+
+      - name: Başarısızsa önceki sürüme dön
+        # Yalnız geçiş yapıldıysa: lint ya da derleme hatasında canlı sürüm zaten değişmemiştir.
+        if: failure() && steps.gecis.outputs.degisti == 'true'
+        run: |
+          ssh "$DEPLOY_USER@$DEPLOY_HOST" "set -e
+            cd $KOK
+            [ -s onceki ] || { echo '::error::Önceki sürüm yok (ilk yayın), geri dönülemedi'; exit 1; }
+            ln -sfn \"\$(cat onceki)\" current.yeni && mv -T current.yeni current
+            export PATH=\"\$PATH:/usr/local/bin:/root/.bun/bin\"
+            pm2 startOrReload ecosystem.config.cjs --update-env && pm2 save
+            echo \"Geri dönüldü: \$(readlink current)\""
+
+      - name: Eski sürümleri temizle
+        if: success() && steps.sir.outputs.var == 'true'
+        run: |
+          # Son 5 sürüm tutulur.
+          ssh "$DEPLOY_USER@$DEPLOY_HOST" "cd $KOK/releases && ls -1t | tail -n +6 | xargs -r rm -rf"

@@ -103,7 +103,9 @@ The testimonials section and its menu link stay hidden while the `testimonials` 
 
 ## Deployment
 
-The output is fully static apart from a small locale proxy, so it runs on any Next.js host (Vercel, Netlify, a Node server). Set `NEXT_PUBLIC_SITE_URL` to the production origin.
+Every push to `main` deploys the site to a self-hosted server via GitHub Actions (`.github/workflows/deploy.yml`): lint and typecheck, a `standalone` build that is smoke-tested with bun, an rsync upload into a new release folder, a pm2 reload behind nginx, and a health check that rolls back on failure. One-time server setup and troubleshooting (in Turkish): [deploy/KURULUM.md](deploy/KURULUM.md).
+
+The build also runs on any other Next.js host. Set `NEXT_PUBLIC_SITE_URL` to the production origin.
 
 ## Credits
 

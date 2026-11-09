@@ -1,0 +1,39 @@
+name: sunucu-kurulum
+
+# Sunucuyu eatalay.dev için hazırlar (deploy/kurulum.sh: paketler, bun, klasörler, nginx, HTTPS, logrotate).
+# root olarak bağlanır ve elle tetiklenir; tekrar çalıştırmak güvenlidir (ör. DNS yönlendikten sonra HTTPS için).
+# Huzuru İslam ve Hatim App ile aynı sunucu: onların nginx ayarlarına, portlarına ve klasörlerine dokunulmaz.
+# Gerekli sırlar: DEPLOY_HOST, DEPLOY_SSH_KEY. DEPLOY_KNOWN_HOSTS ve CERTBOT_EMAIL isteğe bağlıdır.
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+jobs:
+  kurulum:
+    runs-on: ubuntu-latest
+    env:
+      DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: SSH
+        run: |
+          [ -n "$DEPLOY_HOST" ] || { echo "::error::DEPLOY_HOST sırrı tanımlı değil"; exit 1; }
+          install -m 700 -d ~/.ssh
+          echo "${{ secrets.DEPLOY_SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          if [ -n "${{ secrets.DEPLOY_KNOWN_HOSTS }}" ]; then
+            echo "${{ secrets.DEPLOY_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
+          else
+            ssh-keyscan -t ed25519 "$DEPLOY_HOST" > ~/.ssh/known_hosts
+          fi
+          ssh-keyscan -t ed25519 "$DEPLOY_HOST" 2>/dev/null | ssh-keygen -lf - || true
+      - name: Kur
+        env:
+          EPOSTA: ${{ secrets.CERTBOT_EMAIL }}
+        run: |
+          ssh "root@$DEPLOY_HOST" "rm -rf /tmp/eatalay-kurulum && mkdir -p /tmp/eatalay-kurulum"
+          scp deploy/kurulum.sh deploy/bun-guncelle.sh deploy/logrotate.conf deploy/nginx.conf "root@$DEPLOY_HOST:/tmp/eatalay-kurulum/"
+          ssh "root@$DEPLOY_HOST" "EPOSTA='$EPOSTA' bash /tmp/eatalay-kurulum/kurulum.sh"
