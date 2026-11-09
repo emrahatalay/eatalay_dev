@@ -84,7 +84,9 @@ jobs:
             [ "$kod" = "200" ] || hata=1
           done
           # next/image iyileştirmesi (sharp) çalışıyor mu
-          resim="$(curl -s http://localhost:3999/ | grep -o '/_next/image?url=[^"]*' | head -1 | sed 's/&amp;/\&/g')"
+          # Yalnız tek bir adres alınır (srcset'teki "adres 1x, adres 2x" listesinin tamamı değil).
+          curl -s http://localhost:3999/ > /tmp/ana.html
+          resim="$(grep -o -m1 '/_next/image?url=[^"&]*&amp;w=[0-9]*&amp;q=[0-9]*' /tmp/ana.html | head -1 | sed 's/&amp;/\&/g' || true)"
           kod="$(curl -s -o /dev/null -w "%{http_code}" -H 'Accept: image/avif,image/webp' "http://localhost:3999$resim")"
           echo "$resim → $kod"
           [ -n "$resim" ] && [ "$kod" = "200" ] || hata=1
