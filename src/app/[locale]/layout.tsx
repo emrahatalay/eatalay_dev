@@ -1,75 +1,65 @@
-import Footer from "@/components/Footer/index";
-import Navbar from "@/components/Navbar/index";
 import { routing } from "@/i18n/routing";
-import "@/styles/globals.css";
-import { env } from "@/utils/env";
-import { jetBrainsMono } from "@/utils/fonts";
-import type { Metadata } from "next";
-import { hasLocale, NextIntlClientProvider } from "next-intl";
-import { getLocale, getTranslations } from "next-intl/server";
+import { archivo, instrumentSerif } from "@/presentation/fonts";
+import "@/presentation/styles/globals.css";
+import { themeInitScript } from "@/presentation/theme/theme-script";
+import { siteConfig } from "@/shared/config/site";
+import type { Metadata, Viewport } from "next";
+import { hasLocale } from "next-intl";
+import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
+import type { ReactNode } from "react";
 
-export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations("Meta");
+export const dynamicParams = false;
 
-  const imageData = {
-    images: [{ url: env.SITE_URL + "/images/sozler-kosku-hero.jpg" }],
-  };
-  return {
-    metadataBase: new URL(env.SITE_URL),
-    title: {
-      default: t("title"),
-      template: `%s • ${t("title")}`,
-    },
-    alternates: {
-      canonical: env.SITE_URL,
-      languages: {
-        tr: `${env.SITE_URL}/tr`,
-        en: `${env.SITE_URL}/en`,
-      },
-    },
-    description: t("description"),
-    openGraph: {
-      ...imageData,
-    },
-    twitter: {
-      card: "summary_large_image",
-      ...imageData,
-    },
-    robots: {
-      index: true,
-      follow: true,
-      googleBot: {
-        index: true,
-        follow: true,
-        "max-video-preview": -1,
-        "max-image-preview": "large",
-        "max-snippet": -1,
-      },
-    },
-  };
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
 }
 
-type RootLayoutProps = {
-  children: React.ReactNode;
+export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
 };
 
-async function RootLayout({ children }: RootLayoutProps) {
-  const locale = await getLocale();
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  colorScheme: "light dark",
+  themeColor: [
+    {
+      media: "(prefers-color-scheme: light)",
+      color: siteConfig.themeColor.light,
+    },
+    {
+      media: "(prefers-color-scheme: dark)",
+      color: siteConfig.themeColor.dark,
+    },
+  ],
+};
 
+interface LocaleLayoutProps {
+  readonly children: ReactNode;
+  readonly params: Promise<{ locale: string }>;
+}
+
+export default async function LocaleLayout({
+  children,
+  params,
+}: LocaleLayoutProps) {
+  const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) notFound();
 
+  // Enables static rendering for every page under this locale.
+  setRequestLocale(locale);
+
   return (
-    <html lang={locale} dir="ltr" className="scroll-smooth">
-      <body className={`${jetBrainsMono.variable} antialiased`}>
-        <NextIntlClientProvider locale={locale}>
-          <Navbar />
-          {children}
-          <Footer />
-        </NextIntlClientProvider>
-      </body>
+    <html
+      lang={locale}
+      className={`${archivo.variable} ${instrumentSerif.variable}`}
+      suppressHydrationWarning
+    >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
+      <body>{children}</body>
     </html>
   );
 }
-
-export default RootLayout;

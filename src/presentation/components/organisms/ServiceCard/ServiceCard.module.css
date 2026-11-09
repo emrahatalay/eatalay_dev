@@ -1,0 +1,128 @@
+.card {
+  position: sticky;
+  top: 40px;
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+  gap: 20px;
+  height: 380px;
+  padding: 22px;
+  overflow: hidden;
+  border-radius: 26px;
+  background: var(--surface-glass);
+  border: 1px solid var(--surface-glass-border);
+  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.6);
+}
+
+.card:nth-child(2) { top: 60px; }
+.card:nth-child(3) { top: 80px; }
+.card:nth-child(4) { top: 100px; }
+
+.card::before {
+  content: "";
+  position: absolute;
+  left: -40px;
+  bottom: -80px;
+  z-index: 0;
+  width: 520px;
+  height: 220px;
+  background: conic-gradient(from 160deg, #b9a6ff, #ffffff, #9ad0ff, #ffb0c8, #b9a6ff);
+  filter: blur(30px);
+  opacity: calc(var(--glow-opacity) * 0.72);
+}
+
+.text {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 18px;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(32px, 1.4rem + 1.8vw, 44px);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.description {
+  max-width: 380px;
+  margin-top: 14px;
+  font-size: 14px;
+  color: var(--ink-2);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  max-width: 360px;
+  margin: auto 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.visual {
+  position: relative;
+  z-index: 1;
+  min-height: 0;
+}
+
+.card:hover [data-zoom] {
+  transform: scale(1.07);
+}
+
+@keyframes stack-out {
+  to {
+    transform: scale(0.9);
+    filter: brightness(0.7);
+  }
+}
+
+@supports (animation-timeline: view()) {
+  .card {
+    animation: stack-out linear both;
+    animation-timeline: view();
+    animation-range: exit-crossing 0% exit-crossing 100%;
+  }
+
+  .card:last-child {
+    animation: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .card,
+  .card:nth-child(n) {
+    top: 20px;
+    height: auto;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 12px;
+    border-radius: 20px;
+  }
+
+  .text {
+    padding: 8px;
+  }
+
+  .tags {
+    margin-top: 16px;
+  }
+
+  .visual {
+    order: -1;
+    height: 260px;
+  }
+}
+
+@media (max-width: 640px) {
+  .description {
+    font-size: 13px;
+  }
+
+  .visual {
+    height: 230px;
+  }
+}

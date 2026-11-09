@@ -1,0 +1,39 @@
+.logo {
+  display: inline-block;
+  text-decoration: none;
+  border-radius: 999px;
+}
+
+.hero {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 800;
+  font-size: 22px;
+  letter-spacing: -0.02em;
+  padding: 6px 14px;
+  border: 1.5px solid rgba(255, 255, 255, 0.18);
+  color: transparent;
+  background: linear-gradient(90deg, #fff, #c9b8ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.footer {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 30px;
+  line-height: 1.3;
+  padding: 2px 18px;
+  border: 1.5px solid transparent;
+  color: var(--brand-ink);
+  background:
+    linear-gradient(var(--footer), var(--footer)) padding-box,
+    var(--g-btn) border-box;
+}
+
+@media (max-width: 640px) {
+  .hero {
+    font-size: 18px;
+    padding: 5px 12px;
+  }
+}

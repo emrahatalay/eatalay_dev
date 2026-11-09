@@ -1,0 +1,66 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 380px;
+  padding: 28px;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  color: var(--ink);
+  background: var(--book-card);
+  scroll-margin-top: 40px;
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  inset: auto -30px -90px;
+  height: 220px;
+  background: conic-gradient(from 180deg, #b9a6ff, #ffb0c8, #ffffff, #9ad0ff, #b9a6ff);
+  filter: blur(26px);
+  opacity: calc(var(--glow-opacity) * 0.95);
+}
+
+.card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.avatar {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  font-weight: 800;
+  color: #fff;
+  background: var(--g-btn);
+}
+
+.title {
+  margin: 18px 0 8px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 22px;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+
+.text {
+  max-width: 320px;
+  margin: 0 0 22px;
+  font-size: 14px;
+  color: var(--ink-2);
+}
+
+.cta {
+  align-self: flex-start;
+}
+
+@media (max-width: 640px) {
+  .card {
+    min-height: 300px;
+    padding: 24px;
+  }
+}

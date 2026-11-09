@@ -1,0 +1,274 @@
+.about {
+  position: relative;
+  padding: 90px clamp(16px, 4vw, 56px) 40px;
+  scroll-margin-top: 24px;
+}
+
+.summary {
+  max-width: 460px;
+  margin-top: 22px;
+  color: var(--ink-2);
+}
+
+/* Decorative glass ribbons */
+.ribbon {
+  position: absolute;
+  right: 70px;
+  top: 40px;
+  width: 300px;
+  height: 300px;
+  pointer-events: none;
+}
+
+.ribbon i {
+  position: absolute;
+  width: 46px;
+  height: 230px;
+  border-radius: 30px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(220, 215, 240, 0.8) 40%, rgba(255, 106, 43, 0.9) 75%, rgba(123, 92, 255, 0.9));
+  box-shadow:
+    inset -8px 0 18px rgba(80, 60, 140, 0.35),
+    0 20px 40px -15px rgba(123, 92, 255, 0.5);
+  transform-origin: 50% 100%;
+  rotate: var(--r);
+  animation: sway 6s ease-in-out infinite;
+}
+
+.ribbon i:nth-child(2) { animation-delay: -1.5s; }
+.ribbon i:nth-child(3) { animation-delay: -3s; }
+.ribbon i:nth-child(4) { animation-delay: -4.5s; }
+
+/* Stat grid */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  height: 320px;
+  margin-top: 56px;
+}
+
+.column {
+  display: grid;
+  grid-template-rows: 1fr 96px;
+  gap: 20px;
+}
+
+.metric {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.spark {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  font-weight: 800;
+  color: #fff;
+  background: linear-gradient(135deg, #ff5fa2, #d946ef);
+}
+
+.big {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 40px;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.note {
+  max-width: 230px;
+  margin-top: 14px;
+  font-size: 13px;
+  color: var(--ink-2);
+}
+
+.disciplines {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  text-align: center;
+}
+
+.avatars {
+  display: flex;
+}
+
+.avatars > i {
+  margin-left: -12px;
+  border: 2px solid #120f22;
+}
+
+.avatars > i:first-child {
+  margin-left: 0;
+}
+
+.caption {
+  font-size: 13px;
+  opacity: 0.85;
+}
+
+.workflow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 24px;
+}
+
+.workflow .note {
+  margin: 0;
+}
+
+.hot {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 40px;
+  color: transparent;
+  background: var(--g-hot);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.quoteCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.quoteCard > .photo {
+  position: absolute;
+  z-index: 0;
+  object-fit: cover;
+  transition: transform 1.2s var(--ease-out);
+}
+
+.quoteCard:hover > .photo {
+  transform: scale(1.08) rotate(2deg);
+}
+
+.quoteCard > .shade {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(180deg, rgba(18, 15, 34, 0) 30%, rgba(18, 15, 34, 0.85));
+}
+
+.mark {
+  position: absolute !important;
+  left: 22px;
+  top: 22px;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  font-family: var(--font-serif);
+  font-size: 30px;
+  line-height: 1;
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.quote {
+  max-width: 260px;
+  font-size: 13px;
+  opacity: 0.92;
+}
+
+@keyframes sway {
+  0%,
+  100% {
+    rotate: var(--r);
+  }
+  50% {
+    rotate: calc(var(--r) + 8deg);
+  }
+}
+
+@keyframes ribbon-in {
+  from {
+    opacity: 0;
+    transform: translateY(80px) rotate(20deg);
+  }
+}
+
+@supports (animation-timeline: view()) {
+  .ribbon {
+    animation: ribbon-in linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 40%;
+  }
+
+  .stats > * {
+    animation: card-in linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 75%;
+  }
+
+  .stats > :nth-child(2) {
+    animation-range: entry 10% entry 85%;
+  }
+
+  .stats > :nth-child(3) {
+    animation-range: entry 20% entry 95%;
+  }
+}
+
+@media (max-width: 900px) {
+  .stats {
+    grid-template-columns: 1fr 1fr;
+    height: auto;
+  }
+
+  .tall,
+  .quoteCard {
+    min-height: 260px;
+  }
+
+  .quoteCard {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 640px) {
+  .about {
+    padding-top: 56px;
+    padding-bottom: 20px;
+  }
+
+  .summary {
+    font-size: 14px;
+  }
+
+  .ribbon {
+    right: -70px;
+    top: 0;
+    transform: scale(0.45);
+    transform-origin: top right;
+    opacity: 0.75;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-top: 36px;
+  }
+
+  .tall {
+    min-height: 180px;
+  }
+
+  .column {
+    grid-template-rows: 180px 90px;
+    gap: 14px;
+  }
+
+  .quoteCard {
+    min-height: 280px;
+  }
+}

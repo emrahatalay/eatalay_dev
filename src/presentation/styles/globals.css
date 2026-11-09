@@ -1,0 +1,240 @@
+/* ==========================================================================
+   Design tokens — light is the default, dark overrides the same names.
+   Components only read tokens, so a theme is just a different token set.
+   ========================================================================== */
+:root {
+  color-scheme: light;
+
+  --page: #e9e5f5;
+  --page-glow-1: rgba(139, 108, 255, 0.55);
+  --page-glow-2: rgba(217, 70, 239, 0.4);
+  --page-glow-3: rgba(255, 106, 43, 0.3);
+  --page-glow-4: rgba(139, 108, 255, 0.45);
+  --sheet: #ffffff;
+  --sheet-shadow: 0 30px 80px -30px rgba(60, 30, 120, 0.35);
+
+  --ink: #15131f;
+  --ink-2: #3b3849;
+  --mute: #8a8798;
+  --faint: #c4c1cf;
+  --unlit: #d9d6e2;
+  --line: rgba(21, 19, 31, 0.1);
+  --soft: #f5f4fa;
+  --surface: #ffffff;
+  --surface-glass: linear-gradient(120deg, #ffffff, #f1edff);
+  --surface-glass-border: rgba(255, 255, 255, 0.6);
+  --tag-bg: rgba(255, 255, 255, 0.7);
+  --warm-card: linear-gradient(120deg, #fff5ee, #ffe6f0);
+  --book-card: linear-gradient(160deg, #ffffff, #f1ecff);
+  --accordion: rgba(255, 255, 255, 0.96);
+  --footer: #ffffff;
+  --wordmark: #ffffff;
+  --glow-opacity: 0.9;
+
+  --night: #0b0a14;
+  --vio: #7b5cff;
+  --lav: #b9a6ff;
+  --mag: #d946ef;
+  --org: #ff6a2b;
+  --rose: #e64a6a;
+  --brand-ink: #c2410c;
+
+  --g-hot: linear-gradient(90deg, #ff5a2b, #ff8a3d);
+  --g-vio: linear-gradient(90deg, #8b6cff, #c084fc 55%, #f0abfc);
+  --g-btn: linear-gradient(90deg, #ff7a3d, #e64ae0 55%, #8b6cff);
+
+  --radius-xl: 40px;
+  --radius-lg: 30px;
+  --radius-md: 22px;
+  --radius-sm: 16px;
+  --ease-out: cubic-bezier(0.19, 1, 0.22, 1);
+  --ease-spring: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  --font-display: var(--font-archivo), "Archivo", system-ui, sans-serif;
+  --font-body: var(--font-archivo), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-serif: var(--font-instrument), "Instrument Serif", Georgia, serif;
+
+  interpolate-size: allow-keywords;
+}
+
+/* Dark tokens: applied when the visitor picks dark, or follows a dark OS with no choice saved. */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --page: #07060d;
+  --page-glow-1: rgba(123, 92, 255, 0.32);
+  --page-glow-2: rgba(217, 70, 239, 0.22);
+  --page-glow-3: rgba(255, 106, 43, 0.16);
+  --page-glow-4: rgba(123, 92, 255, 0.26);
+  --sheet: #100e1a;
+  --sheet-shadow: 0 30px 80px -30px rgba(0, 0, 0, 0.8);
+
+  --ink: #f3f1fa;
+  --ink-2: #b9b5c9;
+  --mute: #827e95;
+  --faint: #4b475d;
+  --unlit: #2f2b40;
+  --line: rgba(255, 255, 255, 0.09);
+  --soft: #181526;
+  --surface: #15121f;
+  --surface-glass: linear-gradient(120deg, #1f1b32, #151224);
+  --surface-glass-border: rgba(255, 255, 255, 0.08);
+  --tag-bg: rgba(255, 255, 255, 0.06);
+  --warm-card: linear-gradient(120deg, #2a1a1f, #2a1630);
+  --book-card: linear-gradient(160deg, #1f1a33, #15121f);
+  --accordion: rgba(255, 255, 255, 0.06);
+  --footer: #100e1a;
+  --wordmark: #f3f1fa;
+  --glow-opacity: 0.35;
+  --brand-ink: #ff8a3d;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    color-scheme: dark;
+    --page: #07060d;
+    --page-glow-1: rgba(123, 92, 255, 0.32);
+    --page-glow-2: rgba(217, 70, 239, 0.22);
+    --page-glow-3: rgba(255, 106, 43, 0.16);
+    --page-glow-4: rgba(123, 92, 255, 0.26);
+    --sheet: #100e1a;
+    --sheet-shadow: 0 30px 80px -30px rgba(0, 0, 0, 0.8);
+    --ink: #f3f1fa;
+    --ink-2: #b9b5c9;
+    --mute: #827e95;
+    --faint: #4b475d;
+    --unlit: #2f2b40;
+    --line: rgba(255, 255, 255, 0.09);
+    --soft: #181526;
+    --surface: #15121f;
+    --surface-glass: linear-gradient(120deg, #1f1b32, #151224);
+    --surface-glass-border: rgba(255, 255, 255, 0.08);
+    --tag-bg: rgba(255, 255, 255, 0.06);
+    --warm-card: linear-gradient(120deg, #2a1a1f, #2a1630);
+    --book-card: linear-gradient(160deg, #1f1a33, #15121f);
+    --accordion: rgba(255, 255, 255, 0.06);
+    --footer: #100e1a;
+    --wordmark: #f3f1fa;
+    --glow-opacity: 0.35;
+    --brand-ink: #ff8a3d;
+  }
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  background: var(--page);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ink);
+  background: var(--page);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+:focus-visible {
+  outline: 2px solid var(--vio);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+::selection {
+  background: rgba(123, 92, 255, 0.28);
+}
+
+/* Shared keyframes (referenced by name from CSS modules). */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+  50% {
+    transform: translateY(-18px) rotate(4deg);
+  }
+}
+
+@keyframes card-in {
+  from {
+    opacity: 0;
+    transform: translateY(60px) scale(0.94);
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0.3;
+  }
+}
+
+/* Scroll reveal utility — progressive enhancement, browsers without
+   scroll-driven animations simply show the content. */
+@supports (animation-timeline: view()) {
+  .reveal {
+    animation: fade-up linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 70%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

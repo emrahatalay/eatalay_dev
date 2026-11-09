@@ -1,0 +1,40 @@
+.headline {
+  max-width: 820px;
+  margin: 22px 0 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(22px, 1.4rem + 0.9vw, 30px);
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+}
+
+.accent {
+  color: transparent;
+  background: var(--g-hot);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.muted {
+  color: var(--faint);
+}
+
+.onDark,
+.onDark .muted {
+  color: #fff;
+}
+
+@keyframes lit {
+  from {
+    color: var(--unlit);
+  }
+}
+
+@supports (animation-timeline: view()) {
+  .word {
+    animation: lit linear both;
+    animation-timeline: view();
+    animation-range: entry 30% cover 45%;
+  }
+}

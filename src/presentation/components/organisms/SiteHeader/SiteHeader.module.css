@@ -1,0 +1,41 @@
+.bar {
+  position: absolute;
+  inset: 22px 28px auto;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  animation: fade-up 0.9s var(--ease-out) both 0.05s;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.menu {
+  display: none;
+}
+
+@media (max-width: 1080px) {
+  .primary,
+  .cta {
+    display: none;
+  }
+
+  .menu {
+    display: block;
+  }
+}
+
+@media (max-width: 640px) {
+  .bar {
+    inset: 14px 14px auto;
+  }
+
+  .actions {
+    gap: 8px;
+  }
+}

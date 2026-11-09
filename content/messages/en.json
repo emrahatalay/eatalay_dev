@@ -1,109 +1,55 @@
 {
-    "Common": {
-        "loading": "Loading...",
-        "error": "An error occurred",
-        "notFound": "Page not found",
-        "goBack": "Go Back",
-        "contactMe": "Contact Me",
-        "viewProjects": "View Projects",
-        "viewAllProjects": "View All Projects",
-        "learnMore": "Learn More"
-    },
-    "Navigation": {
-        "home": "Home",
-        "about": "About",
-        "projects": "Projects",
-        "contact": "Contact",
-        "gitHub": "GitHub",
-        "linkedIn": "LinkedIn",
-        "youtube": "YouTube"
-    },
-    "Contact": {
-        "title": "Contact",
-        "subtitle": "Get in touch for your projects or collaboration opportunities. I'll get back to you as soon as possible.",
-        "contactInfo": {
-            "directContact": "Contact Information",
-            "socialMedia": "Social Media",
-            "email": "Email",
-            "phone": "Phone",
-            "location": "Location"
-        },
-        "cta": {
-            "title": "Ready to Work Together?",
-            "description": "Looking for the right person to bring your projects to life? Get in touch now!",
-            "button": "Send Email"
-        }
-    },
-    "Footer": {
-        "fullStackDeveloper": "Full-Stack Developer, passionate about creating efficient and elegant solutions for web applications.",
-        "links": "Links",
-        "contactHeading": "Contact",
-        "location": "Bitlis, Turkey",
-        "copyright": "All rights reserved.",
-        "builtWith": "Built with ❤️."
-    },
-    "Error": {
-        "title": "An error occurred",
-        "default": "This page cannot be displayed at the moment.",
-        "errorCode": "Error code",
-        "tryAgain": "Try Again"
-    },
-    "Home": {
-        "welcome": "Welcome",
-        "availability": "Available for Freelance Projects",
-        "hello": "Hello, I'm",
-        "iAm": "Emrah Atalay",
-        "introduction": "A Full-Stack developer with 8+ years of experience creating user-friendly and elegant web applications that solve complex problems.",
-        "viewProjects": "View My Projects",
-        "contactMe": "Contact Me",
-        "skills": "My Expertise",
-        "skillsDescription": "I provide end-to-end solutions with modern development tools and technologies.",
-        "frontend": "Frontend Development",
-        "frontendDescription": "Expertise in building responsive, accessible, and high-performance user interfaces.",
-        "backend": "Backend Development",
-        "backendDescription": "Scalable APIs, database design, and server-side logic development.",
-        "devops": "DevOps Practices",
-        "devopsDescription": "Optimizing software delivery processes with CI/CD, containerization, and cloud services.",
-        "featuredProjects": "Featured Projects",
-        "projectsDescription": "Some of my recent work. Visit the full projects page for more.",
-        "project1Title": "E-Commerce Dashboard",
-        "project1Description": "A modern e-commerce management panel with advanced analytics and inventory management.",
-        "project2Title": "Social Media Platform",
-        "project2Description": "A comprehensive social platform where users can share content and engage with others.",
-        "viewDetails": "View Details",
-        "viewAllProjects": "View All Projects",
-        "letsWork": "Let's Work Together",
-        "ctaDescription": "Starting a new project? Need a developer to contribute to your team? Reach out and let's discuss what we can accomplish.",
-        "getInTouch": "Get in Touch",
-        "directContact": "Direct Contact",
-        "fastResponse": "Fast Response",
-        "professionalService": "Professional Service",
-        "customSolutions": "Custom Solutions",
-        "contactInfo": "Contact Information"
-    },
-    "Languages": {
-        "tr": "Turkish",
-        "en": "English",
-        "de": "German"
-    },
-    "Meta": {
-        "title": "Emrah Atalay - Full-Stack Developer",
-        "description": "Emrah Atalay - Full-Stack Developer - Portfolio Personal Website",
-        "keywords": "Emrah Atalay, Full-Stack Developer, Portfolio, Software Engineer, Web Developer, Frontend Developer, Backend Developer"
-    },
-    "LocaleSwitcher": {
-        "label": "Change language",
-        "switchLocale": "Switch to {locale}"
-    },
-    "About": {
-        "title": "About Me",
-        "introduction": "I'm a Full Stack developer with 8+ years of experience, specialized in modern web technologies. I'm passionate about developing user-focused, performance-optimized, and scalable applications.",
-        "tech_stack": "I work with React, Next.js, and Tailwind CSS on the frontend; and Node.js, .NET Core, and database technologies on the backend. I'm continuously learning and open to exploring new technologies.",
-        "web_development_title": "Web Development",
-        "web_development_description": "I develop modern and performant web applications.",
-        "architecture_title": "Architecture Design",
-        "architecture_description": "I design scalable and sustainable software architectures.",
-        "problem_solving_title": "Problem Solving",
-        "problem_solving_description": "I find creative solutions to complex problem scenarios."
-    }
+  "Nav": {
+    "label": "Main menu",
+    "skip": "Skip to content",
+    "home": "Home",
+    "about": "About",
+    "work": "Work",
+    "testimonials": "Testimonials",
+    "faq": "FAQ",
+    "cta": "Let's work together",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "Theme": {
+    "toggle": "Switch between light and dark theme"
+  },
+  "Locale": {
+    "label": "Language",
+    "tr": "Türkçe",
+    "en": "English"
+  },
+  "Hero": {
+    "technologies": "Technologies I use"
+  },
+  "About": {
+    "eyebrow": "About"
+  },
+  "Work": {
+    "title": "Work"
+  },
+  "Testimonials": {
+    "eyebrow": "Client testimonials"
+  },
+  "Faq": {
+    "eyebrow": "Frequently asked questions"
+  },
+  "Footer": {
+    "follow": "Follow",
+    "quickLinks": "Quick links",
+    "services": "Services",
+    "email": "Email",
+    "location": "Location",
+    "rights": "All rights reserved."
+  },
+  "NotFound": {
+    "title": "Page not found",
+    "text": "The page you're looking for may have moved or never existed.",
+    "back": "Back to home"
+  },
+  "Error": {
+    "title": "Something went wrong",
+    "text": "This page can't be shown right now. Please try again.",
+    "retry": "Try again"
+  }
 }

@@ -1,0 +1,65 @@
+.work {
+  position: relative;
+  margin-top: 60px;
+  padding: 30px 26px 40px;
+  /* clip (not hidden) keeps position: sticky working for the cards */
+  overflow: clip;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, #ff6a2b 0, #c2410c 110px, #2a1240 230px, #0b0a14 360px);
+  scroll-margin-top: 24px;
+}
+
+.ghost {
+  font-size: clamp(62px, 14.7vw, 212px);
+  font-stretch: 118%;
+  line-height: 0.8;
+  letter-spacing: -0.02em;
+  text-align: center;
+  white-space: nowrap;
+  color: #fff;
+}
+
+.stack {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  margin-top: clamp(-90px, -6vw, -14px);
+  padding: 0 30px;
+}
+
+@keyframes ghost-x {
+  from {
+    transform: translateX(12%);
+  }
+  to {
+    transform: translateX(-12%);
+  }
+}
+
+@supports (animation-timeline: view()) {
+  .ghost {
+    animation: ghost-x linear both;
+    animation-timeline: view();
+    animation-range: entry 0% exit 100%;
+  }
+}
+
+@media (max-width: 900px) {
+  .stack {
+    padding: 0;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  .work {
+    margin-top: 36px;
+    padding: 22px 10px 20px;
+    border-radius: var(--radius-md);
+  }
+
+  .stack {
+    gap: 14px;
+  }
+}

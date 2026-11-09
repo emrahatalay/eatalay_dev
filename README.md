@@ -1,36 +1,115 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# eatalay.dev
 
-## Getting Started
+Source code of [eatalay.dev](https://eatalay.dev), the personal site of **Emrah Atalay**, a developer who builds mobile apps, mobile games, software and automations with AI.
 
-First, run the development server:
+The site is a single landing page:
+
+- available in Turkish and English;
+- with light and dark themes;
+- statically generated with Next.js;
+- styled with plain CSS, with no UI framework.
+
+## Features
+
+- **Two languages:** Turkish at `/` and English at `/en`. Each URL always serves the same language; there are no Accept-Language redirects.
+- **Light and dark themes:** follows the OS setting until the visitor picks one with the toggle. The choice is saved and applied before first paint, so there is no flash.
+- **Fast by default:**
+  - every page is prerendered at build time;
+  - Server Components everywhere, with only two small client components (theme toggle, mobile menu);
+  - all animation is CSS, including scroll-driven effects as a progressive enhancement;
+  - responsive AVIF/WebP images via `next/image`;
+  - self-hosted fonts via `next/font`.
+- **SEO ready:**
+  - per-locale metadata, canonical and `hreflang` links (with `x-default`);
+  - a generated Open Graph image per locale;
+  - JSON-LD (Person, WebSite, ProfilePage, FAQPage);
+  - `sitemap.xml`, `robots.txt` and a web manifest.
+- **Accessible:** semantic landmarks, a skip link, a native `<details>` FAQ, a Popover API mobile menu, visible focus styles, and `prefers-reduced-motion` support.
+
+## Tech stack
+
+- [Next.js 16](https://nextjs.org) (App Router, Turbopack) and React 19
+- TypeScript (strict)
+- [next-intl](https://next-intl.dev) for routing and UI strings
+- CSS Modules with design tokens in CSS custom properties
+- pnpm
+
+## Getting started
+
+Requirements: Node.js 20+ and pnpm.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
+pnpm dev          # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+| Script           | What it does                     |
+| ---------------- | -------------------------------- |
+| `pnpm dev`       | Development server               |
+| `pnpm build`     | Production build (static output) |
+| `pnpm start`     | Serve the production build       |
+| `pnpm lint`      | ESLint                           |
+| `pnpm typecheck` | TypeScript, no emit              |
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Environment
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Variable               | Required | Default               | Used for                                   |
+| ---------------------- | -------- | --------------------- | ------------------------------------------ |
+| `NEXT_PUBLIC_SITE_URL` | No       | `https://eatalay.dev` | Canonical URLs, hreflang, sitemap, OG tags |
 
-## Learn More
+## Architecture
 
-To learn more about Next.js, take a look at the following resources:
+The code follows Clean Architecture, and dependencies only point inward. The UI is organised with atomic design.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+src/
+├── core/                     # framework-free logic
+│   ├── domain/               # entities, locales, repository ports (interfaces)
+│   ├── application/          # use cases: GetHomePage, GetSiteMetadata
+│   ├── infrastructure/       # StaticContentRepository + typed content per locale
+│   └── di/container.ts       # composition root, the only place adapters are wired
+├── presentation/             # UI
+│   ├── components/
+│   │   ├── atoms/            # ButtonLink, Chip, Logo, Icon, Tag, Monogram…
+│   │   ├── molecules/        # RichHeadline, NavLinks, ThemeToggle, FaqItem, ServiceVisual…
+│   │   ├── organisms/        # Hero, About, Work, ServiceCard, Faq, SiteFooter…
+│   │   └── templates/        # PageShell, HomeTemplate, StatusScreen
+│   ├── seo/                  # metadata and JSON-LD builders (pure functions)
+│   ├── styles/               # global tokens (light and dark) and base styles
+│   └── fonts/, theme/
+├── app/                      # Next.js routes, OG image, sitemap, robots, manifest
+├── i18n/                     # next-intl routing and request config
+└── shared/                   # site config, small utilities
+content/messages/             # UI strings: tr.json, en.json
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Conventions:
 
-## Deploy on Vercel
+- `core/domain` imports nothing from React or Next.js.
+- Use cases depend on ports, not on data sources. To use a CMS, write a new adapter that implements the ports and register it in `core/di/container.ts`; nothing else changes.
+- Atoms and molecules are props-only. Organisms read UI strings with `useTranslations`.
+- Service card visuals come from a typed registry. Adding a new visual type does not touch existing ones, and the build fails if a type has no renderer.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Editing content
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| What                                     | Where                                        |
+| ---------------------------------------- | -------------------------------------------- |
+| Page copy, services, FAQ, profile, SEO   | `src/core/infrastructure/content/{tr,en}.ts` |
+| Shared facts (email, social links, tech) | `src/core/infrastructure/content/shared.ts`  |
+| UI labels (menu, buttons, aria labels)   | `content/messages/{tr,en}.json`              |
+| Images                                   | `src/assets/images/`                         |
+
+The testimonials section and its menu link stay hidden while the `testimonials` array is empty. Only add real, approved quotes.
+
+## Deployment
+
+The output is fully static apart from a small locale proxy, so it runs on any Next.js host (Vercel, Netlify, a Node server). Set `NEXT_PUBLIC_SITE_URL` to the production origin.
+
+## Credits
+
+- Photos from [Unsplash](https://unsplash.com), used under the [Unsplash License](https://unsplash.com/license).
+- Fonts: [Archivo](https://fonts.google.com/specimen/Archivo), [Archivo Black](https://fonts.google.com/specimen/Archivo+Black) and [Instrument Serif](https://fonts.google.com/specimen/Instrument+Serif), all under the SIL Open Font License.
+
+## License
+
+No license has been chosen yet, so all rights are reserved. The code is public to read and learn from. Please ask before reusing the content, name or branding.

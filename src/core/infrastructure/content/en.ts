@@ -1,0 +1,171 @@
+import type { LocaleDictionary } from "./types";
+import { EMAIL, IMAGES, KNOWS_ABOUT, SOCIALS, technologies } from "./shared";
+
+const en: LocaleDictionary = {
+  profile: {
+    name: "Emrah Atalay",
+    brand: "eatalay",
+    jobTitle: "AI-driven mobile app, game and software developer",
+    email: EMAIL,
+    location: { city: "Bitlis", countryCode: "TR", label: "Bitlis, TR · remote" },
+    socials: SOCIALS,
+    knowsAbout: KNOWS_ABOUT,
+  },
+
+  page: {
+    hero: {
+      greeting: "I'm Emrah Atalay",
+      titleLead: "AI-driven",
+      titleTail: "product builder",
+    },
+    about: {
+      headline: [
+        { text: "Automate the idea, ship faster.", tone: "accent" },
+        { text: "AI-assisted production for" },
+        { text: "measurable growth and operational excellence.", tone: "muted" },
+      ],
+      summary:
+        "I run AI agents like a team and turn ideas into products that are live in the stores. Architecture, taste and the final call stay human.",
+      experience: { value: "8+ yrs", label: "Of shipping software in production." },
+      disciplines: {
+        initials: ["M", "G", "S", "A"],
+        label: "4 disciplines · mobile, games, software, automation",
+      },
+      workflow: { value: "AI", label: "Parallel work with an agent team, quality through human review." },
+      quote:
+        "The agent team works in parallel: research, tests, refactoring and docs move at the same time. Every line passes human review.",
+    },
+    testimonials: {
+      headline: [{ text: "What the teams I work with say.", tone: "accent" }],
+    },
+    faq: {
+      headline: [
+        { text: "Your questions,", tone: "accent" },
+        { text: "clear answers. What to know before we start." },
+      ],
+    },
+    contact: {
+      title: "Book a 15-minute call",
+      text: "Have questions? Let's have a short intro call before the project starts.",
+      ctaLabel: "Free intro call",
+    },
+    footerBlurb:
+      "A one-person studio building mobile apps, mobile games, software and automations with AI.",
+    seo: {
+      title: "Emrah Atalay — AI-Driven Mobile App, Game & Software Developer",
+      description:
+        "Independent developer building mobile apps, mobile games, software and automations with AI agents. End-to-end product development, from idea to the app stores.",
+      keywords: [
+        "Emrah Atalay",
+        "mobile app developer",
+        "mobile game developer",
+        "AI automation",
+        "Unity developer",
+        "Flutter developer",
+        "iOS Android apps",
+        "freelance software developer",
+        "LLM agents",
+        "n8n automation",
+      ],
+    },
+  },
+
+  services: [
+    {
+      id: "mobile-app",
+      shortTitle: "Mobile apps",
+      title: { lead: "Mobile", accent: "Apps" },
+      description:
+        "Fast, maintainable iOS and Android apps that feel native. From idea validation to the store release.",
+      tags: ["Research", "Wireframes", "Swift · Kotlin", "Flutter", "Store release"],
+      visual: {
+        kind: "photo",
+        image: { ...IMAGES.appPhone, alt: "A smartphone held up in the air" },
+        badge: "App Store · Google Play",
+      },
+    },
+    {
+      id: "mobile-game",
+      shortTitle: "Mobile games",
+      title: { lead: "Mobile", accent: "Games" },
+      description:
+        "From rapid Unity prototype to launch: core loop, economy balancing, ads and in-app purchases.",
+      tags: ["Prototype", "Unity · C#", "Economy", "Ads", "Purchases"],
+      visual: {
+        kind: "photo",
+        image: { ...IMAGES.gamePixel, alt: "Hands playing a pixel-art game on a phone" },
+        badge: "Unity · prototype to launch",
+      },
+    },
+    {
+      id: "product-design",
+      shortTitle: "App design",
+      title: { lead: "App", accent: "Design" },
+      description:
+        "Interface and flow design for AI-assisted products, delivered together with a component library.",
+      tags: ["Research", "Wireframes", "AI product", "Experience", "Testing"],
+      visual: {
+        kind: "assistant",
+        image: { ...IMAGES.handPhone, alt: "A smartphone held in hand" },
+        watermark: "AI ASSISTANT",
+        prompt: "How can I help you today?",
+        caption: ["Mobile app", "AI assistant", "UI/UX design"],
+      },
+    },
+    {
+      id: "ai-automation",
+      shortTitle: "AI automation",
+      title: { lead: "AI", accent: "Automation" },
+      description:
+        "I automate repetitive workflows with AI agents and integrations, so your team can focus on decisions.",
+      tags: ["LLM agents", "n8n", "Python", "Integrations"],
+      visual: {
+        kind: "flow",
+        image: { ...IMAGES.aiShapes, alt: "" },
+        eyebrow: "DIGITAL",
+        word: "Flow",
+        steps: ["Form", "AI agent", "CRM", "Slack"],
+        agentStep: 1,
+      },
+    },
+  ],
+
+  technologies: technologies("LLM agents"),
+
+  faqs: [
+    {
+      id: "projects",
+      question: "What kind of projects do you take on?",
+      answer:
+        "Mobile apps, mobile games, web software and AI automations. I'm most effective with product teams and startups that have a clear problem and want to ship fast.",
+    },
+    {
+      id: "mvp",
+      question: "How long does an MVP take?",
+      answer:
+        "It depends on scope; a typical mobile MVP timeline is six weeks: framing, prototype, build, launch.",
+    },
+    {
+      id: "ai",
+      question: "How exactly do you use AI?",
+      answer:
+        "Agents run research, testing, refactoring and documentation in parallel. Architecture, security, code review and the final call stay with me.",
+    },
+    {
+      id: "ownership",
+      question: "Who owns the code and accounts?",
+      answer:
+        "You do, entirely. Source code, store accounts and infrastructure are set up in your name and handed over with documentation.",
+    },
+    {
+      id: "support",
+      question: "Do you offer support after launch?",
+      answer: "Yes. There are monthly maintenance options for analytics, bug fixes and new releases.",
+    },
+  ],
+
+  // Only real, approved client quotes go here. The section stays hidden while empty.
+  testimonials: [],
+};
+
+export default en;

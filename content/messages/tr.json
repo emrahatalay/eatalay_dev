@@ -1,109 +1,55 @@
 {
-    "Common": {
-        "loading": "Yükleniyor...",
-        "error": "Bir hata oluştu",
-        "notFound": "Sayfa bulunamadı",
-        "goBack": "Geri Dön",
-        "contactMe": "İletişime Geç",
-        "viewProjects": "Projeleri Görüntüle",
-        "viewAllProjects": "Tüm Projeleri Görüntüle",
-        "learnMore": "Daha Fazla Bilgi Edinin"
-    },
-    "Navigation": {
-        "home": "Ana Sayfa",
-        "about": "Hakkımda",
-        "projects": "Projeler",
-        "contact": "İletişim",
-        "gitHub": "GitHub",
-        "linkedIn": "LinkedIn",
-        "youtube": "YouTube"
-    },
-    "Contact": {
-        "title": "İletişim",
-        "subtitle": "Projeleriniz veya işbirliği fırsatları için benimle iletişime geçin. Size en kısa sürede dönüş yapacağım.",
-        "contactInfo": {
-            "directContact": "İletişim Bilgileri",
-            "socialMedia": "Sosyal Medya",
-            "email": "E-posta",
-            "phone": "Telefon",
-            "location": "Konum"
-        },
-        "cta": {
-            "title": "Birlikte Çalışmaya Hazır mısınız?",
-            "description": "Projelerinizi hayata geçirmek için doğru kişiyi mi arıyorsunuz? Hemen iletişime geçin!",
-            "button": "E-posta Gönder"
-        }
-    },
-    "Footer": {
-        "fullStackDeveloper": "Web uygulamaları için verimli ve şık çözümler yaratma konusunda tutkulu bir Full-Stack Geliştirici.",
-        "links": "Bağlantılar",
-        "contactHeading": "İletişim",
-        "location": "Bitlis, Türkiye",
-        "copyright": "Tüm hakları saklıdır.",
-        "builtWith": "❤️ ile kodlandı."
-    },
-    "Error": {
-        "title": "Bir sorun oluştu",
-        "default": "Bu sayfa şu anda görüntülenemiyor.",
-        "errorCode": "Hata kodu",
-        "tryAgain": "Tekrar Dene"
-    },
-    "Home": {
-        "welcome": "Hoş geldiniz",
-        "availability": "Freelance Projeler İçin Uygun",
-        "hello": "Merhaba, ben",
-        "iAm": "Emrah Atalay",
-        "introduction": "Full-Stack yazılım geliştirici olarak 8+ yıllık deneyimle karmaşık sorunları çözen, kullanıcı dostu ve şık web uygulamaları geliştiriyorum.",
-        "viewProjects": "Projelerimi İncele",
-        "contactMe": "İletişime Geç",
-        "skills": "Uzmanlık Alanları",
-        "skillsDescription": "Modern yazılım geliştirme araçları ve teknolojileri ile end-to-end çözümler sunuyorum.",
-        "frontend": "Frontend Geliştirme",
-        "frontendDescription": "Duyarlı, erişilebilir ve performansı yüksek kullanıcı arayüzleri oluşturma konusunda uzmanlık.",
-        "backend": "Backend Geliştirme",
-        "backendDescription": "Ölçeklenebilir API'ler, veritabanı tasarımı ve sunucu tarafı mantığı geliştirme.",
-        "devops": "DevOps Süreçleri",
-        "devopsDescription": "CI/CD, konteynerizasyon ve bulut hizmetleri ile yazılım dağıtım süreçlerini optimize etme.",
-        "featuredProjects": "Öne Çıkan Projeler",
-        "projectsDescription": "En son çalıştığım projelerden bazıları. Daha fazlası için projelerin tamamı sayfasını ziyaret edin.",
-        "project1Title": "E-Ticaret Dashboard",
-        "project1Description": "Gelişmiş analitikler ve envanter yönetimi sunan modern bir e-ticaret yönetim paneli.",
-        "project2Title": "Sosyal Medya Platformu",
-        "project2Description": "Kullanıcıların içerik paylaşabildiği ve etkileşime girebildiği kapsamlı bir sosyal platform.",
-        "viewDetails": "Detayları Gör",
-        "viewAllProjects": "Tüm Projeleri Gör",
-        "letsWork": "Birlikte Çalışalım",
-        "ctaDescription": "Yeni bir proje mi başlatıyorsunuz? Ekibinize katkı sağlayabilecek bir yazılım geliştiriciye mi ihtiyacınız var? Bana ulaşın ve neler yapabileceğimizi konuşalım.",
-        "getInTouch": "İletişime Geç",
-        "directContact": "Direkt İletişim",
-        "fastResponse": "Hızlı Yanıt",
-        "professionalService": "Profesyonel Hizmet",
-        "customSolutions": "Özel Çözümler",
-        "contactInfo": "İletişim Bilgileri"
-    },
-    "Languages": {
-        "tr": "Türkçe",
-        "en": "İngilizce",
-        "de": "Almanca"
-    },
-    "Meta": {
-        "title": "Emrah Atalay Kişisel Web Sitesi | Full Stack Developer",
-        "description": "Full Stack Developer olarak, modern web teknolojilerini kullanarak kullanıcı dostu, ölçeklenebilir ve performans odaklı yenilikçi çözümler geliştiriyorum. Frontend ve backend alanlarında edindiğim deneyimle projelerin tüm aşamalarında etkin bir şekilde katkı sağlıyorum.",
-        "keywords": "Emrah Atalay,Full Stack Developer,Frontend Developer,Backend Developer,.Net,C#,Java,Spring,Python,Asp.Net,Asp.Net Core,Unity,Oyun Geliştirme,Oyun Programlama,Oyun Motoru,Oyun Geliştirici,Oyun Tasarımı,Oyun Tasarımcısı,Oyun Geliştiricisi,Web Geliştirme,Next.js,React,Node.js,TypeScript,JavaScript"
-    },
-    "LocaleSwitcher": {
-        "label": "Dil değiştir",
-        "switchLocale": "Dili {locale} olarak değiştir"
-    },
-    "About": {
-        "title": "Hakkımda",
-        "introduction": "8+ yıllık deneyimle, modern web teknolojileri konusunda uzmanlaşmış bir Full Stack geliştiriciyim. Kullanıcı odaklı, performans açısından optimize edilmiş ve ölçeklenebilir uygulamalar geliştirmeye tutkuyla bağlıyım.",
-        "tech_stack": "Frontend'de React, Next.js ve Tailwind CSS; backend'de ise Node.js, .NET Core ve veritabanı teknolojileri ile çalışıyorum. Sürekli öğrenmeye ve yeni teknolojileri keşfetmeye açığım.",
-        "web_development_title": "Web Geliştirme",
-        "web_development_description": "Modern ve performanslı web uygulamaları geliştiriyorum.",
-        "architecture_title": "Mimari Tasarım",
-        "architecture_description": "Ölçeklenebilir ve sürdürülebilir yazılım mimarileri tasarlıyorum.",
-        "problem_solving_title": "Problem Çözme",
-        "problem_solving_description": "Karmaşık problem senaryolarına yaratıcı çözümler buluyorum."
-    }
+  "Nav": {
+    "label": "Ana menü",
+    "skip": "İçeriğe geç",
+    "home": "Ana sayfa",
+    "about": "Hakkımda",
+    "work": "Portfolyo",
+    "testimonials": "Yorumlar",
+    "faq": "SSS",
+    "cta": "Birlikte çalışalım",
+    "openMenu": "Menüyü aç",
+    "closeMenu": "Menüyü kapat"
+  },
+  "Theme": {
+    "toggle": "Açık ve koyu tema arasında geç"
+  },
+  "Locale": {
+    "label": "Dil seçimi",
+    "tr": "Türkçe",
+    "en": "English"
+  },
+  "Hero": {
+    "technologies": "Kullandığım teknolojiler"
+  },
+  "About": {
+    "eyebrow": "Hakkımda"
+  },
+  "Work": {
+    "title": "Portfolyo"
+  },
+  "Testimonials": {
+    "eyebrow": "Müşteri yorumları"
+  },
+  "Faq": {
+    "eyebrow": "Sıkça sorulan sorular"
+  },
+  "Footer": {
+    "follow": "Takip edin",
+    "quickLinks": "Hızlı bağlantılar",
+    "services": "Hizmetler",
+    "email": "E-posta",
+    "location": "Konum",
+    "rights": "Tüm hakları saklıdır."
+  },
+  "NotFound": {
+    "title": "Sayfa bulunamadı",
+    "text": "Aradığınız sayfa taşınmış ya da hiç var olmamış olabilir.",
+    "back": "Ana sayfaya dön"
+  },
+  "Error": {
+    "title": "Bir şeyler ters gitti",
+    "text": "Sayfa şu anda görüntülenemiyor. Lütfen tekrar deneyin.",
+    "retry": "Tekrar dene"
+  }
 }

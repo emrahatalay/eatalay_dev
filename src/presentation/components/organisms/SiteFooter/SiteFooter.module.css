@@ -1,0 +1,169 @@
+.footer {
+  position: relative;
+  margin-top: 60px;
+  padding: 40px clamp(18px, 4vw, 56px) 18px;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: var(--footer);
+  container-type: inline-size;
+}
+
+.footer > :not(.field) {
+  position: relative;
+  z-index: 1;
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 30px;
+  margin-top: 28px;
+  font-size: 13px;
+}
+
+.blurb {
+  max-width: 280px;
+  color: var(--ink-2);
+}
+
+.heading {
+  margin: 0 0 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--rose);
+}
+
+.intro .heading {
+  margin-top: 22px;
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.list a,
+.contact a {
+  display: inline-block;
+  padding: 3px 0;
+  text-decoration: none;
+  color: var(--ink-2);
+  transition: color 0.3s, transform 0.3s;
+}
+
+.list a:hover,
+.contact a:hover {
+  color: var(--vio);
+  transform: translateX(3px);
+}
+
+.contact {
+  font-style: normal;
+  color: var(--ink-2);
+}
+
+.contact .heading + * {
+  margin-bottom: 18px;
+}
+
+.wordmark {
+  display: flex;
+  justify-content: center;
+  margin: 50px -10px 0;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-stretch: 125%;
+  /* "EATALAY" is ~6.1em wide: size it to the footer so it always fits */
+  font-size: 15.4cqi;
+  line-height: 0.78;
+  letter-spacing: -0.04em;
+  color: var(--wordmark);
+  text-shadow: 0 10px 40px rgba(80, 40, 180, 0.25);
+}
+
+.wordmark span {
+  display: inline-block;
+}
+
+.legal {
+  margin-top: 18px;
+  text-align: center;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 1px 6px rgba(40, 20, 90, 0.5);
+}
+
+.field {
+  position: absolute;
+  inset: auto 0 0;
+  z-index: 0;
+  height: 420px;
+  pointer-events: none;
+  -webkit-mask: linear-gradient(transparent, #000 55%);
+  mask: linear-gradient(transparent, #000 55%);
+}
+
+.fieldImage {
+  object-fit: cover;
+  object-position: center 65%;
+}
+
+:global(:root[data-theme="dark"]) .fieldImage {
+  filter: brightness(0.55) saturate(1.1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :global(:root:not([data-theme])) .fieldImage {
+    filter: brightness(0.55) saturate(1.1);
+  }
+}
+
+@keyframes letter {
+  from {
+    transform: translateY(60%);
+    opacity: 0;
+  }
+}
+
+@supports (animation-timeline: view()) {
+  .wordmark span {
+    animation: letter linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 70%;
+  }
+
+  .wordmark span:nth-child(2) { animation-range: entry 5% entry 75%; }
+  .wordmark span:nth-child(3) { animation-range: entry 10% entry 80%; }
+  .wordmark span:nth-child(4) { animation-range: entry 15% entry 85%; }
+  .wordmark span:nth-child(5) { animation-range: entry 20% entry 90%; }
+  .wordmark span:nth-child(6) { animation-range: entry 25% entry 95%; }
+  .wordmark span:nth-child(7) { animation-range: entry 30% entry 100%; }
+}
+
+@media (max-width: 900px) {
+  .columns {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .intro {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 640px) {
+  .footer {
+    margin-top: 36px;
+    padding-top: 30px;
+    border-radius: var(--radius-md);
+  }
+
+  .wordmark {
+    margin: 36px -4px 0;
+  }
+
+  .field {
+    height: 260px;
+  }
+}

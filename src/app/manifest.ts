@@ -1,24 +1,20 @@
 import type { MetadataRoute } from "next";
-import { getTranslations } from "next-intl/server";
+import { loadSiteMetadata } from "@/core/di/container";
+import { DEFAULT_LOCALE } from "@/core/domain/locale";
+import { siteConfig } from "@/shared/config/site";
 
-async function manifest(): Promise<MetadataRoute.Manifest> {
-  const t = await getTranslations();
+export default async function manifest(): Promise<MetadataRoute.Manifest> {
+  const { seo, profile } = await loadSiteMetadata(DEFAULT_LOCALE);
+
   return {
-    name: t("Meta.title"),
-    short_name: "EAtalayDev",
-    description: t("Meta.description"),
+    name: seo.title,
+    short_name: profile.brand,
+    description: seo.description,
+    lang: DEFAULT_LOCALE,
     start_url: "/",
     display: "standalone",
-    background_color: "#ffffff",
-    theme_color: "#ec680e",
-    icons: [
-      {
-        src: "/globe.svg",
-        sizes: "any",
-        type: "image/svg+xml",
-      },
-    ],
+    background_color: siteConfig.themeColor.light,
+    theme_color: "#7b5cff",
+    icons: [{ src: "/icon.svg", sizes: "any", type: "image/svg+xml" }],
   };
 }
-
-export default manifest;

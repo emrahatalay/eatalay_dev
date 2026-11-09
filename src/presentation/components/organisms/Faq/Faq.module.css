@@ -1,0 +1,55 @@
+.faq {
+  position: relative;
+  margin-top: 60px;
+  padding: 56px clamp(18px, 4vw, 56px) 60px;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  color: #fff;
+  background:
+    radial-gradient(500px 380px at 95% 0%, rgba(217, 70, 239, 0.55), transparent 70%),
+    radial-gradient(600px 420px at 0% 100%, rgba(123, 92, 255, 0.6), transparent 70%),
+    linear-gradient(160deg, #1a0f33, #0b0a14);
+  scroll-margin-top: 24px;
+}
+
+.headline {
+  max-width: 760px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+:global(:root[data-theme="dark"]) .accordion,
+.accordion {
+  color: var(--ink);
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .faq {
+    margin-top: 36px;
+    padding-top: 36px;
+    padding-bottom: 28px;
+    border-radius: var(--radius-md);
+  }
+
+  .grid {
+    gap: 14px;
+    margin-top: 28px;
+  }
+}

@@ -1,0 +1,35 @@
+.switcher {
+  display: flex;
+  margin: 0;
+  padding: 3px;
+  list-style: none;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.switcher a {
+  display: grid;
+  place-items: center;
+  height: 30px;
+  min-width: 36px;
+  padding: 0 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.7);
+  transition: background 0.3s, color 0.3s;
+}
+
+.switcher a:hover {
+  color: #fff;
+}
+
+.switcher a[aria-current="page"] {
+  color: #15131f;
+  background: #fff;
+}

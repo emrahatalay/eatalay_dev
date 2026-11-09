@@ -1,0 +1,32 @@
+.pill {
+  display: flex;
+  gap: 4px;
+  margin: 0;
+  padding: 5px;
+  list-style: none;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.pill a {
+  display: block;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 13px;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.75);
+  transition: background 0.3s, color 0.3s;
+}
+
+.pill a:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.pill a.active {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.16);
+}
