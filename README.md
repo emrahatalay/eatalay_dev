@@ -32,24 +32,24 @@ The site is a single landing page:
 - TypeScript (strict)
 - [next-intl](https://next-intl.dev) for routing and UI strings
 - CSS Modules with design tokens in CSS custom properties
-- pnpm
+- [Bun](https://bun.sh) as the package manager and script runner
 
 ## Getting started
 
-Requirements: Node.js 20+ and pnpm.
+Requirements: [Bun](https://bun.sh) 1.2+ (Next.js runs on Node.js 20+).
 
 ```bash
-pnpm install
-pnpm dev          # http://localhost:3000
+bun install
+bun dev           # http://localhost:3000
 ```
 
 | Script           | What it does                     |
 | ---------------- | -------------------------------- |
-| `pnpm dev`       | Development server               |
-| `pnpm build`     | Production build (static output) |
-| `pnpm start`     | Serve the production build       |
-| `pnpm lint`      | ESLint                           |
-| `pnpm typecheck` | TypeScript, no emit              |
+| `bun dev`        | Development server               |
+| `bun run build`  | Production build (static output) |
+| `bun start`      | Serve the production build       |
+| `bun lint`       | ESLint                           |
+| `bun typecheck`  | TypeScript, no emit              |
 
 ### Environment
 

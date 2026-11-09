@@ -17,6 +17,7 @@ export function generateStaticParams() {
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
+  icons: { icon: "/icon.svg" },
 };
 
 export const viewport: Viewport = {
