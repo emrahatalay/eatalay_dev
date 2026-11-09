@@ -71,6 +71,15 @@ install -d -m 755 "$KOK" "$KOK/releases"
 install -m 644 "$BURASI/logrotate.conf" /etc/logrotate.d/eatalay
 
 adim "nginx ve HTTPS"
+# Sunucunun mevcut ayarı zaten bozuksa (ör. sites-enabled'da kırık bağlantı) hiçbir şeye dokunulmadan durulur:
+# aksi hâlde yeni ayarın denetimi başarısız görünür ve asıl sorun gözden kaçar.
+if ! nginx -t 2>/tmp/eatalay-nginx-t.log; then
+  grep -E "emerg|failed" /tmp/eatalay-nginx-t.log || cat /tmp/eatalay-nginx-t.log
+  echo "HATA: sunucunun mevcut nginx ayarı eatalay.dev'e dokunulmadan önce de geçmiyor; önce yukarıdaki sorun giderilmeli."
+  kirik="$(find /etc/nginx/sites-enabled -xtype l 2>/dev/null || true)"
+  [ -z "$kirik" ] || echo "sites-enabled'daki kırık bağlantılar: $kirik"
+  exit 1
+fi
 install -d /var/www/certbot
 SITE=/etc/nginx/sites-available/$ALAN
 SERTIFIKA=/etc/letsencrypt/live/$ALAN/fullchain.pem
