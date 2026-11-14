@@ -7,7 +7,7 @@ import styles from "./ServiceVisual.module.css";
 /** Gameplay on the phone, the tuning behind it in a Unity-style inspector, and how players stick. */
 export function GameVisual({ visual }: { readonly visual: GameVisualData }) {
   return (
-    <div className={cx(styles.frame, styles.game)}>
+    <div className={cx(styles.frame, styles.game)} data-motion="">
       <div className={styles.device} data-zoom="">
         <PhoneFrame image={visual.screen} sizes="(max-width: 640px) 120px, 170px" className={styles.deviceFrame} />
         <span className={styles.coin} aria-hidden="true">

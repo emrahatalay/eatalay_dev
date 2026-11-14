@@ -7,7 +7,7 @@ import styles from "./ServiceVisual.module.css";
 /** A build log from one codebase to both stores, beside the screen it shipped. */
 export function ShipVisual({ visual }: { readonly visual: ShipVisualData }) {
   return (
-    <div className={cx(styles.frame, styles.ship)}>
+    <div className={cx(styles.frame, styles.ship)} data-motion="">
       <div className={styles.panel} aria-hidden="true">
         <span className={styles.panelBar}>
           <i />

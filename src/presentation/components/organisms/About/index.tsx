@@ -95,7 +95,7 @@ export function About({ content }: { readonly content: AboutContent }) {
         </div>
 
         <HighlightCard tone="photo" className={styles.quoteCard}>
-          <div className={styles.agents} aria-hidden="true">
+          <div className={styles.agents} aria-hidden="true" data-motion="">
             <span className={styles.agentsTitle}>agents · running</span>
             {AGENTS.map((agent, i) => (
               <span key={agent.name} className={styles.agent}>

@@ -311,22 +311,24 @@
   background: rgba(255, 255, 255, 0.08);
 }
 
+/* Fills with transform, not width: no layout or paint on each frame. */
 .bar i {
   display: block;
   height: 100%;
   width: calc(var(--p) * 100%);
   border-radius: inherit;
   background: linear-gradient(90deg, #c2410c, var(--accent));
+  transform-origin: left;
   animation: work 5s var(--ease-out) infinite;
 }
 
 @keyframes work {
   0% {
-    width: calc(var(--p) * 30%);
+    transform: scaleX(0.3);
   }
   60%,
   100% {
-    width: calc(var(--p) * 100%);
+    transform: scaleX(1);
   }
 }
 

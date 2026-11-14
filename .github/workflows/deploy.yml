@@ -69,6 +69,8 @@ jobs:
           mkdir -p $S/.next/static $S/public
           cp -r .next/static/. $S/.next/static/
           cp -r public/. $S/public/
+          # nginx statik dosyaları diskten, önceden sıkıştırılmış hâliyle verir (deploy/nginx.conf).
+          node deploy/sikistir.mjs $S/.next/static
 
       - name: Paket çalışıyor mu
         if: steps.sir.outputs.var == 'true'

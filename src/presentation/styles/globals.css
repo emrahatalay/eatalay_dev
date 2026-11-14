@@ -239,6 +239,15 @@ p {
   }
 }
 
+/* Decorative loops marked data-motion rest while off screen (MotionGate), so
+   the page can go idle instead of animating things nobody sees. */
+[data-motion][data-offscreen],
+[data-motion][data-offscreen] *,
+[data-motion][data-offscreen] *::before,
+[data-motion][data-offscreen] *::after {
+  animation-play-state: paused !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

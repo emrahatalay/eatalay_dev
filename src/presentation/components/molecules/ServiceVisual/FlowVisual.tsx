@@ -14,7 +14,7 @@ const outWire = (y: number) => `M48 58 C66 58 64 ${y} 83 ${y}`;
  */
 export function FlowVisual({ visual }: { readonly visual: FlowVisualData }) {
   return (
-    <div className={cx(styles.frame, styles.flow)}>
+    <div className={cx(styles.frame, styles.flow)} data-motion="">
       <span className={styles.runs}>
         <i />
         {visual.runs}

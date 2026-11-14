@@ -1,4 +1,5 @@
 import type { CSSProperties, ReactNode } from "react";
+import { MotionGate } from "@/presentation/components/atoms/MotionGate";
 import { AmbientBackdrop } from "@/presentation/components/organisms/AmbientBackdrop";
 import styles from "./PageShell.module.css";
 
@@ -18,6 +19,7 @@ export function PageShell({ children, skipLabel, style }: PageShellProps) {
       </a>
       <AmbientBackdrop />
       <div className={styles.sheet}>{children}</div>
+      <MotionGate />
     </div>
   );
 }

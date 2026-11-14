@@ -9,7 +9,7 @@ import styles from "./ServiceVisual.module.css";
  */
 export function DesignVisual({ visual }: { readonly visual: DesignVisualData }) {
   return (
-    <div className={cx(styles.frame, styles.design)}>
+    <div className={cx(styles.frame, styles.design)} data-motion="">
       <div className={styles.tokens} aria-hidden="true">
         <span className={styles.swatches}>
           <i />

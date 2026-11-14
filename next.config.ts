@@ -17,9 +17,13 @@ const nextConfig: NextConfig = {
   turbopack: { root: process.cwd() },
   reactStrictMode: true,
   poweredByHeader: false,
+  // nginx compresses (brotli/gzip, deploy/nginx.conf). Gzipping in Node as well costs CPU per request and
+  // hands nginx an already-encoded body, so its brotli never applies.
+  compress: false,
   images: {
     formats: ["image/avif", "image/webp"],
-    deviceSizes: [390, 640, 828, 1080, 1280, 1600, 1920],
+    // Screenshots are 900px wide and never shown wider than 300 CSS px: larger widths would only re-encode the same 900px file.
+    deviceSizes: [390, 640, 828, 1080],
     imageSizes: [64, 128, 256, 384, 480],
     qualities: [60, 70, 75],
     minimumCacheTTL: 60 * 60 * 24 * 365,

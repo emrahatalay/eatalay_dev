@@ -1,6 +1,6 @@
 "use client";
 
-import { type ReactNode, useRef, useState } from "react";
+import { memo, type ReactNode, useRef, useState } from "react";
 import { useVisibleInterval } from "@/presentation/hooks/useVisibleInterval";
 import { cx } from "@/shared/lib/cx";
 import styles from "./CodeField.module.css";
@@ -110,12 +110,14 @@ const PANES: readonly (readonly CodeFile[])[] = [
   ],
 ];
 
-const TICK_MS = 40;
-const CHARS_PER_TICK = 2;
+/* 50 characters a second, in steps of three: smooth enough to read as typing,
+   and a third fewer renders than one step every 40ms. */
+const TICK_MS = 60;
+const CHARS_PER_TICK = 3;
 /* Pauses, in ticks. */
-const LINE_END = 3;
-const FILE_DONE = 80;
-const NEW_FILE = 8;
+const LINE_END = 2;
+const FILE_DONE = 53;
+const NEW_FILE = 5;
 
 /** Where a pane is: the file, the line being written and how much of it. */
 interface Pane {
@@ -131,7 +133,7 @@ const INITIAL: readonly Pane[] = PANES.map((files, i) => ({
   file: 0,
   line: files[0]!.lines.length,
   col: 0,
-  wait: 30 + i * 25,
+  wait: 20 + i * 17,
 }));
 
 function step(pane: Pane, files: readonly CodeFile[]): Pane {
@@ -166,6 +168,27 @@ function highlight(line: string): ReactNode[] {
   });
 }
 
+/**
+ * One line of a pane. Memoised: on each tick only the line being typed changes,
+ * so the finished lines above it are not highlighted and diffed again.
+ */
+const CodeLine = memo(function CodeLine({
+  text,
+  active,
+  caret,
+}: {
+  readonly text: string;
+  readonly active: boolean;
+  readonly caret: boolean;
+}) {
+  return (
+    <span className={cx(styles.line, active && styles.active)}>
+      {text ? highlight(text) : " "}
+      {caret && <i className={cx(styles.caret, active && styles.typing)} />}
+    </span>
+  );
+});
+
 export function CodeField({ className }: { readonly className?: string }) {
   const root = useRef<HTMLDivElement>(null);
   const [panes, setPanes] = useState(INITIAL);
@@ -191,12 +214,13 @@ export function CodeField({ className }: { readonly className?: string }) {
                   const active = !done && i === pane.line;
                   // At rest only the first pane keeps a blinking caret, like a focused editor.
                   const resting = done && f === 0 && i === shown.length - 1;
-                  const text = active ? line.slice(0, pane.col) : line;
                   return (
-                    <span key={`${pane.file}-${i}`} className={cx(styles.line, active && styles.active)}>
-                      {text ? highlight(text) : " "}
-                      {(active || resting) && <i className={cx(styles.caret, active && styles.typing)} />}
-                    </span>
+                    <CodeLine
+                      key={`${pane.file}-${i}`}
+                      text={active ? line.slice(0, pane.col) : line}
+                      active={active}
+                      caret={active || resting}
+                    />
                   );
                 })}
               </pre>

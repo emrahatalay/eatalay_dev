@@ -174,6 +174,14 @@ EOF
   # Yeni yapılandırma hatalıysa eskisi geri konur: bozuk bir dosya sunucudaki tüm sitelerin nginx yenilemesini durdurur.
   cp "$SITE" "$SITE.onceki" 2>/dev/null || true
   install -m 644 "$BURASI/nginx.conf" "$SITE"
+  # Önceden sıkıştırılmış .br dosyaları için brotli_static denenir; modül yoksa boş bırakılır (yalnız gzip_static).
+  install -d /etc/nginx/snippets
+  BROTLI_STATIC=/etc/nginx/snippets/eatalay-brotli-static.conf
+  echo "brotli_static on;" > "$BROTLI_STATIC"
+  if ! nginx -t 2>/dev/null; then
+    echo "# brotli_static modülü yok; .gz kopyaları gzip_static ile verilir." > "$BROTLI_STATIC"
+    echo "Bilgi: brotli_static yok, statik dosyalar önceden sıkıştırılmış gzip ile verilecek."
+  fi
   if ! nginx -t; then
     echo "HATA: nginx yapılandırması geçmedi; önceki dosyaya dönülüyor."
     if [ -f "$SITE.onceki" ]; then mv "$SITE.onceki" "$SITE"; else rm -f "$SITE" "/etc/nginx/sites-enabled/$ALAN"; geri_al; fi

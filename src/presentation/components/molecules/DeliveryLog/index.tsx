@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
+import { useVisibleInterval } from "@/presentation/hooks/useVisibleInterval";
 import type { AboutContent } from "@/core/domain/entities";
 import { cx } from "@/shared/lib/cx";
 import styles from "./DeliveryLog.module.css";
@@ -17,25 +18,7 @@ export function DeliveryLog({ log }: { readonly log: AboutContent["log"] }) {
   const root = useRef<HTMLDivElement>(null);
   const total = log.entries.length;
 
-  useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-    let timer: number | undefined;
-    const start = () => {
-      if (timer === undefined) timer = window.setInterval(() => setTick((t) => t + 1), TICK_MS);
-    };
-    const stop = () => {
-      window.clearInterval(timer);
-      timer = undefined;
-    };
-
-    const observer = new IntersectionObserver(([entry]) => (entry?.isIntersecting ? start() : stop()));
-    if (root.current) observer.observe(root.current);
-    return () => {
-      observer.disconnect();
-      stop();
-    };
-  }, []);
+  useVisibleInterval(root, TICK_MS, () => setTick((t) => t + 1));
 
   // Newest first; keys are absolute so only the new row animates in.
   const rows = Array.from({ length: VISIBLE }, (_, k) => {
@@ -44,7 +27,7 @@ export function DeliveryLog({ log }: { readonly log: AboutContent["log"] }) {
   });
 
   return (
-    <div ref={root} className={styles.log} aria-hidden="true">
+    <div ref={root} className={styles.log} aria-hidden="true" data-motion="">
       <span className={styles.head}>
         <b>{log.title}</b>
         <i className={styles.live} />

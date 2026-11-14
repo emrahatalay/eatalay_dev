@@ -67,7 +67,7 @@ export function SiteFooter({ profile, blurb, links, services, servicesHref = "#s
 
       {/* Dark editor panel along the bottom edge: the panes write code, the prompt
           runs one workflow step after another, and a status bar closes the page. */}
-      <div className={styles.terminal}>
+      <div className={styles.terminal} data-motion="">
         <CodeField className={styles.field} />
 
         <p className={styles.signature} aria-hidden="true">

@@ -1,6 +1,7 @@
 "use client";
 
-import { type ReactNode, useEffect, useRef, useState } from "react";
+import { type ReactNode, useRef, useState } from "react";
+import { useVisibleInterval } from "@/presentation/hooks/useVisibleInterval";
 import { cx } from "@/shared/lib/cx";
 import styles from "./AgentScene.module.css";
 
@@ -60,26 +61,8 @@ export function AgentScene({ labels }: { readonly labels: AgentSceneLabels }) {
   const [step, setStep] = useState(0);
   const root = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-    let timer: number | undefined;
-    const start = () => {
-      if (timer === undefined) timer = window.setInterval(() => setStep((s) => (s + 1) % STEPS), STEP_MS);
-    };
-    const stop = () => {
-      window.clearInterval(timer);
-      timer = undefined;
-    };
-
-    // Only run while the hero is on screen.
-    const observer = new IntersectionObserver(([entry]) => (entry?.isIntersecting ? start() : stop()));
-    if (root.current) observer.observe(root.current);
-    return () => {
-      observer.disconnect();
-      stop();
-    };
-  }, []);
+  // Only runs while the hero is on screen.
+  useVisibleInterval(root, STEP_MS, () => setStep((s) => (s + 1) % STEPS));
 
   const coder = stateAt(step, 1);
   const tester = stateAt(step, 2);
@@ -87,7 +70,7 @@ export function AgentScene({ labels }: { readonly labels: AgentSceneLabels }) {
   const deploy = stateAt(step, 5);
 
   return (
-    <div ref={root} className={styles.scene} aria-hidden="true">
+    <div ref={root} className={styles.scene} aria-hidden="true" data-motion="">
       <svg className={styles.wires} viewBox="0 0 100 100" preserveAspectRatio="none">
         {(Object.keys(WIRES) as (keyof typeof WIRES)[]).map((key) => (
           <g key={key} className={cx(key === "approval" && styles.dashed)}>
