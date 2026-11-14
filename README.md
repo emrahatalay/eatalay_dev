@@ -2,7 +2,7 @@
 
 # eatalay.dev
 
-Source code of [eatalay.dev](https://eatalay.dev), the personal site of **Emrah Atalay**, a developer who builds mobile apps, mobile games, software and automations with AI.
+Source code of [eatalay.dev](https://eatalay.dev), the personal site of **Emrah Atalay**, a developer who builds websites and web apps, mobile apps, mobile games and automations with AI.
 
 The site is a single landing page:
 
