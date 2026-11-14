@@ -39,15 +39,20 @@ export default async function OpenGraphImage({ params }: { params: Promise<{ loc
         }}
       >
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          <div
-            style={{
-              display: "flex",
-              fontSize: 30,
-              padding: "6px 22px",
-              borderRadius: 999,
-              border: "2px solid rgba(255,255,255,.25)",
-            }}
-          >
+          {/* Same lockup as the site header: the prompt + sparkle mark beside the wordmark. */}
+          <div style={{ display: "flex", alignItems: "center", gap: 16, fontSize: 34 }}>
+            <svg width="52" height="52" viewBox="0 0 32 32">
+              <rect width="32" height="32" rx="9" fill="#f05a1a" />
+              <path
+                d="M8.5 10.5 15 16l-6.5 5.5M17.5 22h5.5"
+                fill="none"
+                stroke="#fff"
+                strokeWidth="3.2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path d="M23 5.2l1.15 3.65L27.8 10l-3.65 1.15L23 14.8l-1.15-3.65L18.2 10l3.65-1.15z" fill="#fff" />
+            </svg>
             {profile.brand}
           </div>
           <div style={{ display: "flex", fontSize: 22, color: "rgba(255,255,255,.7)" }}>eatalay.dev</div>

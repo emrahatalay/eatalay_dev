@@ -23,7 +23,6 @@
   color: #fff;
   background: rgba(22, 21, 20, 0.95);
   backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
   box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.6);
   opacity: 0;
   transform: translateY(-8px) scale(0.98);

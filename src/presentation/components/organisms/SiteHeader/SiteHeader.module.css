@@ -1,12 +1,63 @@
 .bar {
   position: absolute;
   inset: 22px 28px auto;
-  z-index: 5;
+  z-index: 40;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
   animation: fade-up 0.9s var(--ease-out) both 0.05s;
+}
+
+/* The pinned surface lives on a pseudo-element: a backdrop-filter on the bar
+   itself would trap the fixed mobile menu inside it. */
+.bar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  opacity: 0;
+  background: color-mix(in srgb, var(--night) 72%, transparent);
+  backdrop-filter: blur(20px) saturate(1.6);
+  box-shadow:
+    inset 0 -1px 0 rgba(255, 255, 255, 0.08),
+    0 16px 40px -24px rgba(0, 0, 0, 0.7);
+  transition: opacity 0.3s ease;
+}
+
+/* Scrolled: pinned to the top and stretched across the viewport. */
+.bar[data-pinned] {
+  position: fixed;
+  inset: 0 0 auto;
+  padding: 12px max(24px, calc((100vw - 1400px) / 2));
+  border-radius: 0;
+  animation: pin-in 0.55s var(--ease-out) both;
+}
+
+.bar[data-pinned]::before {
+  opacity: 1;
+}
+
+/* Grows out of the floating hero bar into the full-width one. */
+@keyframes pin-in {
+  from {
+    top: 10px;
+    left: 28px;
+    right: 28px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  to {
+    top: 0;
+    left: 0;
+    right: 0;
+    border-radius: 0;
+  }
 }
 
 .actions {
@@ -33,6 +84,10 @@
 @media (max-width: 640px) {
   .bar {
     inset: 14px 14px auto;
+  }
+
+  .bar[data-pinned] {
+    padding: 10px 14px;
   }
 
   .actions {

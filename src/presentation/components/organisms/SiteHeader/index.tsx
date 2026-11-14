@@ -8,6 +8,7 @@ import { MobileMenu } from "@/presentation/components/molecules/MobileMenu";
 import { NavLinks, type NavItem } from "@/presentation/components/molecules/NavLinks";
 import { ThemeToggle } from "@/presentation/components/molecules/ThemeToggle";
 import { localePath } from "@/shared/config/site";
+import { HeaderShell } from "./HeaderShell";
 import styles from "./SiteHeader.module.css";
 
 export interface SiteHeaderProps {
@@ -31,7 +32,7 @@ export function SiteHeader({ brand, locale, items, cta, logoHref, localeHref = l
   }));
 
   return (
-    <div className={styles.bar}>
+    <HeaderShell className={styles.bar}>
       <Logo text={brand} href={logoHref} label={t("Nav.home")} />
 
       <nav aria-label={t("Nav.label")} className={styles.primary}>
@@ -54,6 +55,6 @@ export function SiteHeader({ brand, locale, items, cta, logoHref, localeHref = l
           />
         </span>
       </div>
-    </div>
+    </HeaderShell>
   );
 }

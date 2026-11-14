@@ -9,5 +9,4 @@
   background: var(--tag-bg);
   border: 1px solid var(--line);
   backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
 }

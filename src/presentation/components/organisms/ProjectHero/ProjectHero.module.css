@@ -1,6 +1,8 @@
 .hero {
   position: relative;
   isolation: isolate;
+  /* Above later sections, so the pinned header inside it stays on top. */
+  z-index: 30;
   overflow: hidden;
   border-radius: var(--radius-lg);
   color: #fff;

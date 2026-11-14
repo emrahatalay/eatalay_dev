@@ -3,6 +3,8 @@
 
   position: relative;
   isolation: isolate;
+  /* Above later sections, so the pinned header inside it stays on top. */
+  z-index: 30;
   height: clamp(680px, calc(100svh - 48px), 820px);
   overflow: hidden;
   border-radius: var(--radius-lg);

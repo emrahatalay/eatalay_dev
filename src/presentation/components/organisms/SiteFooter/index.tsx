@@ -22,7 +22,7 @@ export function SiteFooter({ profile, blurb, links, services, servicesHref = "#s
 
   return (
     <footer className={styles.footer}>
-      <Logo text={profile.brand} href={logoHref} variant="footer" />
+      <Logo text={profile.brand} href={logoHref} tone="light" />
 
       <div className={styles.columns}>
         <div className={styles.intro}>

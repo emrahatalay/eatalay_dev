@@ -142,6 +142,8 @@
 
 html {
   scroll-behavior: smooth;
+  /* Room for the pinned header when jumping to a section. */
+  scroll-padding-top: 72px;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
   background: var(--page);
