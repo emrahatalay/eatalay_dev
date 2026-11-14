@@ -7,6 +7,9 @@
 }
 
 .sheet {
+  /* Above the fixed ambient backdrop. */
+  position: relative;
+  z-index: 1;
   max-width: 1392px;
   margin: 0 auto;
   padding: 24px;

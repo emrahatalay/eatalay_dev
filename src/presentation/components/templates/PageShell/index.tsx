@@ -1,7 +1,8 @@
 import type { CSSProperties, ReactNode } from "react";
+import { AmbientBackdrop } from "@/presentation/components/organisms/AmbientBackdrop";
 import styles from "./PageShell.module.css";
 
-/** Glowing page background with the centred white "sheet" (max width 1392px). */
+/** Page background (an ambient AI-work scene in the side gutters) with the centred "sheet" (max width 1392px). */
 export interface PageShellProps {
   readonly children: ReactNode;
   readonly skipLabel: string;
@@ -15,6 +16,7 @@ export function PageShell({ children, skipLabel, style }: PageShellProps) {
       <a href="#main" className={styles.skip}>
         {skipLabel}
       </a>
+      <AmbientBackdrop />
       <div className={styles.sheet}>{children}</div>
     </div>
   );
