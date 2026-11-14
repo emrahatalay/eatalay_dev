@@ -25,7 +25,7 @@
   --warm-card: linear-gradient(180deg, #fff6f1, #ffede3);
   --book-card: linear-gradient(180deg, #ffffff, #f6f5f2);
   --accordion: #ffffff;
-  --footer: #ffffff;
+  --footer: #f4f3ef;
 
   /* Dark blocks inside the sheet (hero, services, FAQ…) and their lighter step. */
   --night: #161514;
@@ -83,7 +83,7 @@
   --warm-card: linear-gradient(180deg, #2e2622, #27221f);
   --book-card: linear-gradient(180deg, #2c2c2f, #252527);
   --accordion: #262628;
-  --footer: #19191b;
+  --footer: #222224;
 
   --night: #0f0f10;
   --night-2: #1f1f21;
@@ -118,7 +118,7 @@
     --warm-card: linear-gradient(180deg, #2e2622, #27221f);
     --book-card: linear-gradient(180deg, #2c2c2f, #252527);
     --accordion: #262628;
-    --footer: #19191b;
+    --footer: #222224;
 
     --night: #0f0f10;
     --night-2: #1f1f21;

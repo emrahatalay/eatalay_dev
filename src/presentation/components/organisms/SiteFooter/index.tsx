@@ -4,6 +4,7 @@ import { Logo } from "@/presentation/components/atoms/Logo";
 import { CodeField } from "@/presentation/components/molecules/CodeField";
 import type { NavItem } from "@/presentation/components/molecules/NavLinks";
 import { SocialLinks } from "@/presentation/components/molecules/SocialLinks";
+import { TypedCommand } from "@/presentation/components/molecules/TypedCommand";
 import styles from "./SiteFooter.module.css";
 
 export interface SiteFooterProps {
@@ -19,6 +20,7 @@ export interface SiteFooterProps {
 export function SiteFooter({ profile, blurb, links, services, servicesHref = "#services", logoHref }: SiteFooterProps) {
   const t = useTranslations("Footer");
   const year = new Date().getFullYear();
+  const github = profile.socials.find((s) => s.network === "github");
 
   return (
     <footer className={styles.footer}>
@@ -63,21 +65,41 @@ export function SiteFooter({ profile, blurb, links, services, servicesHref = "#s
         </address>
       </div>
 
-      {/* Dark editor panel along the bottom edge, signed with a one-line terminal command
-          that types itself in as the footer scrolls into view. */}
+      {/* Dark editor panel along the bottom edge: the panes write code, the prompt
+          runs one workflow step after another, and a status bar closes the page. */}
       <div className={styles.terminal}>
         <CodeField className={styles.field} />
 
         <p className={styles.signature} aria-hidden="true">
           <span className={styles.path}>~/{profile.brand}</span>
           <span className={styles.prompt}>❯</span>
-          <span className={styles.command}>ship --next</span>
-          <span className={styles.cursor} />
+          <TypedCommand className={styles.command} cursorClassName={styles.cursor} />
         </p>
 
-        <p className={styles.legal}>
-          © {year} {profile.name}. {t("rights")}
-        </p>
+        <div className={styles.status}>
+          <span className={styles.chip}>
+            <span className={styles.liveDot} />
+            {t("live")}
+          </span>
+          <p className={styles.legal}>
+            <span className={styles.copy}>©</span> {year}{" "}
+            {github ? (
+              <a href={github.url} target="_blank" rel="noopener noreferrer" className={styles.owner}>
+                {profile.name}
+              </a>
+            ) : (
+              <strong className={styles.owner}>{profile.name}</strong>
+            )}
+            <span className={styles.sep} aria-hidden="true" />
+            {t("rights")}
+          </p>
+          <span className={`${styles.chip} ${styles.crafted}`}>
+            <svg viewBox="0 0 16 16" aria-hidden="true">
+              <path d="M8 1.5l1.4 4.1 4.1 1.4-4.1 1.4L8 12.5l-1.4-4.1L2.5 7l4.1-1.4z" />
+            </svg>
+            {t("crafted")}
+          </span>
+        </div>
       </div>
     </footer>
   );

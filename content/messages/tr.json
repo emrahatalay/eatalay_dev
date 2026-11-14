@@ -98,7 +98,9 @@
     "services": "Hizmetler",
     "email": "E-posta",
     "location": "Konum",
-    "rights": "Tüm hakları saklıdır."
+    "rights": "Tüm hakları saklıdır.",
+    "live": "Yayında",
+    "crafted": "Yapay zekayla üretildi, insan elinden geçti"
   },
   "NotFound": {
     "title": "Sayfa bulunamadı",

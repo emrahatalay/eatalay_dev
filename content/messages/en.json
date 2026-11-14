@@ -98,7 +98,9 @@
     "services": "Services",
     "email": "Email",
     "location": "Location",
-    "rights": "All rights reserved."
+    "rights": "All rights reserved.",
+    "live": "Live",
+    "crafted": "Built with AI, finished by a human"
   },
   "NotFound": {
     "title": "Page not found",
