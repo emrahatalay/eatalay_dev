@@ -7,7 +7,7 @@
   min-height: 230px;
   overflow: hidden;
   border-radius: 18px;
-  background: #1a1530;
+  background: #1f1d1b;
 }
 
 .cover {
@@ -38,7 +38,7 @@
   line-height: 1;
   letter-spacing: -0.04em;
   white-space: nowrap;
-  color: rgba(123, 92, 255, 0.12);
+  color: rgba(240, 90, 26, 0.12);
 }
 
 .handPhone {
@@ -64,7 +64,7 @@
   padding: 10% 6%;
   overflow: hidden;
   border-radius: 9%;
-  background: linear-gradient(180deg, #f7f5ff, #ece7ff);
+  background: linear-gradient(180deg, #faf9f7, #efede9);
 }
 
 .screen b {
@@ -76,11 +76,11 @@
   height: 13%;
   border-radius: 8px;
   background: #fff;
-  box-shadow: 0 2px 6px rgba(60, 40, 140, 0.12);
+  box-shadow: 0 2px 6px rgba(20, 18, 16, 0.1);
 }
 
 .screen i:nth-of-type(2) {
-  background: linear-gradient(90deg, #8b6cff, #c084fc);
+  background: linear-gradient(90deg, #f05a1a, #ff8a52);
 }
 
 .caption {

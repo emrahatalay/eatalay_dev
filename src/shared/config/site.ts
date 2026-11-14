@@ -5,7 +5,7 @@ const rawUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://eatalay.dev";
 export const siteConfig = {
   url: rawUrl.replace(/\/$/, ""),
   name: "eatalay.dev",
-  themeColor: { light: "#E9E5F5", dark: "#07060D" },
+  themeColor: { light: "#ECEBE8", dark: "#0E0E0F" },
   ogLocale: { tr: "tr_TR", en: "en_US" } satisfies Record<Locale, string>,
 } as const;
 

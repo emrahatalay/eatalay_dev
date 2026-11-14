@@ -9,18 +9,10 @@
   border-radius: var(--radius-md);
   color: var(--ink);
   background: var(--book-card);
+  border: 1px solid var(--line);
   scroll-margin-top: 40px;
 }
 
-.card::after {
-  content: "";
-  position: absolute;
-  inset: auto -30px -90px;
-  height: 220px;
-  background: conic-gradient(from 180deg, #b9a6ff, #ffb0c8, #ffffff, #9ad0ff, #b9a6ff);
-  filter: blur(26px);
-  opacity: calc(var(--glow-opacity) * 0.95);
-}
 
 .card > * {
   position: relative;

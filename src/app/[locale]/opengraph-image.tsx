@@ -33,9 +33,9 @@ export default async function OpenGraphImage({ params }: { params: Promise<{ loc
           padding: 64,
           color: "#fff",
           fontFamily: "Archivo",
-          backgroundColor: "#07060d",
+          backgroundColor: "#161514",
           backgroundImage:
-            "radial-gradient(700px 500px at 82% 30%, rgba(123,92,255,.55), transparent 70%), radial-gradient(500px 400px at 10% 110%, rgba(255,106,43,.45), transparent 70%)",
+            "radial-gradient(700px 500px at 82% 20%, rgba(240,90,26,.35), transparent 70%)",
         }}
       >
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
@@ -54,7 +54,7 @@ export default async function OpenGraphImage({ params }: { params: Promise<{ loc
         </div>
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div style={{ display: "flex", fontSize: 36, color: "rgba(255,255,255,.85)" }}>{content.hero.greeting}</div>
-          <div style={{ display: "flex", fontSize: 96, lineHeight: 0.95, color: "#b9a6ff" }}>
+          <div style={{ display: "flex", fontSize: 96, lineHeight: 0.95, color: "#f05a1a" }}>
             {content.hero.titleLead.toLocaleUpperCase(locale)}
           </div>
           <div style={{ display: "flex", fontSize: 96, lineHeight: 0.95 }}>

@@ -96,11 +96,11 @@ export const PALETTE: ProjectPalette = {
   warm: "#ff8a3d",
   gold: "#ffc83d",
   cool: "#4ee3ff",
-  deep: "#7b5cff",
-  magenta: "#d946ef",
-  soft: "#c9b8ff",
-  night: "#0b0a14",
-  nightSoft: "#1b1440",
+  deep: "#a3192b",
+  magenta: "#d63649",
+  soft: "#ffd2d7",
+  night: "#111013",
+  nightSoft: "#1f1c22",
   done: "#22c55e",
 };
 

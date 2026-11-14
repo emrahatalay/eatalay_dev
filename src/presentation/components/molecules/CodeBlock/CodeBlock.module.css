@@ -2,7 +2,7 @@
   margin: 0;
   overflow: hidden;
   border-radius: var(--radius-md);
-  background: #0e0c18;
+  background: #121214;
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.8);
 }
@@ -49,12 +49,12 @@
   font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
   font-size: 13.5px;
   line-height: 1.65;
-  color: #e6e3f2;
+  color: #e8e6e2;
   tab-size: 4;
 }
 
 .keyword {
-  color: #c084fc;
+  color: #ff9e6b;
 }
 
 .type {
@@ -70,7 +70,7 @@
 }
 
 .comment {
-  color: #7d7893;
+  color: #85827c;
   font-style: italic;
 }
 

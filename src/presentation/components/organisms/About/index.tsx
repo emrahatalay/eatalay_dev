@@ -1,14 +1,47 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import iridescent from "@/assets/images/iridescent.jpg";
-import type { AboutContent, TechnologyHue } from "@/core/domain/entities";
+import type { AboutContent, DisciplineVisual } from "@/core/domain/entities";
 import { Chip } from "@/presentation/components/atoms/Chip";
-import { Monogram } from "@/presentation/components/atoms/Monogram";
 import { HighlightCard } from "@/presentation/components/molecules/HighlightCard";
+import { PhoneFrame } from "@/presentation/components/molecules/PhoneFrame";
 import { RichHeadline } from "@/presentation/components/molecules/RichHeadline";
 import styles from "./About.module.css";
 
-const AVATAR_HUES: readonly TechnologyHue[] = ["orange", "violet", "green", "sky"];
+/** The agent team from the quote, as a little run log. Progress is a share of 1. */
+const AGENTS: readonly { readonly name: string; readonly progress: number }[] = [
+  { name: "research", progress: 1 },
+  { name: "tests", progress: 0.72 },
+  { name: "refactor", progress: 0.45 },
+  { name: "docs", progress: 0.88 },
+];
+
+function DisciplineTile({ visual }: { readonly visual: DisciplineVisual }) {
+  switch (visual.kind) {
+    case "screen":
+      return (
+        <Image src={visual.image} alt="" fill sizes="64px" quality={70} className={styles.tileImage} />
+      );
+    case "code":
+      return (
+        <span className={styles.codeGlyph}>
+          <i style={{ width: "70%" }} />
+          <i style={{ width: "45%", marginLeft: "18%" }} />
+          <i style={{ width: "55%", marginLeft: "18%" }} />
+          <i style={{ width: "35%" }} />
+        </span>
+      );
+    case "flow":
+      return (
+        <svg className={styles.flowGlyph} viewBox="0 0 64 64" fill="none">
+          <path d="M16 20h14a6 6 0 0 1 6 6v12a6 6 0 0 0 6 6h6" />
+          <path d="M16 44h14" />
+          <circle cx="14" cy="20" r="5" />
+          <circle cx="14" cy="44" r="5" />
+          <circle cx="50" cy="44" r="6" className={styles.flowHot} />
+        </svg>
+      );
+  }
+}
 
 export function About({ content }: { readonly content: AboutContent }) {
   const t = useTranslations("About");
@@ -35,15 +68,25 @@ export function About({ content }: { readonly content: AboutContent }) {
             <strong className={styles.big}>{content.experience.value}</strong>
           </div>
           <p className={styles.note}>{content.experience.label}</p>
+          <div className={styles.screens}>
+            {content.experience.screens.map((image, i) => (
+              <PhoneFrame key={image.src} image={image} sizes="130px" className={styles[`screen${i}`]} />
+            ))}
+          </div>
         </HighlightCard>
 
         <div className={styles.column}>
           <HighlightCard tone="night" className={styles.disciplines}>
-            <span className={styles.avatars}>
-              {content.disciplines.initials.map((letter, i) => (
-                <Monogram key={letter + i} text={letter} hue={AVATAR_HUES[i % AVATAR_HUES.length]} shape="circle" />
+            <ul className={styles.tiles}>
+              {content.disciplines.items.map((d) => (
+                <li key={d.label}>
+                  <span className={styles.tile} aria-hidden="true">
+                    <DisciplineTile visual={d.visual} />
+                  </span>
+                  <span className={styles.tileLabel}>{d.label}</span>
+                </li>
               ))}
-            </span>
+            </ul>
             <span className={styles.caption}>{content.disciplines.label}</span>
           </HighlightCard>
           <HighlightCard tone="warm" className={styles.workflow}>
@@ -53,15 +96,23 @@ export function About({ content }: { readonly content: AboutContent }) {
         </div>
 
         <HighlightCard tone="photo" className={styles.quoteCard}>
-          <Image
-            src={iridescent}
-            alt=""
-            fill
-            sizes="(max-width: 900px) 92vw, 380px"
-            quality={60}
-            placeholder="blur"
-            className={styles.photo}
-          />
+          <div className={styles.agents} aria-hidden="true">
+            <span className={styles.agentsTitle}>agents · running</span>
+            {AGENTS.map((agent, i) => (
+              <span key={agent.name} className={styles.agent}>
+                <span className={agent.progress >= 1 ? styles.done : styles.busy} />
+                <code>{agent.name}</code>
+                <span className={styles.bar}>
+                  <i
+                    style={{
+                      ["--p" as string]: agent.progress,
+                      animationDelay: `${i * -1.3}s`,
+                    }}
+                  />
+                </span>
+              </span>
+            ))}
+          </div>
           <span className={styles.shade} aria-hidden="true" />
           <span className={styles.mark} aria-hidden="true">
             “

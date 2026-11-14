@@ -7,15 +7,13 @@
   background: var(--night);
 }
 
-/* The game's own palette: danger red, reward yellow, tech cyan. */
+/* A single glow in the product's main colour. */
 .backdrop {
   position: absolute;
   inset: 0;
   z-index: -3;
   background:
-    radial-gradient(520px 420px at 78% 38%, color-mix(in srgb, var(--p-hot) 34%, transparent), transparent 70%),
-    radial-gradient(420px 360px at 92% 86%, color-mix(in srgb, var(--p-cool) 22%, transparent), transparent 70%),
-    radial-gradient(520px 380px at 12% 100%, color-mix(in srgb, var(--p-deep) 30%, transparent), transparent 70%),
+    radial-gradient(560px 440px at 78% 40%, color-mix(in srgb, var(--p-hot) 26%, transparent), transparent 70%),
     var(--p-night);
 }
 
@@ -103,7 +101,7 @@
 
 .name {
   color: transparent;
-  background: linear-gradient(92deg, var(--p-hot) 0%, var(--p-warm) 48%, var(--p-gold) 100%);
+  background: linear-gradient(92deg, var(--p-hot), color-mix(in srgb, var(--p-hot) 68%, #fff));
   -webkit-background-clip: text;
   background-clip: text;
   filter: drop-shadow(0 10px 30px color-mix(in srgb, var(--p-hot) 35%, transparent));
@@ -196,7 +194,7 @@
   width: 420px;
   height: 420px;
   border-radius: 50%;
-  background: radial-gradient(closest-side, color-mix(in srgb, var(--p-gold) 28%, transparent), transparent);
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--p-hot) 26%, transparent), transparent);
   transform: translate(-50%, -50%);
   filter: blur(10px);
 }

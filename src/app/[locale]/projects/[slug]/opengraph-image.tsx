@@ -56,9 +56,9 @@ export default async function ProjectOpenGraphImage({
           display: "flex",
           color: "#fff",
           fontFamily: "Archivo",
-          backgroundColor: project?.palette.night ?? "#07060d",
+          backgroundColor: project?.palette.night ?? "#161514",
           backgroundImage:
-            `radial-gradient(700px 500px at 85% 40%, ${glow(project?.palette.deep ?? "#7b5cff", 0.55)}, transparent 70%), radial-gradient(500px 400px at 5% 110%, ${glow(project?.palette.hot ?? "#ff6a2b", 0.45)}, transparent 70%)`,
+            `radial-gradient(700px 500px at 85% 40%, ${glow(project?.palette.hot ?? "#f05a1a", 0.4)}, transparent 70%)`,
         }}
       >
         <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", padding: 64, width: 700 }}>
@@ -79,7 +79,7 @@ export default async function ProjectOpenGraphImage({
             <div style={{ display: "flex", fontSize: 104, lineHeight: 0.95 }}>
               {(project?.hero.title ?? "").toLocaleUpperCase(locale)}
             </div>
-            <div style={{ display: "flex", fontSize: 40, color: project?.palette.soft ?? "#b9a6ff", marginTop: 12 }}>
+            <div style={{ display: "flex", fontSize: 40, color: project?.palette.soft ?? "#f05a1a", marginTop: 12 }}>
               {project?.hero.accent ?? ""}
             </div>
             <div style={{ display: "flex", fontSize: 34, marginTop: 36, color: project?.palette.gold ?? "#ffb08a" }}>

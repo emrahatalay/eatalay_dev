@@ -4,21 +4,18 @@
   height: 30px;
   padding: 0 14px;
   border-radius: 999px;
-  border: 1.5px solid transparent;
+  border: 1px solid var(--line);
   font-size: 13px;
   font-weight: 500;
 }
 
 .light {
   color: var(--ink);
-  background:
-    linear-gradient(var(--sheet), var(--sheet)) padding-box,
-    var(--g-btn) border-box;
+  background: var(--sheet);
 }
 
 .dark {
   color: #fff;
-  background:
-    linear-gradient(#1a1530, #1a1530) padding-box,
-    var(--g-btn) border-box;
+  background: var(--night-2);
+  border-color: rgba(255, 255, 255, 0.14);
 }

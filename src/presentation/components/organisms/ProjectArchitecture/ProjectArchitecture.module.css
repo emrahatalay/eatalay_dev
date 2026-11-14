@@ -3,10 +3,7 @@
   padding: 48px clamp(20px, 4vw, 56px) 52px;
   border-radius: var(--radius-lg);
   color: #fff;
-  background:
-    radial-gradient(700px 420px at 100% 0%, color-mix(in srgb, var(--p-deep) 30%, transparent), transparent 70%),
-    radial-gradient(600px 420px at 0% 100%, color-mix(in srgb, var(--p-cool) 14%, transparent), transparent 70%),
-    var(--p-night);
+  background: linear-gradient(180deg, var(--p-night-soft), var(--p-night) 60%);
   scroll-margin-top: 24px;
 }
 

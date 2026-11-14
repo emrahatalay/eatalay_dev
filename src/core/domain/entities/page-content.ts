@@ -1,4 +1,4 @@
-import type { RichText } from "./common";
+import type { ImageAsset, RichText } from "./common";
 
 export interface HeroContent {
   readonly greeting: string;
@@ -11,11 +11,23 @@ export interface Metric {
   readonly label: string;
 }
 
+/** How a discipline is pictured: a real screen from shipped work, or a drawn code / flow glyph. */
+export type DisciplineVisual =
+  | { readonly kind: "screen"; readonly image: ImageAsset }
+  | { readonly kind: "code" }
+  | { readonly kind: "flow" };
+
+export interface Discipline {
+  readonly label: string;
+  readonly visual: DisciplineVisual;
+}
+
 export interface AboutContent {
   readonly headline: RichText;
   readonly summary: string;
-  readonly experience: Metric;
-  readonly disciplines: { readonly initials: readonly string[]; readonly label: string };
+  /** Years of experience, with screens from shipped products (front first). */
+  readonly experience: Metric & { readonly screens: readonly [ImageAsset, ImageAsset, ImageAsset] };
+  readonly disciplines: { readonly items: readonly Discipline[]; readonly label: string };
   readonly workflow: Metric;
   readonly quote: string;
 }

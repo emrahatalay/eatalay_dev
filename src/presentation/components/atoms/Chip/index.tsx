@@ -8,7 +8,7 @@ export interface ChipProps {
   readonly className?: string;
 }
 
-/** Small gradient-bordered label used as a section eyebrow. */
+/** Small outlined label used as a section eyebrow. */
 export function Chip({ children, tone = "light", className }: ChipProps) {
   return <span className={cx(styles.chip, styles[tone], "reveal", className)}>{children}</span>;
 }

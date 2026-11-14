@@ -16,20 +16,9 @@
 
 .card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 26px 50px -25px rgba(90, 50, 180, 0.45);
+  box-shadow: 0 26px 50px -30px rgba(20, 18, 16, 0.35);
 }
 
-.card::after {
-  content: "";
-  position: absolute;
-  right: -40px;
-  bottom: -70px;
-  width: 260px;
-  height: 160px;
-  background: conic-gradient(#ffb0c8, #b9a6ff, #ffffff, #ffb0c8);
-  filter: blur(28px);
-  opacity: calc(var(--glow-opacity) * 0.8);
-}
 
 .mark {
   position: absolute;
@@ -39,7 +28,7 @@
   font-size: 56px;
   line-height: 1;
   color: transparent;
-  background: var(--g-vio);
+  background: var(--g-hot);
   -webkit-background-clip: text;
   background-clip: text;
 }

@@ -1,8 +1,7 @@
-import Image from "next/image";
 import { useTranslations } from "next-intl";
-import lavender from "@/assets/images/lavender.jpg";
 import type { Profile, Service } from "@/core/domain/entities";
 import { Logo } from "@/presentation/components/atoms/Logo";
+import { CodeField } from "@/presentation/components/molecules/CodeField";
 import type { NavItem } from "@/presentation/components/molecules/NavLinks";
 import { SocialLinks } from "@/presentation/components/molecules/SocialLinks";
 import styles from "./SiteFooter.module.css";
@@ -77,9 +76,7 @@ export function SiteFooter({ profile, blurb, links, services, servicesHref = "#s
         © {year} {profile.name}. {t("rights")}
       </p>
 
-      <div className={styles.field} aria-hidden="true">
-        <Image src={lavender} alt="" fill sizes="100vw" quality={60} placeholder="blur" className={styles.fieldImage} />
-      </div>
+      <CodeField className={styles.field} />
     </footer>
   );
 }

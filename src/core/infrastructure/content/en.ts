@@ -1,6 +1,8 @@
 import type { LocaleDictionary } from "./types";
 import hatimApp from "./projects/hatim-app/en";
+import { SHOTS as hatimShots } from "./projects/hatim-app/shared";
 import outOfOffice from "./projects/out-of-office/en";
+import { SHOTS as gameShots } from "./projects/out-of-office/shared";
 import { EMAIL, IMAGES, KNOWS_ABOUT, SOCIALS, technologies } from "./shared";
 
 const en: LocaleDictionary = {
@@ -28,9 +30,22 @@ const en: LocaleDictionary = {
       ],
       summary:
         "I run AI agents like a team and turn ideas into products that are live in the stores. Architecture, taste and the final call stay human.",
-      experience: { value: "8+ yrs", label: "Of shipping software in production." },
+      experience: {
+        value: "10+ yrs",
+        label: "Of shipping software in production.",
+        screens: [
+          { ...hatimShots.en.today, alt: "Hatim App Today screen" },
+          { ...gameShots.en.drone, alt: "Out of Office gameplay" },
+          { ...hatimShots.en.reader, alt: "Hatim App Quran reader" },
+        ],
+      },
       disciplines: {
-        initials: ["M", "G", "S", "A"],
+        items: [
+          { label: "Mobile", visual: { kind: "screen", image: { ...hatimShots.en.khatm, alt: "" } } },
+          { label: "Games", visual: { kind: "screen", image: { ...gameShots.en.menu, alt: "" } } },
+          { label: "Software", visual: { kind: "code" } },
+          { label: "Automation", visual: { kind: "flow" } },
+        ],
         label: "4 disciplines · mobile, games, software, automation",
       },
       workflow: { value: "AI", label: "Parallel work with an agent team, quality through human review." },

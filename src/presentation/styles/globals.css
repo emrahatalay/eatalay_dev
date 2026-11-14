@@ -1,47 +1,46 @@
 /* ==========================================================================
    Design tokens — light is the default, dark overrides the same names.
    Components only read tokens, so a theme is just a different token set.
+   One accent (orange) on neutral greys. Gradients only ever run between
+   shades of the same hue, never between different colours.
    ========================================================================== */
 :root {
   color-scheme: light;
 
-  --page: #e9e5f5;
-  --page-glow-1: rgba(139, 108, 255, 0.55);
-  --page-glow-2: rgba(217, 70, 239, 0.4);
-  --page-glow-3: rgba(255, 106, 43, 0.3);
-  --page-glow-4: rgba(139, 108, 255, 0.45);
+  --page: #ecebe8;
   --sheet: #ffffff;
-  --sheet-shadow: 0 30px 80px -30px rgba(60, 30, 120, 0.35);
+  --sheet-shadow: 0 30px 80px -40px rgba(20, 18, 16, 0.25);
 
-  --ink: #15131f;
-  --ink-2: #3b3849;
-  --mute: #8a8798;
-  --faint: #c4c1cf;
-  --unlit: #d9d6e2;
-  --line: rgba(21, 19, 31, 0.1);
-  --soft: #f5f4fa;
+  --ink: #161514;
+  --ink-2: #3f3d3a;
+  --mute: #84817c;
+  --faint: #c8c5c0;
+  --unlit: #dedbd6;
+  --line: rgba(22, 21, 20, 0.1);
+  --soft: #f4f3f0;
   --surface: #ffffff;
-  --surface-glass: linear-gradient(120deg, #ffffff, #f1edff);
-  --surface-glass-border: rgba(255, 255, 255, 0.6);
-  --tag-bg: rgba(255, 255, 255, 0.7);
-  --warm-card: linear-gradient(120deg, #fff5ee, #ffe6f0);
-  --book-card: linear-gradient(160deg, #ffffff, #f1ecff);
-  --accordion: rgba(255, 255, 255, 0.96);
+  --surface-glass: linear-gradient(180deg, #ffffff, #f6f5f2);
+  --surface-glass-border: rgba(22, 21, 20, 0.08);
+  --tag-bg: rgba(255, 255, 255, 0.8);
+  --warm-card: linear-gradient(180deg, #fff6f1, #ffede3);
+  --book-card: linear-gradient(180deg, #ffffff, #f6f5f2);
+  --accordion: #ffffff;
   --footer: #ffffff;
   --wordmark: #ffffff;
-  --glow-opacity: 0.9;
 
-  --night: #0b0a14;
-  --vio: #7b5cff;
-  --lav: #b9a6ff;
-  --mag: #d946ef;
-  --org: #ff6a2b;
-  --rose: #e64a6a;
-  --brand-ink: #c2410c;
+  /* Dark blocks inside the sheet (hero, services, FAQ…) and their lighter step. */
+  --night: #161514;
+  --night-2: #262422;
+  --night-edge: transparent;
 
-  --g-hot: linear-gradient(90deg, #ff5a2b, #ff8a3d);
-  --g-vio: linear-gradient(90deg, #8b6cff, #c084fc 55%, #f0abfc);
-  --g-btn: linear-gradient(90deg, #ff7a3d, #e64ae0 55%, #8b6cff);
+  --accent: #f05a1a;
+  --accent-strong: #c2410c;
+  --accent-soft: #fff0e8;
+  --accent-ring: rgba(240, 90, 26, 0.22);
+  --brand-ink: var(--accent-strong);
+
+  --g-hot: linear-gradient(90deg, #e04e14, #ff7a3d);
+  --g-btn: linear-gradient(90deg, #f05a1a, #ff8040 50%, #f05a1a);
 
   --radius-xl: 40px;
   --radius-lg: 30px;
@@ -61,62 +60,72 @@
 :root[data-theme="dark"] {
   color-scheme: dark;
 
-  --page: #07060d;
-  --page-glow-1: rgba(123, 92, 255, 0.32);
-  --page-glow-2: rgba(217, 70, 239, 0.22);
-  --page-glow-3: rgba(255, 106, 43, 0.16);
-  --page-glow-4: rgba(123, 92, 255, 0.26);
-  --sheet: #100e1a;
-  --sheet-shadow: 0 30px 80px -30px rgba(0, 0, 0, 0.8);
+  /* Three clear steps: page < sheet < cards, so every layer reads against the one below. */
+  --page: #0e0e0f;
+  --sheet: #19191b;
+  --sheet-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06), 0 30px 80px -30px rgba(0, 0, 0, 0.8);
 
-  --ink: #f3f1fa;
-  --ink-2: #b9b5c9;
-  --mute: #827e95;
-  --faint: #4b475d;
-  --unlit: #2f2b40;
-  --line: rgba(255, 255, 255, 0.09);
-  --soft: #181526;
-  --surface: #15121f;
-  --surface-glass: linear-gradient(120deg, #1f1b32, #151224);
-  --surface-glass-border: rgba(255, 255, 255, 0.08);
-  --tag-bg: rgba(255, 255, 255, 0.06);
-  --warm-card: linear-gradient(120deg, #2a1a1f, #2a1630);
-  --book-card: linear-gradient(160deg, #1f1a33, #15121f);
-  --accordion: rgba(255, 255, 255, 0.06);
-  --footer: #100e1a;
-  --wordmark: #f3f1fa;
-  --glow-opacity: 0.35;
-  --brand-ink: #ff8a3d;
+  --ink: #f4f3f1;
+  --ink-2: #c9c7c2;
+  --mute: #9a9792;
+  --faint: #5c5a56;
+  --unlit: #3a3936;
+  --line: rgba(255, 255, 255, 0.12);
+  --soft: #232325;
+  --surface: #262628;
+  --surface-glass: linear-gradient(180deg, #2c2c2f, #252527);
+  --surface-glass-border: rgba(255, 255, 255, 0.1);
+  --tag-bg: rgba(255, 255, 255, 0.08);
+  --warm-card: linear-gradient(180deg, #2e2622, #27221f);
+  --book-card: linear-gradient(180deg, #2c2c2f, #252527);
+  --accordion: #262628;
+  --footer: #19191b;
+  --wordmark: #f4f3f1;
+
+  --night: #0f0f10;
+  --night-2: #1f1f21;
+  --night-edge: rgba(255, 255, 255, 0.08);
+
+  --accent: #ff7a3d;
+  --accent-strong: #ff9a66;
+  --accent-soft: rgba(255, 122, 61, 0.14);
+  --accent-ring: rgba(255, 122, 61, 0.3);
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme]) {
     color-scheme: dark;
-    --page: #07060d;
-    --page-glow-1: rgba(123, 92, 255, 0.32);
-    --page-glow-2: rgba(217, 70, 239, 0.22);
-    --page-glow-3: rgba(255, 106, 43, 0.16);
-    --page-glow-4: rgba(123, 92, 255, 0.26);
-    --sheet: #100e1a;
-    --sheet-shadow: 0 30px 80px -30px rgba(0, 0, 0, 0.8);
-    --ink: #f3f1fa;
-    --ink-2: #b9b5c9;
-    --mute: #827e95;
-    --faint: #4b475d;
-    --unlit: #2f2b40;
-    --line: rgba(255, 255, 255, 0.09);
-    --soft: #181526;
-    --surface: #15121f;
-    --surface-glass: linear-gradient(120deg, #1f1b32, #151224);
-    --surface-glass-border: rgba(255, 255, 255, 0.08);
-    --tag-bg: rgba(255, 255, 255, 0.06);
-    --warm-card: linear-gradient(120deg, #2a1a1f, #2a1630);
-    --book-card: linear-gradient(160deg, #1f1a33, #15121f);
-    --accordion: rgba(255, 255, 255, 0.06);
-    --footer: #100e1a;
-    --wordmark: #f3f1fa;
-    --glow-opacity: 0.35;
-    --brand-ink: #ff8a3d;
+
+    /* Three clear steps: page < sheet < cards, so every layer reads against the one below. */
+    --page: #0e0e0f;
+    --sheet: #19191b;
+    --sheet-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06), 0 30px 80px -30px rgba(0, 0, 0, 0.8);
+
+    --ink: #f4f3f1;
+    --ink-2: #c9c7c2;
+    --mute: #9a9792;
+    --faint: #5c5a56;
+    --unlit: #3a3936;
+    --line: rgba(255, 255, 255, 0.12);
+    --soft: #232325;
+    --surface: #262628;
+    --surface-glass: linear-gradient(180deg, #2c2c2f, #252527);
+    --surface-glass-border: rgba(255, 255, 255, 0.1);
+    --tag-bg: rgba(255, 255, 255, 0.08);
+    --warm-card: linear-gradient(180deg, #2e2622, #27221f);
+    --book-card: linear-gradient(180deg, #2c2c2f, #252527);
+    --accordion: #262628;
+    --footer: #19191b;
+    --wordmark: #f4f3f1;
+
+    --night: #0f0f10;
+    --night-2: #1f1f21;
+    --night-edge: rgba(255, 255, 255, 0.08);
+
+    --accent: #ff7a3d;
+    --accent-strong: #ff9a66;
+    --accent-soft: rgba(255, 122, 61, 0.14);
+    --accent-ring: rgba(255, 122, 61, 0.3);
   }
 }
 
@@ -172,13 +181,13 @@ p {
 }
 
 :focus-visible {
-  outline: 2px solid var(--vio);
+  outline: 2px solid var(--accent);
   outline-offset: 3px;
   border-radius: 6px;
 }
 
 ::selection {
-  background: rgba(123, 92, 255, 0.28);
+  background: var(--accent-ring);
 }
 
 /* Shared keyframes (referenced by name from CSS modules). */

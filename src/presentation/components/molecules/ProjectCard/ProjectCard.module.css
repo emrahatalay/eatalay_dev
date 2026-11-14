@@ -36,10 +36,7 @@
 .glow {
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(260px 200px at 50% 85%, color-mix(in srgb, var(--p-hot) 55%, transparent), transparent 70%),
-    radial-gradient(220px 180px at 90% 20%, color-mix(in srgb, var(--p-cool) 30%, transparent), transparent 70%),
-    radial-gradient(220px 180px at 0% 30%, color-mix(in srgb, var(--p-deep) 40%, transparent), transparent 70%);
+  background: radial-gradient(280px 200px at 50% 90%, color-mix(in srgb, var(--p-hot) 40%, transparent), transparent 70%);
 }
 
 .front,
@@ -92,7 +89,7 @@
   border-radius: 999px;
   font-size: 12px;
   font-weight: 500;
-  background: rgba(10, 8, 20, 0.55);
+  background: rgba(12, 12, 12, 0.55);
   border: 1px solid rgba(255, 255, 255, 0.14);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
@@ -167,7 +164,7 @@
 
 .name {
   color: transparent;
-  background: linear-gradient(92deg, var(--p-hot), var(--p-warm) 48%, var(--p-gold));
+  background: linear-gradient(92deg, var(--p-hot), color-mix(in srgb, var(--p-hot) 68%, #fff));
   -webkit-background-clip: text;
   background-clip: text;
 }

@@ -1,6 +1,8 @@
 import type { LocaleDictionary } from "./types";
 import hatimApp from "./projects/hatim-app/tr";
+import { SHOTS as hatimShots } from "./projects/hatim-app/shared";
 import outOfOffice from "./projects/out-of-office/tr";
+import { SHOTS as gameShots } from "./projects/out-of-office/shared";
 import { EMAIL, IMAGES, KNOWS_ABOUT, SOCIALS, technologies } from "./shared";
 
 const tr: LocaleDictionary = {
@@ -28,9 +30,22 @@ const tr: LocaleDictionary = {
       ],
       summary:
         "Yapay zeka ajanlarını bir ekip gibi yöneterek fikirleri mağazada yayında olan ürünlere dönüştürüyorum. Mimari, zevk ve son karar insanda kalıyor.",
-      experience: { value: "8+ yıl", label: "Üretim ortamında yazılım geliştirme deneyimi." },
+      experience: {
+        value: "10+ yıl",
+        label: "Üretim ortamında yazılım geliştirme deneyimi.",
+        screens: [
+          { ...hatimShots.tr.today, alt: "Hatim App Bugün ekranı" },
+          { ...gameShots.tr.run, alt: "Son Mesai oynanış ekranı" },
+          { ...hatimShots.tr.reader, alt: "Hatim App Kur'an okuyucu" },
+        ],
+      },
       disciplines: {
-        initials: ["M", "O", "Y", "A"],
+        items: [
+          { label: "Mobil", visual: { kind: "screen", image: { ...hatimShots.tr.khatm, alt: "" } } },
+          { label: "Oyun", visual: { kind: "screen", image: { ...gameShots.tr.drone, alt: "" } } },
+          { label: "Yazılım", visual: { kind: "code" } },
+          { label: "Otomasyon", visual: { kind: "flow" } },
+        ],
         label: "4 disiplin · mobil, oyun, yazılım, otomasyon",
       },
       workflow: { value: "AI", label: "Ajan ekibiyle paralel üretim, insan denetimiyle kalite." },

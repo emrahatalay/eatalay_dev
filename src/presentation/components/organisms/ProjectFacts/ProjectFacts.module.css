@@ -29,7 +29,7 @@
   line-height: 1;
   letter-spacing: -0.03em;
   color: transparent;
-  background: linear-gradient(92deg, var(--p-hot), var(--p-warm) 55%, var(--p-gold));
+  background: linear-gradient(92deg, var(--p-hot), color-mix(in srgb, var(--p-hot) 68%, #fff));
   -webkit-background-clip: text;
   background-clip: text;
 }

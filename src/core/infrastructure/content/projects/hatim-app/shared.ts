@@ -70,7 +70,7 @@ export const PALETTE: ProjectPalette = {
   done: "#5f6f45",
   gradients: {
     text: "linear-gradient(90deg, #a66e1c, #d99a35)",
-    button: "linear-gradient(90deg, #c98a2b, #a66e1c 55%, #4e5b3c)",
+    button: "linear-gradient(90deg, #c98a2b, #a66e1c)",
   },
 };
 

@@ -30,7 +30,7 @@
   margin: 0 0 14px;
   font-size: 13px;
   font-weight: 600;
-  color: var(--rose);
+  color: var(--accent-strong);
 }
 
 .intro .heading {
@@ -54,7 +54,7 @@
 
 .list a:hover,
 .contact a:hover {
-  color: var(--vio);
+  color: var(--accent);
   transform: translateX(3px);
 }
 
@@ -70,7 +70,7 @@
 .wordmark {
   display: flex;
   justify-content: center;
-  margin: 50px -10px 0;
+  margin: 84px -10px 0;
   font-family: var(--font-display);
   font-weight: 900;
   font-stretch: 125%;
@@ -79,7 +79,7 @@
   line-height: 0.78;
   letter-spacing: -0.04em;
   color: var(--wordmark);
-  text-shadow: 0 10px 40px rgba(80, 40, 180, 0.25);
+  text-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
 }
 
 .wordmark span {
@@ -91,32 +91,19 @@
   text-align: center;
   font-size: 12px;
   color: rgba(255, 255, 255, 0.85);
-  text-shadow: 0 1px 6px rgba(40, 20, 90, 0.5);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
 }
 
 .field {
   position: absolute;
   inset: auto 0 0;
   z-index: 0;
-  height: 420px;
+  /* Only behind the wordmark and the legal line, never under the link columns. */
+  height: calc(12cqi + 140px);
+  overflow: hidden;
   pointer-events: none;
-  -webkit-mask: linear-gradient(transparent, #000 55%);
-  mask: linear-gradient(transparent, #000 55%);
-}
-
-.fieldImage {
-  object-fit: cover;
-  object-position: center 65%;
-}
-
-:global(:root[data-theme="dark"]) .fieldImage {
-  filter: brightness(0.55) saturate(1.1);
-}
-
-@media (prefers-color-scheme: dark) {
-  :global(:root:not([data-theme])) .fieldImage {
-    filter: brightness(0.55) saturate(1.1);
-  }
+  -webkit-mask: linear-gradient(transparent, #000 40%);
+  mask: linear-gradient(transparent, #000 40%);
 }
 
 @keyframes letter {
@@ -160,10 +147,10 @@
   }
 
   .wordmark {
-    margin: 36px -4px 0;
+    margin: 72px -4px 0;
   }
 
   .field {
-    height: 260px;
+    height: calc(12cqi + 110px);
   }
 }

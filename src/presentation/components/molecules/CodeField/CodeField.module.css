@@ -1,0 +1,95 @@
+/* Dark editor surface; the footer's mask fades it in from the top. */
+.field {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-content: end;
+  gap: 0 40px;
+  height: 100%;
+  padding: 0 clamp(18px, 4vw, 56px) 64px;
+  background: linear-gradient(180deg, var(--night-2), var(--night));
+}
+
+.file {
+  min-width: 0;
+}
+
+.tab {
+  display: inline-block;
+  margin-bottom: 10px;
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.code {
+  margin: 0;
+  overflow: hidden;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 13px;
+  line-height: 1.75;
+  white-space: pre;
+  color: rgba(255, 255, 255, 0.2);
+  counter-reset: line;
+}
+
+/* Line numbers in the gutter. */
+.line::before {
+  counter-increment: line;
+  content: counter(line);
+  display: inline-block;
+  width: 2.2em;
+  margin-right: 1em;
+  text-align: right;
+  color: rgba(255, 255, 255, 0.1);
+}
+
+.keyword {
+  color: color-mix(in srgb, var(--accent) 70%, transparent);
+}
+
+.string {
+  color: rgba(255, 255, 255, 0.34);
+}
+
+.comment {
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.28);
+}
+
+.caret {
+  display: inline-block;
+  width: 0.55em;
+  height: 1.15em;
+  margin-left: 2px;
+  vertical-align: -0.2em;
+  background: var(--accent);
+  animation: blink 1.1s steps(1) infinite;
+}
+
+@media (max-width: 1100px) {
+  .field {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .file:nth-child(3) {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .field {
+    grid-template-columns: minmax(0, 1fr);
+    padding-bottom: 48px;
+  }
+
+  .file:nth-child(2) {
+    display: none;
+  }
+
+  .code {
+    font-size: 11px;
+  }
+}

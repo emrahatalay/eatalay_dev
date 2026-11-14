@@ -47,8 +47,8 @@
 
 .search input:focus {
   outline: none;
-  border-color: var(--vio);
-  box-shadow: 0 0 0 4px rgba(123, 92, 255, 0.18);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-ring);
 }
 
 .filters {
@@ -81,9 +81,7 @@
 
 .chip[aria-pressed="true"] {
   color: var(--ink);
-  background:
-    linear-gradient(var(--surface), var(--surface)) padding-box,
-    var(--g-btn) border-box;
+  border-color: var(--accent);
 }
 
 .chipCount {
@@ -100,7 +98,7 @@
 
 .chip[aria-pressed="true"] .chipCount {
   color: #fff;
-  background: var(--g-btn);
+  background: var(--accent);
 }
 
 .sort {

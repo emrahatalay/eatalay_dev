@@ -17,18 +17,6 @@
 .card:nth-child(3) { top: 80px; }
 .card:nth-child(4) { top: 100px; }
 
-.card::before {
-  content: "";
-  position: absolute;
-  left: -40px;
-  bottom: -80px;
-  z-index: 0;
-  width: 520px;
-  height: 220px;
-  background: conic-gradient(from 160deg, #b9a6ff, #ffffff, #9ad0ff, #ffb0c8, #b9a6ff);
-  filter: blur(30px);
-  opacity: calc(var(--glow-opacity) * 0.72);
-}
 
 .text {
   position: relative;
@@ -151,7 +139,7 @@
 .showcase:hover {
   background-position: 100% 0;
   transform: translateY(-2px);
-  box-shadow: 0 14px 30px -10px rgba(217, 70, 239, 0.7);
+  box-shadow: 0 14px 30px -12px var(--accent);
 }
 
 .showcase span {
