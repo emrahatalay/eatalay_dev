@@ -7,7 +7,7 @@ import { ServiceVisual } from "@/presentation/components/molecules/ServiceVisual
 import { projectPath } from "@/shared/config/site";
 import styles from "./ServiceCard.module.css";
 
-/** One sticky card in the portfolio stack. */
+/** One sticky card in the services stack. */
 export function ServiceCard({ service }: { readonly service: Service }) {
   const titleId = `service-${service.id}`;
   const rawLocale = useLocale();

@@ -1,9 +1,10 @@
 import type { Project } from "../../../../domain/entities";
-import { MAGNET_EFFECT_SOURCE, PALETTE, REPOSITORY_URL, SCHEMA, SHOTS, SLUG, STACK } from "./shared";
+import { LISTING, MAGNET_EFFECT_SOURCE, PALETTE, REPOSITORY_URL, SCHEMA, SHOTS, SLUG, STACK } from "./shared";
 
 const outOfOfficeEn: Project = {
   slug: SLUG,
   name: "Out of Office",
+  ...LISTING,
   badges: ["Unity 6", "C#", "Android · iOS", "English · Türkçe"],
   link: { kind: "source", label: "Source on GitHub", short: "GitHub", url: REPOSITORY_URL },
   labels: {

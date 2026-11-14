@@ -173,7 +173,7 @@ const tr: LocaleDictionary = {
   // Only real, approved client quotes go here. The section stays hidden while empty.
   testimonials: [],
 
-  // The first project is featured on the home page.
+  // Listed newest first (by publishedAt) on the portfolio page; the home page previews the newest.
   projects: [outOfOffice, hatimApp],
 };
 

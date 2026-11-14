@@ -1,4 +1,4 @@
-.work {
+.services {
   position: relative;
   margin-top: 60px;
   padding: 30px 26px 40px;
@@ -9,7 +9,9 @@
   scroll-margin-top: 24px;
 }
 
+/* Top padding leaves room for the dot on the Turkish capital İ. */
 .ghost {
+  padding-top: 0.1em;
   font-size: clamp(62px, 14.7vw, 212px);
   font-stretch: 118%;
   line-height: 0.8;
@@ -53,7 +55,7 @@
 }
 
 @media (max-width: 640px) {
-  .work {
+  .services {
     margin-top: 36px;
     padding: 22px 10px 20px;
     border-radius: var(--radius-md);

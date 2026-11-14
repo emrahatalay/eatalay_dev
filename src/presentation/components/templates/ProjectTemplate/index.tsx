@@ -13,7 +13,7 @@ import { ProjectStory } from "@/presentation/components/organisms/ProjectStory";
 import { ProjectWorkflow } from "@/presentation/components/organisms/ProjectWorkflow";
 import { SiteFooter } from "@/presentation/components/organisms/SiteFooter";
 import { SiteHeader } from "@/presentation/components/organisms/SiteHeader";
-import { homeSection, localePath, projectPath } from "@/shared/config/site";
+import { homeSection, localePath, portfolioPath, projectPath } from "@/shared/config/site";
 import { paletteStyle } from "@/presentation/theme/project-palette";
 import { PageShell } from "../PageShell";
 
@@ -35,7 +35,8 @@ export function ProjectTemplate({ page }: { readonly page: ProjectPage }) {
   const footerLinks: NavItem[] = [
     { href: home, label: t("Nav.home") },
     { href: homeSection(locale, "about"), label: t("Nav.about") },
-    { href: homeSection(locale, "work"), label: t("Nav.work") },
+    { href: homeSection(locale, "services"), label: t("Nav.services") },
+    { href: portfolioPath(locale), label: t("Nav.portfolio") },
     { href: homeSection(locale, "faq"), label: t("Nav.faq") },
   ];
 
@@ -70,7 +71,7 @@ export function ProjectTemplate({ page }: { readonly page: ProjectPage }) {
         blurb={content.footerBlurb}
         links={footerLinks}
         services={services}
-        workHref={homeSection(locale, "work")}
+        servicesHref={homeSection(locale, "services")}
         logoHref={home}
       />
     </PageShell>

@@ -12,12 +12,12 @@ export interface SiteFooterProps {
   readonly blurb: string;
   readonly links: readonly NavItem[];
   readonly services: readonly Service[];
-  /** Link to the portfolio section; in-page by default. */
-  readonly workHref?: string;
+  /** Link to the services section; in-page by default. */
+  readonly servicesHref?: string;
   readonly logoHref?: string;
 }
 
-export function SiteFooter({ profile, blurb, links, services, workHref = "#work", logoHref }: SiteFooterProps) {
+export function SiteFooter({ profile, blurb, links, services, servicesHref = "#services", logoHref }: SiteFooterProps) {
   const t = useTranslations("Footer");
   const year = new Date().getFullYear();
 
@@ -50,7 +50,7 @@ export function SiteFooter({ profile, blurb, links, services, workHref = "#work"
           <ul className={styles.list}>
             {services.map((s) => (
               <li key={s.id}>
-                <a href={workHref}>{s.shortTitle}</a>
+                <a href={servicesHref}>{s.shortTitle}</a>
               </li>
             ))}
           </ul>

@@ -1,9 +1,10 @@
 import type { Project } from "../../../../domain/entities";
-import { MAGNET_EFFECT_SOURCE, PALETTE, REPOSITORY_URL, SCHEMA, SHOTS, SLUG, STACK } from "./shared";
+import { LISTING, MAGNET_EFFECT_SOURCE, PALETTE, REPOSITORY_URL, SCHEMA, SHOTS, SLUG, STACK } from "./shared";
 
 const outOfOfficeTr: Project = {
   slug: SLUG,
   name: "Son Mesai",
+  ...LISTING,
   badges: ["Unity 6", "C#", "Android · iOS", "Türkçe · English"],
   link: { kind: "source", label: "GitHub'da kaynak kod", short: "GitHub", url: REPOSITORY_URL },
   labels: {

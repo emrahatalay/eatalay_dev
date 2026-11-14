@@ -24,7 +24,13 @@ export function projectPath(locale: Locale, slug: string): string {
   return `${prefix}/projects/${slug}`;
 }
 
-/** Link to a section of the home page, e.g. "/#work" or "/en#work". */
+/** Public path of the portfolio listing, e.g. "/portfolio" or "/en/portfolio". */
+export function portfolioPath(locale: Locale): string {
+  const prefix = locale === DEFAULT_LOCALE ? "" : `/${locale}`;
+  return `${prefix}/portfolio`;
+}
+
+/** Link to a section of the home page, e.g. "/#services" or "/en#services". */
 export function homeSection(locale: Locale, id: string): string {
   return `${localePath(locale)}#${id}`;
 }

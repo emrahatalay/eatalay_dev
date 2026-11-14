@@ -2,7 +2,14 @@ import type { Metadata } from "next";
 import type { SiteMetadata } from "@/core/application/use-cases/get-site-metadata";
 import type { Profile, Project } from "@/core/domain/entities";
 import { LOCALES, type Locale } from "@/core/domain/locale";
-import { absoluteUrl, languageAlternates, localePath, projectPath, siteConfig } from "@/shared/config/site";
+import {
+  absoluteUrl,
+  languageAlternates,
+  localePath,
+  portfolioPath,
+  projectPath,
+  siteConfig,
+} from "@/shared/config/site";
 
 /** Maps the SEO read model to Next's Metadata object. Pure function. */
 export function buildMetadata({ locale, seo, profile }: SiteMetadata): Metadata {
@@ -80,6 +87,43 @@ export function buildProjectMetadata({ locale, project, profile }: ProjectMetada
       alternateLocale: LOCALES.filter((l) => l !== locale).map((l) => siteConfig.ogLocale[l]),
     },
     twitter: { card: "summary_large_image", title: seo.title, description: seo.description },
+    robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large" } },
+    formatDetection: { telephone: false, address: false, email: false },
+  };
+}
+
+export interface PortfolioMetadataInput {
+  readonly locale: Locale;
+  readonly profile: Profile;
+  readonly title: string;
+  readonly description: string;
+}
+
+/** Metadata for the portfolio listing. The share image is inherited from the locale's opengraph-image. */
+export function buildPortfolioMetadata({ locale, profile, title, description }: PortfolioMetadataInput): Metadata {
+  const url = absoluteUrl(portfolioPath(locale));
+  const fullTitle = `${title} · ${profile.name}`;
+
+  return {
+    metadataBase: new URL(siteConfig.url),
+    title: { absolute: fullTitle },
+    description,
+    applicationName: siteConfig.name,
+    authors: [{ name: profile.name, url: siteConfig.url }],
+    creator: profile.name,
+    publisher: profile.name,
+    category: "technology",
+    alternates: { canonical: url, languages: languageAlternates(portfolioPath) },
+    openGraph: {
+      type: "website",
+      url,
+      siteName: siteConfig.name,
+      title: fullTitle,
+      description,
+      locale: siteConfig.ogLocale[locale],
+      alternateLocale: LOCALES.filter((l) => l !== locale).map((l) => siteConfig.ogLocale[l]),
+    },
+    twitter: { card: "summary_large_image", title: fullTitle, description },
     robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large" } },
     formatDetection: { telephone: false, address: false, email: false },
   };

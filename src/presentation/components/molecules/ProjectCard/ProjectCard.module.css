@@ -1,0 +1,227 @@
+.card {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  color: #fff;
+  background: var(--p-night);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+  transition:
+    transform 0.5s var(--ease-spring),
+    box-shadow 0.5s;
+}
+
+.card:hover,
+.card:focus-within {
+  transform: translateY(-4px);
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--p-gold) 40%, transparent),
+    0 30px 60px -30px color-mix(in srgb, var(--p-hot) 70%, transparent);
+}
+
+/* Two phones rising out of the product's glow, cut off by the card's edge. */
+.visual {
+  position: relative;
+  height: 250px;
+  overflow: hidden;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px) 0 0 / 32px 32px,
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px) 0 0 / 32px 32px;
+  -webkit-mask: linear-gradient(#000 70%, transparent);
+  mask: linear-gradient(#000 70%, transparent);
+}
+
+.glow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(260px 200px at 50% 85%, color-mix(in srgb, var(--p-hot) 55%, transparent), transparent 70%),
+    radial-gradient(220px 180px at 90% 20%, color-mix(in srgb, var(--p-cool) 30%, transparent), transparent 70%),
+    radial-gradient(220px 180px at 0% 30%, color-mix(in srgb, var(--p-deep) 40%, transparent), transparent 70%);
+}
+
+.front,
+.back {
+  position: absolute;
+  top: 46px;
+  left: 50%;
+  transition: transform 0.7s var(--ease-spring);
+}
+
+.front {
+  z-index: 2;
+  width: 150px;
+  transform: translateX(-30%) rotate(6deg);
+}
+
+.back {
+  z-index: 1;
+  width: 132px;
+  transform: translate(-82%, 26px) rotate(-8deg);
+  opacity: 0.85;
+}
+
+.card:hover .front,
+.card:focus-within .front {
+  transform: translate(-24%, -12px) rotate(8deg);
+}
+
+.card:hover .back,
+.card:focus-within .back {
+  transform: translate(-92%, 14px) rotate(-11deg);
+}
+
+.meta {
+  position: absolute;
+  inset: 16px 16px auto;
+  z-index: 3;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 26px;
+  padding: 0 11px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+  background: rgba(10, 8, 20, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.live,
+.building {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+.live {
+  background: #4ade80;
+  box-shadow: 0 0 10px 1px rgba(74, 222, 128, 0.7);
+  animation: blink 1.8s ease-in-out infinite;
+}
+
+.building {
+  background: var(--p-gold);
+  box-shadow: 0 0 10px 1px color-mix(in srgb, var(--p-gold) 60%, transparent);
+}
+
+.date {
+  margin-left: auto;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 4px 22px 22px;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-stretch: 112%;
+  font-size: clamp(26px, 1.2rem + 0.8vw, 32px);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+
+.link {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0 0.35em;
+  text-decoration: none;
+}
+
+/* The heading link stretches over the whole card. */
+.link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  border-radius: inherit;
+}
+
+.link:focus-visible {
+  outline: none;
+}
+
+.card:has(.link:focus-visible) {
+  outline: 2px solid var(--p-gold);
+  outline-offset: 3px;
+}
+
+.name {
+  color: transparent;
+  background: linear-gradient(92deg, var(--p-hot), var(--p-warm) 48%, var(--p-gold));
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.accent {
+  font-size: 0.62em;
+  color: var(--p-cool);
+}
+
+.text {
+  display: -webkit-box;
+  margin-top: 12px;
+  overflow: hidden;
+  font-size: 14px;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.72);
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  line-clamp: 3;
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.badges li {
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-size: 11.5px;
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--p-gold);
+}
+
+.arrow {
+  transition: transform 0.4s var(--ease-spring);
+}
+
+.card:hover .arrow {
+  transform: translateX(5px);
+}

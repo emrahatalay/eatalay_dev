@@ -1,0 +1,202 @@
+.preview {
+  position: relative;
+  isolation: isolate;
+  margin-top: 22px;
+  padding: clamp(28px, 4vw, 52px);
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  color: #fff;
+  background: var(--night);
+  scroll-margin-top: 24px;
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(520px 360px at 0% 0%, rgba(123, 92, 255, 0.34), transparent 70%),
+    radial-gradient(520px 360px at 100% 10%, rgba(217, 70, 239, 0.22), transparent 70%),
+    radial-gradient(640px 360px at 60% 110%, rgba(255, 106, 43, 0.18), transparent 70%),
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px) 0 0 / 64px 64px,
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px) 0 0 / 64px 64px;
+}
+
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px 48px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--mag);
+  box-shadow: 0 0 12px 2px rgba(217, 70, 239, 0.7);
+  animation: blink 1.6s ease-in-out infinite;
+}
+
+/* Outline type that fills with the brand gradient as the section scrolls in. */
+.title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 0.12em;
+  margin-top: 18px;
+  padding-top: 0.06em;
+  font-size: clamp(32px, 8.8vw, 132px);
+  font-stretch: 118%;
+  line-height: 0.84;
+  letter-spacing: -0.035em;
+}
+
+.titleLink {
+  color: transparent;
+  text-decoration: none;
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.7);
+  background: linear-gradient(92deg, #ff7a3d, #e64ae0 55%, #8b6cff) 0 0 / 100% 100% no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+@keyframes fill-in {
+  from {
+    background-size: 0% 100%;
+  }
+  to {
+    background-size: 100% 100%;
+  }
+}
+
+@supports (animation-timeline: view()) {
+  .titleLink {
+    animation: fill-in linear both;
+    animation-timeline: view();
+    animation-range: entry 20% cover 45%;
+  }
+}
+
+.count {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 0.26em;
+  letter-spacing: 0;
+  color: var(--lav);
+}
+
+.aside {
+  display: grid;
+  justify-items: start;
+  gap: 18px;
+  max-width: 420px;
+}
+
+.text {
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: 16px;
+  margin: clamp(28px, 3vw, 40px) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.grid > li {
+  display: flex;
+}
+
+.grid > li > * {
+  flex: 1;
+}
+
+/* Last tile: the way into the full list. */
+.more {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 6px;
+  min-height: 260px;
+  padding: 24px;
+  border-radius: var(--radius-md);
+  border: 1.5px dashed rgba(255, 255, 255, 0.22);
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.03);
+  transition:
+    background 0.4s,
+    border-color 0.4s;
+}
+
+.more:hover {
+  border-color: transparent;
+  background:
+    linear-gradient(#0f0c1c, #0f0c1c) padding-box,
+    var(--g-btn) border-box;
+}
+
+.moreCount {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.moreLabel {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-stretch: 112%;
+  font-size: clamp(24px, 1rem + 1vw, 32px);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+
+.moreArrow {
+  position: absolute;
+  top: 22px;
+  right: 22px;
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  font-size: 24px;
+  color: #15131f;
+  background: #fff;
+  transition: transform 0.5s var(--ease-spring);
+}
+
+.more:hover .moreArrow {
+  transform: rotate(-45deg) scale(1.06);
+}
+
+@media (max-width: 640px) {
+  .preview {
+    margin-top: 14px;
+    padding: 24px 14px 14px;
+    border-radius: var(--radius-md);
+  }
+
+  .more {
+    min-height: 160px;
+  }
+}

@@ -90,3 +90,10 @@ export const InstagramIcon = (p: IconProps) => (
     <circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" />
   </svg>
 );
+
+export const SearchIcon = (p: IconProps) => (
+  <svg {...base(p)}>
+    <circle cx="11" cy="11" r="6.5" />
+    <path d="m20 20-4.2-4.2" />
+  </svg>
+);

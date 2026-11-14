@@ -51,6 +51,9 @@ export const SHOTS = {
 
 export const SLUG = "hatim-app";
 
+/** Portfolio listing facts, the same in every language. */
+export const LISTING = { kind: "app", status: "live", publishedAt: "2026-11" } as const;
+
 export const WEBSITE_URL = "https://hatim.app";
 
 /** The app's own brand: honey as the only highlight, olive for finished, neutral dark grey. */

@@ -16,6 +16,7 @@ import type {
   ServiceRepository,
   TestimonialRepository,
 } from "../../domain/repositories";
+import { byNewest } from "./get-portfolio-page";
 
 /** Everything the home page needs, assembled in one read model. */
 export interface HomePage {
@@ -26,8 +27,8 @@ export interface HomePage {
   readonly technologies: readonly Technology[];
   readonly faqs: readonly FaqItem[];
   readonly testimonials: readonly Testimonial[];
-  /** Project promoted on the home page, if any. */
-  readonly featuredProjects: readonly Project[];
+  /** Every project, newest first. The home page previews the first few and links to the portfolio. */
+  readonly projects: readonly Project[];
 }
 
 export interface GetHomePageDeps {
@@ -65,7 +66,7 @@ export class GetHomePage {
       technologies,
       faqs: faqList,
       testimonials: testimonialList,
-      featuredProjects: projectList,
+      projects: byNewest(projectList),
     };
   }
 }

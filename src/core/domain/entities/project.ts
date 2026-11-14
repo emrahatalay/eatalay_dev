@@ -164,10 +164,20 @@ export interface ProjectTeaser {
   readonly phones: readonly [Screenshot, Screenshot, Screenshot];
 }
 
+/** What kind of product a project is; drives the portfolio filter. */
+export type ProjectKind = "game" | "app" | "web" | "automation";
+
+/** Where the product stands today. */
+export type ProjectStatus = "live" | "in-development";
+
 /** A case-study page for one product. */
 export interface Project {
   readonly slug: string;
   readonly name: string;
+  readonly kind: ProjectKind;
+  readonly status: ProjectStatus;
+  /** Month the project joined the portfolio, as "YYYY-MM". The portfolio lists newest first. */
+  readonly publishedAt: string;
   /** Labels such as "Unity 6", "Android · iOS". */
   readonly badges: readonly string[];
   readonly link: ProjectLink;

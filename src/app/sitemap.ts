@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { loadProjectSlugs } from "@/core/di/container";
 import { LOCALES } from "@/core/domain/locale";
-import { absoluteUrl, languageAlternates, localePath, projectPath } from "@/shared/config/site";
+import { absoluteUrl, languageAlternates, localePath, portfolioPath, projectPath } from "@/shared/config/site";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const home: MetadataRoute.Sitemap = LOCALES.map((locale) => ({
@@ -10,6 +10,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     changeFrequency: "monthly",
     priority: 1,
     alternates: { languages: languageAlternates() },
+  }));
+
+  const portfolio: MetadataRoute.Sitemap = LOCALES.map((locale) => ({
+    url: absoluteUrl(portfolioPath(locale)),
+    lastModified: new Date(),
+    changeFrequency: "weekly",
+    priority: 0.9,
+    alternates: { languages: languageAlternates(portfolioPath) },
   }));
 
   const slugs = await loadProjectSlugs(LOCALES[0]);
@@ -23,5 +31,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })),
   );
 
-  return [...home, ...projects];
+  return [...home, ...portfolio, ...projects];
 }

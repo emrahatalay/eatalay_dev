@@ -1,9 +1,10 @@
 import type { Project } from "../../../../domain/entities";
-import { MEMBER_ACTION_SOURCE, PALETTE, SCHEMA, SHOTS, SLUG, STACK, WEBSITE_URL } from "./shared";
+import { LISTING, MEMBER_ACTION_SOURCE, PALETTE, SCHEMA, SHOTS, SLUG, STACK, WEBSITE_URL } from "./shared";
 
 const hatimAppEn: Project = {
   slug: SLUG,
   name: "Hatim App",
+  ...LISTING,
   badges: ["Next.js · Expo", "TypeScript", "Web · Android · iOS", "English · Türkçe"],
   link: { kind: "website", label: "Open hatim.app", short: "hatim.app", url: WEBSITE_URL },
   labels: {

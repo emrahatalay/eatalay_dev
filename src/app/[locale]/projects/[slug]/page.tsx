@@ -43,7 +43,7 @@ export default async function ProjectRoute({ params }: PageProps) {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: serializeJsonLd(buildProjectStructuredData(page, t("work"))) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(buildProjectStructuredData(page, t("portfolio"))) }}
       />
       <ProjectTemplate page={page} />
     </>

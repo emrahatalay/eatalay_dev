@@ -52,6 +52,9 @@ export const SHOTS = {
 
 export const SLUG = "out-of-office";
 
+/** Portfolio listing facts, the same in every language. */
+export const LISTING = { kind: "game", status: "in-development", publishedAt: "2026-11" } as const;
+
 export const REPOSITORY_URL = "https://github.com/emrahatalay/Out-of-Office";
 
 /** Real class from the game, shown unchanged as the "one new class" example. */

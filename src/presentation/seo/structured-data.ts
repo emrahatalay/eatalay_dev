@@ -1,6 +1,7 @@
 import type { SiteMetadata } from "@/core/application/use-cases/get-site-metadata";
+import type { PortfolioPage } from "@/core/application/use-cases/get-portfolio-page";
 import type { ProjectPage } from "@/core/application/use-cases/get-project-page";
-import { absoluteUrl, localePath, projectPath, siteConfig } from "@/shared/config/site";
+import { absoluteUrl, localePath, portfolioPath, projectPath, siteConfig } from "@/shared/config/site";
 
 /** schema.org graph: who the site is about, the site itself, and the FAQ. */
 export function buildStructuredData({ locale, seo, profile, faqs }: SiteMetadata) {
@@ -58,13 +59,54 @@ export function buildStructuredData({ locale, seo, profile, faqs }: SiteMetadata
   };
 }
 
+/** schema.org graph for the portfolio: a collection page listing every case study, and a breadcrumb. */
+export function buildPortfolioStructuredData(
+  { locale, profile, projects }: PortfolioPage,
+  seo: { readonly title: string; readonly description: string; readonly label: string },
+) {
+  const pageUrl = absoluteUrl(portfolioPath(locale));
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "CollectionPage",
+        "@id": `${pageUrl}#webpage`,
+        url: pageUrl,
+        name: seo.title,
+        description: seo.description,
+        inLanguage: locale,
+        isPartOf: { "@id": `${siteConfig.url}/#website` },
+        author: { "@id": `${siteConfig.url}/#person` },
+        mainEntity: {
+          "@type": "ItemList",
+          numberOfItems: projects.length,
+          itemListElement: projects.map((project, i) => ({
+            "@type": "ListItem",
+            position: i + 1,
+            name: project.name,
+            url: absoluteUrl(projectPath(locale, project.slug)),
+          })),
+        },
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: profile.name, item: absoluteUrl(localePath(locale)) },
+          { "@type": "ListItem", position: 2, name: seo.label, item: pageUrl },
+        ],
+      },
+    ],
+  };
+}
+
 /** Serialises JSON-LD safely for inlining in a <script> tag. */
 export function serializeJsonLd(data: unknown): string {
   return JSON.stringify(data).replace(/</g, "\\u003c");
 }
 
 /** schema.org graph for a project page: the product, its source code when public, and a breadcrumb. */
-export function buildProjectStructuredData(page: ProjectPage, projectsLabel: string) {
+export function buildProjectStructuredData(page: ProjectPage, portfolioLabel: string) {
   const { locale, project, profile } = page;
   const { schema, link } = project;
   const pageUrl = absoluteUrl(projectPath(locale, project.slug));
@@ -114,7 +156,7 @@ export function buildProjectStructuredData(page: ProjectPage, projectsLabel: str
         "@type": "BreadcrumbList",
         itemListElement: [
           { "@type": "ListItem", position: 1, name: profile.name, item: homeUrl },
-          { "@type": "ListItem", position: 2, name: projectsLabel, item: `${homeUrl}#work` },
+          { "@type": "ListItem", position: 2, name: portfolioLabel, item: absoluteUrl(portfolioPath(locale)) },
           { "@type": "ListItem", position: 3, name: project.name, item: pageUrl },
         ],
       },
