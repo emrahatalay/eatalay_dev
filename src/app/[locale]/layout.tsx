@@ -17,23 +17,21 @@ export function generateStaticParams() {
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
-  icons: { icon: "/icon.svg" },
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/icons/icon-192.png", sizes: "192x192", type: "image/png" },
+    ],
+    apple: { url: "/icons/apple-touch-icon.png", sizes: "180x180" },
+  },
 };
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   colorScheme: "light dark",
-  themeColor: [
-    {
-      media: "(prefers-color-scheme: light)",
-      color: siteConfig.themeColor.light,
-    },
-    {
-      media: "(prefers-color-scheme: dark)",
-      color: siteConfig.themeColor.dark,
-    },
-  ],
+  // The header and hero are dark in both themes, so the browser bar matches them.
+  themeColor: siteConfig.brand.night,
 };
 
 interface LocaleLayoutProps {
