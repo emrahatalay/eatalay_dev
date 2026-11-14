@@ -3,7 +3,7 @@ import hatimApp from "./projects/hatim-app/en";
 import { SHOTS as hatimShots } from "./projects/hatim-app/shared";
 import outOfOffice from "./projects/out-of-office/en";
 import { SHOTS as gameShots } from "./projects/out-of-office/shared";
-import { EMAIL, KNOWS_ABOUT, SOCIALS } from "./shared";
+import { AVATAR, EMAIL, KNOWS_ABOUT, PHOTO, SOCIALS } from "./shared";
 
 const en: LocaleDictionary = {
   profile: {
@@ -14,6 +14,8 @@ const en: LocaleDictionary = {
     location: { city: "Bitlis", countryCode: "TR", label: "Bitlis, TR · remote" },
     socials: SOCIALS,
     knowsAbout: KNOWS_ABOUT,
+    photo: { ...PHOTO, alt: "Portrait of Emrah Atalay" },
+    avatar: { ...AVATAR, alt: "Portrait of Emrah Atalay" },
   },
 
   page: {
@@ -21,7 +23,8 @@ const en: LocaleDictionary = {
       eyebrow: "AI-assisted product development",
       titleLead: "Built at AI speed,",
       titleAccent: "held to human standards.",
-      lead: "I'm Emrah Atalay. I run a team of AI agents: code gets written, tested and reviewed, and every line passes human approval before it ships. Web and mobile apps, games and automation, from idea to launch.",
+      lead: "I run a team of AI agents: code gets written, tested and reviewed, and every line passes human approval before it ships. Web and mobile apps, games and automation, from idea to launch.",
+      intro: { role: "Independent developer, building software for 10+ years.", status: "Open to new projects" },
       proof: [
         { value: "10+ yrs", label: "in production" },
         { value: "End to end", label: "idea to launch, one owner" },
@@ -84,6 +87,17 @@ const en: LocaleDictionary = {
       title: "Book a 15-minute call",
       text: "Have questions? Let's have a short intro call before the project starts.",
       ctaLabel: "Free intro call",
+      steps: [
+        "I listen to your idea and goal",
+        "We pin down the scope and first steps together",
+        "If it's a fit, I come back with a roadmap and a quote",
+      ],
+      inbox: {
+        title: "inbox",
+        received: "New message received",
+        summarized: "Agent summarized and triaged it",
+        replying: "Emrah is replying",
+      },
     },
     process: {
       id: "shared-process",

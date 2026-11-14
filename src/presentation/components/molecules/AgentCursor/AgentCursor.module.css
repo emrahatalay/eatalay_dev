@@ -1,0 +1,65 @@
+.cursor {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 3;
+  display: flex;
+  align-items: flex-start;
+  gap: 2px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(var(--x, 60%), var(--y, 40px));
+  transition:
+    transform 0.9s cubic-bezier(0.65, 0, 0.35, 1),
+    opacity 0.5s ease;
+}
+
+.on {
+  opacity: 1;
+}
+
+.cursor svg {
+  width: 15px;
+  height: 17px;
+  fill: var(--agent, var(--accent));
+  stroke: #fff;
+  stroke-width: 1.2;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.45));
+}
+
+.cursor b {
+  margin-top: 13px;
+  padding: 3px 8px;
+  border-radius: 6px 999px 999px 999px;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 10.5px;
+  font-weight: 500;
+  white-space: nowrap;
+  color: #fff;
+  background: var(--agent, var(--accent));
+  box-shadow: 0 6px 16px -6px color-mix(in srgb, var(--agent, var(--accent)) 80%, transparent);
+}
+
+/* A ring where it clicks. */
+.click {
+  position: absolute;
+  left: -9px;
+  top: -9px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1.5px solid var(--agent, var(--accent));
+  animation: click 0.7s var(--ease-out) both;
+}
+
+@keyframes click {
+  from {
+    opacity: 1;
+    transform: scale(0.3);
+  }
+  to {
+    opacity: 0;
+    transform: scale(1.6);
+  }
+}

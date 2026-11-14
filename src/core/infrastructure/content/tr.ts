@@ -3,7 +3,7 @@ import hatimApp from "./projects/hatim-app/tr";
 import { SHOTS as hatimShots } from "./projects/hatim-app/shared";
 import outOfOffice from "./projects/out-of-office/tr";
 import { SHOTS as gameShots } from "./projects/out-of-office/shared";
-import { EMAIL, KNOWS_ABOUT, SOCIALS } from "./shared";
+import { AVATAR, EMAIL, KNOWS_ABOUT, PHOTO, SOCIALS } from "./shared";
 
 const tr: LocaleDictionary = {
   profile: {
@@ -14,6 +14,8 @@ const tr: LocaleDictionary = {
     location: { city: "Bitlis", countryCode: "TR", label: "Bitlis, TR · uzaktan" },
     socials: SOCIALS,
     knowsAbout: KNOWS_ABOUT,
+    photo: { ...PHOTO, alt: "Emrah Atalay'ın portresi" },
+    avatar: { ...AVATAR, alt: "Emrah Atalay'ın portresi" },
   },
 
   page: {
@@ -21,7 +23,8 @@ const tr: LocaleDictionary = {
       eyebrow: "Yapay zeka destekli ürün geliştirme",
       titleLead: "Yapay zeka hızında,",
       titleAccent: "insan kalitesinde ürünler.",
-      lead: "Ben Emrah Atalay. Yapay zeka ajanlarından oluşan bir ekibi yönetiyorum: kod yazılır, test edilir, incelenir ve her satır yayına çıkmadan önce insan onayından geçer. Web ve mobil uygulama, oyun ve otomasyonda fikirden yayına.",
+      lead: "Yapay zeka ajanlarından oluşan bir ekibi yönetiyorum: kod yazılır, test edilir, incelenir ve her satır yayına çıkmadan önce insan onayından geçer. Web ve mobil uygulama, oyun ve otomasyonda fikirden yayına.",
+      intro: { role: "Bağımsız geliştirici, 10+ yıldır yazılım üretiyorum.", status: "Yeni projelere açık" },
       proof: [
         { value: "10+ yıl", label: "üretim deneyimi" },
         { value: "Uçtan uca", label: "fikirden yayına tek elden" },
@@ -86,6 +89,17 @@ const tr: LocaleDictionary = {
       title: "15 dakikalık görüşme ayarla",
       text: "Sorularınız mı var? Projeye başlamadan önce kısa bir tanışma görüşmesi yapalım.",
       ctaLabel: "Ücretsiz görüşme",
+      steps: [
+        "Fikrini ve hedefini dinlerim",
+        "Kapsamı ve ilk adımları birlikte netleştiririz",
+        "Uygunsa yol haritası ve teklifle dönerim",
+      ],
+      inbox: {
+        title: "gelen kutusu",
+        received: "Yeni mesaj alındı",
+        summarized: "Ajan özetledi, önceliklendirdi",
+        replying: "Emrah yanıtlıyor",
+      },
     },
     process: {
       id: "shared-process",

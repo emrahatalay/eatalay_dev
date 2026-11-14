@@ -8,6 +8,8 @@ export interface HeroContent {
   /** Second title line, set in the accent colour. */
   readonly titleAccent: string;
   readonly lead: string;
+  /** The byline above the title: who is behind the work, in one line, and whether he is taking work. */
+  readonly intro: { readonly role: string; readonly status: string };
   /** Short proof points under the calls to action. */
   readonly proof: readonly Metric[];
 }
@@ -55,6 +57,15 @@ export interface ContactContent {
   readonly title: string;
   readonly text: string;
   readonly ctaLabel: string;
+  /** What the call covers, ticked off one by one by the agent cursor. */
+  readonly steps: readonly string[];
+  /** A short log over the portrait: a message comes in, an agent sorts it, a person answers. */
+  readonly inbox: {
+    readonly title: string;
+    readonly received: string;
+    readonly summarized: string;
+    readonly replying: string;
+  };
 }
 
 export interface SeoContent {

@@ -1,7 +1,13 @@
-import type { SocialLink } from "../../domain/entities";
+import photo from "@/assets/images/profile/emrah-atalay.webp";
+import avatar from "@/assets/images/profile/emrah-atalay-avatar.webp";
+import type { ImageAsset, SocialLink } from "../../domain/entities";
 
 /** Locale-independent facts shared by every dictionary. */
 export const EMAIL = "info@eatalay.dev";
+
+/** The portrait and its face crop; each dictionary adds its own alt text. */
+export const PHOTO: Omit<ImageAsset, "alt"> = photo;
+export const AVATAR: Omit<ImageAsset, "alt"> = avatar;
 
 export const SOCIALS: readonly SocialLink[] = [
   { network: "github", label: "GitHub", url: "https://github.com/emrahatalay" },

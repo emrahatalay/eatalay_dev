@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import type { AboutContent, DisciplineVisual } from "@/core/domain/entities";
+import type { AboutContent, DisciplineVisual, Profile } from "@/core/domain/entities";
 import { Chip } from "@/presentation/components/atoms/Chip";
 import { HighlightCard } from "@/presentation/components/molecules/HighlightCard";
 import { DeliveryLog } from "@/presentation/components/molecules/DeliveryLog";
@@ -43,7 +43,12 @@ function DisciplineTile({ visual }: { readonly visual: DisciplineVisual }) {
   }
 }
 
-export function About({ content }: { readonly content: AboutContent }) {
+export interface AboutProps {
+  readonly content: AboutContent;
+  readonly profile: Profile;
+}
+
+export function About({ content, profile }: AboutProps) {
   const t = useTranslations("About");
 
   return (
@@ -54,7 +59,7 @@ export function About({ content }: { readonly content: AboutContent }) {
           <RichHeadline id="about-title" text={content.headline} className={styles.headline} />
           <p className={`${styles.summary} reveal`}>{content.summary}</p>
         </div>
-        <DeliveryLog log={content.log} />
+        <DeliveryLog log={content.log} avatar={profile.avatar} />
       </div>
 
       <div className={styles.stats}>

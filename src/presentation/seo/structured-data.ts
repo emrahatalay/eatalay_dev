@@ -19,6 +19,7 @@ export function buildStructuredData({ locale, seo, profile, faqs }: SiteMetadata
         url: siteConfig.url,
         email: `mailto:${profile.email}`,
         jobTitle: profile.jobTitle,
+        image: absoluteUrl(profile.photo.src),
         knowsAbout: profile.knowsAbout,
         address: {
           "@type": "PostalAddress",

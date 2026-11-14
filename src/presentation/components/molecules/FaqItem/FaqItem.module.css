@@ -1,14 +1,6 @@
+/* A plain row on the dark FAQ panel: number, question, toggle. */
 .item {
-  padding: 0 22px;
-  border-radius: var(--radius-sm);
-  color: var(--ink);
-  background: var(--accordion);
-  border: 1px solid transparent;
-  transition: background 0.3s;
-}
-
-:global(:root[data-theme="dark"]) .item {
-  border-color: rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
 }
 
 .item::details-content {
@@ -24,46 +16,127 @@
 }
 
 .question {
-  display: flex;
+  position: relative;
+  display: grid;
+  grid-template-columns: 34px 1fr 28px;
   align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  min-height: 58px;
+  gap: 14px;
+  min-height: 68px;
+  padding: 0 4px;
   list-style: none;
   cursor: pointer;
+  font-size: 15px;
   font-weight: 600;
-  font-size: 14px;
+  color: rgba(255, 255, 255, 0.86);
+  transition: color 0.4s;
 }
 
 .question::-webkit-details-marker {
   display: none;
 }
 
-.question::after {
-  content: "+";
-  font-size: 22px;
-  font-weight: 300;
-  transition: transform 0.4s var(--ease-spring);
+/* The row the agent cursor is resting on, or the one being hovered. */
+.question::before {
+  content: "";
+  position: absolute;
+  inset: 6px -10px;
+  border-radius: 12px;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--accent) 14%, transparent), rgba(255, 255, 255, 0.04) 60%);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 45%, transparent);
+  opacity: 0;
+  transition: opacity 0.4s;
 }
 
-.item[open] .question::after {
+.question[data-agent-active]::before,
+.question:hover::before {
+  opacity: 1;
+}
+
+.question[data-agent-active],
+.question:hover,
+.item[open] .question {
+  color: #fff;
+}
+
+.number,
+.text,
+.toggle {
+  position: relative;
+}
+
+.number {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.38);
+  transition: color 0.4s;
+}
+
+.question[data-agent-active] .number,
+.item[open] .number {
+  color: var(--accent);
+}
+
+/* A plus in a ring that turns into a cross when the answer is open. */
+.toggle {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.16);
+  transition:
+    transform 0.4s var(--ease-spring),
+    background 0.4s,
+    box-shadow 0.4s;
+}
+
+.toggle::before,
+.toggle::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 10px;
+  height: 1.5px;
+  border-radius: 1px;
+  background: currentColor;
+  translate: -50% -50%;
+}
+
+.toggle::after {
+  rotate: 90deg;
+}
+
+.item[open] .toggle {
   transform: rotate(45deg);
+  background: var(--accent);
+  box-shadow: none;
 }
 
 .answer {
-  padding: 14px 0 20px;
-  font-size: 13.5px;
-  color: var(--ink-2);
-  border-top: 1px solid var(--line);
+  max-width: 640px;
+  margin: 0;
+  padding: 0 4px 22px 52px;
+  font-size: 14px;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.6);
 }
 
 @media (max-width: 640px) {
-  .item {
-    padding: 0 16px;
+  .question {
+    grid-template-columns: 26px 1fr 26px;
+    gap: 10px;
+    min-height: 62px;
+    font-size: 14px;
   }
 
-  .question {
-    min-height: 56px;
-    font-size: 13px;
+  .toggle {
+    width: 26px;
+    height: 26px;
+  }
+
+  .answer {
+    padding-left: 40px;
+    font-size: 13.5px;
   }
 }

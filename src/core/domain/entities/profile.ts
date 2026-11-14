@@ -1,3 +1,5 @@
+import type { ImageAsset } from "./common";
+
 export type SocialNetwork = "github" | "linkedin" | "instagram";
 
 export interface SocialLink {
@@ -21,4 +23,8 @@ export interface Profile {
   readonly location: Location;
   readonly socials: readonly SocialLink[];
   readonly knowsAbout: readonly string[];
+  /** Head-and-shoulders portrait, for large placements such as the about grid. */
+  readonly photo: ImageAsset;
+  /** The same portrait cropped to the face, for small round avatars. */
+  readonly avatar: ImageAsset;
 }

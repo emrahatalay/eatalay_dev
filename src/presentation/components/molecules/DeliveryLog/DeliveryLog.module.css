@@ -80,8 +80,8 @@
 
 .human .avatar {
   border-radius: 50%;
-  background: var(--accent);
-  box-shadow: none;
+  background: none;
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 65%, transparent);
 }
 
 .text {

@@ -1,7 +1,7 @@
 import { useTranslations } from "next-intl";
-import type { ContactContent, FaqItem as FaqEntity, SectionIntro } from "@/core/domain/entities";
+import type { FaqItem as FaqEntity, SectionIntro } from "@/core/domain/entities";
 import { Chip } from "@/presentation/components/atoms/Chip";
-import { BookingCard } from "@/presentation/components/molecules/BookingCard";
+import { AgentCursor } from "@/presentation/components/molecules/AgentCursor";
 import { FaqItem } from "@/presentation/components/molecules/FaqItem";
 import { RichHeadline } from "@/presentation/components/molecules/RichHeadline";
 import styles from "./Faq.module.css";
@@ -9,25 +9,40 @@ import styles from "./Faq.module.css";
 export interface FaqProps {
   readonly intro: SectionIntro;
   readonly items: readonly FaqEntity[];
-  readonly contact: ContactContent;
-  readonly email: string;
-  readonly initials: string;
 }
 
-export function Faq({ intro, items, contact, email, initials }: FaqProps) {
+/**
+ * Questions as a quiet numbered list. An agent's cursor moves down the list,
+ * resting on one question at a time, in the same language as the hero scene.
+ */
+export function Faq({ intro, items }: FaqProps) {
   const t = useTranslations("Faq");
 
   return (
     <section className={styles.faq} id="faq" aria-labelledby="faq-title">
-      <Chip tone="dark">{t("eyebrow")}</Chip>
-      <RichHeadline id="faq-title" text={intro.headline} onDark className={styles.headline} />
-      <div className={styles.grid}>
-        <BookingCard id="contact" content={contact} email={email} initials={initials} />
-        <div className={styles.accordion}>
-          {items.map((item, i) => (
-            <FaqItem key={item.id} item={item} open={i === 0} />
-          ))}
+      <div className={styles.side}>
+        <Chip tone="dark">{t("eyebrow")}</Chip>
+        <RichHeadline id="faq-title" text={intro.headline} onDark className={styles.headline} />
+
+        <div className={styles.agent} aria-hidden="true" data-motion="">
+          <span className={styles.agentHead}>
+            <i className={styles.spark}>✦</i>
+            <b>{t("agentName")}</b>
+            <span className={styles.live} />
+          </span>
+          <span className={styles.agentStatus}>{t("agentStatus")}</span>
+          <span className={styles.scan}>
+            <i />
+          </span>
+          <small>{t("agentCount", { count: items.length })}</small>
         </div>
+      </div>
+
+      <div className={styles.list}>
+        {items.map((item, i) => (
+          <FaqItem key={item.id} item={item} index={i} open={i === 0} />
+        ))}
+        <AgentCursor label={t("agentName")} />
       </div>
     </section>
   );

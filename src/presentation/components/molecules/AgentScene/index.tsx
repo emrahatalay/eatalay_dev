@@ -1,6 +1,8 @@
 "use client";
 
 import { type ReactNode, useRef, useState } from "react";
+import type { ImageAsset } from "@/core/domain/entities";
+import { Avatar } from "@/presentation/components/atoms/Avatar";
 import { useVisibleInterval } from "@/presentation/hooks/useVisibleInterval";
 import { cx } from "@/shared/lib/cx";
 import styles from "./AgentScene.module.css";
@@ -57,7 +59,7 @@ const WIRE_STEP: Record<keyof typeof WIRES, number> = { brief: 1, toTest: 2, toR
  * Faint hero backdrop: a person steers a team of AI agents that write, test
  * and review code, approves the result, and it ships. Decorative only.
  */
-export function AgentScene({ labels }: { readonly labels: AgentSceneLabels }) {
+export function AgentScene({ labels, avatar }: { readonly labels: AgentSceneLabels; readonly avatar: ImageAsset }) {
   const [step, setStep] = useState(0);
   const root = useRef<HTMLDivElement>(null);
 
@@ -83,7 +85,7 @@ export function AgentScene({ labels }: { readonly labels: AgentSceneLabels }) {
       {/* The human: writes the brief, approves the review. */}
       <div className={cx(styles.node, styles.operator, (step === 0 || step === 4) && styles.busy)}>
         <span className={styles.head}>
-          <i className={styles.avatar}>EA</i>
+          <Avatar image={avatar} size={26} decorative className={styles.avatar} />
           <span className={styles.who}>
             <b>{labels.operator}</b>
             <small>{labels.operatorRole}</small>

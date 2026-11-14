@@ -2,7 +2,8 @@
 
 import { useRef, useState } from "react";
 import { useVisibleInterval } from "@/presentation/hooks/useVisibleInterval";
-import type { AboutContent } from "@/core/domain/entities";
+import type { AboutContent, ImageAsset } from "@/core/domain/entities";
+import { Avatar } from "@/presentation/components/atoms/Avatar";
 import { cx } from "@/shared/lib/cx";
 import styles from "./DeliveryLog.module.css";
 
@@ -13,7 +14,7 @@ const TICK_MS = 2400;
  * A delivery log that keeps moving: agents finish work, a person signs it off,
  * newest on top. Decorative; the section copy says the same thing in words.
  */
-export function DeliveryLog({ log }: { readonly log: AboutContent["log"] }) {
+export function DeliveryLog({ log, avatar }: { readonly log: AboutContent["log"]; readonly avatar: ImageAsset }) {
   const [tick, setTick] = useState(VISIBLE - 1);
   const root = useRef<HTMLDivElement>(null);
   const total = log.entries.length;
@@ -38,7 +39,7 @@ export function DeliveryLog({ log }: { readonly log: AboutContent["log"] }) {
           <li key={id} className={cx(styles.row, entry.by === "human" && styles.human, k === 0 && styles.fresh)}>
             <span className={styles.avatar}>
               {entry.by === "human" ? (
-                "EA"
+                <Avatar image={avatar} size={30} decorative />
               ) : (
                 <svg viewBox="0 0 16 16">
                   <path d="M8 1l1.6 4.4L14 7l-4.4 1.6L8 13l-1.6-4.4L2 7l4.4-1.6z" />

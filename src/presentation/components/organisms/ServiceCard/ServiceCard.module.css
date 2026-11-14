@@ -1,6 +1,5 @@
 .card {
-  position: sticky;
-  top: 40px;
+  position: relative;
   display: grid;
   grid-template-columns: 1fr 1.05fr;
   gap: 20px;
@@ -13,11 +12,6 @@
   border: 1px solid var(--surface-glass-border);
   box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.6);
 }
-
-.card:nth-child(2) { top: 60px; }
-.card:nth-child(3) { top: 80px; }
-.card:nth-child(4) { top: 100px; }
-.card:nth-child(5) { top: 120px; }
 
 
 .text {
@@ -63,29 +57,8 @@
   transform: scale(1.07);
 }
 
-@keyframes stack-out {
-  to {
-    transform: scale(0.9);
-    filter: brightness(0.7);
-  }
-}
-
-@supports (animation-timeline: view()) {
-  .card {
-    animation: stack-out linear both;
-    animation-timeline: view();
-    animation-range: exit-crossing 0% exit-crossing 100%;
-  }
-
-  .card:last-child {
-    animation: none;
-  }
-}
-
 @media (max-width: 900px) {
-  .card,
-  .card:nth-child(n) {
-    top: 20px;
+  .card {
     height: auto;
     grid-template-columns: 1fr;
     gap: 10px;
@@ -150,4 +123,24 @@
 
 .showcase:hover span {
   transform: translateX(4px);
+}
+
+/* The part an agent is working on: a selection box in its colour, like a shared design file. */
+.card [data-agent-target] {
+  border-radius: 10px;
+  outline: 1.5px solid transparent;
+  outline-offset: 5px;
+  transition:
+    outline-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.card [data-agent-target][data-agent-active] {
+  outline-color: var(--agent-color, var(--accent));
+  box-shadow: 0 0 0 5px color-mix(in srgb, var(--agent-color, var(--accent)) 10%, transparent);
+}
+
+/* Links keep their pill shape under the selection box. */
+.showcase.card [data-agent-target] {
+  border-radius: 999px;
 }

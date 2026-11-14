@@ -3,6 +3,7 @@ import type { HomePage } from "@/core/application/use-cases/get-home-page";
 import type { ProjectKind, ProjectStatus } from "@/core/domain/entities";
 import type { NavItem } from "@/presentation/components/molecules/NavLinks";
 import { About } from "@/presentation/components/organisms/About";
+import { Contact } from "@/presentation/components/organisms/Contact";
 import { Faq } from "@/presentation/components/organisms/Faq";
 import { Hero } from "@/presentation/components/organisms/Hero";
 import { PortfolioPreview } from "@/presentation/components/organisms/PortfolioPreview";
@@ -32,10 +33,6 @@ export function HomeTemplate({ page }: { readonly page: HomePage }) {
     { href: "#faq", label: t("faq") },
   ];
   const cta: NavItem = { href: "#contact", label: t("cta") };
-  const initials = profile.name
-    .split(" ")
-    .map((p) => p[0])
-    .join("");
 
   const cardLabels = {
     kind: (kind: ProjectKind) => tp(`kind.${kind}`),
@@ -49,22 +46,19 @@ export function HomeTemplate({ page }: { readonly page: HomePage }) {
         content={content.hero}
         contactHref={cta.href}
         portfolioHref={portfolioPath(locale)}
+        avatar={profile.avatar}
+        name={profile.name}
         header={<SiteHeader brand={profile.brand} locale={locale} items={navItems} cta={cta} />}
       />
       <main id="main" tabIndex={-1}>
-        <About content={content.about} />
+        <About content={content.about} profile={profile} />
         <Services services={services} process={content.process} />
         {projects.length > 0 && (
           <PortfolioPreview cards={previewCards} total={projects.length} href={portfolioPath(locale)} />
         )}
         <Testimonials intro={content.testimonials} testimonials={testimonials} />
-        <Faq
-          intro={content.faq}
-          items={faqs}
-          contact={content.contact}
-          email={profile.email}
-          initials={initials}
-        />
+        <Faq intro={content.faq} items={faqs} />
+        <Contact content={content.contact} profile={profile} />
       </main>
       <SiteFooter profile={profile} blurb={content.footerBlurb} links={navItems} services={services} />
     </PageShell>

@@ -51,7 +51,8 @@
   "Services": {
     "eyebrow": "Services",
     "title": "From idea to launch, end to end",
-    "lead": "Websites and web apps, mobile apps, mobile games and AI automation. All from one developer, designed end to end, with a workflow sped up by AI agents."
+    "lead": "Websites and web apps, mobile apps, mobile games and AI automation. All from one developer, designed end to end, with a workflow sped up by AI agents.",
+    "agentsLive": "{count} agents at work right now"
   },
   "Portfolio": {
     "eyebrow": "Selected work",
@@ -90,7 +91,16 @@
     "eyebrow": "Client testimonials"
   },
   "Faq": {
-    "eyebrow": "Frequently asked questions"
+    "eyebrow": "Frequently asked questions",
+    "agentName": "faq-agent",
+    "agentStatus": "Scanning the questions",
+    "agentCount": "{count} questions · {count} answers"
+  },
+  "Contact": {
+    "eyebrow": "Contact",
+    "stepsLabel": "What we cover",
+    "orEmail": "or write directly",
+    "cursor": "agent"
   },
   "Footer": {
     "follow": "Follow",

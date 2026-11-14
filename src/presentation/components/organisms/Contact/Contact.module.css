@@ -1,0 +1,413 @@
+.contact {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  align-items: center;
+  gap: clamp(28px, 5vw, 72px);
+  margin-top: 60px;
+  padding: clamp(18px, 3vw, 32px) clamp(18px, 4vw, 56px) clamp(18px, 3vw, 32px) clamp(18px, 3vw, 32px);
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  color: #fff;
+  background:
+    radial-gradient(560px 420px at 22% 50%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 70%),
+    var(--night);
+  box-shadow: inset 0 0 0 1px var(--night-edge);
+  scroll-margin-top: 24px;
+}
+
+/* The same faint grid as the hero, fading out to the right. */
+.contact::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 64px 64px;
+  -webkit-mask: radial-gradient(700px 520px at 75% 50%, #000, transparent 75%);
+  mask: radial-gradient(700px 520px at 75% 50%, #000, transparent 75%);
+  pointer-events: none;
+}
+
+.contact > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------- Portrait ---------- */
+.portrait {
+  position: relative;
+  margin: 0;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: calc(var(--radius-lg) - 8px);
+  background: #0d0c0b;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 40px 80px -40px color-mix(in srgb, var(--accent) 55%, transparent);
+}
+
+.photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 20%;
+  transition: transform 1.2s var(--ease-out);
+}
+
+.portrait:hover .photo {
+  transform: scale(1.03);
+}
+
+.glow {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 45%, rgba(13, 12, 11, 0.55) 68%, rgba(13, 12, 11, 0.94));
+  pointer-events: none;
+}
+
+.overlay {
+  position: absolute;
+  inset: auto 18px 18px;
+  display: grid;
+  gap: 12px;
+}
+
+.caption {
+  display: grid;
+  gap: 2px;
+  padding: 0 4px;
+}
+
+.caption b {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.caption span {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 11.5px;
+  color: var(--accent);
+}
+
+/* A live inbox: a message comes in, an agent sorts it, a person answers. */
+.inbox {
+  display: grid;
+  gap: 8px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  font-size: 12.5px;
+  background: rgba(20, 19, 18, 0.62);
+  backdrop-filter: blur(12px);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.inboxHead {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.inboxHead b {
+  font-weight: 500;
+}
+
+.live {
+  width: 7px;
+  height: 7px;
+  margin-left: auto;
+  border-radius: 50%;
+  background: #22c55e;
+  animation: blink 2s ease-in-out infinite;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.row:nth-of-type(2) {
+  animation: row-1 7.5s var(--ease-out) infinite;
+}
+
+.row:nth-of-type(3) {
+  animation: row-2 7.5s var(--ease-out) infinite;
+}
+
+.row:nth-of-type(4) {
+  animation: row-3 7.5s var(--ease-out) infinite;
+}
+
+.mark {
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  flex: none;
+  border-radius: 6px;
+  font-style: normal;
+  font-size: 10px;
+  color: var(--accent);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.human img {
+  width: 20px;
+  height: 20px;
+  box-shadow: 0 0 0 1.5px var(--accent);
+}
+
+.human {
+  color: #fff;
+  font-weight: 600;
+}
+
+.typing {
+  display: inline-flex;
+  gap: 3px;
+  margin-left: 2px;
+}
+
+.typing i {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: typing 1.2s ease-in-out infinite;
+}
+
+.typing i:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.typing i:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+/* ---------- Copy ---------- */
+.body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: clamp(8px, 2vw, 24px) 0;
+}
+
+.title {
+  max-width: 520px;
+  margin: 18px 0 12px;
+  font-family: var(--font-display);
+  font-size: var(--fs-section);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.text {
+  max-width: 480px;
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.66);
+}
+
+.steps {
+  position: relative;
+  width: min(100%, 480px);
+  margin-top: 28px;
+  padding: 16px 18px 8px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.stepsLabel {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.steps ol {
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.steps li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 46px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.82);
+  transition: color 0.4s;
+}
+
+.steps li + li {
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.check {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.55);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18);
+  transition:
+    background 0.4s,
+    color 0.4s,
+    box-shadow 0.4s;
+}
+
+/* The step the agent cursor is ticking off. */
+.steps li[data-agent-active] {
+  color: #fff;
+}
+
+.steps li[data-agent-active] .check {
+  color: #fff;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 22%, transparent);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px 20px;
+  margin-top: 28px;
+}
+
+.email {
+  display: grid;
+  gap: 2px;
+}
+
+.email small {
+  font-size: 11.5px;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.email a {
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 60%, transparent);
+}
+
+.email a:hover {
+  color: var(--accent);
+}
+
+.socials {
+  margin-top: 18px;
+}
+
+@keyframes row-1 {
+  0% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  6%,
+  88% {
+    opacity: 1;
+    transform: none;
+  }
+  96%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes row-2 {
+  0%,
+  20% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  26%,
+  88% {
+    opacity: 1;
+    transform: none;
+  }
+  96%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes row-3 {
+  0%,
+  42% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  48%,
+  88% {
+    opacity: 1;
+    transform: none;
+  }
+  96%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes typing {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: none;
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-2px);
+  }
+}
+
+@media (max-width: 900px) {
+  .contact {
+    grid-template-columns: 1fr;
+    padding: 18px 18px 28px;
+  }
+
+  .portrait {
+    max-height: 560px;
+    aspect-ratio: 4 / 5;
+  }
+
+  .body {
+    padding: 0 6px;
+  }
+}
+
+@media (max-width: 640px) {
+  .contact {
+    margin-top: 36px;
+    border-radius: var(--radius-md);
+  }
+
+  .portrait {
+    border-radius: calc(var(--radius-md) - 4px);
+  }
+
+  .steps li {
+    font-size: 13.5px;
+  }
+}

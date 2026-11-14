@@ -51,7 +51,8 @@
   "Services": {
     "eyebrow": "Hizmetler",
     "title": "Fikirden yayına, uçtan uca ürün geliştirme",
-    "lead": "Web sitesi ve web uygulaması, mobil uygulama, mobil oyun ve yapay zeka otomasyonu. Hepsi tek elden, uçtan uca tasarlanarak ve yapay zeka ajanlarıyla hızlanan bir süreçle."
+    "lead": "Web sitesi ve web uygulaması, mobil uygulama, mobil oyun ve yapay zeka otomasyonu. Hepsi tek elden, uçtan uca tasarlanarak ve yapay zeka ajanlarıyla hızlanan bir süreçle.",
+    "agentsLive": "{count} ajan şu an çalışıyor"
   },
   "Portfolio": {
     "eyebrow": "Seçilmiş işler",
@@ -90,7 +91,16 @@
     "eyebrow": "Müşteri yorumları"
   },
   "Faq": {
-    "eyebrow": "Sıkça sorulan sorular"
+    "eyebrow": "Sıkça sorulan sorular",
+    "agentName": "faq-agent",
+    "agentStatus": "Soruları tarıyor",
+    "agentCount": "{count} soru · {count} cevap"
+  },
+  "Contact": {
+    "eyebrow": "İletişim",
+    "stepsLabel": "Görüşmede neler var",
+    "orEmail": "ya da doğrudan yaz",
+    "cursor": "agent"
   },
   "Footer": {
     "follow": "Takip edin",
