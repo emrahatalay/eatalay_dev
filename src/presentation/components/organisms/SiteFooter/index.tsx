@@ -63,20 +63,22 @@ export function SiteFooter({ profile, blurb, links, services, servicesHref = "#s
         </address>
       </div>
 
-      <p className={styles.wordmark} aria-hidden="true">
-        {profile.brand
-          .toUpperCase()
-          .split("")
-          .map((letter, i) => (
-            <span key={i}>{letter}</span>
-          ))}
-      </p>
+      {/* Dark editor panel along the bottom edge, signed with a one-line terminal command
+          that types itself in as the footer scrolls into view. */}
+      <div className={styles.terminal}>
+        <CodeField className={styles.field} />
 
-      <p className={styles.legal}>
-        © {year} {profile.name}. {t("rights")}
-      </p>
+        <p className={styles.signature} aria-hidden="true">
+          <span className={styles.path}>~/{profile.brand}</span>
+          <span className={styles.prompt}>❯</span>
+          <span className={styles.command}>ship --next</span>
+          <span className={styles.cursor} />
+        </p>
 
-      <CodeField className={styles.field} />
+        <p className={styles.legal}>
+          © {year} {profile.name}. {t("rights")}
+        </p>
+      </div>
     </footer>
   );
 }

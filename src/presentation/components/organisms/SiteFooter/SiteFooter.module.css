@@ -1,14 +1,15 @@
 .footer {
   position: relative;
   margin-top: 60px;
-  padding: 40px clamp(18px, 4vw, 56px) 18px;
+  --pad-x: clamp(18px, 4vw, 56px);
+  padding: 40px var(--pad-x) 0;
   overflow: hidden;
   border-radius: var(--radius-lg);
   background: var(--footer);
   container-type: inline-size;
 }
 
-.footer > :not(.field) {
+.footer > * {
   position: relative;
   z-index: 1;
 }
@@ -67,23 +68,40 @@
   margin-bottom: 18px;
 }
 
-.wordmark {
+.signature {
   display: flex;
   justify-content: center;
-  margin: 84px -10px 0;
-  font-family: var(--font-display);
-  font-weight: 900;
-  font-stretch: 125%;
-  /* "EATALAY" is ~6.1em wide: size it to the footer so it always fits */
-  font-size: 15.4cqi;
-  line-height: 0.78;
-  letter-spacing: -0.04em;
-  color: var(--wordmark);
-  text-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  align-items: center;
+  gap: 0.6em;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: clamp(17px, 2.4cqi, 30px);
+  line-height: 1.2;
+  white-space: nowrap;
+  color: #f4f3f1;
+  /* Lifts the line off the code behind it. */
+  text-shadow: 0 0 14px #0f0f10, 0 0 4px #0f0f10;
 }
 
-.wordmark span {
+.path {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.prompt {
+  color: var(--accent);
+}
+
+.command {
   display: inline-block;
+  overflow: hidden;
+}
+
+.cursor {
+  width: 0.55em;
+  height: 1.1em;
+  margin-left: -0.3em;
+  border-radius: 2px;
+  background: var(--accent);
+  animation: blink 1.1s steps(1) infinite;
 }
 
 .legal {
@@ -94,38 +112,52 @@
   text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
 }
 
-.field {
-  position: absolute;
-  inset: auto 0 0;
-  z-index: 0;
-  /* Only behind the wordmark and the legal line, never under the link columns. */
-  height: calc(12cqi + 140px);
+/* Bleeds to the footer's edges: a clean break from the light area above, no fade. */
+.terminal {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 300px;
+  margin: 64px calc(-1 * var(--pad-x)) 0;
+  padding: 0 var(--pad-x) 20px;
   overflow: hidden;
-  pointer-events: none;
-  -webkit-mask: linear-gradient(transparent, #000 40%);
-  mask: linear-gradient(transparent, #000 40%);
+  background: var(--night);
+  box-shadow: inset 0 1px 0 var(--night-edge);
 }
 
-@keyframes letter {
+.terminal > p {
+  position: relative;
+  z-index: 1;
+}
+
+.field {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* Code reads at the top and settles into plain dark under the signature. */
+.terminal::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 30%, var(--night) 78%);
+  pointer-events: none;
+}
+
+@keyframes type {
   from {
-    transform: translateY(60%);
-    opacity: 0;
+    width: 0;
   }
 }
 
 @supports (animation-timeline: view()) {
-  .wordmark span {
-    animation: letter linear both;
+  .command {
+    width: 11ch;
+    animation: type steps(11) both;
     animation-timeline: view();
-    animation-range: entry 0% entry 70%;
+    animation-range: entry 10% entry 100%;
   }
-
-  .wordmark span:nth-child(2) { animation-range: entry 5% entry 75%; }
-  .wordmark span:nth-child(3) { animation-range: entry 10% entry 80%; }
-  .wordmark span:nth-child(4) { animation-range: entry 15% entry 85%; }
-  .wordmark span:nth-child(5) { animation-range: entry 20% entry 90%; }
-  .wordmark span:nth-child(6) { animation-range: entry 25% entry 95%; }
-  .wordmark span:nth-child(7) { animation-range: entry 30% entry 100%; }
 }
 
 @media (max-width: 900px) {
@@ -146,11 +178,8 @@
     border-radius: var(--radius-md);
   }
 
-  .wordmark {
-    margin: 72px -4px 0;
-  }
-
-  .field {
-    height: calc(12cqi + 110px);
+  .terminal {
+    min-height: 260px;
+    margin-top: 48px;
   }
 }
