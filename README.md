@@ -1,3 +1,5 @@
+<a href="https://eatalay.dev/en"><img src=".github/readme/banner.svg" width="100%" alt="eatalay.dev — source of the site. Built at AI speed, held to human standards."></a>
+
 # eatalay.dev
 
 Source code of [eatalay.dev](https://eatalay.dev), the personal site of **Emrah Atalay**, a developer who builds mobile apps, mobile games, software and automations with AI.
