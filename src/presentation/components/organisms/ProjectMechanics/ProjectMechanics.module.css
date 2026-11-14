@@ -1,0 +1,184 @@
+.mechanics {
+  margin-top: 90px;
+  padding: 0 clamp(8px, 3vw, 40px);
+}
+
+.eyebrowWrap {
+  margin: 0;
+  font: inherit;
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+  margin-top: 26px;
+}
+
+.card {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 18px;
+  padding: 30px 0 0 30px;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: var(--surface-glass);
+  border: 1px solid var(--surface-glass-border);
+  box-shadow: 0 30px 60px -40px rgba(30, 10, 80, 0.5);
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  right: -60px;
+  bottom: -60px;
+  width: 340px;
+  height: 340px;
+  border-radius: 50%;
+  background: conic-gradient(from 120deg, #ff4d5f, #ffc83d, #4ee3ff, #7b5cff, #ff4d5f);
+  filter: blur(60px);
+  opacity: calc(var(--glow-opacity) * 0.5);
+}
+
+.text {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 30px;
+}
+
+.tag {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--brand-ink);
+}
+
+.number {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  font-size: 12px;
+  color: #fff;
+  background: linear-gradient(135deg, #ff4d5f, #ff8a3d);
+}
+
+.title {
+  margin-top: 16px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(26px, 1.2rem + 1.2vw, 36px);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.body {
+  margin-top: 14px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+
+.bullets {
+  display: grid;
+  gap: 10px;
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bullets li {
+  position: relative;
+  padding-left: 22px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+.bullets li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 0.5em;
+  width: 9px;
+  height: 9px;
+  border-radius: 3px;
+  background: #4ee3ff;
+  box-shadow: 0 0 10px rgba(78, 227, 255, 0.7);
+}
+
+.code {
+  align-self: flex-start;
+  margin-top: auto;
+  padding: 6px 12px;
+  border-radius: 10px;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 13px;
+  color: #c9b8ff;
+  background: #15131f;
+}
+
+.text > .bullets + .code {
+  margin-top: 22px;
+}
+
+.visual {
+  position: relative;
+  z-index: 1;
+  align-self: end;
+  width: 230px;
+  height: 420px;
+  overflow: hidden;
+}
+
+/* The phone peeks out of the card's bottom-right corner. */
+.phone {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 250px;
+  transform: rotate(-4deg);
+  transform-origin: top left;
+}
+
+@media (max-width: 1180px) {
+  .list {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .mechanics {
+    margin-top: 56px;
+    padding: 0 4px;
+  }
+
+  .card {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 22px 20px 0;
+    border-radius: var(--radius-md);
+  }
+
+  .text {
+    padding-bottom: 0;
+  }
+
+  .visual {
+    justify-self: center;
+    width: 64vw;
+    height: 300px;
+  }
+
+  .phone {
+    width: 64vw;
+    transform: none;
+  }
+}

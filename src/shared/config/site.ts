@@ -18,8 +18,19 @@ export function absoluteUrl(path = "/"): string {
   return path === "/" ? siteConfig.url : `${siteConfig.url}${path}`;
 }
 
-/** hreflang map used by metadata and the sitemap. */
-export function languageAlternates(): Record<string, string> {
-  const entries = LOCALES.map((l) => [l, absoluteUrl(localePath(l))] as const);
-  return { ...Object.fromEntries(entries), "x-default": absoluteUrl(localePath(DEFAULT_LOCALE)) };
+/** Public path of a project page, e.g. "/projects/out-of-office" or "/en/projects/out-of-office". */
+export function projectPath(locale: Locale, slug: string): string {
+  const prefix = locale === DEFAULT_LOCALE ? "" : `/${locale}`;
+  return `${prefix}/projects/${slug}`;
+}
+
+/** Link to a section of the home page, e.g. "/#work" or "/en#work". */
+export function homeSection(locale: Locale, id: string): string {
+  return `${localePath(locale)}#${id}`;
+}
+
+/** hreflang map used by metadata and the sitemap. Defaults to the home page. */
+export function languageAlternates(pathFor: (locale: Locale) => string = localePath): Record<string, string> {
+  const entries = LOCALES.map((l) => [l, absoluteUrl(pathFor(l))] as const);
+  return { ...Object.fromEntries(entries), "x-default": absoluteUrl(pathFor(DEFAULT_LOCALE)) };
 }

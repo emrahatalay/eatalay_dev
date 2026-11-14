@@ -35,4 +35,6 @@ export interface Service {
   readonly description: string;
   readonly tags: readonly string[];
   readonly visual: ServiceVisual;
+  /** A case study that shows this service in practice. */
+  readonly showcase?: { readonly projectSlug: string; readonly label: string };
 }

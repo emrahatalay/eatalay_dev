@@ -3,17 +3,19 @@ import type { HomePage } from "@/core/application/use-cases/get-home-page";
 import type { NavItem } from "@/presentation/components/molecules/NavLinks";
 import { About } from "@/presentation/components/organisms/About";
 import { Faq } from "@/presentation/components/organisms/Faq";
+import { FeaturedProject } from "@/presentation/components/organisms/FeaturedProject";
 import { Hero } from "@/presentation/components/organisms/Hero";
 import { SiteFooter } from "@/presentation/components/organisms/SiteFooter";
 import { SiteHeader } from "@/presentation/components/organisms/SiteHeader";
 import { Testimonials } from "@/presentation/components/organisms/Testimonials";
 import { Work } from "@/presentation/components/organisms/Work";
+import { projectPath } from "@/shared/config/site";
 import { PageShell } from "../PageShell";
 
 /** Lays out the home page from the read model. No data fetching here. */
 export function HomeTemplate({ page }: { readonly page: HomePage }) {
   const t = useTranslations("Nav");
-  const { profile, content, services, technologies, faqs, testimonials, locale } = page;
+  const { profile, content, services, technologies, faqs, testimonials, featuredProject, locale } = page;
 
   const navItems: NavItem[] = [
     { href: "#top", label: t("home") },
@@ -38,6 +40,9 @@ export function HomeTemplate({ page }: { readonly page: HomePage }) {
       <main id="main" tabIndex={-1}>
         <About content={content.about} />
         <Work services={services} />
+        {featuredProject && (
+          <FeaturedProject project={featuredProject} href={projectPath(locale, featuredProject.slug)} />
+        )}
         <Testimonials intro={content.testimonials} testimonials={testimonials} />
         <Faq
           intro={content.faq}

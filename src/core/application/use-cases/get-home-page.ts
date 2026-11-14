@@ -2,6 +2,7 @@ import type {
   FaqItem,
   PageContent,
   Profile,
+  Project,
   Service,
   Technology,
   Testimonial,
@@ -11,6 +12,7 @@ import type {
   FaqRepository,
   PageContentRepository,
   ProfileRepository,
+  ProjectRepository,
   ServiceRepository,
   TestimonialRepository,
 } from "../../domain/repositories";
@@ -24,6 +26,8 @@ export interface HomePage {
   readonly technologies: readonly Technology[];
   readonly faqs: readonly FaqItem[];
   readonly testimonials: readonly Testimonial[];
+  /** Project promoted on the home page, if any. */
+  readonly featuredProject: Project | null;
 }
 
 export interface GetHomePageDeps {
@@ -32,6 +36,7 @@ export interface GetHomePageDeps {
   readonly services: ServiceRepository;
   readonly faqs: FaqRepository;
   readonly testimonials: TestimonialRepository;
+  readonly projects: ProjectRepository;
 }
 
 /** Single responsibility: compose the home page read model for a locale. */
@@ -39,9 +44,9 @@ export class GetHomePage {
   constructor(private readonly deps: GetHomePageDeps) {}
 
   async execute(locale: Locale): Promise<HomePage> {
-    const { profiles, pages, services, faqs, testimonials } = this.deps;
+    const { profiles, pages, services, faqs, testimonials, projects } = this.deps;
 
-    const [profile, content, serviceList, technologies, faqList, testimonialList] =
+    const [profile, content, serviceList, technologies, faqList, testimonialList, projectList] =
       await Promise.all([
         profiles.getProfile(locale),
         pages.getPageContent(locale),
@@ -49,6 +54,7 @@ export class GetHomePage {
         services.getTechnologies(locale),
         faqs.getFaqs(locale),
         testimonials.getTestimonials(locale),
+        projects.getProjects(locale),
       ]);
 
     return {
@@ -59,6 +65,7 @@ export class GetHomePage {
       technologies,
       faqs: faqList,
       testimonials: testimonialList,
+      featuredProject: projectList[0] ?? null,
     };
   }
 }

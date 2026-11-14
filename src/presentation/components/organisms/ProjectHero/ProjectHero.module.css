@@ -1,0 +1,271 @@
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  color: #fff;
+  background: var(--night);
+}
+
+/* The game's own palette: danger red, reward yellow, tech cyan. */
+.backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  background:
+    radial-gradient(520px 420px at 78% 38%, rgba(255, 77, 95, 0.34), transparent 70%),
+    radial-gradient(420px 360px at 92% 86%, rgba(78, 227, 255, 0.22), transparent 70%),
+    radial-gradient(520px 380px at 12% 100%, rgba(123, 92, 255, 0.3), transparent 70%),
+    #07060d;
+}
+
+.grid {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 64px 64px;
+  -webkit-mask: radial-gradient(900px 600px at 30% 50%, #000, transparent 75%);
+  mask: radial-gradient(900px 600px at 30% 50%, #000, transparent 75%);
+}
+
+/* Three glowing lane lines running toward the horizon. */
+.road {
+  position: absolute;
+  left: 50%;
+  bottom: -40px;
+  z-index: -1;
+  width: 1100px;
+  height: 420px;
+  background:
+    linear-gradient(90deg, transparent 31.8%, rgba(78, 227, 255, 0.5) 32%, transparent 32.2%),
+    linear-gradient(90deg, transparent 49.9%, rgba(255, 255, 255, 0.35) 50%, transparent 50.1%),
+    linear-gradient(90deg, transparent 67.8%, rgba(78, 227, 255, 0.5) 68%, transparent 68.2%);
+  transform: translateX(-50%) perspective(380px) rotateX(62deg);
+  transform-origin: bottom;
+  -webkit-mask: linear-gradient(transparent, #000 70%);
+  mask: linear-gradient(transparent, #000 70%);
+  opacity: 0.55;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+  align-items: center;
+  gap: 24px;
+  min-height: clamp(720px, calc(100svh - 48px), 860px);
+  padding: 110px clamp(20px, 4vw, 56px) 56px;
+}
+
+.copy {
+  position: relative;
+  z-index: 1;
+  max-width: 640px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.86);
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  animation: fade-up 0.9s var(--ease-out) both 0.05s;
+}
+
+.live {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ffc83d;
+  box-shadow: 0 0 12px 2px rgba(255, 200, 61, 0.7);
+  animation: blink 1.6s ease-in-out infinite;
+}
+
+.title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0 0.28em;
+  margin-top: 22px;
+  font-size: clamp(52px, 7.4vw, 112px);
+  line-height: 0.92;
+  /* Room for the dot on the Turkish capital İ. */
+  padding-top: 0.08em;
+  animation: fade-up 1s var(--ease-out) both 0.12s;
+}
+
+.name {
+  color: transparent;
+  background: linear-gradient(92deg, #ff4d5f 0%, #ff8a3d 48%, #ffc83d 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  filter: drop-shadow(0 10px 30px rgba(255, 77, 95, 0.35));
+}
+
+.accent {
+  font-size: 0.5em;
+  color: #4ee3ff;
+}
+
+.slogan {
+  margin-top: 22px;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 700;
+  font-size: clamp(20px, 0.9rem + 1.3vw, 30px);
+  letter-spacing: -0.02em;
+  animation: fade-up 1s var(--ease-out) both 0.2s;
+}
+
+.summary {
+  max-width: 520px;
+  margin-top: 14px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.72);
+  animation: fade-up 1s var(--ease-out) both 0.26s;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+  animation: fade-up 1s var(--ease-out) both 0.32s;
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 26px 0 0;
+  padding: 0;
+  list-style: none;
+  animation: fade-up 1s var(--ease-out) both 0.38s;
+}
+
+.badges li {
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.78);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(78, 227, 255, 0.28);
+}
+
+.phones {
+  position: relative;
+  height: 640px;
+}
+
+.front,
+.back {
+  position: absolute;
+  top: 50%;
+}
+
+.front {
+  left: 46%;
+  z-index: 2;
+  width: 300px;
+  transform: translate(-50%, -50%) rotate(4deg);
+  animation: phone-in 1.2s var(--ease-out) both 0.25s;
+}
+
+.back {
+  left: 24%;
+  z-index: 1;
+  width: 250px;
+  transform: translate(-50%, -54%) rotate(-9deg);
+  filter: brightness(0.82);
+  animation: phone-in-back 1.2s var(--ease-out) both 0.1s;
+}
+
+.halo {
+  position: absolute;
+  left: 42%;
+  top: 50%;
+  z-index: 0;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(255, 200, 61, 0.28), transparent);
+  transform: translate(-50%, -50%);
+  filter: blur(10px);
+}
+
+@keyframes phone-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -38%) rotate(12deg);
+  }
+}
+
+@keyframes phone-in-back {
+  from {
+    opacity: 0;
+    transform: translate(-30%, -46%) rotate(-2deg);
+  }
+}
+
+@media (max-width: 1080px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 0;
+    padding-top: 120px;
+  }
+
+  .phones {
+    height: 600px;
+  }
+
+  .front {
+    left: 58%;
+  }
+
+  .back {
+    left: 36%;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero {
+    border-radius: var(--radius-md);
+  }
+
+  .layout {
+    padding: 96px 18px 24px;
+  }
+
+  .summary {
+    font-size: 15px;
+  }
+
+  .phones {
+    height: 480px;
+  }
+
+  .front {
+    left: 60%;
+    width: 56%;
+    max-width: 230px;
+  }
+
+  .back {
+    left: 34%;
+    width: 46%;
+    max-width: 190px;
+  }
+
+  .halo {
+    width: 300px;
+    height: 300px;
+  }
+}

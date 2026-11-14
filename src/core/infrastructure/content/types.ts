@@ -2,6 +2,7 @@ import type {
   FaqItem,
   PageContent,
   Profile,
+  Project,
   Service,
   Technology,
   Testimonial,
@@ -15,4 +16,5 @@ export interface LocaleDictionary {
   readonly technologies: readonly Technology[];
   readonly faqs: readonly FaqItem[];
   readonly testimonials: readonly Testimonial[];
+  readonly projects: readonly Project[];
 }

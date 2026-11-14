@@ -15,20 +15,24 @@ export interface SiteHeaderProps {
   readonly locale: Locale;
   readonly items: readonly NavItem[];
   readonly cta: NavItem;
+  /** Where the logo points; the top of the current page by default. */
+  readonly logoHref?: string;
+  /** URL of the current page in another language; the home page by default. */
+  readonly localeHref?: (locale: Locale) => string;
 }
 
-export function SiteHeader({ brand, locale, items, cta }: SiteHeaderProps) {
+export function SiteHeader({ brand, locale, items, cta, logoHref, localeHref = localePath }: SiteHeaderProps) {
   const t = useTranslations();
 
   const localeOptions = LOCALES.map((l) => ({
     locale: l,
-    href: localePath(l),
+    href: localeHref(l),
     name: t(`Locale.${l}`),
   }));
 
   return (
     <div className={styles.bar}>
-      <Logo text={brand} label={t("Nav.home")} />
+      <Logo text={brand} href={logoHref} label={t("Nav.home")} />
 
       <nav aria-label={t("Nav.label")} className={styles.primary}>
         <NavLinks items={items} />

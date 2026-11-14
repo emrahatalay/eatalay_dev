@@ -3,6 +3,7 @@ import type {
   FaqItem,
   PageContent,
   Profile,
+  Project,
   Service,
   Technology,
   Testimonial,
@@ -34,4 +35,8 @@ export interface FaqRepository {
 
 export interface TestimonialRepository {
   getTestimonials(locale: Locale): Promise<readonly Testimonial[]>;
+}
+
+export interface ProjectRepository {
+  getProjects(locale: Locale): Promise<readonly Project[]>;
 }

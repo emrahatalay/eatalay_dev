@@ -3,6 +3,7 @@ import type {
   FaqRepository,
   PageContentRepository,
   ProfileRepository,
+  ProjectRepository,
   ServiceRepository,
   TestimonialRepository,
 } from "../../domain/repositories";
@@ -21,7 +22,8 @@ export class StaticContentRepository
     PageContentRepository,
     ServiceRepository,
     FaqRepository,
-    TestimonialRepository
+    TestimonialRepository,
+    ProjectRepository
 {
   constructor(private readonly loaders: DictionaryLoaders) {}
 
@@ -51,5 +53,9 @@ export class StaticContentRepository
 
   async getTestimonials(locale: Locale) {
     return (await this.load(locale)).testimonials;
+  }
+
+  async getProjects(locale: Locale) {
+    return (await this.load(locale)).projects;
   }
 }

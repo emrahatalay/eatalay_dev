@@ -1,0 +1,116 @@
+.gallery {
+  position: relative;
+  margin-top: 90px;
+  padding: 48px 0 40px;
+  overflow: clip;
+  border-radius: var(--radius-lg);
+  color: #fff;
+  background:
+    radial-gradient(700px 360px at 85% 0%, rgba(78, 227, 255, 0.22), transparent 70%),
+    radial-gradient(700px 400px at 10% 100%, rgba(255, 77, 95, 0.2), transparent 70%),
+    linear-gradient(180deg, #1b1440, #0b0a14 70%);
+  scroll-margin-top: 24px;
+}
+
+.head {
+  padding: 0 clamp(20px, 4vw, 56px);
+}
+
+.eyebrow {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #4ee3ff;
+}
+
+.title {
+  margin-top: 12px;
+  font-size: clamp(40px, 6vw, 92px);
+}
+
+.hint {
+  max-width: 520px;
+  margin-top: 14px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.66);
+}
+
+.strip {
+  display: flex;
+  gap: 28px;
+  margin: 36px 0 0;
+  padding: 20px clamp(20px, 4vw, 56px) 26px;
+  overflow-x: auto;
+  list-style: none;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: clamp(20px, 4vw, 56px);
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+}
+
+.strip:focus-visible {
+  outline-offset: -4px;
+}
+
+.item {
+  flex: none;
+  scroll-snap-align: start;
+}
+
+.figure {
+  margin: 0;
+}
+
+.phone {
+  width: 270px;
+  transition: transform 0.5s var(--ease-spring);
+}
+
+.item:nth-child(odd) .phone {
+  transform: translateY(18px);
+}
+
+.item:hover .phone {
+  transform: translateY(-6px);
+}
+
+.caption {
+  display: flex;
+  gap: 10px;
+  max-width: 270px;
+  margin-top: 30px;
+  font-size: 14px;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.index {
+  flex: none;
+  font-family: var(--font-display);
+  font-weight: 800;
+  color: #ffc83d;
+}
+
+@media (max-width: 640px) {
+  .gallery {
+    margin-top: 56px;
+    padding: 30px 0 24px;
+    border-radius: var(--radius-md);
+  }
+
+  .strip {
+    gap: 18px;
+  }
+
+  .phone,
+  .caption {
+    width: 62vw;
+    max-width: 62vw;
+  }
+
+  .item:nth-child(odd) .phone {
+    transform: none;
+  }
+}

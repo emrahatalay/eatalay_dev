@@ -1,0 +1,205 @@
+.architecture {
+  margin-top: 90px;
+  padding: 48px clamp(20px, 4vw, 56px) 52px;
+  border-radius: var(--radius-lg);
+  color: #fff;
+  background:
+    radial-gradient(700px 420px at 100% 0%, rgba(123, 92, 255, 0.3), transparent 70%),
+    radial-gradient(600px 420px at 0% 100%, rgba(78, 227, 255, 0.14), transparent 70%),
+    #0b0a14;
+  scroll-margin-top: 24px;
+}
+
+.headline {
+  font-size: clamp(30px, 1.6rem + 1.8vw, 52px);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+}
+
+.intro {
+  max-width: 680px;
+  margin-top: 18px;
+  font-size: 16px;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 32px;
+  margin-top: 40px;
+  align-items: start;
+}
+
+.subhead {
+  margin-top: 44px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #4ee3ff;
+}
+
+.split .subhead {
+  margin-top: 0;
+}
+
+.layers {
+  display: grid;
+  gap: 10px;
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.layer {
+  display: grid;
+  grid-template-columns: 132px minmax(0, 1fr);
+  gap: 4px 16px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.layerName {
+  grid-row: span 2;
+  align-self: center;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffc83d;
+}
+
+.role {
+  font-size: 14px;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.deps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: 12px;
+}
+
+.dep {
+  padding: 2px 9px;
+  border-radius: 999px;
+  color: #c9b8ff;
+  background: rgba(123, 92, 255, 0.18);
+}
+
+.none {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Screen-reader text: "Depends on" before the arrows. */
+.visuallyLabel {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.sample {
+  position: sticky;
+  top: 40px;
+  padding-top: 31px;
+}
+
+.principles {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.principle {
+  padding: 22px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.pIndex {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 14px;
+  color: #ff4d5f;
+}
+
+.pTitle {
+  margin: 10px 0 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 19px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.pText {
+  margin-top: 8px;
+  font-size: 14px;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.68);
+}
+
+.stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.stack li {
+  padding: 7px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.86);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 1000px) {
+  .split {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .sample {
+    position: static;
+    padding-top: 0;
+  }
+
+  .principles {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .architecture {
+    margin-top: 56px;
+    padding: 28px 16px 32px;
+    border-radius: var(--radius-md);
+  }
+
+  .layer {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .layerName {
+    grid-row: auto;
+  }
+
+  .principles {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

@@ -51,5 +51,40 @@
     "title": "Bir şeyler ters gitti",
     "text": "Sayfa şu anda görüntülenemiyor. Lütfen tekrar deneyin.",
     "retry": "Tekrar dene"
+  },
+  "Project": {
+    "navGame": "Oyun",
+    "navStory": "Hikâye",
+    "navScreens": "Ekranlar",
+    "navCode": "Kod yapısı",
+    "navRoadmap": "Yol haritası",
+    "screens": "Ekranları gör",
+    "facts": "Rakamlarla",
+    "storyEyebrow": "Hikâye",
+    "galleryEyebrow": "Ekran görüntüleri",
+    "galleryTitle": "Oyundan kareler",
+    "galleryHint": "Hepsi oyunun içinden, 20:9 dikey telefon ekranında alındı. Kaydırarak gez.",
+    "galleryLabel": "Ekran görüntüsü galerisi",
+    "mechanicsEyebrow": "Oyunu farklı kılan iki mekanik",
+    "rosterEyebrow": "İçerik",
+    "rosterTitle": "Kim kimdir, ne işe yarar?",
+    "architectureEyebrow": "Kod yapısı",
+    "layersTitle": "Katmanlar ve bağımlılık yönü",
+    "dependsOn": "Bağlı olduğu",
+    "noDependencies": "Hiçbir şeye bağlı değil",
+    "principlesTitle": "Kurallar",
+    "stackTitle": "Teknolojiler",
+    "workflowEyebrow": "Üretim süreci",
+    "roadmapEyebrow": "Yol haritası",
+    "done": "Yapıldı",
+    "next": "Sırada",
+    "ctaEyebrow": "Birlikte yapalım",
+    "ctaPrimary": "Görüşme ayarla",
+    "ctaSource": "Kaynak kodu incele",
+    "breadcrumbProjects": "Projeler"
+  },
+  "FeaturedProject": {
+    "eyebrow": "Öne çıkan proje",
+    "source": "GitHub"
   }
 }

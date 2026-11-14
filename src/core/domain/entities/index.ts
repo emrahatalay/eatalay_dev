@@ -5,3 +5,4 @@ export type * from "./profile";
 export type * from "./service";
 export type * from "./technology";
 export type * from "./testimonial";
+export type * from "./project";

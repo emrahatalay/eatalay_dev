@@ -1,0 +1,91 @@
+.roadmap {
+  margin-top: 90px;
+  padding: 0 clamp(8px, 3vw, 40px);
+  scroll-margin-top: 24px;
+}
+
+.eyebrowWrap {
+  margin: 0;
+  font: inherit;
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 24px;
+}
+
+.column {
+  padding: 26px;
+  border-radius: var(--radius-md);
+  background: var(--soft);
+  border: 1px solid var(--line);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 24px;
+  letter-spacing: -0.02em;
+}
+
+.list {
+  display: grid;
+  gap: 12px;
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.list li {
+  position: relative;
+  padding-left: 32px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+.list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.1em;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.done .list li::before {
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E")
+      center / 13px no-repeat,
+    linear-gradient(135deg, #22c55e, #16a34a);
+}
+
+.next .list li::before {
+  border: 2px dashed #ff8a3d;
+}
+
+.note {
+  margin-top: 16px;
+  font-size: 13.5px;
+  color: var(--mute);
+}
+
+@media (max-width: 800px) {
+  .columns {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .roadmap {
+    margin-top: 56px;
+    padding: 0 4px;
+  }
+
+  .column {
+    padding: 20px;
+  }
+}

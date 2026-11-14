@@ -1,4 +1,5 @@
 import type { LocaleDictionary } from "./types";
+import outOfOffice from "./projects/out-of-office/tr";
 import { EMAIL, IMAGES, KNOWS_ABOUT, SOCIALS, technologies } from "./shared";
 
 const tr: LocaleDictionary = {
@@ -98,6 +99,7 @@ const tr: LocaleDictionary = {
         image: { ...IMAGES.gamePixel, alt: "Telefonda piksel grafikli bir oyun oynayan eller" },
         badge: "Unity · prototipten yayına",
       },
+      showcase: { projectSlug: "out-of-office", label: "Örnek proje: Son Mesai" },
     },
     {
       id: "product-design",
@@ -168,6 +170,9 @@ const tr: LocaleDictionary = {
 
   // Only real, approved client quotes go here. The section stays hidden while empty.
   testimonials: [],
+
+  // The first project is featured on the home page.
+  projects: [outOfOffice],
 };
 
 export default tr;
