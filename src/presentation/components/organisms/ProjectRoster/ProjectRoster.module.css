@@ -21,7 +21,7 @@
 }
 
 .group {
-  --accent: #7b5cff;
+  --accent: var(--p-deep);
   padding: 24px;
   border-radius: var(--radius-md);
   background: var(--soft);
@@ -29,12 +29,12 @@
   border-top: 4px solid var(--accent);
 }
 
-.group[data-group="obstacles"] {
-  --accent: #ff4d5f;
+.group:nth-child(2) {
+  --accent: var(--p-hot);
 }
 
-.group[data-group="power-ups"] {
-  --accent: #19b8d6;
+.group:nth-child(3) {
+  --accent: color-mix(in srgb, var(--p-cool) 72%, #000);
 }
 
 .groupTitle {

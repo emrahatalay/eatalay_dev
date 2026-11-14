@@ -1,3 +1,4 @@
+import type { ProjectPalette, ProjectSchema } from "../../../../domain/entities";
 import automatedRobot from "@/assets/images/out-of-office/automated-robot.jpg";
 import cookieWall from "@/assets/images/out-of-office/cookie-wall.jpg";
 import enCollection from "@/assets/images/out-of-office/en-collection.jpg";
@@ -85,3 +86,27 @@ export const STACK = [
   "Blender",
   "Python",
 ] as const;
+
+/** The site's own neon palette; the page was designed around it. */
+export const PALETTE: ProjectPalette = {
+  hot: "#ff4d5f",
+  warm: "#ff8a3d",
+  gold: "#ffc83d",
+  cool: "#4ee3ff",
+  deep: "#7b5cff",
+  magenta: "#d946ef",
+  soft: "#c9b8ff",
+  night: "#0b0a14",
+  nightSoft: "#1b1440",
+  done: "#22c55e",
+};
+
+export const SCHEMA: ProjectSchema = {
+  type: "VideoGame",
+  category: "GameApplication",
+  genre: ["Endless runner", "Arcade"],
+  platforms: ["Android", "iOS"],
+  free: true,
+  language: "C#",
+  runtime: "Unity 6",
+};

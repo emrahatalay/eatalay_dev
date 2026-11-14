@@ -4,14 +4,19 @@ import { Chip } from "@/presentation/components/atoms/Chip";
 import styles from "./ProjectRoster.module.css";
 
 /** Professions, obstacles and power-ups, side by side. */
-export function ProjectRoster({ groups }: { readonly groups: readonly RosterGroup[] }) {
+export interface ProjectRosterProps {
+  readonly groups: readonly RosterGroup[];
+  readonly title: string;
+}
+
+export function ProjectRoster({ groups, title }: ProjectRosterProps) {
   const t = useTranslations("Project");
 
   return (
     <section className={styles.roster} aria-labelledby="roster-title">
       <Chip>{t("rosterEyebrow")}</Chip>
       <h2 id="roster-title" className={styles.heading}>
-        {t("rosterTitle")}
+        {title}
       </h2>
 
       <div className={styles.groups}>

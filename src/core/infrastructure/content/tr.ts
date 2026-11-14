@@ -1,4 +1,5 @@
 import type { LocaleDictionary } from "./types";
+import hatimApp from "./projects/hatim-app/tr";
 import outOfOffice from "./projects/out-of-office/tr";
 import { EMAIL, IMAGES, KNOWS_ABOUT, SOCIALS, technologies } from "./shared";
 
@@ -86,6 +87,7 @@ const tr: LocaleDictionary = {
         image: { ...IMAGES.appPhone, alt: "Elde havada duran akıllı telefon" },
         badge: "App Store · Google Play",
       },
+      showcase: { projectSlug: "hatim-app", label: "Örnek proje: Hatim App" },
     },
     {
       id: "mobile-game",
@@ -172,7 +174,7 @@ const tr: LocaleDictionary = {
   testimonials: [],
 
   // The first project is featured on the home page.
-  projects: [outOfOffice],
+  projects: [outOfOffice, hatimApp],
 };
 
 export default tr;

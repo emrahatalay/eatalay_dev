@@ -4,13 +4,15 @@ import styles from "./CodeBlock.module.css";
 const KEYWORDS = new Set([
   "public", "private", "protected", "internal", "sealed", "abstract", "override", "virtual", "static",
   "readonly", "class", "struct", "interface", "void", "float", "int", "bool", "string", "new", "return",
-  "if", "else", "for", "foreach", "in", "var", "using", "namespace", "true", "false", "null", "in",
+  "if", "else", "for", "foreach", "in", "var", "using", "namespace", "true", "false", "null", "this",
+  "const", "let", "async", "await", "throw", "function", "type", "extends", "implements", "constructor",
+  "import", "export", "from", "of", "typeof", "undefined",
 ]);
 
 // Comments, strings, numbers with an optional "f", then identifiers.
 const TOKEN = /(\/\/[^\n]*)|("(?:\\.|[^"\\])*")|(\b\d+(?:\.\d+)?f?\b)|([A-Za-z_]\w*)/g;
 
-/** Tiny server-side C# highlighter: enough colour to read, no client JavaScript. */
+/** Tiny server-side C#/TypeScript highlighter: enough colour to read, no client JavaScript. */
 function highlight(code: string): ReactNode[] {
   const out: ReactNode[] = [];
   let last = 0;

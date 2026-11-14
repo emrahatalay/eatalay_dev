@@ -15,14 +15,14 @@ export interface ProjectHeroProps {
 /** Dark poster for a project: name, slogan, two phones. */
 export function ProjectHero({ project, header }: ProjectHeroProps) {
   const t = useTranslations("Project");
-  const { hero, badges, repository } = project;
+  const { hero, badges, link, schema } = project;
   const [front, back] = hero.phones;
 
   return (
     <header className={styles.hero} id="top">
       <div className={styles.backdrop} aria-hidden="true" />
       <div className={styles.grid} aria-hidden="true" />
-      <div className={styles.road} aria-hidden="true" />
+      {schema.type === "VideoGame" && <div className={styles.road} aria-hidden="true" />}
 
       {header}
 
@@ -43,8 +43,8 @@ export function ProjectHero({ project, header }: ProjectHeroProps) {
 
           <div className={styles.actions}>
             <ButtonLink href="#screens">{t("screens")}</ButtonLink>
-            <ButtonLink href={repository.url} variant="light" target="_blank" rel="noopener noreferrer">
-              {repository.label}
+            <ButtonLink href={link.url} variant="light" target="_blank" rel="noopener noreferrer">
+              {link.label}
             </ButtonLink>
           </div>
 

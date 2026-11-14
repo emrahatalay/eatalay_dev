@@ -1,11 +1,20 @@
 import type { Project } from "../../../../domain/entities";
-import { MAGNET_EFFECT_SOURCE, REPOSITORY_URL, SHOTS, SLUG, STACK } from "./shared";
+import { MAGNET_EFFECT_SOURCE, PALETTE, REPOSITORY_URL, SCHEMA, SHOTS, SLUG, STACK } from "./shared";
 
 const outOfOfficeEn: Project = {
   slug: SLUG,
   name: "Out of Office",
   badges: ["Unity 6", "C#", "Android · iOS", "English · Türkçe"],
-  repository: { label: "Source on GitHub", url: REPOSITORY_URL },
+  link: { kind: "source", label: "Source on GitHub", short: "GitHub", url: REPOSITORY_URL },
+  labels: {
+    nav: "Game",
+    galleryTitle: "Straight from the game",
+    galleryHint: "All captured in-game on a 20:9 portrait phone screen. Scroll to browse.",
+    mechanicsEyebrow: "Two mechanics that set it apart",
+    rosterTitle: "Who's who, and what it does",
+  },
+  palette: PALETTE,
+  schema: SCHEMA,
 
   hero: {
     eyebrow: "Mobile game · Endless runner · In development",
@@ -64,7 +73,7 @@ const outOfOfficeEn: Project = {
         "The memory carries over between runs; change your habits and it changes too.",
         "At least one lane always stays open in every obstacle pattern. Hard, but always fair.",
       ],
-      codeName: "AdaptiveDirector",
+      codeName: "AdaptiveDirector.cs",
       screenshot: { image: { ...SHOTS.stumble, alt: "The Designer stumbles after hitting an obstacle, with more obstacles ahead" }, caption: "The stumble" },
     },
     {
@@ -76,7 +85,7 @@ const outOfOfficeEn: Project = {
         "Buy the job back with coins: it starts at 100 and grows 1.5x with every automation.",
         "The Intern never gets automated; if your pick is locked, the Intern runs instead.",
       ],
-      codeName: "Workforce",
+      codeName: "Workforce.cs",
       screenshot: { image: { ...SHOTS.automatedRobot, alt: "The automated Developer's blue robot charging at the Intern" }, caption: "Your old job, coming at you" },
     },
   ],

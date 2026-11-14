@@ -53,7 +53,6 @@
     "retry": "Tekrar dene"
   },
   "Project": {
-    "navGame": "Oyun",
     "navStory": "Hikâye",
     "navScreens": "Ekranlar",
     "navCode": "Kod yapısı",
@@ -62,12 +61,8 @@
     "facts": "Rakamlarla",
     "storyEyebrow": "Hikâye",
     "galleryEyebrow": "Ekran görüntüleri",
-    "galleryTitle": "Oyundan kareler",
-    "galleryHint": "Hepsi oyunun içinden, 20:9 dikey telefon ekranında alındı. Kaydırarak gez.",
     "galleryLabel": "Ekran görüntüsü galerisi",
-    "mechanicsEyebrow": "Oyunu farklı kılan iki mekanik",
     "rosterEyebrow": "İçerik",
-    "rosterTitle": "Kim kimdir, ne işe yarar?",
     "architectureEyebrow": "Kod yapısı",
     "layersTitle": "Katmanlar ve bağımlılık yönü",
     "dependsOn": "Bağlı olduğu",
@@ -79,12 +74,6 @@
     "done": "Yapıldı",
     "next": "Sırada",
     "ctaEyebrow": "Birlikte yapalım",
-    "ctaPrimary": "Görüşme ayarla",
-    "ctaSource": "Kaynak kodu incele",
-    "breadcrumbProjects": "Projeler"
-  },
-  "FeaturedProject": {
-    "eyebrow": "Öne çıkan proje",
-    "source": "GitHub"
+    "ctaPrimary": "Görüşme ayarla"
   }
 }

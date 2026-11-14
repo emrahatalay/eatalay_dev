@@ -63,41 +63,53 @@ export function serializeJsonLd(data: unknown): string {
   return JSON.stringify(data).replace(/</g, "\\u003c");
 }
 
-/** schema.org graph for a project page: the game, its source code and a breadcrumb. */
+/** schema.org graph for a project page: the product, its source code when public, and a breadcrumb. */
 export function buildProjectStructuredData(page: ProjectPage, projectsLabel: string) {
   const { locale, project, profile } = page;
+  const { schema, link } = project;
   const pageUrl = absoluteUrl(projectPath(locale, project.slug));
   const homeUrl = absoluteUrl(localePath(locale));
   const personId = `${siteConfig.url}/#person`;
+  const isSource = link.kind === "source";
+
+  const product = {
+    "@type": schema.type,
+    "@id": `${pageUrl}#product`,
+    name: project.name,
+    alternateName: project.hero.accent,
+    url: isSource ? pageUrl : link.url,
+    mainEntityOfPage: pageUrl,
+    description: project.seo.description,
+    inLanguage: locale,
+    ...(schema.genre ? { genre: [...schema.genre] } : {}),
+    ...(schema.type === "VideoGame" ? { gamePlatform: [...schema.platforms] } : {}),
+    applicationCategory: schema.category,
+    operatingSystem: schema.platforms.join(", "),
+    ...(schema.free ? { offers: { "@type": "Offer", price: 0, priceCurrency: "USD" } } : {}),
+    image: project.gallery.map((s) => absoluteUrl(s.image.src)),
+    author: { "@id": personId, "@type": "Person", name: profile.name, url: siteConfig.url },
+    sameAs: [link.url],
+  };
+
+  const source = isSource
+    ? [
+        {
+          "@type": "SoftwareSourceCode",
+          "@id": `${pageUrl}#source`,
+          name: project.name,
+          codeRepository: link.url,
+          ...(schema.language ? { programmingLanguage: schema.language } : {}),
+          ...(schema.runtime ? { runtimePlatform: schema.runtime } : {}),
+          author: { "@id": personId },
+        },
+      ]
+    : [];
 
   return {
     "@context": "https://schema.org",
     "@graph": [
-      {
-        "@type": "VideoGame",
-        "@id": `${pageUrl}#game`,
-        name: project.name,
-        alternateName: project.hero.accent,
-        url: pageUrl,
-        description: project.seo.description,
-        inLanguage: locale,
-        genre: ["Endless runner", "Arcade"],
-        gamePlatform: ["Android", "iOS"],
-        applicationCategory: "Game",
-        operatingSystem: "Android, iOS",
-        image: project.gallery.map((s) => absoluteUrl(s.image.src)),
-        author: { "@id": personId, "@type": "Person", name: profile.name, url: siteConfig.url },
-        sameAs: [project.repository.url],
-      },
-      {
-        "@type": "SoftwareSourceCode",
-        "@id": `${pageUrl}#source`,
-        name: project.name,
-        codeRepository: project.repository.url,
-        programmingLanguage: "C#",
-        runtimePlatform: "Unity 6",
-        author: { "@id": personId },
-      },
+      product,
+      ...source,
       {
         "@type": "BreadcrumbList",
         itemListElement: [

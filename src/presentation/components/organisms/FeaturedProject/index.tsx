@@ -1,23 +1,30 @@
-import { useTranslations } from "next-intl";
 import type { Project } from "@/core/domain/entities";
 import { ButtonLink } from "@/presentation/components/atoms/ButtonLink";
 import { DisplayHeading } from "@/presentation/components/atoms/DisplayHeading";
 import { SerifAccent } from "@/presentation/components/atoms/SerifAccent";
 import { PhoneFrame } from "@/presentation/components/molecules/PhoneFrame";
+import { paletteStyle } from "@/presentation/theme/project-palette";
 import styles from "./FeaturedProject.module.css";
 
 export interface FeaturedProjectProps {
   readonly project: Project;
   readonly href: string;
+  /** Mirrors the layout so stacked banners alternate sides. */
+  readonly reverse?: boolean;
 }
 
 /** Home-page banner that sends visitors to a project's case study. */
-export function FeaturedProject({ project, href }: FeaturedProjectProps) {
-  const t = useTranslations("FeaturedProject");
-  const { teaser, hero, repository } = project;
+export function FeaturedProject({ project, href, reverse = false }: FeaturedProjectProps) {
+  const { teaser, hero, link, slug } = project;
+  const titleId = `featured-${slug}`;
 
   return (
-    <section className={styles.featured} id="featured" aria-labelledby="featured-title">
+    <section
+      className={reverse ? `${styles.featured} ${styles.reverse}` : styles.featured}
+      id={titleId}
+      aria-labelledby={`${titleId}-title`}
+      style={paletteStyle(project.palette)}
+    >
       <div className={styles.backdrop} aria-hidden="true" />
 
       <div className={styles.copy}>
@@ -25,7 +32,7 @@ export function FeaturedProject({ project, href }: FeaturedProjectProps) {
           <span className={styles.dot} aria-hidden="true" />
           {teaser.kicker}
         </p>
-        <DisplayHeading id="featured-title" className={styles.title}>
+        <DisplayHeading id={`${titleId}-title`} className={styles.title}>
           <a href={href} className={styles.titleLink}>
             <span className={styles.name}>{hero.title}</span>{" "}
             <span className={styles.accent}>
@@ -37,8 +44,8 @@ export function FeaturedProject({ project, href }: FeaturedProjectProps) {
         <p className={styles.text}>{teaser.text}</p>
         <div className={styles.actions}>
           <ButtonLink href={href}>{teaser.ctaLabel}</ButtonLink>
-          <ButtonLink href={repository.url} variant="light" target="_blank" rel="noopener noreferrer">
-            {t("source")}
+          <ButtonLink href={link.url} variant="light" target="_blank" rel="noopener noreferrer">
+            {link.short}
           </ButtonLink>
         </div>
       </div>

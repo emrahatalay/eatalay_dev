@@ -1,17 +1,19 @@
-import { useTranslations } from "next-intl";
 import type { Mechanic } from "@/core/domain/entities";
 import { Chip } from "@/presentation/components/atoms/Chip";
 import { PhoneFrame } from "@/presentation/components/molecules/PhoneFrame";
 import styles from "./ProjectMechanics.module.css";
 
 /** The signature mechanics, each with its screenshot and the class behind it. */
-export function ProjectMechanics({ mechanics }: { readonly mechanics: readonly Mechanic[] }) {
-  const t = useTranslations("Project");
+export interface ProjectMechanicsProps {
+  readonly mechanics: readonly Mechanic[];
+  readonly eyebrow: string;
+}
 
+export function ProjectMechanics({ mechanics, eyebrow }: ProjectMechanicsProps) {
   return (
     <section className={styles.mechanics} aria-labelledby="mechanics-title">
       <h2 id="mechanics-title" className={styles.eyebrowWrap}>
-        <Chip>{t("mechanicsEyebrow")}</Chip>
+        <Chip>{eyebrow}</Chip>
       </h2>
 
       <div className={styles.list}>
@@ -31,7 +33,7 @@ export function ProjectMechanics({ mechanics }: { readonly mechanics: readonly M
                   <li key={b}>{b}</li>
                 ))}
               </ul>
-              <code className={styles.code}>{m.codeName}.cs</code>
+              <code className={styles.code}>{m.codeName}</code>
             </div>
             <div className={styles.visual}>
               <PhoneFrame image={m.screenshot.image} sizes="(max-width: 640px) 60vw, 260px" className={styles.phone} />

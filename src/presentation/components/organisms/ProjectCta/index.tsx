@@ -6,11 +6,11 @@ import styles from "./ProjectCta.module.css";
 export interface ProjectCtaProps {
   readonly cta: Cta;
   readonly contactHref: string;
-  readonly repository: ProjectLink;
+  readonly link: ProjectLink;
 }
 
-/** Closing call to action: book a call or read the source. */
-export function ProjectCta({ cta, contactHref, repository }: ProjectCtaProps) {
+/** Closing call to action: book a call or open the project. */
+export function ProjectCta({ cta, contactHref, link }: ProjectCtaProps) {
   const t = useTranslations("Project");
 
   return (
@@ -25,8 +25,8 @@ export function ProjectCta({ cta, contactHref, repository }: ProjectCtaProps) {
         <ButtonLink href={contactHref} variant="light">
           {t("ctaPrimary")}
         </ButtonLink>
-        <ButtonLink href={repository.url} target="_blank" rel="noopener noreferrer" className={styles.ghost}>
-          {t("ctaSource")}
+        <ButtonLink href={link.url} target="_blank" rel="noopener noreferrer" className={styles.ghost}>
+          {link.label}
         </ButtonLink>
       </div>
     </section>

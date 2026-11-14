@@ -36,7 +36,7 @@
   width: 340px;
   height: 340px;
   border-radius: 50%;
-  background: conic-gradient(from 120deg, #ff4d5f, #ffc83d, #4ee3ff, #7b5cff, #ff4d5f);
+  background: conic-gradient(from 120deg, var(--p-hot), var(--p-gold), var(--p-cool), var(--p-deep), var(--p-hot));
   filter: blur(60px);
   opacity: calc(var(--glow-opacity) * 0.5);
 }
@@ -68,7 +68,7 @@
   border-radius: 50%;
   font-size: 12px;
   color: #fff;
-  background: linear-gradient(135deg, #ff4d5f, #ff8a3d);
+  background: linear-gradient(135deg, var(--p-hot), var(--p-warm));
 }
 
 .title {
@@ -111,8 +111,8 @@
   width: 9px;
   height: 9px;
   border-radius: 3px;
-  background: #4ee3ff;
-  box-shadow: 0 0 10px rgba(78, 227, 255, 0.7);
+  background: var(--p-cool);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--p-cool) 70%, transparent);
 }
 
 .code {
@@ -122,8 +122,8 @@
   border-radius: 10px;
   font-family: ui-monospace, "SF Mono", Menlo, monospace;
   font-size: 13px;
-  color: #c9b8ff;
-  background: #15131f;
+  color: var(--p-soft);
+  background: var(--p-night);
 }
 
 .text > .bullets + .code {

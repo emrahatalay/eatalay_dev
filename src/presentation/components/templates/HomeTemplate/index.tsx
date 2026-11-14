@@ -15,7 +15,7 @@ import { PageShell } from "../PageShell";
 /** Lays out the home page from the read model. No data fetching here. */
 export function HomeTemplate({ page }: { readonly page: HomePage }) {
   const t = useTranslations("Nav");
-  const { profile, content, services, technologies, faqs, testimonials, featuredProject, locale } = page;
+  const { profile, content, services, technologies, faqs, testimonials, featuredProjects, locale } = page;
 
   const navItems: NavItem[] = [
     { href: "#top", label: t("home") },
@@ -40,9 +40,14 @@ export function HomeTemplate({ page }: { readonly page: HomePage }) {
       <main id="main" tabIndex={-1}>
         <About content={content.about} />
         <Work services={services} />
-        {featuredProject && (
-          <FeaturedProject project={featuredProject} href={projectPath(locale, featuredProject.slug)} />
-        )}
+        {featuredProjects.map((project, i) => (
+          <FeaturedProject
+            key={project.slug}
+            project={project}
+            href={projectPath(locale, project.slug)}
+            reverse={i % 2 === 1}
+          />
+        ))}
         <Testimonials intro={content.testimonials} testimonials={testimonials} />
         <Faq
           intro={content.faq}

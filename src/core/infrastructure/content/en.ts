@@ -1,4 +1,5 @@
 import type { LocaleDictionary } from "./types";
+import hatimApp from "./projects/hatim-app/en";
 import outOfOffice from "./projects/out-of-office/en";
 import { EMAIL, IMAGES, KNOWS_ABOUT, SOCIALS, technologies } from "./shared";
 
@@ -84,6 +85,7 @@ const en: LocaleDictionary = {
         image: { ...IMAGES.appPhone, alt: "A smartphone held up in the air" },
         badge: "App Store · Google Play",
       },
+      showcase: { projectSlug: "hatim-app", label: "Case study: Hatim App" },
     },
     {
       id: "mobile-game",
@@ -170,7 +172,7 @@ const en: LocaleDictionary = {
   testimonials: [],
 
   // The first project is featured on the home page.
-  projects: [outOfOffice],
+  projects: [outOfOffice, hatimApp],
 };
 
 export default en;

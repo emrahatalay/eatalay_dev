@@ -4,9 +4,9 @@
   border-radius: var(--radius-lg);
   color: #fff;
   background:
-    radial-gradient(700px 420px at 100% 0%, rgba(123, 92, 255, 0.3), transparent 70%),
-    radial-gradient(600px 420px at 0% 100%, rgba(78, 227, 255, 0.14), transparent 70%),
-    #0b0a14;
+    radial-gradient(700px 420px at 100% 0%, color-mix(in srgb, var(--p-deep) 30%, transparent), transparent 70%),
+    radial-gradient(600px 420px at 0% 100%, color-mix(in srgb, var(--p-cool) 14%, transparent), transparent 70%),
+    var(--p-night);
   scroll-margin-top: 24px;
 }
 
@@ -38,7 +38,7 @@
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #4ee3ff;
+  color: var(--p-cool);
 }
 
 .split .subhead {
@@ -69,7 +69,7 @@
   font-family: ui-monospace, "SF Mono", Menlo, monospace;
   font-size: 14px;
   font-weight: 600;
-  color: #ffc83d;
+  color: var(--p-gold);
 }
 
 .role {
@@ -88,8 +88,8 @@
 .dep {
   padding: 2px 9px;
   border-radius: 999px;
-  color: #c9b8ff;
-  background: rgba(123, 92, 255, 0.18);
+  color: var(--p-soft);
+  background: color-mix(in srgb, var(--p-deep) 18%, transparent);
 }
 
 .none {
@@ -132,7 +132,7 @@
   font-family: var(--font-display);
   font-weight: 800;
   font-size: 14px;
-  color: #ff4d5f;
+  color: var(--p-hot);
 }
 
 .pTitle {

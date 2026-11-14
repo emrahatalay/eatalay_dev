@@ -14,6 +14,7 @@ import { ProjectWorkflow } from "@/presentation/components/organisms/ProjectWork
 import { SiteFooter } from "@/presentation/components/organisms/SiteFooter";
 import { SiteHeader } from "@/presentation/components/organisms/SiteHeader";
 import { homeSection, localePath, projectPath } from "@/shared/config/site";
+import { paletteStyle } from "@/presentation/theme/project-palette";
 import { PageShell } from "../PageShell";
 
 /** Lays out a project case study from the read model. No data fetching here. */
@@ -23,7 +24,7 @@ export function ProjectTemplate({ page }: { readonly page: ProjectPage }) {
   const home = localePath(locale);
 
   const navItems: NavItem[] = [
-    { href: "#top", label: t("Project.navGame") },
+    { href: "#top", label: project.labels.nav },
     { href: "#story", label: t("Project.navStory") },
     { href: "#screens", label: t("Project.navScreens") },
     { href: "#code", label: t("Project.navCode") },
@@ -39,7 +40,7 @@ export function ProjectTemplate({ page }: { readonly page: ProjectPage }) {
   ];
 
   return (
-    <PageShell skipLabel={t("Nav.skip")}>
+    <PageShell skipLabel={t("Nav.skip")} style={paletteStyle(project.palette)}>
       <ProjectHero
         project={project}
         header={
@@ -56,13 +57,13 @@ export function ProjectTemplate({ page }: { readonly page: ProjectPage }) {
       <main id="main" tabIndex={-1}>
         <ProjectFacts facts={project.facts} />
         <ProjectStory story={project.story} />
-        <ProjectGallery shots={project.gallery} />
-        <ProjectMechanics mechanics={project.mechanics} />
-        <ProjectRoster groups={project.roster} />
+        <ProjectGallery shots={project.gallery} title={project.labels.galleryTitle} hint={project.labels.galleryHint} />
+        <ProjectMechanics mechanics={project.mechanics} eyebrow={project.labels.mechanicsEyebrow} />
+        <ProjectRoster groups={project.roster} title={project.labels.rosterTitle} />
         <ProjectArchitecture architecture={project.architecture} />
         <ProjectWorkflow workflow={project.workflow} />
         <ProjectRoadmap roadmap={project.roadmap} />
-        <ProjectCta cta={project.cta} contactHref={contactHref} repository={project.repository} />
+        <ProjectCta cta={project.cta} contactHref={contactHref} link={project.link} />
       </main>
       <SiteFooter
         profile={profile}

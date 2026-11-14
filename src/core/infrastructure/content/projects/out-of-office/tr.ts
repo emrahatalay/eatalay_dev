@@ -1,11 +1,20 @@
 import type { Project } from "../../../../domain/entities";
-import { MAGNET_EFFECT_SOURCE, REPOSITORY_URL, SHOTS, SLUG, STACK } from "./shared";
+import { MAGNET_EFFECT_SOURCE, PALETTE, REPOSITORY_URL, SCHEMA, SHOTS, SLUG, STACK } from "./shared";
 
 const outOfOfficeTr: Project = {
   slug: SLUG,
   name: "Son Mesai",
   badges: ["Unity 6", "C#", "Android · iOS", "Türkçe · English"],
-  repository: { label: "GitHub'da kaynak kod", url: REPOSITORY_URL },
+  link: { kind: "source", label: "GitHub'da kaynak kod", short: "GitHub", url: REPOSITORY_URL },
+  labels: {
+    nav: "Oyun",
+    galleryTitle: "Oyundan kareler",
+    galleryHint: "Hepsi oyunun içinden, 20:9 dikey telefon ekranında alındı. Kaydırarak gez.",
+    mechanicsEyebrow: "Oyunu farklı kılan iki mekanik",
+    rosterTitle: "Kim kimdir, ne işe yarar?",
+  },
+  palette: PALETTE,
+  schema: SCHEMA,
 
   hero: {
     eyebrow: "Mobil oyun · Sonsuz koşu · Geliştiriliyor",
@@ -64,7 +73,7 @@ const outOfOfficeTr: Project = {
         "Hafıza koşular arasında korunur; alışkanlığını değiştirirsen o da değişir.",
         "Her engel dizisinde en az bir şerit mutlaka açık kalır. Zor ama hep adil.",
       ],
-      codeName: "AdaptiveDirector",
+      codeName: "AdaptiveDirector.cs",
       screenshot: { image: { ...SHOTS.stumble, alt: "Grafiker engele çarpıp tökezliyor, önünde yeni engeller" }, caption: "Tökezleme anı" },
     },
     {
@@ -76,7 +85,7 @@ const outOfOfficeTr: Project = {
         "Meslek altınla geri alınır: bedel 100'den başlar, her otomatikleşmede 1,5 katına çıkar.",
         "Stajyer otomatikleşmez; kilitli meslek seçiliyse koşuya o çıkar.",
       ],
-      codeName: "Workforce",
+      codeName: "Workforce.cs",
       screenshot: { image: { ...SHOTS.automatedRobot, alt: "Otomatikleşen Yazılımcının mavi robotu Stajyere doğru koşuyor" }, caption: "Eski işin karşıdan geliyor" },
     },
   ],

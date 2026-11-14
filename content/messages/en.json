@@ -53,7 +53,6 @@
     "retry": "Try again"
   },
   "Project": {
-    "navGame": "Game",
     "navStory": "Story",
     "navScreens": "Screens",
     "navCode": "Code",
@@ -62,12 +61,8 @@
     "facts": "By the numbers",
     "storyEyebrow": "Story",
     "galleryEyebrow": "Screenshots",
-    "galleryTitle": "Straight from the game",
-    "galleryHint": "All captured in-game on a 20:9 portrait phone screen. Scroll to browse.",
     "galleryLabel": "Screenshot gallery",
-    "mechanicsEyebrow": "Two mechanics that set it apart",
     "rosterEyebrow": "Content",
-    "rosterTitle": "Who's who, and what it does",
     "architectureEyebrow": "Code structure",
     "layersTitle": "Layers and dependency direction",
     "dependsOn": "Depends on",
@@ -79,12 +74,6 @@
     "done": "Done",
     "next": "Up next",
     "ctaEyebrow": "Let's build one",
-    "ctaPrimary": "Book a call",
-    "ctaSource": "Browse the source",
-    "breadcrumbProjects": "Projects"
-  },
-  "FeaturedProject": {
-    "eyebrow": "Featured project",
-    "source": "GitHub"
+    "ctaPrimary": "Book a call"
   }
 }

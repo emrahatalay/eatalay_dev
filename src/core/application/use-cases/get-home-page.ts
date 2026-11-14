@@ -27,7 +27,7 @@ export interface HomePage {
   readonly faqs: readonly FaqItem[];
   readonly testimonials: readonly Testimonial[];
   /** Project promoted on the home page, if any. */
-  readonly featuredProject: Project | null;
+  readonly featuredProjects: readonly Project[];
 }
 
 export interface GetHomePageDeps {
@@ -65,7 +65,7 @@ export class GetHomePage {
       technologies,
       faqs: faqList,
       testimonials: testimonialList,
-      featuredProject: projectList[0] ?? null,
+      featuredProjects: projectList,
     };
   }
 }

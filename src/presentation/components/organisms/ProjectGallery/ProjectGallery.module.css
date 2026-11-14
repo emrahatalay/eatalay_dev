@@ -6,9 +6,9 @@
   border-radius: var(--radius-lg);
   color: #fff;
   background:
-    radial-gradient(700px 360px at 85% 0%, rgba(78, 227, 255, 0.22), transparent 70%),
-    radial-gradient(700px 400px at 10% 100%, rgba(255, 77, 95, 0.2), transparent 70%),
-    linear-gradient(180deg, #1b1440, #0b0a14 70%);
+    radial-gradient(700px 360px at 85% 0%, color-mix(in srgb, var(--p-cool) 22%, transparent), transparent 70%),
+    radial-gradient(700px 400px at 10% 100%, color-mix(in srgb, var(--p-hot) 20%, transparent), transparent 70%),
+    linear-gradient(180deg, var(--p-night-soft), var(--p-night) 70%);
   scroll-margin-top: 24px;
 }
 
@@ -21,7 +21,7 @@
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #4ee3ff;
+  color: var(--p-cool);
 }
 
 .title {
@@ -90,7 +90,7 @@
   flex: none;
   font-family: var(--font-display);
   font-weight: 800;
-  color: #ffc83d;
+  color: var(--p-gold);
 }
 
 @media (max-width: 640px) {

@@ -7,9 +7,63 @@ export interface Screenshot {
   readonly caption: string;
 }
 
+/** The one outward link a project page promotes: its public source code or the live product. */
 export interface ProjectLink {
+  readonly kind: "source" | "website";
+  /** Full button label, e.g. "Source on GitHub". */
   readonly label: string;
+  /** Compact label for small buttons, e.g. "GitHub". */
+  readonly short: string;
   readonly url: string;
+}
+
+/** Copy that changes with the kind of product (a game reads differently from an app). */
+export interface ProjectLabels {
+  /** First item of the page nav, e.g. "Game" or "App". */
+  readonly nav: string;
+  readonly galleryTitle: string;
+  readonly galleryHint: string;
+  readonly mechanicsEyebrow: string;
+  readonly rosterTitle: string;
+}
+
+/**
+ * Brand colours of the product as hex values. The page keeps the site's layout and type,
+ * and takes its glow, gradients and highlights from these.
+ */
+export interface ProjectPalette {
+  /** Main highlight: gradient start, punchline, glow. */
+  readonly hot: string;
+  readonly warm: string;
+  /** Light highlight: gradient end, status dot. */
+  readonly gold: string;
+  /** Secondary accent on dark surfaces. */
+  readonly cool: string;
+  readonly deep: string;
+  readonly magenta: string;
+  /** Soft text accent on dark surfaces. */
+  readonly soft: string;
+  readonly night: string;
+  readonly nightSoft: string;
+  /** Finished items, e.g. roadmap checks. */
+  readonly done: string;
+  /**
+   * Optional replacements for the site-wide accent gradients (headline accent,
+   * buttons, chip borders). Leave out to keep the site's own gradients.
+   */
+  readonly gradients?: { readonly text: string; readonly button: string };
+}
+
+/** What schema.org should say the product is. */
+export interface ProjectSchema {
+  readonly type: "VideoGame" | "MobileApplication";
+  readonly category: string;
+  readonly genre?: readonly string[];
+  readonly platforms: readonly string[];
+  readonly free: boolean;
+  /** Language and runtime of the source, when the source is public. */
+  readonly language?: string;
+  readonly runtime?: string;
 }
 
 /** A short titled paragraph: a principle, a step, a feature. */
@@ -38,13 +92,13 @@ export interface ProjectStory {
   readonly screenshot: Screenshot;
 }
 
-/** One gameplay mechanic that sets the game apart, with its proof on screen. */
+/** One mechanic that sets the project apart, with its proof on screen. */
 export interface Mechanic {
   readonly tag: string;
   readonly title: string;
   readonly text: string;
   readonly bullets: readonly string[];
-  /** Name of the class that implements it, shown as code. */
+  /** File or package that implements it, shown as code (e.g. `Workforce.cs`). */
   readonly codeName: string;
   readonly screenshot: Screenshot;
 }
@@ -116,7 +170,10 @@ export interface Project {
   readonly name: string;
   /** Labels such as "Unity 6", "Android · iOS". */
   readonly badges: readonly string[];
-  readonly repository: ProjectLink;
+  readonly link: ProjectLink;
+  readonly labels: ProjectLabels;
+  readonly palette: ProjectPalette;
+  readonly schema: ProjectSchema;
   readonly hero: ProjectHero;
   readonly facts: readonly Metric[];
   readonly story: ProjectStory;

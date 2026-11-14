@@ -4,7 +4,7 @@ import { ImageResponse } from "next/og";
 import { loadProjectPage, loadProjectSlugs } from "@/core/di/container";
 import { isLocale, DEFAULT_LOCALE, LOCALES } from "@/core/domain/locale";
 
-export const alt = "Out of Office";
+export const alt = "eatalay.dev project";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -24,6 +24,12 @@ async function screenshotDataUri(slug: string, src: string): Promise<string | nu
   } catch {
     return null;
   }
+}
+
+/** "#rrggbb" + alpha → rgba(); Satori does not support color-mix. */
+function glow(hex: string, alpha: number): string {
+  const n = Number.parseInt(hex.slice(1), 16);
+  return `rgba(${(n >> 16) & 255},${(n >> 8) & 255},${n & 255},${alpha})`;
 }
 
 /** Share card for a project: name, slogan and the two hero screenshots in phone frames. */
@@ -50,9 +56,9 @@ export default async function ProjectOpenGraphImage({
           display: "flex",
           color: "#fff",
           fontFamily: "Archivo",
-          backgroundColor: "#07060d",
+          backgroundColor: project?.palette.night ?? "#07060d",
           backgroundImage:
-            "radial-gradient(700px 500px at 85% 40%, rgba(123,92,255,.55), transparent 70%), radial-gradient(500px 400px at 5% 110%, rgba(255,106,43,.45), transparent 70%)",
+            `radial-gradient(700px 500px at 85% 40%, ${glow(project?.palette.deep ?? "#7b5cff", 0.55)}, transparent 70%), radial-gradient(500px 400px at 5% 110%, ${glow(project?.palette.hot ?? "#ff6a2b", 0.45)}, transparent 70%)`,
         }}
       >
         <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", padding: 64, width: 700 }}>
@@ -73,15 +79,15 @@ export default async function ProjectOpenGraphImage({
             <div style={{ display: "flex", fontSize: 104, lineHeight: 0.95 }}>
               {(project?.hero.title ?? "").toLocaleUpperCase(locale)}
             </div>
-            <div style={{ display: "flex", fontSize: 40, color: "#b9a6ff", marginTop: 12 }}>
+            <div style={{ display: "flex", fontSize: 40, color: project?.palette.soft ?? "#b9a6ff", marginTop: 12 }}>
               {project?.hero.accent ?? ""}
             </div>
-            <div style={{ display: "flex", fontSize: 34, marginTop: 36, color: "#ffb08a" }}>
+            <div style={{ display: "flex", fontSize: 34, marginTop: 36, color: project?.palette.gold ?? "#ffb08a" }}>
               {project?.hero.slogan ?? ""}
             </div>
           </div>
           <div style={{ display: "flex", fontSize: 22, color: "rgba(255,255,255,.7)" }}>
-            eatalay.dev · Unity 6 · Android · iOS
+            {footerLine(project?.badges ?? [])}
           </div>
         </div>
         <div style={{ display: "flex", position: "relative", flex: 1 }}>
@@ -112,4 +118,15 @@ export default async function ProjectOpenGraphImage({
     ),
     { ...size, fonts: [{ name: "Archivo", data: font, style: "normal", weight: 900 }] },
   );
+}
+
+/** "eatalay.dev · badge · badge", keeping only as many badges as fit on one line. */
+function footerLine(badges: readonly string[], maxLength = 44): string {
+  let line = "eatalay.dev";
+  for (const badge of badges) {
+    const next = `${line} · ${badge}`;
+    if (next.length > maxLength) break;
+    line = next;
+  }
+  return line;
 }

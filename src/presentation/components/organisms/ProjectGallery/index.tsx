@@ -5,7 +5,13 @@ import { PhoneFrame } from "@/presentation/components/molecules/PhoneFrame";
 import styles from "./ProjectGallery.module.css";
 
 /** Horizontally scrolling strip of phone screenshots (CSS scroll snap, no JavaScript). */
-export function ProjectGallery({ shots }: { readonly shots: readonly Screenshot[] }) {
+export interface ProjectGalleryProps {
+  readonly shots: readonly Screenshot[];
+  readonly title: string;
+  readonly hint: string;
+}
+
+export function ProjectGallery({ shots, title, hint }: ProjectGalleryProps) {
   const t = useTranslations("Project");
 
   return (
@@ -13,9 +19,9 @@ export function ProjectGallery({ shots }: { readonly shots: readonly Screenshot[
       <div className={styles.head}>
         <p className={styles.eyebrow}>{t("galleryEyebrow")}</p>
         <DisplayHeading id="screens-title" className={styles.title}>
-          {t("galleryTitle")}
+          {title}
         </DisplayHeading>
-        <p className={styles.hint}>{t("galleryHint")}</p>
+        <p className={styles.hint}>{hint}</p>
       </div>
 
       {/* Focusable so keyboard users can scroll it with the arrow keys. */}

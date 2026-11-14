@@ -7,7 +7,7 @@
   border-radius: var(--radius-lg);
   color: #fff;
   text-align: center;
-  background: linear-gradient(120deg, #ff4d5f, #d946ef 45%, #7b5cff);
+  background: linear-gradient(120deg, var(--p-hot), var(--p-magenta) 45%, var(--p-deep));
 }
 
 .glow {
@@ -15,7 +15,7 @@
   inset: auto -10% -60% -10%;
   z-index: -1;
   height: 120%;
-  background: radial-gradient(closest-side, rgba(255, 200, 61, 0.55), transparent);
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--p-gold) 55%, transparent), transparent);
   filter: blur(30px);
 }
 

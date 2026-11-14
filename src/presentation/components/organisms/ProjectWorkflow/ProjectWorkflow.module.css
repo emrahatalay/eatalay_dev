@@ -57,7 +57,7 @@
   font-size: 20px;
   color: #fff;
   background: var(--g-btn);
-  box-shadow: 0 12px 24px -10px rgba(217, 70, 239, 0.6);
+  box-shadow: 0 12px 24px -10px color-mix(in srgb, var(--p-magenta) 60%, transparent);
 }
 
 .title {
