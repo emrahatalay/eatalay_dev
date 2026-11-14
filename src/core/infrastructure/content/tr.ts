@@ -3,7 +3,7 @@ import hatimApp from "./projects/hatim-app/tr";
 import { SHOTS as hatimShots } from "./projects/hatim-app/shared";
 import outOfOffice from "./projects/out-of-office/tr";
 import { SHOTS as gameShots } from "./projects/out-of-office/shared";
-import { EMAIL, IMAGES, KNOWS_ABOUT, SOCIALS, technologies } from "./shared";
+import { EMAIL, KNOWS_ABOUT, SOCIALS, technologies } from "./shared";
 
 const tr: LocaleDictionary = {
   profile: {
@@ -80,6 +80,8 @@ const tr: LocaleDictionary = {
         "mobil oyun geliştirme",
         "yapay zeka otomasyon",
         "Unity geliştirici",
+        "React Native geliştirici",
+        "Expo uygulama geliştirme",
         "Flutter geliştirici",
         "iOS Android uygulama",
         "freelance yazılım geliştirici",
@@ -95,11 +97,18 @@ const tr: LocaleDictionary = {
       shortTitle: "Mobil uygulama",
       title: { lead: "Mobil", accent: "Uygulama" },
       description:
-        "iOS ve Android için yerel hissi veren, hızlı ve bakımı kolay uygulamalar. Fikir doğrulamasından mağaza yayınına.",
-      tags: ["Araştırma", "Tel kafes", "Swift · Kotlin", "Flutter", "Mağaza yayını"],
+        "Expo ve React Native ile iOS ve Android'de yerel hissi veren, hızlı ve bakımı kolay uygulamalar. Fikir doğrulamasından mağaza yayınına.",
+      tags: ["Expo · React Native", "Flutter", "Swift · Kotlin", "Araştırma", "Mağaza yayını"],
       visual: {
-        kind: "photo",
-        image: { ...IMAGES.appPhone, alt: "Elde havada duran akıllı telefon" },
+        kind: "ship",
+        screen: { ...hatimShots.tr.today, alt: "Yayındaki Hatim App'in Bugün ekranı" },
+        command: "eas build --platform all",
+        steps: [
+          { mark: "done", text: "iOS derlemesi · 42" },
+          { mark: "done", text: "Android derlemesi · 42" },
+          { mark: "sent", text: "App Store'a gönderildi" },
+          { mark: "sent", text: "Google Play'e gönderildi" },
+        ],
         badge: "App Store · Google Play",
       },
       showcase: { projectSlug: "hatim-app", label: "Örnek proje: Hatim App" },
@@ -112,8 +121,16 @@ const tr: LocaleDictionary = {
         "Unity ile hızlı prototipten yayına: oyun döngüsü, ekonomi dengesi, reklam ve uygulama içi satın alma.",
       tags: ["Prototip", "Unity · C#", "Ekonomi", "Reklam", "Satın alma"],
       visual: {
-        kind: "photo",
-        image: { ...IMAGES.gamePixel, alt: "Telefonda piksel grafikli bir oyun oynayan eller" },
+        kind: "game",
+        screen: { ...gameShots.tr.magnet, alt: "Son Mesai oyunundan bir oynanış ekranı" },
+        component: "PlayerRunner",
+        fields: [
+          { label: "Hız", value: "12" },
+          { label: "Şerit", value: "3" },
+          { label: "Coin çarpanı", value: "×1.5" },
+          { label: "Canlanma", value: "Ödüllü reklam" },
+        ],
+        metric: { label: "1. gün tutma", value: "%42" },
         badge: "Unity · prototipten yayına",
       },
       showcase: { projectSlug: "out-of-office", label: "Örnek proje: Son Mesai" },
@@ -126,11 +143,12 @@ const tr: LocaleDictionary = {
         "Yapay zeka asistanlı ürünler için arayüz ve akış tasarımı; bileşen kütüphanesiyle birlikte teslim.",
       tags: ["Araştırma", "Tel kafes", "AI ürün", "Deneyim", "Test"],
       visual: {
-        kind: "assistant",
-        image: { ...IMAGES.handPhone, alt: "Elde tutulan akıllı telefon" },
-        watermark: "AI ASİSTAN",
-        prompt: "Bugün size nasıl yardımcı olabilirim?",
-        caption: ["Mobil uygulama", "AI asistan", "UI/UX tasarım"],
+        kind: "design",
+        screen: { ...hatimShots.tr.group, alt: "Tasarım tuvalinde seçili bir Hatim App ekranı" },
+        wireframe: "Tel kafes",
+        size: "390 × 844",
+        component: "Button / Primary",
+        cursor: "Emrah",
       },
     },
     {
@@ -142,11 +160,10 @@ const tr: LocaleDictionary = {
       tags: ["LLM ajanları", "n8n", "Python", "Entegrasyon"],
       visual: {
         kind: "flow",
-        image: { ...IMAGES.aiShapes, alt: "" },
-        eyebrow: "DİJİTAL",
-        word: "Akış",
-        steps: ["Form", "AI ajanı", "CRM", "Slack"],
-        agentStep: 1,
+        runs: "Bu hafta 128 iş otomatik",
+        trigger: "Yeni talep",
+        agent: { name: "AI ajanı", task: "sınıflandır · yanıtla" },
+        outputs: ["CRM", "Slack", "E-posta"],
       },
     },
   ],

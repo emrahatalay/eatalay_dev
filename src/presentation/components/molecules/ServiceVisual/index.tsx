@@ -1,8 +1,9 @@
 import type { ReactNode } from "react";
 import type { ServiceVisual as Visual } from "@/core/domain/entities";
-import { AssistantVisual } from "./AssistantVisual";
+import { DesignVisual } from "./DesignVisual";
 import { FlowVisual } from "./FlowVisual";
-import { PhotoVisual } from "./PhotoVisual";
+import { GameVisual } from "./GameVisual";
+import { ShipVisual } from "./ShipVisual";
 
 type Renderers = { [K in Visual["kind"]]: (visual: Extract<Visual, { kind: K }>) => ReactNode };
 
@@ -12,8 +13,9 @@ type Renderers = { [K in Visual["kind"]]: (visual: Extract<Visual, { kind: K }>)
  * TypeScript fails the build if a kind from the domain has no renderer.
  */
 const renderers: Renderers = {
-  photo: (v) => <PhotoVisual visual={v} />,
-  assistant: (v) => <AssistantVisual visual={v} />,
+  ship: (v) => <ShipVisual visual={v} />,
+  game: (v) => <GameVisual visual={v} />,
+  design: (v) => <DesignVisual visual={v} />,
   flow: (v) => <FlowVisual visual={v} />,
 };
 

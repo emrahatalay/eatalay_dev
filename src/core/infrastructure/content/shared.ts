@@ -1,7 +1,3 @@
-import aiShapes from "@/assets/images/ai-shapes.jpg";
-import appPhone from "@/assets/images/app-phone.jpg";
-import gamePixel from "@/assets/images/game-pixel.jpg";
-import handPhone from "@/assets/images/hand-phone.jpg";
 import type { SocialLink, Technology } from "../../domain/entities";
 
 /** Locale-independent facts shared by every dictionary. */
@@ -14,6 +10,8 @@ export const SOCIALS: readonly SocialLink[] = [
 ];
 
 export const KNOWS_ABOUT = [
+  "React Native",
+  "Expo",
   "Swift",
   "Kotlin",
   "Flutter",
@@ -28,14 +26,14 @@ export const KNOWS_ABOUT = [
 
 export function technologies(agentsLabel: string): readonly Technology[] {
   return [
+    { name: "Expo", monogram: "E", hue: "graphite" },
+    { name: "React Native", monogram: "RN", hue: "sky" },
     { name: "Swift", monogram: "S", hue: "orange" },
     { name: "Kotlin", monogram: "K", hue: "violet" },
-    { name: "Flutter", monogram: "F", hue: "sky" },
+    { name: "Flutter", monogram: "F", hue: "indigo" },
     { name: "Unity", monogram: "U", hue: "graphite" },
     { name: "Next.js", monogram: "N", hue: "indigo" },
     { name: "n8n", monogram: "n", hue: "rose" },
     { name: agentsLabel, monogram: "AI", hue: "green" },
   ];
 }
-
-export const IMAGES = { aiShapes, appPhone, gamePixel, handPhone } as const;

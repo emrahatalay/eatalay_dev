@@ -3,7 +3,7 @@ import hatimApp from "./projects/hatim-app/en";
 import { SHOTS as hatimShots } from "./projects/hatim-app/shared";
 import outOfOffice from "./projects/out-of-office/en";
 import { SHOTS as gameShots } from "./projects/out-of-office/shared";
-import { EMAIL, IMAGES, KNOWS_ABOUT, SOCIALS, technologies } from "./shared";
+import { EMAIL, KNOWS_ABOUT, SOCIALS, technologies } from "./shared";
 
 const en: LocaleDictionary = {
   profile: {
@@ -78,6 +78,8 @@ const en: LocaleDictionary = {
         "mobile game developer",
         "AI automation",
         "Unity developer",
+        "React Native developer",
+        "Expo app development",
         "Flutter developer",
         "iOS Android apps",
         "freelance software developer",
@@ -93,11 +95,18 @@ const en: LocaleDictionary = {
       shortTitle: "Mobile apps",
       title: { lead: "Mobile", accent: "Apps" },
       description:
-        "Fast, maintainable iOS and Android apps that feel native. From idea validation to the store release.",
-      tags: ["Research", "Wireframes", "Swift · Kotlin", "Flutter", "Store release"],
+        "Fast, maintainable iOS and Android apps that feel native, built with Expo and React Native. From idea validation to the store release.",
+      tags: ["Expo · React Native", "Flutter", "Swift · Kotlin", "Research", "Store release"],
       visual: {
-        kind: "photo",
-        image: { ...IMAGES.appPhone, alt: "A smartphone held up in the air" },
+        kind: "ship",
+        screen: { ...hatimShots.en.today, alt: "The Today screen of the live Hatim App" },
+        command: "eas build --platform all",
+        steps: [
+          { mark: "done", text: "iOS build · 42" },
+          { mark: "done", text: "Android build · 42" },
+          { mark: "sent", text: "Submitted to App Store" },
+          { mark: "sent", text: "Submitted to Google Play" },
+        ],
         badge: "App Store · Google Play",
       },
       showcase: { projectSlug: "hatim-app", label: "Case study: Hatim App" },
@@ -110,8 +119,16 @@ const en: LocaleDictionary = {
         "From rapid Unity prototype to launch: core loop, economy balancing, ads and in-app purchases.",
       tags: ["Prototype", "Unity · C#", "Economy", "Ads", "Purchases"],
       visual: {
-        kind: "photo",
-        image: { ...IMAGES.gamePixel, alt: "Hands playing a pixel-art game on a phone" },
+        kind: "game",
+        screen: { ...gameShots.en.drone, alt: "A gameplay screen from Out of Office" },
+        component: "PlayerRunner",
+        fields: [
+          { label: "Speed", value: "12" },
+          { label: "Lanes", value: "3" },
+          { label: "Coin multiplier", value: "×1.5" },
+          { label: "Revive", value: "Rewarded ad" },
+        ],
+        metric: { label: "Day-1 retention", value: "42%" },
         badge: "Unity · prototype to launch",
       },
       showcase: { projectSlug: "out-of-office", label: "Case study: Out of Office" },
@@ -124,11 +141,12 @@ const en: LocaleDictionary = {
         "Interface and flow design for AI-assisted products, delivered together with a component library.",
       tags: ["Research", "Wireframes", "AI product", "Experience", "Testing"],
       visual: {
-        kind: "assistant",
-        image: { ...IMAGES.handPhone, alt: "A smartphone held in hand" },
-        watermark: "AI ASSISTANT",
-        prompt: "How can I help you today?",
-        caption: ["Mobile app", "AI assistant", "UI/UX design"],
+        kind: "design",
+        screen: { ...hatimShots.en.group, alt: "A Hatim App screen selected on a design canvas" },
+        wireframe: "Wireframe",
+        size: "390 × 844",
+        component: "Button / Primary",
+        cursor: "Emrah",
       },
     },
     {
@@ -140,11 +158,10 @@ const en: LocaleDictionary = {
       tags: ["LLM agents", "n8n", "Python", "Integrations"],
       visual: {
         kind: "flow",
-        image: { ...IMAGES.aiShapes, alt: "" },
-        eyebrow: "DIGITAL",
-        word: "Flow",
-        steps: ["Form", "AI agent", "CRM", "Slack"],
-        agentStep: 1,
+        runs: "128 jobs automated this week",
+        trigger: "New lead",
+        agent: { name: "AI agent", task: "classify · reply" },
+        outputs: ["CRM", "Slack", "Email"],
       },
     },
   ],

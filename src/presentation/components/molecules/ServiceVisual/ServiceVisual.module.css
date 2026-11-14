@@ -10,11 +10,6 @@
   background: #1f1d1b;
 }
 
-.cover {
-  object-fit: cover;
-  transition: transform 1.1s var(--ease-out);
-}
-
 .badge {
   position: absolute;
   left: 16px;
@@ -22,161 +17,749 @@
   z-index: 2;
 }
 
-/* --- assistant --------------------------------------------------------- */
-.assistant {
-  background: #f4f3f6;
-  color: #15131f;
+/* --- shared canvas ------------------------------------------------------ */
+.ship,
+.game,
+.design,
+.flow {
+  color: #f4f3f1;
+  background-color: #161514;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1.5px);
+  background-size: 18px 18px;
 }
 
-.watermark {
+.ship,
+.game,
+.design {
+  container-type: inline-size;
+}
+
+/* A floating dark panel: the build log, the inspector. */
+.panel {
   position: absolute;
-  left: 20px;
-  top: 30px;
-  font-family: var(--font-display);
-  font-weight: 900;
-  font-size: clamp(56px, 7.6vw, 110px);
-  line-height: 1;
-  letter-spacing: -0.04em;
-  white-space: nowrap;
-  color: rgba(240, 90, 26, 0.12);
+  top: 18px;
+  z-index: 2;
+  overflow: hidden;
+  border-radius: 12px;
+  font-size: 12px;
+  background: #211f1d;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.09),
+    0 24px 40px -24px rgba(0, 0, 0, 0.7);
 }
 
-.handPhone {
-  position: relative;
-  height: 100%;
-  aspect-ratio: 1;
+/* A phone rising out of the bottom edge. */
+.device {
+  position: absolute;
+  top: 13%;
+  width: clamp(110px, 27cqi, 165px);
   transition: transform 0.9s var(--ease-out);
 }
 
-.handPhone img {
-  object-fit: cover;
+.device .deviceFrame {
+  width: 100%;
 }
 
-.screen {
-  position: absolute;
-  left: 33.4%;
-  top: 10.2%;
-  width: 35.2%;
-  height: 74%;
+/* --- mobile app: build log -------------------------------------------- */
+.ship .panel {
+  left: 18px;
+  width: min(56%, 320px);
+}
+
+.ship .device {
+  left: 66%;
+  transform: rotate(5deg);
+  transform-origin: 50% 0;
+}
+
+.panelBar {
   display: flex;
-  flex-direction: column;
-  gap: 6%;
-  padding: 10% 6%;
+  gap: 6px;
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.panelBar i {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.log {
+  display: grid;
+  gap: 7px;
+  padding: 12px 14px 14px;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  white-space: nowrap;
+}
+
+.cmd {
   overflow: hidden;
-  border-radius: 9%;
-  background: linear-gradient(180deg, #faf9f7, #efede9);
+  text-overflow: ellipsis;
+  color: #f4f3f1;
 }
 
-.screen b {
-  font-size: 11px;
-  line-height: 1.25;
+.cmd::before {
+  content: "$ ";
+  color: var(--accent);
 }
 
-.screen i {
-  height: 13%;
-  border-radius: 8px;
-  background: #fff;
-  box-shadow: 0 2px 6px rgba(20, 18, 16, 0.1);
+.step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow: hidden;
+  color: rgba(255, 255, 255, 0.68);
 }
 
-.screen i:nth-of-type(2) {
-  background: linear-gradient(90deg, #f05a1a, #ff8a52);
+.step b {
+  flex: none;
+  width: 1em;
+  font-weight: 700;
 }
 
-.caption {
+.done {
+  color: #4ade80;
+}
+
+.sent {
+  color: var(--accent);
+}
+
+.logCaret {
+  width: 0.55em;
+  height: 1.1em;
+  margin-left: -4px;
+  background: var(--accent);
+  animation: blink 1.1s steps(1) infinite;
+}
+
+.progress {
+  height: 4px;
+  margin-top: 4px;
+  overflow: hidden;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.progress i {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--accent);
+  animation: build 4s var(--ease-out) infinite;
+}
+
+@keyframes build {
+  from {
+    width: 0;
+  }
+  70%,
+  to {
+    width: 100%;
+  }
+}
+
+/* --- mobile game: inspector -------------------------------------------- */
+.game .device {
+  left: 9%;
+  transform: rotate(-5deg);
+  transform-origin: 50% 0;
+}
+
+.game .panel {
+  right: 18px;
+  width: min(48%, 270px);
+}
+
+.inspectorHead {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.inspectorHead i {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  background: var(--accent);
+}
+
+.fields {
+  display: grid;
+  gap: 7px;
+  margin: 0;
+  padding: 10px 12px 12px;
+}
+
+.fields div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.fields dt {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.fields dd {
+  margin: 0;
+  overflow: hidden;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #f4f3f1;
+}
+
+.metric {
   position: absolute;
-  left: 24px;
-  bottom: 24px;
+  right: 18px;
+  bottom: 18px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: #211f1d;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.09);
+}
+
+.metric small {
+  display: block;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.metric b {
+  font-family: var(--font-display);
+  font-size: 20px;
+  line-height: 1.1;
+}
+
+.metric svg {
+  width: 80px;
+  height: 28px;
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 100;
+  animation: draw 4s var(--ease-out) infinite;
+}
+
+@keyframes draw {
+  from {
+    stroke-dashoffset: 100;
+  }
+  60%,
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Coins popping off the run. */
+.coin {
+  position: absolute;
+  right: -14px;
+  top: 30%;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+  background: var(--accent);
+  animation: coin 2.4s ease-out infinite;
+}
+
+@keyframes coin {
+  0% {
+    opacity: 0;
+    transform: translateY(10px) scale(0.8);
+  }
+  20% {
+    opacity: 1;
+    transform: none;
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(-18px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-26px);
+  }
+}
+
+.tokens {
+  position: absolute;
+  left: 16px;
+  top: 16px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px 8px 10px;
+  border-radius: 12px;
+  background: #262422;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.swatches {
+  display: flex;
+}
+
+.swatches i {
+  width: 16px;
+  height: 16px;
+  margin-left: -4px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px #262422;
+}
+
+.swatches i:nth-child(1) { margin-left: 0; background: #f4f3f1; }
+.swatches i:nth-child(2) { background: #f05a1a; }
+.swatches i:nth-child(3) { background: #c2410c; }
+.swatches i:nth-child(4) { background: #57534e; }
+
+.specimen {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 19px;
+  line-height: 1;
+}
+
+/* The wireframe: dashed outline and grey blocks, tilted behind the final screen. */
+.wire {
+  position: absolute;
+  left: 11%;
+  top: 30%;
   display: flex;
   flex-direction: column;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 1.25;
+  gap: 9px;
+  width: clamp(96px, 24cqi, 150px);
+  aspect-ratio: 9 / 20;
+  /* px, not %: percentage padding would resolve against the whole card. */
+  padding: 26px 14px;
+  border: 1.5px dashed rgba(255, 255, 255, 0.24);
+  border-radius: 13% / 6%;
+  transform: rotate(-6deg);
+  transition: transform 0.8s var(--ease-spring);
 }
 
-/* --- flow -------------------------------------------------------------- */
-.flow {
-  background: #000;
-  color: #fff;
+.wire i {
+  display: block;
+  flex: none;
+  height: 6px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.13);
 }
 
-.flow .cover {
-  opacity: 0.9;
-}
+.wire .wireBar { width: 55%; }
+.wire .wireHero { height: 30%; border-radius: 10px; }
+.wire .wireShort { width: 62%; }
 
-.eyebrow {
-  position: absolute;
-  top: 30px;
-  inset-inline: 0;
-  z-index: 1;
-  text-align: center;
-  font-size: 11px;
-  letter-spacing: 0.6em;
-  color: rgba(255, 255, 255, 0.7);
-}
-
-.word {
-  position: relative;
-  z-index: 1;
-  margin-top: 150px;
-  font-family: var(--font-display);
-  font-weight: 300;
-  font-size: 44px;
-  letter-spacing: 0.35em;
-  text-transform: uppercase;
-  color: transparent;
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.55), #fff, rgba(255, 255, 255, 0.55)) 0 0 / 200% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  animation: shimmer 3.5s linear infinite;
-}
-
-.steps {
-  position: absolute;
-  bottom: 26px;
-  inset-inline: 0;
-  z-index: 1;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-  margin: 0;
-  padding: 0 12px;
-  list-style: none;
-  font-size: 12px;
-}
-
-.steps li {
-  padding: 6px 10px;
+.wire .wireButton {
+  width: 70%;
+  height: 16px;
+  margin-top: 6px;
   border-radius: 999px;
-  color: #fff;
-  background: rgba(255, 255, 255, 0.18);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  background: rgba(240, 90, 26, 0.4);
 }
 
-.steps li.agent {
-  font-weight: 700;
-  color: #7c3aed;
+.frameLabel {
+  position: absolute;
+  left: 2px;
+  top: -22px;
+  font-size: 11px;
+  white-space: nowrap;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.frame:hover .wire {
+  transform: rotate(-10deg) translateX(-8px);
+}
+
+/* The finished screen, selected like in a design tool. */
+.selected {
+  position: absolute;
+  left: 44%;
+  top: 15%;
+  width: clamp(110px, 28cqi, 170px);
+  transform-origin: 50% 0;
+  transition: transform 0.9s var(--ease-out);
+}
+
+.selected .hifi {
+  width: 100%;
+}
+
+.selected::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border: 1.5px solid var(--accent);
+  pointer-events: none;
+}
+
+.handles i {
+  position: absolute;
+  top: -11px;
+  width: 9px;
+  height: 9px;
   background: #fff;
+  box-shadow: inset 0 0 0 1.5px var(--accent);
 }
 
-@keyframes shimmer {
-  to {
-    background-position: 200% 0;
+.handles i:first-child { left: -11px; }
+.handles i:last-child { right: -11px; }
+
+.sizeLabel {
+  position: absolute;
+  left: 50%;
+  top: -34px;
+  padding: 2px 7px;
+  border-radius: 5px;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 10.5px;
+  white-space: nowrap;
+  color: #fff;
+  background: var(--accent);
+  transform: translateX(-50%);
+}
+
+.cursor {
+  position: absolute;
+  right: -66px;
+  top: 42%;
+  z-index: 2;
+  display: flex;
+  align-items: flex-start;
+  animation: cursor-drift 6s ease-in-out infinite;
+}
+
+.cursor svg {
+  width: 16px;
+  height: 18px;
+  fill: var(--accent);
+  stroke: #fff;
+  stroke-width: 1.2;
+  stroke-linejoin: round;
+}
+
+.cursor b {
+  margin: 14px 0 0 -3px;
+  padding: 2px 8px;
+  border-radius: 4px 10px 10px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #fff;
+  background: var(--accent);
+}
+
+.component {
+  position: absolute;
+  right: 18px;
+  bottom: 20px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 12px 7px 8px;
+  border-radius: 10px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.8);
+  background: #262422;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.component i {
+  width: 30px;
+  height: 14px;
+  border-radius: 999px;
+  background: var(--accent);
+}
+
+@keyframes cursor-drift {
+  0%,
+  100% {
+    transform: translate(0, 0);
   }
+  50% {
+    transform: translate(-12px, 16px);
+  }
+}
+
+/* --- automation flow ----------------------------------------------------- */
+.runs {
+  position: absolute;
+  left: 18px;
+  top: 18px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.runs i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #4ade80;
+  animation: blink 1.6s ease-in-out infinite;
+}
+
+.wires {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.wireLine,
+.pulse {
+  fill: none;
+  vector-effect: non-scaling-stroke;
+}
+
+.wireLine {
+  stroke: rgba(255, 255, 255, 0.2);
+  stroke-width: 1.5;
+}
+
+/* A short dash that runs the length of a wire (pathLength is 100). */
+.pulse {
+  stroke: var(--accent);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-dasharray: 8 200;
+  stroke-dashoffset: 8;
+}
+
+.pulseIn { animation: pulse-in 3.6s linear infinite; }
+.pulseOut { animation: pulse-out 3.6s linear infinite; }
+
+.node {
+  position: absolute;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 12px 7px 7px;
+  border-radius: 12px;
+  font-size: 12.5px;
+  line-height: 1.2;
+  white-space: nowrap;
+  background: #252321;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  transform: translate(-50%, -50%);
+}
+
+.glyph {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 7px;
+  font-style: normal;
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.glyph svg {
+  width: 12px;
+  height: 12px;
+  fill: currentColor;
+}
+
+.trigger {
+  left: 17%;
+  top: 58%;
+}
+
+.agentNode {
+  left: 48%;
+  top: 58%;
+  gap: 10px;
+  padding: 10px 14px 10px 10px;
+  background: color-mix(in srgb, var(--accent) 14%, #1d1b19);
+  box-shadow: inset 0 0 0 1.5px var(--accent);
+  animation: agent-work 3.6s ease-out infinite;
+}
+
+.agentNode .glyph {
+  color: #fff;
+  background: var(--accent);
+}
+
+.agentNode b {
+  display: block;
+  font-size: 13px;
+}
+
+.agentNode small {
+  display: block;
+  margin-top: 2px;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.outputs {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.output {
+  left: 83%;
+  animation: output-lit 3.6s ease-out infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+@keyframes pulse-in {
+  0% { stroke-dashoffset: 8; }
+  35%,
+  100% { stroke-dashoffset: -100; }
+}
+
+@keyframes pulse-out {
+  0%,
+  38% { stroke-dashoffset: 8; }
+  75%,
+  100% { stroke-dashoffset: -100; }
+}
+
+@keyframes agent-work {
+  0%,
+  30%,
+  62%,
+  100% { box-shadow: inset 0 0 0 1.5px var(--accent), 0 0 0 0 transparent; }
+  40% { box-shadow: inset 0 0 0 1.5px var(--accent), 0 0 0 7px var(--accent-ring); }
+}
+
+@keyframes output-lit {
+  0%,
+  72%,
+  100% { box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1); }
+  80% { box-shadow: inset 0 0 0 1.5px var(--accent); }
 }
 
 @media (max-width: 640px) {
-  .caption {
-    left: 14px;
-    bottom: 14px;
-    font-size: 13px;
+  .panel {
+    top: 14px;
+    font-size: 10.5px;
   }
 
-  .word {
-    margin-top: 90px;
-    font-size: 34px;
+  /* The log carries the story on phones: give it the room, let the phone peek in. */
+  .ship .panel {
+    left: 14px;
+    width: 72%;
+  }
+
+  .ship .badge {
+    display: none;
+  }
+
+  .device {
+    width: 96px;
+  }
+
+  .ship .device {
+    left: 72%;
+  }
+
+  .game .device {
+    left: 6%;
+  }
+
+  .coin {
+    top: 62%;
+  }
+
+  .log {
+    gap: 5px;
+    padding: 10px 11px 11px;
+  }
+
+  .game .panel {
+    right: 14px;
+    width: 54%;
+  }
+
+  .fields {
+    gap: 5px;
+    padding: 8px 10px 10px;
+  }
+
+  .fields div:nth-child(n + 4),
+  .metric {
+    display: none;
+  }
+
+  .selected {
+    top: 20%;
+  }
+
+  .wire {
+    top: 34%;
+  }
+
+  .cursor {
+    right: -42px;
+  }
+
+  .cursor b {
+    padding: 1px 6px;
+    font-size: 10px;
+  }
+
+  .component {
+    display: none;
+  }
+
+  .runs {
+    left: 14px;
+    top: 14px;
+    font-size: 11px;
+  }
+
+  .node {
+    gap: 6px;
+    padding: 5px 9px 5px 5px;
+    font-size: 11px;
+  }
+
+  .glyph {
+    width: 18px;
+    height: 18px;
+    border-radius: 6px;
+    font-size: 10px;
+  }
+
+  .agentNode {
+    padding: 7px 10px 7px 7px;
+  }
+
+  .agentNode b {
+    font-size: 11.5px;
+  }
+
+  .agentNode small {
+    display: none;
+  }
+
+  .trigger {
+    left: 16%;
   }
 }
