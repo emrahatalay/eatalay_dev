@@ -5,6 +5,7 @@ import { ButtonLink } from "@/presentation/components/atoms/ButtonLink";
 import { DisplayHeading } from "@/presentation/components/atoms/DisplayHeading";
 import { SerifAccent } from "@/presentation/components/atoms/SerifAccent";
 import { PhoneFrame } from "@/presentation/components/molecules/PhoneFrame";
+import { cx } from "@/shared/lib/cx";
 import styles from "./ProjectHero.module.css";
 
 export interface ProjectHeroProps {
@@ -29,7 +30,7 @@ export function ProjectHero({ project, header }: ProjectHeroProps) {
       <div className={styles.layout}>
         <div className={styles.copy}>
           <p className={styles.eyebrow}>
-            <span className={styles.live} aria-hidden="true" />
+            <span className={cx(styles.live, project.status !== "live" && styles.building)} aria-hidden="true" />
             {hero.eyebrow}
           </p>
           <DisplayHeading as="h1" className={styles.title}>

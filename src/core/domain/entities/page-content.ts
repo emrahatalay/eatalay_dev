@@ -1,9 +1,14 @@
 import type { ImageAsset, RichText } from "./common";
 
 export interface HeroContent {
-  readonly greeting: string;
+  /** Short line above the title naming what the studio does. */
+  readonly eyebrow: string;
   readonly titleLead: string;
-  readonly titleTail: string;
+  /** Second title line, set in the accent colour. */
+  readonly titleAccent: string;
+  readonly lead: string;
+  /** Short proof points under the calls to action. */
+  readonly proof: readonly Metric[];
 }
 
 export interface Metric {
@@ -11,10 +16,10 @@ export interface Metric {
   readonly label: string;
 }
 
-/** How a discipline is pictured: a real screen from shipped work, or a drawn code / flow glyph. */
+/** How a discipline is pictured: a real screen from shipped work, or a drawn design / flow glyph. */
 export type DisciplineVisual =
   | { readonly kind: "screen"; readonly image: ImageAsset }
-  | { readonly kind: "code" }
+  | { readonly kind: "design" }
   | { readonly kind: "flow" };
 
 export interface Discipline {
@@ -22,9 +27,18 @@ export interface Discipline {
   readonly visual: DisciplineVisual;
 }
 
+/** One line in the delivery log: work an agent finished, or a call a person made. */
+export interface LogEntry {
+  readonly by: "agent" | "human";
+  readonly text: string;
+  readonly tag: string;
+}
+
 export interface AboutContent {
   readonly headline: RichText;
   readonly summary: string;
+  /** A live-looking log of agents shipping work and a person signing it off. */
+  readonly log: { readonly title: string; readonly agent: string; readonly human: string; readonly entries: readonly LogEntry[] };
   /** Years of experience, with screens from shipped products (front first). */
   readonly experience: Metric & { readonly screens: readonly [ImageAsset, ImageAsset, ImageAsset] };
   readonly disciplines: { readonly items: readonly Discipline[]; readonly label: string };

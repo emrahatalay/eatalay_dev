@@ -62,6 +62,14 @@ export interface ProjectMetadataInput {
 }
 
 /** Metadata for a project case study. The share image comes from the route's opengraph-image. */
+/** Metadata category per product kind. */
+const PROJECT_CATEGORY: Record<Project["kind"], string> = {
+  game: "games",
+  app: "lifestyle",
+  web: "technology",
+  automation: "technology",
+};
+
 export function buildProjectMetadata({ locale, project, profile }: ProjectMetadataInput): Metadata {
   const url = absoluteUrl(projectPath(locale, project.slug));
   const { seo } = project;
@@ -75,7 +83,7 @@ export function buildProjectMetadata({ locale, project, profile }: ProjectMetada
     authors: [{ name: profile.name, url: siteConfig.url }],
     creator: profile.name,
     publisher: profile.name,
-    category: "games",
+    category: PROJECT_CATEGORY[project.kind],
     alternates: { canonical: url, languages: languageAlternates((l) => projectPath(l, project.slug)) },
     openGraph: {
       type: "article",

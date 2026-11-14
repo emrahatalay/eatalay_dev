@@ -41,6 +41,11 @@
   --g-hot: linear-gradient(90deg, #e04e14, #ff7a3d);
   --g-btn: linear-gradient(90deg, #f05a1a, #ff8040 50%, #f05a1a);
 
+  /* Type scale: page titles, section titles, card titles. Calm, bold, sentence case. */
+  --fs-page: clamp(38px, 1.5rem + 3.4vw, 68px);
+  --fs-section: clamp(30px, 1.2rem + 1.9vw, 46px);
+  --fs-card: clamp(22px, 1rem + 0.8vw, 28px);
+
   --radius-xl: 40px;
   --radius-lg: 30px;
   --radius-md: 22px;

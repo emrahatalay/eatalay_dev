@@ -10,7 +10,7 @@
 
 .headline {
   max-width: 640px;
-  font-size: clamp(30px, 1.6rem + 1.8vw, 52px);
+  font-size: var(--fs-section);
   line-height: 1.08;
   letter-spacing: -0.03em;
 }
@@ -40,8 +40,7 @@
 .quote {
   margin: 0;
   font-family: var(--font-display);
-  font-weight: 900;
-  font-stretch: 112%;
+  font-weight: 700;
   font-size: clamp(28px, 1.2rem + 2.4vw, 48px);
   line-height: 1;
   letter-spacing: -0.02em;

@@ -81,6 +81,8 @@ if ! nginx -t 2>/tmp/eatalay-nginx-t.log; then
   exit 1
 fi
 install -d /var/www/certbot
+# Görsel önbelleği (deploy/nginx.conf → proxy_cache_path): nginx yalnız son klasörü kendisi açar.
+install -d -m 700 -o www-data -g www-data /var/cache/nginx/eatalay_img
 SITE=/etc/nginx/sites-available/$ALAN
 SERTIFIKA=/etc/letsencrypt/live/$ALAN/fullchain.pem
 

@@ -53,12 +53,12 @@ export default async function OpenGraphImage({ params }: { params: Promise<{ loc
           <div style={{ display: "flex", fontSize: 22, color: "rgba(255,255,255,.7)" }}>eatalay.dev</div>
         </div>
         <div style={{ display: "flex", flexDirection: "column" }}>
-          <div style={{ display: "flex", fontSize: 36, color: "rgba(255,255,255,.85)" }}>{content.hero.greeting}</div>
-          <div style={{ display: "flex", fontSize: 96, lineHeight: 0.95, color: "#f05a1a" }}>
-            {content.hero.titleLead.toLocaleUpperCase(locale)}
+          <div style={{ display: "flex", fontSize: 30, color: "rgba(255,255,255,.75)" }}>
+            {`${profile.name} · ${content.hero.eyebrow}`}
           </div>
-          <div style={{ display: "flex", fontSize: 96, lineHeight: 0.95 }}>
-            {content.hero.titleTail.toLocaleUpperCase(locale)}
+          <div style={{ display: "flex", fontSize: 76, lineHeight: 1.05, marginTop: 18 }}>{content.hero.titleLead}</div>
+          <div style={{ display: "flex", fontSize: 76, lineHeight: 1.05, color: "#f05a1a" }}>
+            {content.hero.titleAccent}
           </div>
           <div style={{ display: "flex", gap: 12, marginTop: 36 }}>
             {services.map((s) => (

@@ -1,24 +1,24 @@
 import type { ProjectPalette, ProjectSchema } from "../../../../domain/entities";
-import enAdmin from "@/assets/images/hatim-app/en-admin.jpg";
-import enDark from "@/assets/images/hatim-app/en-dark.jpg";
-import enDhikr from "@/assets/images/hatim-app/en-dhikr.jpg";
-import enGroup from "@/assets/images/hatim-app/en-group.jpg";
-import enKhatm from "@/assets/images/hatim-app/en-khatm.jpg";
-import enReader from "@/assets/images/hatim-app/en-reader.jpg";
-import enSurahs from "@/assets/images/hatim-app/en-surahs.jpg";
-import enToday from "@/assets/images/hatim-app/en-today.jpg";
-import enTranslation from "@/assets/images/hatim-app/en-translation.jpg";
-import trAdmin from "@/assets/images/hatim-app/tr-admin.jpg";
-import trDarkFatiha from "@/assets/images/hatim-app/tr-dark-fatiha.jpg";
-import trDhikr from "@/assets/images/hatim-app/tr-dhikr.jpg";
-import trFold from "@/assets/images/hatim-app/tr-fold.jpg";
-import trGroup from "@/assets/images/hatim-app/tr-group.jpg";
-import trJuz from "@/assets/images/hatim-app/tr-juz.jpg";
-import trKhatm from "@/assets/images/hatim-app/tr-khatm.jpg";
-import trReader from "@/assets/images/hatim-app/tr-reader.jpg";
-import trRecitation from "@/assets/images/hatim-app/tr-recitation.jpg";
-import trToday from "@/assets/images/hatim-app/tr-today.jpg";
-import trTranslation from "@/assets/images/hatim-app/tr-translation.jpg";
+import enAdmin from "@/assets/images/hatim-app/en-admin.webp";
+import enDark from "@/assets/images/hatim-app/en-dark.webp";
+import enDhikr from "@/assets/images/hatim-app/en-dhikr.webp";
+import enGroup from "@/assets/images/hatim-app/en-group.webp";
+import enKhatm from "@/assets/images/hatim-app/en-khatm.webp";
+import enReader from "@/assets/images/hatim-app/en-reader.webp";
+import enSurahs from "@/assets/images/hatim-app/en-surahs.webp";
+import enToday from "@/assets/images/hatim-app/en-today.webp";
+import enTranslation from "@/assets/images/hatim-app/en-translation.webp";
+import trAdmin from "@/assets/images/hatim-app/tr-admin.webp";
+import trDarkFatiha from "@/assets/images/hatim-app/tr-dark-fatiha.webp";
+import trDhikr from "@/assets/images/hatim-app/tr-dhikr.webp";
+import trFold from "@/assets/images/hatim-app/tr-fold.webp";
+import trGroup from "@/assets/images/hatim-app/tr-group.webp";
+import trJuz from "@/assets/images/hatim-app/tr-juz.webp";
+import trKhatm from "@/assets/images/hatim-app/tr-khatm.webp";
+import trReader from "@/assets/images/hatim-app/tr-reader.webp";
+import trRecitation from "@/assets/images/hatim-app/tr-recitation.webp";
+import trToday from "@/assets/images/hatim-app/tr-today.webp";
+import trTranslation from "@/assets/images/hatim-app/tr-translation.webp";
 
 /** In-app screenshots (iPhone 18 Pro simulator, cropped to 9:20 and downscaled). */
 export const SHOTS = {

@@ -107,7 +107,7 @@ const hatimAppTr: Project = {
       id: "reading",
       title: "Okuma",
       items: [
-        { name: "Diyanet meali", detail: "Âyete basılı tutunca ya da bilgisayarda sayfanın yanında.", hint: "TR · EN" },
+        { name: "Meal", detail: "Türkçede Diyanet, İngilizcede Sahih International; âyete basılı tutunca ya da bilgisayarda sayfanın yanında.", hint: "TR · EN" },
         { name: "Afâsî tilâveti", detail: "Âyet âyet çalar, ekran kilitliyken de sürer.", hint: "Sesli" },
         { name: "İnternetsiz okuma", detail: "Kur'an metni ve meal uygulamanın içinde.", hint: "Çevrimdışı" },
         { name: "Kaldığın yer", detail: "Okuduğun âyet kendiliğinden kaydedilir, her cihazda devam.", hint: "Otomatik" },
@@ -161,11 +161,11 @@ const hatimAppTr: Project = {
 
   workflow: {
     headline: [
-      { text: "Yapay zekâ ajanlarıyla,", tone: "accent" },
+      { text: "Yapay zeka ajanlarıyla,", tone: "accent" },
       { text: "insan denetiminde üretildi." },
     ],
     intro:
-      "Hatim App, yapay zekâ ajanlarını bir ekip gibi yönettiğim üretim düzeninin bir örneği daha. Mimari, dini ve görsel kurallar, son karar bende; tekrar eden iş ajanlarda.",
+      "Hatim App, yapay zeka ajanlarını bir ekip gibi yönettiğim üretim düzeninin bir örneği daha. Mimari, dini ve görsel kurallar, son karar bende; tekrar eden iş ajanlarda.",
     steps: [
       { title: "Her paketin kendi hafızası", text: "Kökte ve her alt projede CLAUDE.md: mimari, kod kuralları, dini ve görsel kurallar. Ajan projeyi baştan taramaz, ilgili belgeyi okur." },
       { title: "Ekranda görmeden bitmiş sayılmaz", text: "Web önizlemede, mobil iOS simülatöründe ekran görüntüsüyle doğrulanır; Android bildirimleri gerçek cihazda denendi." },
@@ -199,7 +199,7 @@ const hatimAppTr: Project = {
   },
 
   teaser: {
-    kicker: "Öne çıkan proje",
+    kicker: "Öne çıkan uygulama",
     text: "Kur'an'ı ailenle ve arkadaşlarınla birlikte hatmetmek için ücretsiz uygulama. Tek çekirdekten web, iOS ve Android; web sürümü hatim.app'te canlı.",
     ctaLabel: "Uygulamayı incele",
     phones: [

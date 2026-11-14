@@ -4,7 +4,6 @@ import type {
   Profile,
   Project,
   Service,
-  Technology,
   Testimonial,
 } from "../../domain/entities";
 import type { Locale } from "../../domain/locale";
@@ -24,7 +23,6 @@ export interface HomePage {
   readonly profile: Profile;
   readonly content: PageContent;
   readonly services: readonly Service[];
-  readonly technologies: readonly Technology[];
   readonly faqs: readonly FaqItem[];
   readonly testimonials: readonly Testimonial[];
   /** Every project, newest first. The home page previews the first few and links to the portfolio. */
@@ -47,12 +45,11 @@ export class GetHomePage {
   async execute(locale: Locale): Promise<HomePage> {
     const { profiles, pages, services, faqs, testimonials, projects } = this.deps;
 
-    const [profile, content, serviceList, technologies, faqList, testimonialList, projectList] =
+    const [profile, content, serviceList, faqList, testimonialList, projectList] =
       await Promise.all([
         profiles.getProfile(locale),
         pages.getPageContent(locale),
         services.getServices(locale),
-        services.getTechnologies(locale),
         faqs.getFaqs(locale),
         testimonials.getTestimonials(locale),
         projects.getProjects(locale),
@@ -63,7 +60,6 @@ export class GetHomePage {
       profile,
       content,
       services: serviceList,
-      technologies,
       faqs: faqList,
       testimonials: testimonialList,
       projects: byNewest(projectList),

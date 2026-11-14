@@ -24,7 +24,7 @@
 
 .title {
   margin-top: 12px;
-  font-size: clamp(40px, 6vw, 92px);
+  font-size: var(--fs-section);
 }
 
 .hint {

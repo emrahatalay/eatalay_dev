@@ -3,6 +3,7 @@ import { useTranslations } from "next-intl";
 import type { AboutContent, DisciplineVisual } from "@/core/domain/entities";
 import { Chip } from "@/presentation/components/atoms/Chip";
 import { HighlightCard } from "@/presentation/components/molecules/HighlightCard";
+import { DeliveryLog } from "@/presentation/components/molecules/DeliveryLog";
 import { PhoneFrame } from "@/presentation/components/molecules/PhoneFrame";
 import { RichHeadline } from "@/presentation/components/molecules/RichHeadline";
 import styles from "./About.module.css";
@@ -21,14 +22,14 @@ function DisciplineTile({ visual }: { readonly visual: DisciplineVisual }) {
       return (
         <Image src={visual.image} alt="" fill sizes="64px" quality={70} className={styles.tileImage} />
       );
-    case "code":
+    case "design":
       return (
-        <span className={styles.codeGlyph}>
-          <i style={{ width: "70%" }} />
-          <i style={{ width: "45%", marginLeft: "18%" }} />
-          <i style={{ width: "55%", marginLeft: "18%" }} />
-          <i style={{ width: "35%" }} />
-        </span>
+        <svg className={styles.designGlyph} viewBox="0 0 64 64" fill="none">
+          <rect x="14" y="14" width="36" height="36" rx="4" />
+          <path d="M22 26h20M22 34h12" />
+          <rect x="10" y="10" width="8" height="8" rx="2" className={styles.designHandle} />
+          <rect x="46" y="46" width="8" height="8" rx="2" className={styles.designHandle} />
+        </svg>
       );
     case "flow":
       return (
@@ -48,16 +49,14 @@ export function About({ content }: { readonly content: AboutContent }) {
 
   return (
     <section className={styles.about} id="about" aria-labelledby="about-title">
-      <div className={styles.ribbon} aria-hidden="true">
-        <i style={{ left: 40, top: 30, ["--r" as string]: "-38deg" }} />
-        <i style={{ left: 100, top: 10, ["--r" as string]: "-24deg" }} />
-        <i style={{ left: 160, top: 0, ["--r" as string]: "-10deg" }} />
-        <i style={{ left: 220, top: 6, ["--r" as string]: "6deg" }} />
+      <div className={styles.intro}>
+        <div className={styles.introCopy}>
+          <Chip>{t("eyebrow")}</Chip>
+          <RichHeadline id="about-title" text={content.headline} className={styles.headline} />
+          <p className={`${styles.summary} reveal`}>{content.summary}</p>
+        </div>
+        <DeliveryLog log={content.log} />
       </div>
-
-      <Chip>{t("eyebrow")}</Chip>
-      <RichHeadline id="about-title" text={content.headline} />
-      <p className={`${styles.summary} reveal`}>{content.summary}</p>
 
       <div className={styles.stats}>
         <HighlightCard tone="soft" className={styles.tall}>

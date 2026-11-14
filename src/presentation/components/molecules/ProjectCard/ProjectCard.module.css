@@ -128,12 +128,10 @@
 
 .title {
   font-family: var(--font-display);
-  font-weight: 900;
-  font-stretch: 112%;
-  font-size: clamp(26px, 1.2rem + 0.8vw, 32px);
+  font-weight: 700;
+  font-size: var(--fs-card);
   line-height: 1;
   letter-spacing: -0.03em;
-  text-transform: uppercase;
 }
 
 .link {

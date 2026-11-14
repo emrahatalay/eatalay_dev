@@ -23,9 +23,8 @@
 
 .value {
   font-family: var(--font-display);
-  font-weight: 900;
-  font-stretch: 112%;
-  font-size: clamp(40px, 1.6rem + 2vw, 60px);
+  font-weight: 700;
+  font-size: clamp(30px, 1.1rem + 1.4vw, 42px);
   line-height: 1;
   letter-spacing: -0.03em;
   color: transparent;

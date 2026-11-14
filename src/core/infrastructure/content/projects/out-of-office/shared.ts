@@ -1,25 +1,25 @@
 import type { ProjectPalette, ProjectSchema } from "../../../../domain/entities";
-import automatedRobot from "@/assets/images/out-of-office/automated-robot.jpg";
-import cookieWall from "@/assets/images/out-of-office/cookie-wall.jpg";
-import enCollection from "@/assets/images/out-of-office/en-collection.jpg";
-import enDrone from "@/assets/images/out-of-office/en-drone.jpg";
-import enGameOver from "@/assets/images/out-of-office/en-gameover.jpg";
-import enMenu from "@/assets/images/out-of-office/en-menu.jpg";
-import enPause from "@/assets/images/out-of-office/en-pause.jpg";
-import enRevive from "@/assets/images/out-of-office/en-revive.jpg";
-import enSettings from "@/assets/images/out-of-office/en-settings.jpg";
-import enStore from "@/assets/images/out-of-office/en-store.jpg";
-import stumble from "@/assets/images/out-of-office/stumble.jpg";
-import trCollection from "@/assets/images/out-of-office/tr-collection.jpg";
-import trDrone from "@/assets/images/out-of-office/tr-drone.jpg";
-import trGameOver from "@/assets/images/out-of-office/tr-gameover.jpg";
-import trMagnet from "@/assets/images/out-of-office/tr-magnet.jpg";
-import trMenuDesigner from "@/assets/images/out-of-office/tr-menu-designer.jpg";
-import trMenu from "@/assets/images/out-of-office/tr-menu.jpg";
-import trRevive from "@/assets/images/out-of-office/tr-revive.jpg";
-import trRun from "@/assets/images/out-of-office/tr-run.jpg";
-import trSettings from "@/assets/images/out-of-office/tr-settings.jpg";
-import trStore from "@/assets/images/out-of-office/tr-store.jpg";
+import automatedRobot from "@/assets/images/out-of-office/automated-robot.webp";
+import cookieWall from "@/assets/images/out-of-office/cookie-wall.webp";
+import enCollection from "@/assets/images/out-of-office/en-collection.webp";
+import enDrone from "@/assets/images/out-of-office/en-drone.webp";
+import enGameOver from "@/assets/images/out-of-office/en-gameover.webp";
+import enMenu from "@/assets/images/out-of-office/en-menu.webp";
+import enPause from "@/assets/images/out-of-office/en-pause.webp";
+import enRevive from "@/assets/images/out-of-office/en-revive.webp";
+import enSettings from "@/assets/images/out-of-office/en-settings.webp";
+import enStore from "@/assets/images/out-of-office/en-store.webp";
+import stumble from "@/assets/images/out-of-office/stumble.webp";
+import trCollection from "@/assets/images/out-of-office/tr-collection.webp";
+import trDrone from "@/assets/images/out-of-office/tr-drone.webp";
+import trGameOver from "@/assets/images/out-of-office/tr-gameover.webp";
+import trMagnet from "@/assets/images/out-of-office/tr-magnet.webp";
+import trMenuDesigner from "@/assets/images/out-of-office/tr-menu-designer.webp";
+import trMenu from "@/assets/images/out-of-office/tr-menu.webp";
+import trRevive from "@/assets/images/out-of-office/tr-revive.webp";
+import trRun from "@/assets/images/out-of-office/tr-run.webp";
+import trSettings from "@/assets/images/out-of-office/tr-settings.webp";
+import trStore from "@/assets/images/out-of-office/tr-store.webp";
 
 /** In-game screenshots (1080x2400 phone captures from the Unity editor, downscaled). */
 export const SHOTS = {

@@ -36,25 +36,24 @@ const FILES: readonly { readonly name: string; readonly lines: readonly string[]
     ],
   },
   {
-    name: "app.dart",
+    name: "TodayScreen.tsx",
     lines: [
-      "class HatimApp extends StatelessWidget {",
-      "  const HatimApp({super.key});",
+      "export function TodayScreen() {",
+      "  const { khatm, mark } = useKhatm(groupId);",
       "",
-      "  @override",
-      "  Widget build(BuildContext context) {",
-      "    return MaterialApp(",
-      "      theme: AppTheme.light,",
-      "      home: const TodayScreen(),",
-      "    );",
-      "  }",
+      "  return (",
+      "    <Screen title=\"Bugün\">",
+      "      <JuzGrid juz={khatm.juz} onPress={mark} />",
+      "      <ReadButton href={`/read/${khatm.next}`} />",
+      "    </Screen>",
+      "  );",
       "}",
     ],
   },
 ];
 
 const TOKEN =
-  /(\/\/.*$|"[^"]*"|@\w+|\b(?:const|await|for|of|public|sealed|class|void|if|return|extends|super|true|false|float)\b)/g;
+  /(\/\/.*$|"[^"]*"|@\w+|\b(?:const|await|for|of|public|sealed|class|void|if|return|export|function|true|false|float)\b)/g;
 
 /** Splits a line into plain text, keywords, strings and comments. */
 function highlight(line: string): ReactNode[] {

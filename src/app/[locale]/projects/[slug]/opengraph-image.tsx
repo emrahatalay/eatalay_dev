@@ -1,4 +1,5 @@
 import { readFile } from "node:fs/promises";
+import sharp from "sharp";
 import { basename, join } from "node:path";
 import { ImageResponse } from "next/og";
 import { loadProjectPage, loadProjectSlugs } from "@/core/di/container";
@@ -19,8 +20,10 @@ export async function generateStaticParams() {
 async function screenshotDataUri(slug: string, src: string): Promise<string | null> {
   const name = basename(src).split(".")[0];
   try {
-    const data = await readFile(join(process.cwd(), "src/assets/images", slug, `${name}.jpg`));
-    return `data:image/jpeg;base64,${data.toString("base64")}`;
+    // Screenshots ship as WebP; the OG renderer only reads PNG/JPEG, so convert at build time.
+    const webp = await readFile(join(process.cwd(), "src/assets/images", slug, `${name}.webp`));
+    const jpeg = await sharp(webp).resize({ width: 428 }).jpeg({ quality: 82 }).toBuffer();
+    return `data:image/jpeg;base64,${jpeg.toString("base64")}`;
   } catch {
     return null;
   }

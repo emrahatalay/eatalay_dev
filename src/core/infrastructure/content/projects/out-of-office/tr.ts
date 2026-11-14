@@ -21,7 +21,7 @@ const outOfOfficeTr: Project = {
     eyebrow: "Mobil oyun · Sonsuz koşu · Geliştiriliyor",
     title: "Son Mesai",
     accent: "Out of Office",
-    slogan: "Yapay zekâ işini aldı. Sıra sende.",
+    slogan: "Yapay zeka işini aldı. Sıra sende.",
     summary:
       "Şirketin son insan çalışanısın. İK robotu İK-9000 elinde çıkış belgesiyle peşinde. Üç şeritte koş, engellerden kaç, altın topla. Ama dikkat: oyun seni izliyor ve öğreniyor.",
     phones: [
@@ -33,20 +33,20 @@ const outOfOfficeTr: Project = {
   facts: [
     { value: "3", label: "Meslek, her biri kendi yeteneğiyle" },
     { value: "8", label: "Güçlendirme: CAPTCHA'dan kargo dronuna" },
-    { value: "7", label: "Katmanlı assembly, tek yönlü bağımlılık" },
+    { value: "7", label: "Assembly: 6 katman ve editör araçları, tek yönlü bağımlılık" },
     { value: "10K+", label: "Satır C#, koşuda sıfır bellek ayırma hedefi" },
   ],
 
   story: {
     headline: [
       { text: "Yıl 2031.", tone: "accent" },
-      { text: "Yapay zekâ bütün işleri aldı." },
+      { text: "Yapay zeka bütün işleri aldı." },
       { text: "Bir kişi hariç.", tone: "muted" },
     ],
     paragraphs: [
       "Dev bir şirketin plazasında son insan çalışan sensin. İK robotu İK-9000 bir imza peşinde: çıkış belgesini imzalatırsa \"optimize edilirsin\".",
       "Hedefin, sinyalin çekmediği efsanevi Analog Kasaba. Yol boyunca sunucu kabinleri, robot süpürgeler, otonom taksiler ve \"Çerezleri kabul et\" duvarları seni durdurmaya çalışır.",
-      "Mizah kurumsal dünyayla ve yapay zekâ jargonuyla dalga geçer: kalkanın adı Kıdem Kalkanı, mıknatısın adı Maaş Mıknatısı, robotu durduran şey bir CAPTCHA kutusu. Kimse hedef alınmaz; alay edilen şey ofis kültürü ve teknoloji modaları.",
+      "Mizah kurumsal dünyayla ve yapay zeka jargonuyla dalga geçer: kalkanın adı Kıdem Kalkanı, mıknatısın adı Maaş Mıknatısı, robotu durduran şey bir CAPTCHA kutusu. Kimse hedef alınmaz; alay edilen şey ofis kültürü ve teknoloji modaları.",
     ],
     punchline: { text: "OPTİMİZE EDİLDİN", caption: "Yakalandığında ekranda yazan cümle." },
     screenshot: { image: { ...SHOTS.tr.gameOver, alt: "Oyun sonu ekranı: OPTİMİZE EDİLDİN, İK-9000 SENİ YAKALADI, Yazılımcı OTOMATİKLEŞTİ" }, caption: "Oyun sonu" },
@@ -66,7 +66,7 @@ const outOfOfficeTr: Project = {
 
   mechanics: [
     {
-      tag: "Seni öğrenen yapay zekâ",
+      tag: "Seni öğrenen yapay zeka",
       title: "Engeller alışkanlıklarını öğrenir",
       text: "Oyun hangi şeritte ne kadar kaldığını izler ve engelleri en sevdiğin şeritlere yöneltir. Kendi verinle eğitilen bir rakibe karşı koşarsın.",
       bullets: [
@@ -161,11 +161,11 @@ const outOfOfficeTr: Project = {
 
   workflow: {
     headline: [
-      { text: "Yapay zekâ ajanlarıyla,", tone: "accent" },
+      { text: "Yapay zeka ajanlarıyla,", tone: "accent" },
       { text: "insan denetiminde üretildi." },
     ],
     intro:
-      "Son Mesai, yapay zekâ ajanlarını bir ekip gibi yönettiğim üretim düzeninin canlı örneği. Mimari, zevk ve son karar bende; tekrar eden iş ajanlarda.",
+      "Son Mesai, yapay zeka ajanlarını bir ekip gibi yönettiğim üretim düzeninin canlı örneği. Mimari, zevk ve son karar bende; tekrar eden iş ajanlarda.",
     steps: [
       { title: "Ajanlar için yazılmış proje", text: "AGENTS.md ve docs/ klasörü hikâyeyi, tasarım dilini, mimariyi ve güncel durumu anlatır. Claude Code ve Codex aynı kurallarla çalışır; her iş belgesiyle birlikte güncellenir." },
       { title: "Editör komut satırından sürülür", text: "Unity CLI ile derle, Play moduna gir, ekran görüntüsü al, konsolu oku. Bir iş, çalıştığı görülmeden bitmiş sayılmaz. Bu sayfadaki görüntüler de böyle alındı." },
@@ -200,8 +200,8 @@ const outOfOfficeTr: Project = {
   },
 
   teaser: {
-    kicker: "Öne çıkan proje",
-    text: "Yapay zekânın herkesin işini aldığı 2031'de şirketin son insan çalışanısın ve İK robotundan kaçıyorsun. Unity 6 ile, yapay zekâ ajanlarıyla birlikte geliştirdiğim mobil sonsuz koşu oyunu.",
+    kicker: "Öne çıkan oyun",
+    text: "Yapay zekanın herkesin işini aldığı 2031'de şirketin son insan çalışanısın ve İK robotundan kaçıyorsun. Unity 6 ile, yapay zeka ajanlarıyla birlikte geliştirdiğim mobil sonsuz koşu oyunu.",
     ctaLabel: "Oyunu incele",
     phones: [
       { image: { ...SHOTS.tr.menu, alt: "Son Mesai ana menüsü" }, caption: "Ana menü" },
@@ -213,7 +213,7 @@ const outOfOfficeTr: Project = {
   seo: {
     title: "Son Mesai (Out of Office): Unity 6 ile mobil sonsuz koşu oyunu",
     description:
-      "Yapay zekâ işini aldı, sıra sende. İK robotundan kaçan son insan çalışanın mobil sonsuz koşu oyunu: öğrenen engeller, meslek otomasyonu, katmanlı C# mimarisi ve açık kaynak kod.",
+      "Yapay zeka işini aldı, sıra sende. İK robotundan kaçan son insan çalışanın mobil sonsuz koşu oyunu: öğrenen engeller, meslek otomasyonu, katmanlı C# mimarisi ve açık kaynak kod.",
     keywords: [
       "Son Mesai",
       "Out of Office oyun",
@@ -222,7 +222,7 @@ const outOfOfficeTr: Project = {
       "Unity C# mimari",
       "VContainer",
       "UI Toolkit",
-      "yapay zekâ ile oyun geliştirme",
+      "yapay zeka ile oyun geliştirme",
       "Emrah Atalay",
     ],
   },

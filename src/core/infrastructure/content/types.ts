@@ -4,7 +4,6 @@ import type {
   Profile,
   Project,
   Service,
-  Technology,
   Testimonial,
 } from "../../domain/entities";
 
@@ -13,7 +12,6 @@ export interface LocaleDictionary {
   readonly profile: Profile;
   readonly page: PageContent;
   readonly services: readonly Service[];
-  readonly technologies: readonly Technology[];
   readonly faqs: readonly FaqItem[];
   readonly testimonials: readonly Testimonial[];
   readonly projects: readonly Project[];

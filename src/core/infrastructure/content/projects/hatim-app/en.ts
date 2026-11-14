@@ -198,7 +198,7 @@ const hatimAppEn: Project = {
   },
 
   teaser: {
-    kicker: "Featured project",
+    kicker: "Featured app",
     text: "A free app for completing the Quran together with family and friends. Web, iOS and Android from one core; the web version is live at hatim.app.",
     ctaLabel: "Explore the app",
     phones: [

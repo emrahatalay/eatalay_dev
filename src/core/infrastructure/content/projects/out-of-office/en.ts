@@ -33,7 +33,7 @@ const outOfOfficeEn: Project = {
   facts: [
     { value: "3", label: "Professions, each with its own ability" },
     { value: "8", label: "Power-ups, from CAPTCHA to cargo drone" },
-    { value: "7", label: "Layered assemblies, one-way dependencies" },
+    { value: "7", label: "Assemblies: 6 layers plus editor tools, one-way dependencies" },
     { value: "10K+", label: "Lines of C#, built for zero allocations per run" },
   ],
 
@@ -200,7 +200,7 @@ const outOfOfficeEn: Project = {
   },
 
   teaser: {
-    kicker: "Featured project",
+    kicker: "Featured game",
     text: "It's 2031, AI has taken every job, and you are the last human employee running from the HR robot. A mobile endless runner I'm building with Unity 6 and a team of AI agents.",
     ctaLabel: "See the game",
     phones: [

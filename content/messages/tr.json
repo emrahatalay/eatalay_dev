@@ -21,20 +21,44 @@
     "en": "English"
   },
   "Hero": {
-    "technologies": "Kullandığım teknolojiler"
+    "primaryCta": "Projeni konuşalım",
+    "secondaryCta": "Çalışmaları gör",
+    "proofLabel": "Öne çıkanlar",
+    "scene": {
+      "operator": "Emrah",
+      "operatorRole": "yönlendirir · onaylar",
+      "prompt": "Paylaşım ekranı ekle, testlerini yaz",
+      "approve": "Onayla",
+      "approved": "Onaylandı",
+      "coder": "Kod ajanı",
+      "tester": "Test ajanı",
+      "reviewer": "İnceleme ajanı",
+      "deploy": "Yayın",
+      "idle": "bekliyor",
+      "writing": "yazıyor",
+      "testing": "test ediyor",
+      "reviewing": "inceliyor",
+      "waiting": "onay bekliyor",
+      "shipping": "yayınlanıyor",
+      "done": "tamam",
+      "passed": "24/24 geçti",
+      "live": "Yayında · v1.4"
+    }
   },
   "About": {
     "eyebrow": "Hakkımda"
   },
   "Services": {
-    "title": "Hizmetler"
+    "eyebrow": "Hizmetler",
+    "title": "Fikirden yayına, uçtan uca ürün geliştirme",
+    "lead": "Mobil uygulama, mobil oyun, arayüz tasarımı ve yapay zeka otomasyonu. Hepsi tek elden, yapay zeka ajanlarıyla hızlanan bir süreçle."
   },
   "Portfolio": {
     "eyebrow": "Seçilmiş işler",
     "title": "Portfolyo",
-    "intro": "Yapay zekâ ajanlarıyla birlikte, fikirden yayına taşıdığım uygulamalar ve oyunlar. Her biri kendi vaka çalışmasıyla.",
+    "intro": "Yapay zeka ajanlarıyla birlikte, fikirden yayına taşıdığım uygulamalar ve oyunlar. Her biri kendi vaka çalışmasıyla.",
     "seoTitle": "Portfolyo: Mobil uygulamalar ve oyunlar",
-    "seoDescription": "Emrah Atalay'ın yapay zekâ destekli olarak geliştirdiği mobil uygulamalar, mobil oyunlar ve yazılım projeleri. Ekran görüntüleri, kod yapısı ve yol haritasıyla vaka çalışmaları.",
+    "seoDescription": "Emrah Atalay'ın yapay zeka destekli olarak geliştirdiği mobil uygulamalar ve mobil oyunlar. Ekran görüntüleri, kod yapısı ve yol haritasıyla vaka çalışmaları.",
     "count": "{count, plural, =0 {Henüz proje yok} other {# proje}}",
     "searchLabel": "Projelerde ara",
     "searchPlaceholder": "Ara: isim, teknoloji, platform…",
@@ -58,7 +82,7 @@
     "empty": "Aramanla eşleşen bir proje bulamadım.",
     "clear": "Filtreleri temizle",
     "viewAll": "Tüm projeleri gör",
-    "teaserText": "Uygulamalar, oyunlar ve otomasyonlar: hepsi tek sayfada, aranabilir ve filtrelenebilir. Her projenin kendi vaka çalışması var.",
+    "teaserText": "Uygulamalar ve oyunlar: hepsi tek sayfada, aranabilir ve filtrelenebilir. Her projenin kendi vaka çalışması var.",
     "more": "{count, plural, other {+# proje daha}}",
     "browse": "Portfolyoya git"
   },

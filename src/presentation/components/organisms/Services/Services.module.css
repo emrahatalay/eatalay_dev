@@ -1,26 +1,31 @@
 .services {
   position: relative;
   margin-top: 60px;
-  padding: 30px 26px 40px;
+  padding: 56px 56px 48px;
   /* clip (not hidden) keeps position: sticky working for the cards */
   overflow: clip;
   border-radius: var(--radius-lg);
-  /* One hue, light to dark: orange fading into the dark block. */
-  background: linear-gradient(180deg, #f05a1a 0, #c2410c 120px, #4a1c08 250px, var(--night) 380px);
+  color: #fff;
+  background: var(--night);
   box-shadow: inset 0 0 0 1px var(--night-edge);
   scroll-margin-top: 24px;
 }
 
-/* Top padding leaves room for the dot on the Turkish capital İ. */
-.ghost {
-  padding-top: 0.1em;
-  font-size: clamp(62px, 14.7vw, 212px);
-  font-stretch: 118%;
-  line-height: 0.8;
-  letter-spacing: -0.02em;
-  text-align: center;
-  white-space: nowrap;
-  color: #fff;
+.head {
+  display: grid;
+  justify-items: start;
+  gap: 18px;
+  max-width: 720px;
+}
+
+.title {
+  font-size: var(--fs-section);
+}
+
+.lead {
+  max-width: 560px;
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.66);
 }
 
 .stack {
@@ -28,30 +33,15 @@
   display: flex;
   flex-direction: column;
   gap: 22px;
-  margin-top: clamp(-90px, -6vw, -14px);
-  padding: 0 30px;
-}
-
-@keyframes ghost-x {
-  from {
-    transform: translateX(12%);
-  }
-  to {
-    transform: translateX(-12%);
-  }
-}
-
-@supports (animation-timeline: view()) {
-  .ghost {
-    animation: ghost-x linear both;
-    animation-timeline: view();
-    animation-range: entry 0% exit 100%;
-  }
+  margin-top: 44px;
 }
 
 @media (max-width: 900px) {
+  .services {
+    padding: 40px 26px 30px;
+  }
+
   .stack {
-    padding: 0;
     gap: 16px;
   }
 }
@@ -59,11 +49,16 @@
 @media (max-width: 640px) {
   .services {
     margin-top: 36px;
-    padding: 22px 10px 20px;
+    padding: 30px 10px 20px;
     border-radius: var(--radius-md);
+  }
+
+  .head {
+    padding: 0 10px;
   }
 
   .stack {
     gap: 14px;
+    margin-top: 30px;
   }
 }

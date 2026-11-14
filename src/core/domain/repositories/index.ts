@@ -5,7 +5,6 @@ import type {
   Profile,
   Project,
   Service,
-  Technology,
   Testimonial,
 } from "../entities";
 
@@ -26,7 +25,6 @@ export interface PageContentRepository {
 
 export interface ServiceRepository {
   getServices(locale: Locale): Promise<readonly Service[]>;
-  getTechnologies(locale: Locale): Promise<readonly Technology[]>;
 }
 
 export interface FaqRepository {

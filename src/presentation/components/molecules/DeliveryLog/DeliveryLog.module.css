@@ -1,0 +1,136 @@
+.log {
+  width: 100%;
+  max-width: 440px;
+  padding: 18px 18px 6px;
+  border-radius: var(--radius-md);
+  background: var(--surface-glass);
+  border: 1px solid var(--surface-glass-border);
+  box-shadow: 0 30px 60px -36px rgba(0, 0, 0, 0.45);
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4px 14px;
+  border-bottom: 1px solid var(--line);
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  color: var(--mute);
+}
+
+.head b {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.live {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-ring);
+  animation: blink 1.6s ease-in-out infinite;
+}
+
+/* Five rows, the last one sinking under a fade. */
+.rows {
+  height: 268px;
+  margin: 0;
+  padding: 6px 0 0;
+  overflow: hidden;
+  list-style: none;
+  -webkit-mask: linear-gradient(180deg, #000 72%, transparent);
+  mask: linear-gradient(180deg, #000 72%, transparent);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 30px 1fr auto;
+  align-items: center;
+  gap: 12px;
+  height: 56px;
+  overflow: hidden;
+  padding: 0 4px;
+  border-bottom: 1px solid var(--line);
+}
+
+.fresh {
+  animation: row-in 0.7s var(--ease-out) both;
+}
+
+.avatar {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+  font-size: 10px;
+  font-weight: 700;
+  color: #fff;
+  background: var(--night);
+  box-shadow: inset 0 0 0 1px var(--night-edge);
+}
+
+.avatar svg {
+  width: 13px;
+  height: 13px;
+  fill: var(--accent);
+}
+
+.human .avatar {
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: none;
+}
+
+.text {
+  display: grid;
+  min-width: 0;
+  line-height: 1.3;
+}
+
+.text span {
+  overflow: hidden;
+  font-size: 13.5px;
+  font-weight: 500;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: var(--ink);
+}
+
+.text small {
+  font-size: 11px;
+  color: var(--mute);
+}
+
+.tag {
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 10.5px;
+  color: var(--ink-2);
+  background: var(--soft);
+  border: 1px solid var(--line);
+}
+
+.human .tag {
+  color: var(--accent-strong);
+  background: var(--accent-soft);
+  border-color: var(--accent-ring);
+}
+
+@keyframes row-in {
+  from {
+    height: 0;
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  60% {
+    opacity: 1;
+  }
+  to {
+    height: 56px;
+    transform: none;
+  }
+}

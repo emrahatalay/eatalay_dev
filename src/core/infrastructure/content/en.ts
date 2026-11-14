@@ -3,7 +3,7 @@ import hatimApp from "./projects/hatim-app/en";
 import { SHOTS as hatimShots } from "./projects/hatim-app/shared";
 import outOfOffice from "./projects/out-of-office/en";
 import { SHOTS as gameShots } from "./projects/out-of-office/shared";
-import { EMAIL, KNOWS_ABOUT, SOCIALS, technologies } from "./shared";
+import { EMAIL, KNOWS_ABOUT, SOCIALS } from "./shared";
 
 const en: LocaleDictionary = {
   profile: {
@@ -18,18 +18,37 @@ const en: LocaleDictionary = {
 
   page: {
     hero: {
-      greeting: "I'm Emrah Atalay",
-      titleLead: "AI-driven",
-      titleTail: "product builder",
+      eyebrow: "AI-assisted product development",
+      titleLead: "Built at AI speed,",
+      titleAccent: "held to human standards.",
+      lead: "I'm Emrah Atalay. I run a team of AI agents: code gets written, tested and reviewed, and every line passes human approval before it ships. Mobile apps, games and automation, from idea to launch.",
+      proof: [
+        { value: "10+ yrs", label: "in production" },
+        { value: "End to end", label: "idea to launch, one owner" },
+        { value: "100%", label: "human-approved code" },
+      ],
     },
     about: {
       headline: [
-        { text: "Automate the idea, ship faster.", tone: "accent" },
-        { text: "AI-assisted production for" },
-        { text: "measurable growth and operational excellence.", tone: "muted" },
+        { text: "Agents build,", tone: "accent" },
+        { text: "a human makes the call. Speed from AI, accountability from me." },
       ],
       summary:
-        "I run AI agents like a team and turn ideas into products that are live in the stores. Architecture, taste and the final call stay human.",
+        "I combine more than ten years of production experience with a team of AI agents. Research, code, tests and docs move in parallel; architecture, product taste and the release call stay with me.",
+      log: {
+        title: "Delivery log",
+        agent: "Agent",
+        human: "Emrah",
+        entries: [
+          { by: "agent", text: "Share screen written", tag: "code" },
+          { by: "agent", text: "24 tests added, all passing", tag: "test" },
+          { by: "agent", text: "Accessibility review done", tag: "review" },
+          { by: "human", text: "Changes approved", tag: "approval" },
+          { by: "agent", text: "iOS and Android built", tag: "build" },
+          { by: "agent", text: "Release notes drafted", tag: "docs" },
+          { by: "human", text: "Version 1.4 shipped", tag: "release" },
+        ],
+      },
       experience: {
         value: "10+ yrs",
         label: "Of shipping software in production.",
@@ -43,10 +62,10 @@ const en: LocaleDictionary = {
         items: [
           { label: "Mobile", visual: { kind: "screen", image: { ...hatimShots.en.khatm, alt: "" } } },
           { label: "Games", visual: { kind: "screen", image: { ...gameShots.en.menu, alt: "" } } },
-          { label: "Software", visual: { kind: "code" } },
+          { label: "Design", visual: { kind: "design" } },
           { label: "Automation", visual: { kind: "flow" } },
         ],
-        label: "4 disciplines · mobile, games, software, automation",
+        label: "4 disciplines · mobile, games, design, automation",
       },
       workflow: { value: "AI", label: "Parallel work with an agent team, quality through human review." },
       quote:
@@ -67,11 +86,11 @@ const en: LocaleDictionary = {
       ctaLabel: "Free intro call",
     },
     footerBlurb:
-      "A one-person studio building mobile apps, mobile games, software and automations with AI.",
+      "A one-person studio building mobile apps, mobile games, interface design and automations with AI.",
     seo: {
       title: "Emrah Atalay — AI-Driven Mobile App, Game & Software Developer",
       description:
-        "Independent developer building mobile apps, mobile games, software and automations with AI agents. End-to-end product development, from idea to the app stores.",
+        "Independent developer building mobile apps, mobile games, interface design and automations with AI agents. End-to-end product development with Expo, React Native, Next.js and Unity, from idea to launch.",
       keywords: [
         "Emrah Atalay",
         "mobile app developer",
@@ -81,10 +100,15 @@ const en: LocaleDictionary = {
         "React Native developer",
         "Expo app development",
         "Flutter developer",
+        "Swift Kotlin developer",
+        "Next.js TypeScript developer",
+        "Unity C# game development",
+        "mobile app design",
         "iOS Android apps",
         "freelance software developer",
         "LLM agents",
         "n8n automation",
+        "Python automation",
       ],
     },
   },
@@ -95,19 +119,19 @@ const en: LocaleDictionary = {
       shortTitle: "Mobile apps",
       title: { lead: "Mobile", accent: "Apps" },
       description:
-        "Fast, maintainable iOS and Android apps that feel native, built with Expo and React Native. From idea validation to the store release.",
-      tags: ["Expo · React Native", "Flutter", "Swift · Kotlin", "Research", "Store release"],
+        "iOS and Android apps that feel native, built with Expo and React Native; Swift, Kotlin or Flutter when needed. A Next.js web version from the same core.",
+      tags: ["Expo · React Native", "Next.js · TypeScript", "Flutter", "Swift · Kotlin", "Store release"],
       visual: {
         kind: "ship",
-        screen: { ...hatimShots.en.today, alt: "The Today screen of the live Hatim App" },
+        screen: { ...hatimShots.en.today, alt: "The Today screen of Hatim App" },
         command: "eas build --platform all",
         steps: [
           { mark: "done", text: "iOS build · 42" },
           { mark: "done", text: "Android build · 42" },
-          { mark: "sent", text: "Submitted to App Store" },
-          { mark: "sent", text: "Submitted to Google Play" },
+          { mark: "sent", text: "Sent to Google Play closed testing" },
+          { mark: "sent", text: "Web: hatim.app updated" },
         ],
-        badge: "App Store · Google Play",
+        badge: "One core · web, iOS, Android",
       },
       showcase: { projectSlug: "hatim-app", label: "Case study: Hatim App" },
     },
@@ -125,10 +149,10 @@ const en: LocaleDictionary = {
         fields: [
           { label: "Speed", value: "12" },
           { label: "Lanes", value: "3" },
-          { label: "Coin multiplier", value: "×1.5" },
-          { label: "Revive", value: "Rewarded ad" },
+          { label: "Overtime", value: "×2" },
+          { label: "Continue", value: "Keycard" },
         ],
-        metric: { label: "Day-1 retention", value: "42%" },
+        metric: { label: "Job buy-back cost", value: "×1.5" },
         badge: "Unity · prototype to launch",
       },
       showcase: { projectSlug: "out-of-office", label: "Case study: Out of Office" },
@@ -138,7 +162,7 @@ const en: LocaleDictionary = {
       shortTitle: "App design",
       title: { lead: "App", accent: "Design" },
       description:
-        "Interface and flow design for AI-assisted products, delivered together with a component library.",
+        "Interface and flow design for AI-assisted products, delivered together with a component library. Hatim App's calm, large-target interface came out of this process.",
       tags: ["Research", "Wireframes", "AI product", "Experience", "Testing"],
       visual: {
         kind: "design",
@@ -148,6 +172,7 @@ const en: LocaleDictionary = {
         component: "Button / Primary",
         cursor: "Emrah",
       },
+      showcase: { projectSlug: "hatim-app", label: "Case study: Hatim App" },
     },
     {
       id: "ai-automation",
@@ -158,7 +183,7 @@ const en: LocaleDictionary = {
       tags: ["LLM agents", "n8n", "Python", "Integrations"],
       visual: {
         kind: "flow",
-        runs: "128 jobs automated this week",
+        runs: "Runs on every new lead",
         trigger: "New lead",
         agent: { name: "AI agent", task: "classify · reply" },
         outputs: ["CRM", "Slack", "Email"],
@@ -166,14 +191,12 @@ const en: LocaleDictionary = {
     },
   ],
 
-  technologies: technologies("LLM agents"),
-
   faqs: [
     {
       id: "projects",
       question: "What kind of projects do you take on?",
       answer:
-        "Mobile apps, mobile games, web software and AI automations. I'm most effective with product teams and startups that have a clear problem and want to ship fast.",
+        "Mobile apps (with a Next.js web version when needed), mobile games, interface design and AI automations. I'm most effective with product teams and startups that have a clear problem and want to ship fast.",
     },
     {
       id: "mvp",

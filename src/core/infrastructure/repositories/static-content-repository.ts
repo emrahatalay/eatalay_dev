@@ -43,10 +43,6 @@ export class StaticContentRepository
     return (await this.load(locale)).services;
   }
 
-  async getTechnologies(locale: Locale) {
-    return (await this.load(locale)).technologies;
-  }
-
   async getFaqs(locale: Locale) {
     return (await this.load(locale)).faqs;
   }

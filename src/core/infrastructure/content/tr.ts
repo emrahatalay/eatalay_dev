@@ -3,7 +3,7 @@ import hatimApp from "./projects/hatim-app/tr";
 import { SHOTS as hatimShots } from "./projects/hatim-app/shared";
 import outOfOffice from "./projects/out-of-office/tr";
 import { SHOTS as gameShots } from "./projects/out-of-office/shared";
-import { EMAIL, KNOWS_ABOUT, SOCIALS, technologies } from "./shared";
+import { EMAIL, KNOWS_ABOUT, SOCIALS } from "./shared";
 
 const tr: LocaleDictionary = {
   profile: {
@@ -18,18 +18,37 @@ const tr: LocaleDictionary = {
 
   page: {
     hero: {
-      greeting: "Ben Emrah Atalay",
-      titleLead: "Yapay zekayla",
-      titleTail: "üreten geliştirici",
+      eyebrow: "Yapay zeka destekli ürün geliştirme",
+      titleLead: "Yapay zeka hızında,",
+      titleAccent: "insan kalitesinde ürünler.",
+      lead: "Ben Emrah Atalay. Yapay zeka ajanlarından oluşan bir ekibi yönetiyorum: kod yazılır, test edilir, incelenir ve her satır yayına çıkmadan önce insan onayından geçer. Mobil uygulama, oyun ve otomasyonda fikirden yayına.",
+      proof: [
+        { value: "10+ yıl", label: "üretim deneyimi" },
+        { value: "Uçtan uca", label: "fikirden yayına tek elden" },
+        { value: "%100", label: "insan onaylı kod" },
+      ],
     },
     about: {
       headline: [
-        { text: "Fikri otomatikleştir, yayını hızlandır.", tone: "accent" },
-        { text: "Yapay zeka destekli üretimle" },
-        { text: "ölçülebilir büyüme ve operasyonel mükemmellik.", tone: "muted" },
+        { text: "Ajanlar üretir,", tone: "accent" },
+        { text: "son kararı insan verir. Hız yapay zekadan, sorumluluk benden." },
       ],
       summary:
-        "Yapay zeka ajanlarını bir ekip gibi yöneterek fikirleri mağazada yayında olan ürünlere dönüştürüyorum. Mimari, zevk ve son karar insanda kalıyor.",
+        "On yılı aşkın üretim deneyimimi yapay zeka ajanlarıyla birleştiriyorum. Araştırma, kod, test ve belge işleri paralel ilerler; mimari, ürün zevki ve yayın kararı bende kalır.",
+      log: {
+        title: "Teslim günlüğü",
+        agent: "Ajan",
+        human: "Emrah",
+        entries: [
+          { by: "agent", text: "Paylaşım ekranı yazıldı", tag: "kod" },
+          { by: "agent", text: "24 test eklendi, hepsi geçti", tag: "test" },
+          { by: "agent", text: "Erişilebilirlik incelemesi bitti", tag: "inceleme" },
+          { by: "human", text: "Değişiklikler onaylandı", tag: "onay" },
+          { by: "agent", text: "iOS ve Android derlendi", tag: "derleme" },
+          { by: "agent", text: "Sürüm notları hazırlandı", tag: "belge" },
+          { by: "human", text: "Sürüm 1.4 yayına alındı", tag: "yayın" },
+        ],
+      },
       experience: {
         value: "10+ yıl",
         label: "Üretim ortamında yazılım geliştirme deneyimi.",
@@ -43,10 +62,10 @@ const tr: LocaleDictionary = {
         items: [
           { label: "Mobil", visual: { kind: "screen", image: { ...hatimShots.tr.khatm, alt: "" } } },
           { label: "Oyun", visual: { kind: "screen", image: { ...gameShots.tr.drone, alt: "" } } },
-          { label: "Yazılım", visual: { kind: "code" } },
+          { label: "Tasarım", visual: { kind: "design" } },
           { label: "Otomasyon", visual: { kind: "flow" } },
         ],
-        label: "4 disiplin · mobil, oyun, yazılım, otomasyon",
+        label: "4 disiplin · mobil, oyun, tasarım, otomasyon",
       },
       workflow: { value: "AI", label: "Ajan ekibiyle paralel üretim, insan denetimiyle kalite." },
       quote:
@@ -69,11 +88,11 @@ const tr: LocaleDictionary = {
       ctaLabel: "Ücretsiz görüşme",
     },
     footerBlurb:
-      "Yapay zekayla mobil uygulama, mobil oyun, yazılım ve otomasyon üreten bir kişilik stüdyo.",
+      "Yapay zekayla mobil uygulama, mobil oyun, arayüz tasarımı ve otomasyon üreten bir kişilik stüdyo.",
     seo: {
       title: "Emrah Atalay — Yapay Zekayla Mobil Uygulama, Oyun ve Yazılım Geliştirici",
       description:
-        "Yapay zeka ajanlarıyla mobil uygulama, mobil oyun, yazılım ve otomasyon üreten bağımsız geliştirici. Fikirden mağaza yayınına uçtan uca ürün geliştirme.",
+        "Yapay zeka ajanlarıyla mobil uygulama, mobil oyun, arayüz tasarımı ve otomasyon üreten bağımsız geliştirici. Expo, React Native, Next.js ve Unity ile fikirden yayına uçtan uca ürün geliştirme.",
       keywords: [
         "Emrah Atalay",
         "mobil uygulama geliştirme",
@@ -83,10 +102,15 @@ const tr: LocaleDictionary = {
         "React Native geliştirici",
         "Expo uygulama geliştirme",
         "Flutter geliştirici",
+        "Swift Kotlin geliştirici",
+        "Next.js TypeScript geliştirici",
+        "Unity C# oyun geliştirme",
+        "mobil uygulama tasarımı",
         "iOS Android uygulama",
         "freelance yazılım geliştirici",
         "LLM ajanları",
         "n8n otomasyon",
+        "Python otomasyon",
       ],
     },
   },
@@ -97,19 +121,19 @@ const tr: LocaleDictionary = {
       shortTitle: "Mobil uygulama",
       title: { lead: "Mobil", accent: "Uygulama" },
       description:
-        "Expo ve React Native ile iOS ve Android'de yerel hissi veren, hızlı ve bakımı kolay uygulamalar. Fikir doğrulamasından mağaza yayınına.",
-      tags: ["Expo · React Native", "Flutter", "Swift · Kotlin", "Araştırma", "Mağaza yayını"],
+        "Expo ve React Native ile iOS ve Android'de yerel hissi veren uygulamalar; gerektiğinde Swift, Kotlin ya da Flutter. Aynı çekirdekten Next.js web sürümü.",
+      tags: ["Expo · React Native", "Next.js · TypeScript", "Flutter", "Swift · Kotlin", "Mağaza yayını"],
       visual: {
         kind: "ship",
-        screen: { ...hatimShots.tr.today, alt: "Yayındaki Hatim App'in Bugün ekranı" },
+        screen: { ...hatimShots.tr.today, alt: "Hatim App'in Bugün ekranı" },
         command: "eas build --platform all",
         steps: [
           { mark: "done", text: "iOS derlemesi · 42" },
           { mark: "done", text: "Android derlemesi · 42" },
-          { mark: "sent", text: "App Store'a gönderildi" },
-          { mark: "sent", text: "Google Play'e gönderildi" },
+          { mark: "sent", text: "Google Play kapalı teste gönderildi" },
+          { mark: "sent", text: "Web: hatim.app güncellendi" },
         ],
-        badge: "App Store · Google Play",
+        badge: "Tek çekirdek · web, iOS, Android",
       },
       showcase: { projectSlug: "hatim-app", label: "Örnek proje: Hatim App" },
     },
@@ -127,10 +151,10 @@ const tr: LocaleDictionary = {
         fields: [
           { label: "Hız", value: "12" },
           { label: "Şerit", value: "3" },
-          { label: "Coin çarpanı", value: "×1.5" },
-          { label: "Canlanma", value: "Ödüllü reklam" },
+          { label: "Fazla Mesai", value: "×2" },
+          { label: "Devam", value: "Giriş kartı" },
         ],
-        metric: { label: "1. gün tutma", value: "%42" },
+        metric: { label: "Meslek geri alma bedeli", value: "×1,5" },
         badge: "Unity · prototipten yayına",
       },
       showcase: { projectSlug: "out-of-office", label: "Örnek proje: Son Mesai" },
@@ -140,7 +164,7 @@ const tr: LocaleDictionary = {
       shortTitle: "Uygulama tasarımı",
       title: { lead: "Uygulama", accent: "Tasarımı" },
       description:
-        "Yapay zeka asistanlı ürünler için arayüz ve akış tasarımı; bileşen kütüphanesiyle birlikte teslim.",
+        "Yapay zeka asistanlı ürünler için arayüz ve akış tasarımı; bileşen kütüphanesiyle birlikte teslim. Hatim App'in sade, büyük dokunma alanlı arayüzü bu süreçten çıktı.",
       tags: ["Araştırma", "Tel kafes", "AI ürün", "Deneyim", "Test"],
       visual: {
         kind: "design",
@@ -150,6 +174,7 @@ const tr: LocaleDictionary = {
         component: "Button / Primary",
         cursor: "Emrah",
       },
+      showcase: { projectSlug: "hatim-app", label: "Örnek proje: Hatim App" },
     },
     {
       id: "ai-automation",
@@ -160,7 +185,7 @@ const tr: LocaleDictionary = {
       tags: ["LLM ajanları", "n8n", "Python", "Entegrasyon"],
       visual: {
         kind: "flow",
-        runs: "Bu hafta 128 iş otomatik",
+        runs: "Her yeni talepte otomatik çalışır",
         trigger: "Yeni talep",
         agent: { name: "AI ajanı", task: "sınıflandır · yanıtla" },
         outputs: ["CRM", "Slack", "E-posta"],
@@ -168,14 +193,12 @@ const tr: LocaleDictionary = {
     },
   ],
 
-  technologies: technologies("LLM ajanları"),
-
   faqs: [
     {
       id: "projects",
       question: "Hangi tür projeler alıyorsun?",
       answer:
-        "Mobil uygulama, mobil oyun, web yazılımı ve yapay zeka otomasyonları. En verimli olduğum yer: net bir sorunu olan, hızlı yayın isteyen ürün ekipleri ve girişimler.",
+        "Mobil uygulama (gerekirse Next.js web sürümüyle), mobil oyun, arayüz tasarımı ve yapay zeka otomasyonları. En verimli olduğum yer: net bir sorunu olan, hızlı yayın isteyen ürün ekipleri ve girişimler.",
     },
     {
       id: "mvp",

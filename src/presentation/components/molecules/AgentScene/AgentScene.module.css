@@ -1,0 +1,489 @@
+/* Faint by design: it sits behind the hero title and only hints at the work. */
+.scene {
+  --card-h: 104px;
+
+  position: absolute;
+  top: calc(50% + 36px);
+  right: clamp(24px, 4vw, 56px);
+  z-index: -1;
+  width: min(780px, 52%);
+  translate: 0 -50%;
+  height: 520px;
+  font-family: var(--font-body);
+  color: #fff;
+  opacity: 0.72;
+  -webkit-mask: linear-gradient(90deg, transparent, #000 8%);
+  mask: linear-gradient(90deg, transparent, #000 8%);
+  animation: scene-in 1.6s var(--ease-out) both 0.3s;
+  pointer-events: none;
+  user-select: none;
+}
+
+.wires {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.wire {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.14);
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+
+.dashed .wire {
+  stroke-dasharray: 4 5;
+}
+
+.pulse {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-dasharray: 18 100;
+  vector-effect: non-scaling-stroke;
+  filter: drop-shadow(0 0 4px var(--accent));
+  animation: travel 1.3s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+/* ---------- Nodes ---------- */
+.node {
+  position: absolute;
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  min-height: var(--card-h);
+  padding: 12px 14px;
+  border-radius: 14px;
+  font-size: 12px;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  opacity: 0.6;
+  transform: translateY(-50%);
+  transition:
+    opacity 0.5s ease,
+    border-color 0.5s ease,
+    box-shadow 0.5s ease,
+    background-color 0.5s ease;
+}
+
+.busy {
+  opacity: 1;
+  background-color: rgba(255, 255, 255, 0.06);
+  border-color: color-mix(in srgb, var(--accent) 55%, transparent);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 10%, transparent), 0 20px 50px -20px var(--accent);
+}
+
+.done {
+  opacity: 0.85;
+}
+
+/* Centres line up with the wire ends in AgentScene/index.tsx. */
+.operator {
+  left: 0;
+  top: 50%;
+  width: 26%;
+}
+
+.agent {
+  left: 36%;
+  width: 28%;
+  height: var(--card-h);
+}
+
+.coder {
+  top: 14%;
+}
+
+.tester {
+  top: 50%;
+}
+
+.reviewer {
+  top: 86%;
+}
+
+.deploy {
+  left: 74%;
+  top: 50%;
+  width: 26%;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  white-space: nowrap;
+}
+
+.head b {
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.glyph {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.glyph svg {
+  width: 12px;
+  height: 12px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.4;
+  stroke-linejoin: round;
+}
+
+.agent .glyph svg {
+  fill: currentColor;
+  stroke: none;
+}
+
+.busy .glyph {
+  color: var(--accent);
+}
+
+.agent .status {
+  font-size: 10.5px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.agent.busy .status {
+  color: var(--accent);
+}
+
+/* Operator */
+.avatar {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 700;
+  color: #fff;
+  background: var(--accent);
+}
+
+.who {
+  display: grid;
+  line-height: 1.2;
+}
+
+.who small {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.prompt {
+  padding: 7px 9px;
+  border-radius: 8px;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 11px;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.82);
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.prompt::before {
+  content: "› ";
+  color: var(--accent);
+}
+
+.promptText {
+  display: inline;
+}
+
+.typing {
+  animation: type 1.6s steps(34, end) both;
+}
+
+.approve {
+  position: relative;
+  justify-self: start;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  transition: all 0.4s ease;
+}
+
+.approveHot {
+  color: #fff;
+  border-color: var(--accent);
+  animation: press 2s ease both;
+}
+
+.approveDone {
+  color: #fff;
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.cursor {
+  position: absolute;
+  left: 70%;
+  top: 60%;
+  width: 14px;
+  height: 16px;
+  fill: #fff;
+  stroke: var(--night);
+  stroke-width: 1;
+  animation: cursor-in 2s var(--ease-out) both;
+}
+
+/* Agent bodies */
+.code {
+  display: grid;
+  gap: 7px;
+}
+
+.code i {
+  display: block;
+  height: 5px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.28);
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 0.6s var(--ease-out);
+}
+
+.code i:nth-child(2) {
+  background: color-mix(in srgb, var(--accent) 70%, transparent);
+}
+
+.coder.busy .code i,
+.coder.done .code i {
+  transform: none;
+}
+
+.coder.busy .code i:nth-child(2) {
+  transition-delay: 0.45s;
+}
+
+.coder.busy .code i:nth-child(3) {
+  transition-delay: 0.9s;
+}
+
+.checks {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 4px;
+}
+
+.checks i {
+  height: 8px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  transition: background-color 0.25s ease;
+}
+
+.tester.busy .checks i,
+.tester.done .checks i {
+  background: color-mix(in srgb, var(--accent) 75%, transparent);
+}
+
+.tester.done .checks i {
+  background: rgba(255, 255, 255, 0.45);
+}
+
+.diff {
+  display: grid;
+  gap: 6px;
+}
+
+.diff i {
+  position: relative;
+  display: block;
+  height: 5px;
+  margin-left: 14px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.diff i:first-child {
+  width: 78%;
+}
+
+.diff i:last-child {
+  width: 52%;
+}
+
+.diff i::before {
+  content: attr(data-sign);
+  position: absolute;
+  left: -14px;
+  top: 50%;
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 10px;
+  font-style: normal;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-50%);
+}
+
+.reviewer.busy .diff i {
+  background-image: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.7), transparent);
+  background-size: 50% 100%;
+  background-repeat: no-repeat;
+  animation: scan 1.4s linear infinite;
+}
+
+/* Release */
+.bar {
+  height: 6px;
+  overflow: hidden;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.bar i {
+  display: block;
+  width: 0;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--accent);
+}
+
+.deploy.busy .bar i {
+  width: 100%;
+  transition: width 1.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.deploy.done .bar i {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.liveDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 10px 2px var(--accent);
+  animation: blink 1.6s ease-in-out infinite;
+}
+
+.deploy.done {
+  opacity: 1;
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+/* ---------- Motion ---------- */
+@keyframes travel {
+  from {
+    stroke-dashoffset: 118;
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+    opacity: 0.2;
+  }
+}
+
+@keyframes type {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes cursor-in {
+  from {
+    transform: translate(60px, 30px);
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  60%,
+  to {
+    transform: none;
+  }
+}
+
+@keyframes press {
+  0%,
+  55% {
+    transform: none;
+  }
+  65% {
+    transform: scale(0.94);
+  }
+  80%,
+  to {
+    transform: none;
+  }
+}
+
+@keyframes scan {
+  from {
+    background-position: -100% 0;
+  }
+  to {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes scene-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+}
+
+/* ---------- Smaller screens: same scene, scaled into the top of the hero. ---------- */
+@media (max-width: 900px) {
+  .scene {
+    top: 92px;
+    translate: none;
+    left: 20px;
+    right: auto;
+    width: calc((100% - 40px) / 0.72);
+    max-width: 820px;
+    transform-origin: 0 0;
+    scale: 0.72;
+    opacity: 0.5;
+    -webkit-mask: linear-gradient(180deg, #000 70%, transparent);
+    mask: linear-gradient(180deg, #000 70%, transparent);
+  }
+}
+
+@media (max-width: 640px) {
+  .scene {
+    top: 84px;
+    left: 16px;
+    width: calc((100% - 32px) / 0.54);
+    scale: 0.54;
+    opacity: 0.5;
+  }
+
+}

@@ -21,7 +21,7 @@ const PREVIEW_COUNT = 3;
 export function HomeTemplate({ page }: { readonly page: HomePage }) {
   const t = useTranslations("Nav");
   const tp = useTranslations("Portfolio");
-  const { profile, content, services, technologies, faqs, testimonials, projects, locale } = page;
+  const { profile, content, services, faqs, testimonials, projects, locale } = page;
 
   const navItems: NavItem[] = [
     { href: "#top", label: t("home") },
@@ -47,7 +47,8 @@ export function HomeTemplate({ page }: { readonly page: HomePage }) {
     <PageShell skipLabel={t("skip")}>
       <Hero
         content={content.hero}
-        technologies={technologies}
+        contactHref={cta.href}
+        portfolioHref={portfolioPath(locale)}
         header={<SiteHeader brand={profile.brand} locale={locale} items={navItems} cta={cta} />}
       />
       <main id="main" tabIndex={-1}>
