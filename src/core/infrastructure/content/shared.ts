@@ -12,7 +12,7 @@ export const AVATAR: Omit<ImageAsset, "alt"> = avatar;
 export const SOCIALS: readonly SocialLink[] = [
   { network: "github", label: "GitHub", url: "https://github.com/emrahatalay" },
   { network: "linkedin", label: "LinkedIn", url: "https://www.linkedin.com/in/emrahatalay" },
-  { network: "instagram", label: "Instagram", url: "https://instagram.com/emrahatalay13" },
+  { network: "instagram", label: "Instagram", url: "https://instagram.com/emrahatalay.ai" },
 ];
 
 export const KNOWS_ABOUT = [
