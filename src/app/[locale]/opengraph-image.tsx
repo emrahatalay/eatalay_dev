@@ -65,7 +65,7 @@ export default async function OpenGraphImage({ params }: { params: Promise<{ loc
           <div style={{ display: "flex", fontSize: 76, lineHeight: 1.05, color: "#f05a1a" }}>
             {content.hero.titleAccent}
           </div>
-          <div style={{ display: "flex", gap: 12, marginTop: 36 }}>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 12, marginTop: 36 }}>
             {services.map((s) => (
               <div
                 key={s.id}

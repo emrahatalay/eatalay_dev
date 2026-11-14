@@ -1,12 +1,18 @@
 import { useTranslations } from "next-intl";
-import type { Service } from "@/core/domain/entities";
+import type { Service, SharedProcess } from "@/core/domain/entities";
 import { Chip } from "@/presentation/components/atoms/Chip";
 import { DisplayHeading } from "@/presentation/components/atoms/DisplayHeading";
 import { ServiceCard } from "../ServiceCard";
 import styles from "./Services.module.css";
 
-/** Home-page stack of what I offer, one sticky card per service. */
-export function Services({ services }: { readonly services: readonly Service[] }) {
+/** Home-page stack of what I offer, one sticky card per service, closed by the process they all share. */
+export function Services({
+  services,
+  process,
+}: {
+  readonly services: readonly Service[];
+  readonly process: SharedProcess;
+}) {
   const t = useTranslations("Services");
 
   return (
@@ -22,6 +28,7 @@ export function Services({ services }: { readonly services: readonly Service[] }
         {services.map((service) => (
           <ServiceCard key={service.id} service={service} />
         ))}
+        <ServiceCard service={process} />
       </div>
     </section>
   );

@@ -53,7 +53,7 @@ export function HomeTemplate({ page }: { readonly page: HomePage }) {
       />
       <main id="main" tabIndex={-1}>
         <About content={content.about} />
-        <Services services={services} />
+        <Services services={services} process={content.process} />
         {projects.length > 0 && (
           <PortfolioPreview cards={previewCards} total={projects.length} href={portfolioPath(locale)} />
         )}

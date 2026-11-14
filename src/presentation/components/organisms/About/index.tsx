@@ -22,13 +22,12 @@ function DisciplineTile({ visual }: { readonly visual: DisciplineVisual }) {
       return (
         <Image src={visual.image} alt="" fill sizes="64px" quality={70} className={styles.tileImage} />
       );
-    case "design":
+    case "web":
       return (
-        <svg className={styles.designGlyph} viewBox="0 0 64 64" fill="none">
-          <rect x="14" y="14" width="36" height="36" rx="4" />
-          <path d="M22 26h20M22 34h12" />
-          <rect x="10" y="10" width="8" height="8" rx="2" className={styles.designHandle} />
-          <rect x="46" y="46" width="8" height="8" rx="2" className={styles.designHandle} />
+        <svg className={styles.webGlyph} viewBox="0 0 64 64" fill="none">
+          <rect x="10" y="14" width="44" height="36" rx="6" />
+          <path d="M10 24h44" />
+          <path d="M27 32l-5 5 5 5M37 32l5 5-5 5" className={styles.webHot} />
         </svg>
       );
     case "flow":

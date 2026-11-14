@@ -17,6 +17,7 @@ export const KNOWS_ABOUT = [
   "Flutter",
   "Unity",
   "C#",
+  "Web development",
   "Next.js",
   "TypeScript",
   "Python",

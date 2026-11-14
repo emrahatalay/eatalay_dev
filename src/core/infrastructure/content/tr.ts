@@ -9,7 +9,7 @@ const tr: LocaleDictionary = {
   profile: {
     name: "Emrah Atalay",
     brand: "eatalay",
-    jobTitle: "Yapay zeka destekli mobil uygulama, oyun ve yazılım geliştirici",
+    jobTitle: "Yapay zeka destekli web, mobil uygulama, oyun ve yazılım geliştirici",
     email: EMAIL,
     location: { city: "Bitlis", countryCode: "TR", label: "Bitlis, TR · uzaktan" },
     socials: SOCIALS,
@@ -21,7 +21,7 @@ const tr: LocaleDictionary = {
       eyebrow: "Yapay zeka destekli ürün geliştirme",
       titleLead: "Yapay zeka hızında,",
       titleAccent: "insan kalitesinde ürünler.",
-      lead: "Ben Emrah Atalay. Yapay zeka ajanlarından oluşan bir ekibi yönetiyorum: kod yazılır, test edilir, incelenir ve her satır yayına çıkmadan önce insan onayından geçer. Mobil uygulama, oyun ve otomasyonda fikirden yayına.",
+      lead: "Ben Emrah Atalay. Yapay zeka ajanlarından oluşan bir ekibi yönetiyorum: kod yazılır, test edilir, incelenir ve her satır yayına çıkmadan önce insan onayından geçer. Web ve mobil uygulama, oyun ve otomasyonda fikirden yayına.",
       proof: [
         { value: "10+ yıl", label: "üretim deneyimi" },
         { value: "Uçtan uca", label: "fikirden yayına tek elden" },
@@ -60,12 +60,12 @@ const tr: LocaleDictionary = {
       },
       disciplines: {
         items: [
+          { label: "Web", visual: { kind: "web" } },
           { label: "Mobil", visual: { kind: "screen", image: { ...hatimShots.tr.khatm, alt: "" } } },
           { label: "Oyun", visual: { kind: "screen", image: { ...gameShots.tr.drone, alt: "" } } },
-          { label: "Tasarım", visual: { kind: "design" } },
           { label: "Otomasyon", visual: { kind: "flow" } },
         ],
-        label: "4 disiplin · mobil, oyun, tasarım, otomasyon",
+        label: "4 disiplin · web, mobil, oyun, otomasyon · tek ortak süreç",
       },
       workflow: { value: "AI", label: "Ajan ekibiyle paralel üretim, insan denetimiyle kalite." },
       quote:
@@ -87,14 +87,38 @@ const tr: LocaleDictionary = {
       text: "Sorularınız mı var? Projeye başlamadan önce kısa bir tanışma görüşmesi yapalım.",
       ctaLabel: "Ücretsiz görüşme",
     },
-    footerBlurb:
-      "Yapay zekayla mobil uygulama, mobil oyun, arayüz tasarımı ve otomasyon üreten bir kişilik stüdyo.",
-    seo: {
-      title: "Emrah Atalay — Yapay Zekayla Mobil Uygulama, Oyun ve Yazılım Geliştirici",
+    process: {
+      id: "shared-process",
+      shortTitle: "Ortak süreçler",
+      title: { lead: "Ortak", accent: "Süreçler" },
       description:
-        "Yapay zeka ajanlarıyla mobil uygulama, mobil oyun, arayüz tasarımı ve otomasyon üreten bağımsız geliştirici. Expo, React Native, Next.js ve Unity ile fikirden yayına uçtan uca ürün geliştirme.",
+        "Dördünden hangisine ihtiyacınız olursa olsun, altta aynı temel süreç işler. Kod yazılmadan önce araştırma ve mimari planlama yapılır; üretim sırasında arayüz tasarımı ve testler ilerler; sonunda insan onayı ve takip edilen bir yayın gelir.",
+      tags: ["Araştırma", "Arayüz tasarımı", "Mimari planlama", "Test", "Kod incelemesi", "Yayın ve bakım"],
+      visual: {
+        kind: "process",
+        scope: "Her projede · dört disiplinde de",
+        appliesTo: ["Web", "Mobil", "Oyun", "Otomasyon"],
+        steps: [
+          { label: "Araştırma", detail: "Sorun, kullanıcı, rakipler", icon: "research" },
+          { label: "Arayüz tasarımı", detail: "Akış, tel kafes, bileşenler", icon: "design" },
+          { label: "Mimari planlama", detail: "Veri modeli, katmanlar, entegrasyon", icon: "architecture" },
+          { label: "Üretim ve test", detail: "Ajanlar kodlar, testler koşar", icon: "build" },
+          { label: "İnsan onayı", detail: "Her değişiklik onaylanır", icon: "review" },
+          { label: "Yayın ve bakım", detail: "Yayın, analiz, güncelleme", icon: "release" },
+        ],
+      },
+    },
+    footerBlurb:
+      "Yapay zekayla web sitesi, mobil uygulama, mobil oyun ve otomasyon üreten, her işi uçtan uca tasarlayan bir kişilik stüdyo.",
+    seo: {
+      title: "Emrah Atalay — Yapay Zekayla Web, Mobil Uygulama ve Oyun Geliştirici",
+      description:
+        "Yapay zeka ajanlarıyla web sitesi, web ve mobil uygulama, mobil oyun ve otomasyon üreten bağımsız geliştirici; arayüz ve akış tasarımı her projenin parçası. Next.js, Expo, React Native ve Unity ile fikirden yayına uçtan uca ürün geliştirme.",
       keywords: [
         "Emrah Atalay",
+        "web geliştirici",
+        "web sitesi yapımı",
+        "web uygulama geliştirme",
         "mobil uygulama geliştirme",
         "mobil oyun geliştirme",
         "yapay zeka otomasyon",
@@ -116,6 +140,22 @@ const tr: LocaleDictionary = {
   },
 
   services: [
+    {
+      id: "web-development",
+      shortTitle: "Web geliştirme",
+      title: { lead: "Web", accent: "Geliştirme" },
+      description:
+        "Hızlı açılan, arama motorlarında kolay bulunan ve yönetimi basit web siteleri ve web uygulamaları: tanıtım sayfaları, yönetim panelleri, online mağazalar. Bu site de onlardan biri.",
+      tags: ["Web sitesi", "Web uygulaması", "Yönetim paneli", "SEO", "Next.js · TypeScript"],
+      visual: {
+        kind: "web",
+        url: "eatalay.dev",
+        headline: "Yapay zeka hızında,",
+        checks: ["Tüm sayfalar önceden oluşturulmuş", "Site haritası ve yapısal veri", "Türkçe ve İngilizce", "Açık ve koyu tema"],
+        badge: "Yayında · bu site",
+      },
+      showcase: { projectSlug: "hatim-app", label: "Örnek proje: Hatim App" },
+    },
     {
       id: "mobile-app",
       shortTitle: "Mobil uygulama",
@@ -160,23 +200,6 @@ const tr: LocaleDictionary = {
       showcase: { projectSlug: "out-of-office", label: "Örnek proje: Son Mesai" },
     },
     {
-      id: "product-design",
-      shortTitle: "Uygulama tasarımı",
-      title: { lead: "Uygulama", accent: "Tasarımı" },
-      description:
-        "Yapay zeka asistanlı ürünler için arayüz ve akış tasarımı; bileşen kütüphanesiyle birlikte teslim. Hatim App'in sade, büyük dokunma alanlı arayüzü bu süreçten çıktı.",
-      tags: ["Araştırma", "Tel kafes", "AI ürün", "Deneyim", "Test"],
-      visual: {
-        kind: "design",
-        screen: { ...hatimShots.tr.group, alt: "Tasarım tuvalinde seçili bir Hatim App ekranı" },
-        wireframe: "Tel kafes",
-        size: "390 × 844",
-        component: "Button / Primary",
-        cursor: "Emrah",
-      },
-      showcase: { projectSlug: "hatim-app", label: "Örnek proje: Hatim App" },
-    },
-    {
       id: "ai-automation",
       shortTitle: "AI otomasyon",
       title: { lead: "AI", accent: "Otomasyon" },
@@ -198,7 +221,7 @@ const tr: LocaleDictionary = {
       id: "projects",
       question: "Hangi tür projeler alıyorsun?",
       answer:
-        "Mobil uygulama (gerekirse Next.js web sürümüyle), mobil oyun, arayüz tasarımı ve yapay zeka otomasyonları. En verimli olduğum yer: net bir sorunu olan, hızlı yayın isteyen ürün ekipleri ve girişimler.",
+        "Web sitesi ve web uygulaması, mobil uygulama, mobil oyun ve yapay zeka otomasyonları; arayüz ve akış tasarımı her projenin parçası. En verimli olduğum yer: net bir sorunu olan, hızlı yayın isteyen ürün ekipleri ve girişimler.",
     },
     {
       id: "mvp",

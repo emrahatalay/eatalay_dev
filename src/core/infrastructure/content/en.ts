@@ -9,7 +9,7 @@ const en: LocaleDictionary = {
   profile: {
     name: "Emrah Atalay",
     brand: "eatalay",
-    jobTitle: "AI-driven mobile app, game and software developer",
+    jobTitle: "AI-driven web, mobile app, game and software developer",
     email: EMAIL,
     location: { city: "Bitlis", countryCode: "TR", label: "Bitlis, TR · remote" },
     socials: SOCIALS,
@@ -21,7 +21,7 @@ const en: LocaleDictionary = {
       eyebrow: "AI-assisted product development",
       titleLead: "Built at AI speed,",
       titleAccent: "held to human standards.",
-      lead: "I'm Emrah Atalay. I run a team of AI agents: code gets written, tested and reviewed, and every line passes human approval before it ships. Mobile apps, games and automation, from idea to launch.",
+      lead: "I'm Emrah Atalay. I run a team of AI agents: code gets written, tested and reviewed, and every line passes human approval before it ships. Web and mobile apps, games and automation, from idea to launch.",
       proof: [
         { value: "10+ yrs", label: "in production" },
         { value: "End to end", label: "idea to launch, one owner" },
@@ -60,12 +60,12 @@ const en: LocaleDictionary = {
       },
       disciplines: {
         items: [
+          { label: "Web", visual: { kind: "web" } },
           { label: "Mobile", visual: { kind: "screen", image: { ...hatimShots.en.khatm, alt: "" } } },
           { label: "Games", visual: { kind: "screen", image: { ...gameShots.en.menu, alt: "" } } },
-          { label: "Design", visual: { kind: "design" } },
           { label: "Automation", visual: { kind: "flow" } },
         ],
-        label: "4 disciplines · mobile, games, design, automation",
+        label: "4 disciplines · web, mobile, games, automation · one shared process",
       },
       workflow: { value: "AI", label: "Parallel work with an agent team, quality through human review." },
       quote:
@@ -85,14 +85,38 @@ const en: LocaleDictionary = {
       text: "Have questions? Let's have a short intro call before the project starts.",
       ctaLabel: "Free intro call",
     },
-    footerBlurb:
-      "A one-person studio building mobile apps, mobile games, interface design and automations with AI.",
-    seo: {
-      title: "Emrah Atalay — AI-Driven Mobile App, Game & Software Developer",
+    process: {
+      id: "shared-process",
+      shortTitle: "Shared process",
+      title: { lead: "Shared", accent: "Process" },
       description:
-        "Independent developer building mobile apps, mobile games, interface design and automations with AI agents. End-to-end product development with Expo, React Native, Next.js and Unity, from idea to launch.",
+        "Whichever of the four you need, the same groundwork runs underneath. Research and architecture come before a line of code; interface design and tests run while it's built; a human review and a looked-after release close it out.",
+      tags: ["Research", "Interface design", "Architecture", "Testing", "Code review", "Release & care"],
+      visual: {
+        kind: "process",
+        scope: "Every project · all four disciplines",
+        appliesTo: ["Web", "Mobile", "Games", "Automation"],
+        steps: [
+          { label: "Research", detail: "Problem, users, competitors", icon: "research" },
+          { label: "Interface design", detail: "Flows, wireframes, components", icon: "design" },
+          { label: "Architecture", detail: "Data model, layers, integrations", icon: "architecture" },
+          { label: "Build & test", detail: "Agents code, tests run", icon: "build" },
+          { label: "Human review", detail: "Every change approved", icon: "review" },
+          { label: "Release & care", detail: "Launch, analytics, updates", icon: "release" },
+        ],
+      },
+    },
+    footerBlurb:
+      "A one-person studio building websites, mobile apps, mobile games and automations with AI, designed end to end.",
+    seo: {
+      title: "Emrah Atalay — AI-Driven Web, Mobile App & Game Developer",
+      description:
+        "Independent developer building websites, web and mobile apps, mobile games and automations with AI agents, with interface and flow design built into every project. End-to-end product development with Next.js, Expo, React Native and Unity, from idea to launch.",
       keywords: [
         "Emrah Atalay",
+        "web developer",
+        "website development",
+        "web app development",
         "mobile app developer",
         "mobile game developer",
         "AI automation",
@@ -114,6 +138,22 @@ const en: LocaleDictionary = {
   },
 
   services: [
+    {
+      id: "web-development",
+      shortTitle: "Web development",
+      title: { lead: "Web", accent: "Development" },
+      description:
+        "Websites and web apps that load fast, are easy to find in search and simple to run: landing pages, admin panels and online stores. This site is one of them.",
+      tags: ["Websites", "Web apps", "Admin panels", "SEO", "Next.js · TypeScript"],
+      visual: {
+        kind: "web",
+        url: "eatalay.dev",
+        headline: "Built at AI speed,",
+        checks: ["Every page prerendered", "Sitemap and structured data", "Turkish and English", "Light and dark theme"],
+        badge: "Live · this site",
+      },
+      showcase: { projectSlug: "hatim-app", label: "Case study: Hatim App" },
+    },
     {
       id: "mobile-app",
       shortTitle: "Mobile apps",
@@ -158,23 +198,6 @@ const en: LocaleDictionary = {
       showcase: { projectSlug: "out-of-office", label: "Case study: Out of Office" },
     },
     {
-      id: "product-design",
-      shortTitle: "App design",
-      title: { lead: "App", accent: "Design" },
-      description:
-        "Interface and flow design for AI-assisted products, delivered together with a component library. Hatim App's calm, large-target interface came out of this process.",
-      tags: ["Research", "Wireframes", "AI product", "Experience", "Testing"],
-      visual: {
-        kind: "design",
-        screen: { ...hatimShots.en.group, alt: "A Hatim App screen selected on a design canvas" },
-        wireframe: "Wireframe",
-        size: "390 × 844",
-        component: "Button / Primary",
-        cursor: "Emrah",
-      },
-      showcase: { projectSlug: "hatim-app", label: "Case study: Hatim App" },
-    },
-    {
       id: "ai-automation",
       shortTitle: "AI automation",
       title: { lead: "AI", accent: "Automation" },
@@ -196,7 +219,7 @@ const en: LocaleDictionary = {
       id: "projects",
       question: "What kind of projects do you take on?",
       answer:
-        "Mobile apps (with a Next.js web version when needed), mobile games, interface design and AI automations. I'm most effective with product teams and startups that have a clear problem and want to ship fast.",
+        "Websites and web apps, mobile apps, mobile games and AI automations, with interface and flow design part of every project. I'm most effective with product teams and startups that have a clear problem and want to ship fast.",
     },
     {
       id: "mvp",

@@ -1,4 +1,5 @@
 import type { ImageAsset, RichText } from "./common";
+import type { SharedProcess } from "./service";
 
 export interface HeroContent {
   /** Short line above the title naming what the studio does. */
@@ -16,10 +17,10 @@ export interface Metric {
   readonly label: string;
 }
 
-/** How a discipline is pictured: a real screen from shipped work, or a drawn design / flow glyph. */
+/** How a discipline is pictured: a real screen from shipped work, or a drawn web / flow glyph. */
 export type DisciplineVisual =
   | { readonly kind: "screen"; readonly image: ImageAsset }
-  | { readonly kind: "design" }
+  | { readonly kind: "web" }
   | { readonly kind: "flow" };
 
 export interface Discipline {
@@ -68,6 +69,8 @@ export interface PageContent {
   readonly testimonials: SectionIntro;
   readonly faq: SectionIntro;
   readonly contact: ContactContent;
+  /** The process shared by every discipline, shown after the services. */
+  readonly process: SharedProcess;
   readonly footerBlurb: string;
   readonly seo: SeoContent;
 }

@@ -18,19 +18,20 @@
 }
 
 /* --- shared canvas ------------------------------------------------------ */
+.web,
 .ship,
 .game,
-.design,
-.flow {
+.flow,
+.process {
   color: #f4f3f1;
   background-color: #161514;
   background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1.5px);
   background-size: 18px 18px;
 }
 
+.web,
 .ship,
-.game,
-.design {
+.game {
   container-type: inline-size;
 }
 
@@ -298,205 +299,6 @@
   }
 }
 
-.tokens {
-  position: absolute;
-  left: 16px;
-  top: 16px;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 8px 12px 8px 10px;
-  border-radius: 12px;
-  background: #262422;
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
-}
-
-.swatches {
-  display: flex;
-}
-
-.swatches i {
-  width: 16px;
-  height: 16px;
-  margin-left: -4px;
-  border-radius: 50%;
-  box-shadow: 0 0 0 2px #262422;
-}
-
-.swatches i:nth-child(1) { margin-left: 0; background: #f4f3f1; }
-.swatches i:nth-child(2) { background: #f05a1a; }
-.swatches i:nth-child(3) { background: #c2410c; }
-.swatches i:nth-child(4) { background: #57534e; }
-
-.specimen {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: 19px;
-  line-height: 1;
-}
-
-/* The wireframe: dashed outline and grey blocks, tilted behind the final screen. */
-.wire {
-  position: absolute;
-  left: 11%;
-  top: 30%;
-  display: flex;
-  flex-direction: column;
-  gap: 9px;
-  width: clamp(96px, 24cqi, 150px);
-  aspect-ratio: 9 / 20;
-  /* px, not %: percentage padding would resolve against the whole card. */
-  padding: 26px 14px;
-  border: 1.5px dashed rgba(255, 255, 255, 0.24);
-  border-radius: 13% / 6%;
-  transform: rotate(-6deg);
-  transition: transform 0.8s var(--ease-spring);
-}
-
-.wire i {
-  display: block;
-  flex: none;
-  height: 6px;
-  border-radius: 4px;
-  background: rgba(255, 255, 255, 0.13);
-}
-
-.wire .wireBar { width: 55%; }
-.wire .wireHero { height: 30%; border-radius: 10px; }
-.wire .wireShort { width: 62%; }
-
-.wire .wireButton {
-  width: 70%;
-  height: 16px;
-  margin-top: 6px;
-  border-radius: 999px;
-  background: rgba(240, 90, 26, 0.4);
-}
-
-.frameLabel {
-  position: absolute;
-  left: 2px;
-  top: -22px;
-  font-size: 11px;
-  white-space: nowrap;
-  color: rgba(255, 255, 255, 0.45);
-}
-
-.frame:hover .wire {
-  transform: rotate(-10deg) translateX(-8px);
-}
-
-/* The finished screen, selected like in a design tool. */
-.selected {
-  position: absolute;
-  left: 44%;
-  top: 15%;
-  width: clamp(110px, 28cqi, 170px);
-  transform-origin: 50% 0;
-  transition: transform 0.9s var(--ease-out);
-}
-
-.selected .hifi {
-  width: 100%;
-}
-
-.selected::after {
-  content: "";
-  position: absolute;
-  inset: -6px;
-  border: 1.5px solid var(--accent);
-  pointer-events: none;
-}
-
-.handles i {
-  position: absolute;
-  top: -11px;
-  width: 9px;
-  height: 9px;
-  background: #fff;
-  box-shadow: inset 0 0 0 1.5px var(--accent);
-}
-
-.handles i:first-child { left: -11px; }
-.handles i:last-child { right: -11px; }
-
-.sizeLabel {
-  position: absolute;
-  left: 50%;
-  top: -34px;
-  padding: 2px 7px;
-  border-radius: 5px;
-  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-  font-size: 10.5px;
-  white-space: nowrap;
-  color: #fff;
-  background: var(--accent);
-  transform: translateX(-50%);
-}
-
-.cursor {
-  position: absolute;
-  right: -66px;
-  top: 42%;
-  z-index: 2;
-  display: flex;
-  align-items: flex-start;
-  animation: cursor-drift 6s ease-in-out infinite;
-}
-
-.cursor svg {
-  width: 16px;
-  height: 18px;
-  fill: var(--accent);
-  stroke: #fff;
-  stroke-width: 1.2;
-  stroke-linejoin: round;
-}
-
-.cursor b {
-  margin: 14px 0 0 -3px;
-  padding: 2px 8px;
-  border-radius: 4px 10px 10px 10px;
-  font-size: 11px;
-  font-weight: 600;
-  color: #fff;
-  background: var(--accent);
-}
-
-.component {
-  position: absolute;
-  right: 18px;
-  bottom: 20px;
-  z-index: 2;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 7px 12px 7px 8px;
-  border-radius: 10px;
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.8);
-  background: #262422;
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
-}
-
-.component i {
-  width: 30px;
-  height: 14px;
-  border-radius: 999px;
-  background: var(--accent);
-}
-
-@keyframes cursor-drift {
-  0%,
-  100% {
-    transform: translate(0, 0);
-  }
-  50% {
-    transform: translate(-12px, 16px);
-  }
-}
-
 /* --- automation flow ----------------------------------------------------- */
 .runs {
   position: absolute;
@@ -677,6 +479,320 @@
   80% { opacity: 1; }
 }
 
+/* --- web: a page loading in a browser ---------------------------------- */
+.browser {
+  position: absolute;
+  top: 18px;
+  bottom: 58px;
+  left: 18px;
+  width: min(62%, 420px);
+  overflow: hidden;
+  border-radius: 12px;
+  background: #f4f3f1;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.09),
+    0 24px 40px -24px rgba(0, 0, 0, 0.7);
+}
+
+.browserBar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 12px;
+  background: #211f1d;
+}
+
+.browserDots {
+  display: flex;
+  flex: none;
+  gap: 6px;
+}
+
+.browserDots i {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.address {
+  display: inline-flex;
+  flex: 1;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 11.5px;
+  color: rgba(255, 255, 255, 0.72);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.address svg {
+  width: 11px;
+  height: 11px;
+  flex: none;
+  fill: none;
+  stroke: #4ade80;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+}
+
+.page {
+  display: grid;
+  align-content: start;
+  gap: 9px;
+  padding: 14px 16px;
+  color: #141312;
+}
+
+.pageNav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.pageNav b {
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  background: var(--accent);
+}
+
+.pageNav i {
+  width: 26px;
+  height: 5px;
+  border-radius: 3px;
+  background: rgba(20, 19, 18, 0.16);
+}
+
+.pageNav em {
+  width: 44px;
+  height: 14px;
+  margin-left: auto;
+  border-radius: 999px;
+  background: #141312;
+}
+
+.pageTitle {
+  font-size: clamp(15px, 4.4cqi, 22px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.pageLine {
+  width: 82%;
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(20, 19, 18, 0.12);
+}
+
+.pageLineShort {
+  width: 58%;
+}
+
+.pageCta {
+  width: 78px;
+  height: 20px;
+  margin-top: 4px;
+  border-radius: 999px;
+  background: var(--accent);
+}
+
+.pageCards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.pageCards i {
+  height: 46px;
+  border-radius: 8px;
+  background: rgba(20, 19, 18, 0.07);
+  box-shadow: inset 0 0 0 1px rgba(20, 19, 18, 0.06);
+}
+
+/* Sections settle in from the top, one after another; transform and opacity only. */
+.load {
+  animation: page-load 5.2s var(--ease-out) infinite;
+  animation-delay: calc(var(--i, 0) * 0.14s);
+}
+
+.checks {
+  top: auto;
+  right: 18px;
+  bottom: 58px;
+  display: grid;
+  gap: 8px;
+  width: min(36%, 240px);
+  margin: 0;
+  padding: 12px 14px;
+  list-style: none;
+}
+
+.check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: rgba(255, 255, 255, 0.72);
+  animation: check-in 5.2s ease-out infinite;
+  animation-delay: calc(0.9s + var(--i, 0) * 0.35s);
+}
+
+.check b {
+  flex: none;
+  width: 1em;
+  font-weight: 700;
+  color: #4ade80;
+}
+
+@keyframes page-load {
+  0% { opacity: 0; transform: translateY(8px); }
+  12%,
+  88% { opacity: 1; transform: none; }
+  100% { opacity: 0; transform: none; }
+}
+
+@keyframes check-in {
+  0% { opacity: 0.25; }
+  8%,
+  80% { opacity: 1; }
+  100% { opacity: 0.25; }
+}
+
+/* --- shared process: six steps lit in order ----------------------------- */
+.process {
+  display: flex;
+  flex-direction: column;
+  place-items: stretch;
+  gap: 14px;
+  padding: 18px;
+}
+
+.processHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+/* .runs is absolutely placed in the flow visual; here it sits in the header row. */
+.processHead .runs {
+  position: static;
+}
+
+.applies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.applies li {
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.steps {
+  display: grid;
+  flex: 1;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-rows: 1fr;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.stepCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: #211f1d;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.09);
+}
+
+/* The lit state is a pseudo-element faded with opacity: the loop stays on the compositor. */
+.stepCard::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+  box-shadow: inset 0 0 0 1.5px var(--accent);
+  opacity: 0;
+  animation: step-lit calc(var(--n, 6) * 1s) ease-out infinite;
+  animation-delay: calc(var(--i, 0) * 1s);
+}
+
+.stepTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.stepCard .glyph {
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+}
+
+.stepCard .glyph svg {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.stepNo {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.stepCard b {
+  overflow: hidden;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.stepCard small {
+  overflow: hidden;
+  font-size: 11px;
+  line-height: 1.35;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+@keyframes step-lit {
+  0% { opacity: 0; }
+  4%,
+  14% { opacity: 1; }
+  20%,
+  100% { opacity: 0; }
+}
+
 @media (max-width: 640px) {
   .panel {
     top: 14px;
@@ -690,6 +806,70 @@
   }
 
   .ship .badge {
+    display: none;
+  }
+
+  .browser {
+    top: 14px;
+    bottom: 14px;
+    left: 14px;
+    width: 72%;
+  }
+
+  .page {
+    gap: 7px;
+    padding: 10px 12px;
+  }
+
+  .pageCards i {
+    height: 32px;
+  }
+
+  .checks {
+    right: 14px;
+    bottom: 14px;
+    width: 46%;
+    gap: 5px;
+    padding: 9px 10px;
+  }
+
+  .check:nth-child(n + 3) {
+    display: none;
+  }
+
+  .web .badge {
+    display: none;
+  }
+
+  .process {
+    gap: 10px;
+    padding: 14px;
+  }
+
+  .applies {
+    display: none;
+  }
+
+  .steps {
+    gap: 6px;
+  }
+
+  .stepCard {
+    padding: 7px 8px;
+    border-radius: 10px;
+  }
+
+  .stepTop {
+    margin-bottom: 2px;
+  }
+
+  .stepCard b {
+    font-size: 11px;
+    white-space: normal;
+    line-height: 1.2;
+  }
+
+  .stepCard small {
     display: none;
   }
 
@@ -726,27 +906,6 @@
 
   .fields div:nth-child(n + 4),
   .metric {
-    display: none;
-  }
-
-  .selected {
-    top: 20%;
-  }
-
-  .wire {
-    top: 34%;
-  }
-
-  .cursor {
-    right: -42px;
-  }
-
-  .cursor b {
-    padding: 1px 6px;
-    font-size: 10px;
-  }
-
-  .component {
     display: none;
   }
 
