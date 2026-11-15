@@ -24,14 +24,19 @@ export const metadata: Metadata = {
     ],
     apple: { url: "/icons/apple-touch-icon.png", sizes: "180x180" },
   },
+  appleWebApp: { capable: true, title: "eatalay", statusBarStyle: "default" },
 };
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   colorScheme: "light dark",
-  // The header and hero are dark in both themes, so the browser bar matches them.
-  themeColor: siteConfig.brand.night,
+  // Browser and installed-app bars take the page colour of the OS theme;
+  // a theme picked on the site overrides it (theme-script.ts).
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: siteConfig.themeColor.light },
+    { media: "(prefers-color-scheme: dark)", color: siteConfig.themeColor.dark },
+  ],
 };
 
 interface LocaleLayoutProps {

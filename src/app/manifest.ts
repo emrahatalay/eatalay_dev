@@ -4,9 +4,10 @@ import { DEFAULT_LOCALE } from "@/core/domain/locale";
 import { siteConfig } from "@/shared/config/site";
 
 /**
- * Install metadata. Name and description follow the hero's message, the
- * colours follow the site: the header and hero are dark in both themes, so the
- * app bar and splash screen are too, with the orange mark on top.
+ * Install metadata. Name and description follow the hero's message. The
+ * splash and bar colours are the light page colour (the default theme); once
+ * the app is open, the page's theme-color metas take over and follow the
+ * active theme, so the status and navigation bars never stay dark on a light page.
  */
 export default async function manifest(): Promise<MetadataRoute.Manifest> {
   const [{ profile }, { content }] = await Promise.all([
@@ -25,8 +26,8 @@ export default async function manifest(): Promise<MetadataRoute.Manifest> {
     start_url: "/",
     scope: "/",
     display: "standalone",
-    background_color: siteConfig.brand.night,
-    theme_color: siteConfig.brand.night,
+    background_color: siteConfig.themeColor.light,
+    theme_color: siteConfig.themeColor.light,
     categories: ["business", "productivity", "developer"],
     icons: [
       { src: "/icon.svg", sizes: "any", type: "image/svg+xml", purpose: "any" },
