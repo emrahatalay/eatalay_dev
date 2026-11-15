@@ -4,9 +4,9 @@
   padding: 48px 0 40px;
   overflow: clip;
   border-radius: var(--radius-lg);
-  color: #fff;
+  color: var(--on-night);
   background:
-    linear-gradient(180deg, var(--p-night-soft), var(--p-night) 70%);
+    linear-gradient(180deg, var(--p-block-2), var(--p-block) 70%);
   scroll-margin-top: 24px;
 }
 
@@ -19,7 +19,7 @@
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--p-cool);
+  color: var(--p-cool-ink);
 }
 
 .title {
@@ -31,7 +31,7 @@
   max-width: 520px;
   margin-top: 14px;
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.66);
+  color: rgba(var(--on-night-rgb), 0.66);
 }
 
 .strip {
@@ -45,7 +45,7 @@
   scroll-padding-inline: clamp(20px, 4vw, 56px);
   overscroll-behavior-x: contain;
   scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+  scrollbar-color: rgba(var(--on-night-rgb), 0.3) transparent;
 }
 
 .strip:focus-visible {
@@ -81,14 +81,14 @@
   margin-top: 30px;
   font-size: 14px;
   line-height: 1.45;
-  color: rgba(255, 255, 255, 0.82);
+  color: rgba(var(--on-night-rgb), 0.82);
 }
 
 .index {
   flex: none;
   font-family: var(--font-display);
   font-weight: 800;
-  color: var(--p-gold);
+  color: var(--p-gold-ink);
 }
 
 @media (max-width: 640px) {

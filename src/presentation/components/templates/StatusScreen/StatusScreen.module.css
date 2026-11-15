@@ -9,7 +9,7 @@
   width: min(640px, 100%);
   padding: 48px clamp(24px, 5vw, 56px);
   border-radius: var(--radius-lg);
-  color: #fff;
+  color: var(--on-night);
   background: linear-gradient(180deg, var(--night-2), var(--night));
   box-shadow: inset 0 0 0 1px var(--night-edge);
 }
@@ -35,5 +35,5 @@
 
 .text {
   margin: 10px 0 26px;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(var(--on-night-rgb), 0.75);
 }

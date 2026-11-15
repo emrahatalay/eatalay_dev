@@ -7,9 +7,9 @@
   padding: 0;
   border-radius: 50%;
   cursor: pointer;
-  color: #fff;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: var(--on-night);
+  background: rgba(var(--on-night-rgb), 0.08);
+  border: 1px solid rgba(var(--on-night-rgb), 0.14);
 }
 
 .panel {
@@ -18,12 +18,12 @@
   width: min(320px, calc(100vw - 20px));
   margin: 0;
   padding: 18px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(var(--on-night-rgb), 0.12);
   border-radius: 24px;
-  color: #fff;
-  background: rgba(22, 21, 20, 0.95);
+  color: var(--on-night);
+  background: color-mix(in srgb, var(--night) 95%, transparent);
   backdrop-filter: blur(18px);
-  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.6);
+  box-shadow: var(--night-shadow);
   opacity: 0;
   transform: translateY(-8px) scale(0.98);
   transform-origin: top right;
@@ -68,7 +68,7 @@
   font-size: 22px;
   letter-spacing: -0.02em;
   text-decoration: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(var(--on-night-rgb), 0.08);
 }
 
 .cta {
@@ -81,6 +81,6 @@
   font-weight: 600;
   font-size: 14px;
   text-decoration: none;
-  color: #fff;
+  color: var(--on-night);
   background: var(--g-btn);
 }

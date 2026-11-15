@@ -1,6 +1,6 @@
 /* A plain row on the dark FAQ panel: number, question, toggle. */
 .item {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+  border-bottom: 1px solid rgba(var(--on-night-rgb), 0.09);
 }
 
 .item::details-content {
@@ -27,7 +27,7 @@
   cursor: pointer;
   font-size: 15px;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.86);
+  color: rgba(var(--on-night-rgb), 0.86);
   transition: color 0.4s;
 }
 
@@ -41,7 +41,7 @@
   position: absolute;
   inset: 6px -10px;
   border-radius: 12px;
-  background: linear-gradient(90deg, color-mix(in srgb, var(--accent) 14%, transparent), rgba(255, 255, 255, 0.04) 60%);
+  background: linear-gradient(90deg, color-mix(in srgb, var(--accent) 14%, transparent), rgba(var(--on-night-rgb), 0.04) 60%);
   box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 45%, transparent);
   opacity: 0;
   transition: opacity 0.4s;
@@ -55,7 +55,7 @@
 .question[data-agent-active],
 .question:hover,
 .item[open] .question {
-  color: #fff;
+  color: var(--on-night);
 }
 
 .number,
@@ -68,7 +68,7 @@
   font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.38);
+  color: rgba(var(--on-night-rgb), 0.38);
   transition: color 0.4s;
 }
 
@@ -83,7 +83,7 @@
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.16);
+  box-shadow: inset 0 0 0 1px rgba(var(--on-night-rgb), 0.16);
   transition:
     transform 0.4s var(--ease-spring),
     background 0.4s,
@@ -119,7 +119,7 @@
   padding: 0 4px 22px 52px;
   font-size: 14px;
   line-height: 1.65;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(var(--on-night-rgb), 0.6);
 }
 
 @media (max-width: 640px) {

@@ -6,15 +6,15 @@
   padding: 0;
   border-radius: 50%;
   cursor: pointer;
-  color: #fff;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: var(--on-night);
+  background: rgba(var(--on-night-rgb), 0.08);
+  border: 1px solid rgba(var(--on-night-rgb), 0.14);
   backdrop-filter: blur(14px);
   transition: background 0.3s, transform 0.4s var(--ease-spring);
 }
 
 .toggle:hover {
-  background: rgba(255, 255, 255, 0.16);
+  background: rgba(var(--on-night-rgb), 0.16);
   transform: rotate(-12deg);
 }
 

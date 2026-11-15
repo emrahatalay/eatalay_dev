@@ -2,8 +2,8 @@
   margin-top: 90px;
   padding: 48px clamp(20px, 4vw, 56px) 52px;
   border-radius: var(--radius-lg);
-  color: #fff;
-  background: linear-gradient(180deg, var(--p-night-soft), var(--p-night) 60%);
+  color: var(--on-night);
+  background: linear-gradient(180deg, var(--p-block-2), var(--p-block) 60%);
   scroll-margin-top: 24px;
 }
 
@@ -18,7 +18,7 @@
   margin-top: 18px;
   font-size: 16px;
   line-height: 1.65;
-  color: rgba(255, 255, 255, 0.72);
+  color: rgba(var(--on-night-rgb), 0.72);
 }
 
 .split {
@@ -35,7 +35,7 @@
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--p-cool);
+  color: var(--p-cool-ink);
 }
 
 .split .subhead {
@@ -56,8 +56,8 @@
   gap: 4px 16px;
   padding: 14px 16px;
   border-radius: 16px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--night-card);
+  border: 1px solid rgba(var(--on-night-rgb), 0.08);
 }
 
 .layerName {
@@ -66,13 +66,13 @@
   font-family: ui-monospace, "SF Mono", Menlo, monospace;
   font-size: 14px;
   font-weight: 600;
-  color: var(--p-gold);
+  color: var(--p-gold-ink);
 }
 
 .role {
   font-size: 14px;
   line-height: 1.45;
-  color: rgba(255, 255, 255, 0.86);
+  color: rgba(var(--on-night-rgb), 0.86);
 }
 
 .deps {
@@ -85,12 +85,12 @@
 .dep {
   padding: 2px 9px;
   border-radius: 999px;
-  color: var(--p-soft);
+  color: var(--p-soft-ink);
   background: color-mix(in srgb, var(--p-deep) 18%, transparent);
 }
 
 .none {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(var(--on-night-rgb), 0.5);
 }
 
 /* Screen-reader text: "Depends on" before the arrows. */
@@ -121,8 +121,8 @@
 .principle {
   padding: 22px;
   border-radius: var(--radius-md);
-  background: linear-gradient(160deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02));
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(160deg, rgba(var(--on-night-rgb), 0.07), rgba(var(--on-night-rgb), 0.02));
+  border: 1px solid rgba(var(--on-night-rgb), 0.08);
 }
 
 .pIndex {
@@ -145,7 +145,7 @@
   margin-top: 8px;
   font-size: 14px;
   line-height: 1.55;
-  color: rgba(255, 255, 255, 0.68);
+  color: rgba(var(--on-night-rgb), 0.68);
 }
 
 .stack {
@@ -161,9 +161,9 @@
   padding: 7px 14px;
   border-radius: 999px;
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.86);
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(var(--on-night-rgb), 0.86);
+  background: rgba(var(--on-night-rgb), 0.06);
+  border: 1px solid rgba(var(--on-night-rgb), 0.1);
 }
 
 @media (max-width: 1000px) {

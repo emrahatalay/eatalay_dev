@@ -2,7 +2,7 @@ import type { AnchorHTMLAttributes } from "react";
 import { cx } from "@/shared/lib/cx";
 import styles from "./ButtonLink.module.css";
 
-export type ButtonVariant = "gradient" | "light" | "ghost";
+export type ButtonVariant = "gradient" | "light" | "inverse" | "ghost";
 
 export interface ButtonLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   readonly variant?: ButtonVariant;

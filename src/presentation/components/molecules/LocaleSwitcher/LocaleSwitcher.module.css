@@ -4,8 +4,8 @@
   padding: 3px;
   list-style: none;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(var(--on-night-rgb), 0.08);
+  border: 1px solid rgba(var(--on-night-rgb), 0.14);
   backdrop-filter: blur(14px);
 }
 
@@ -20,15 +20,15 @@
   font-weight: 700;
   letter-spacing: 0.04em;
   text-decoration: none;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(var(--on-night-rgb), 0.7);
   transition: background 0.3s, color 0.3s;
 }
 
 .switcher a:hover {
-  color: #fff;
+  color: var(--on-night);
 }
 
 .switcher a[aria-current="page"] {
-  color: #15131f;
-  background: #fff;
+  color: var(--inverse-ink);
+  background: var(--inverse);
 }

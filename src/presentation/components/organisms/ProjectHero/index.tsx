@@ -44,7 +44,7 @@ export function ProjectHero({ project, header }: ProjectHeroProps) {
 
           <div className={styles.actions}>
             <ButtonLink href="#screens">{t("screens")}</ButtonLink>
-            <ButtonLink href={link.url} variant="light" target="_blank" rel="noopener noreferrer">
+            <ButtonLink href={link.url} variant="inverse" target="_blank" rel="noopener noreferrer">
               {link.label}
             </ButtonLink>
           </div>

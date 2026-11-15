@@ -15,7 +15,7 @@
 }
 
 .dark {
-  color: #fff;
+  color: var(--on-night);
   background: var(--night-2);
-  border-color: rgba(255, 255, 255, 0.14);
+  border-color: rgba(var(--on-night-rgb), 0.14);
 }

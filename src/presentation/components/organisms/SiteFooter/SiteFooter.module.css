@@ -98,11 +98,11 @@
   white-space: nowrap;
   color: #f4f3f1;
   /* Lifts the line off the code behind it. */
-  text-shadow: 0 0 14px #0f0f10, 0 0 4px #0f0f10;
+  text-shadow: 0 0 14px var(--night), 0 0 4px var(--night);
 }
 
 .path {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(var(--on-night-rgb), 0.5);
 }
 
 .prompt {
@@ -134,10 +134,10 @@
   gap: 16px;
   margin-top: 26px;
   padding-top: 16px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid rgba(var(--on-night-rgb), 0.08);
   font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
   font-size: 11.5px;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(var(--on-night-rgb), 0.5);
 }
 
 .chip {
@@ -148,8 +148,8 @@
   padding: 5px 11px;
   border-radius: 999px;
   white-space: nowrap;
-  background: rgba(255, 255, 255, 0.05);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+  background: rgba(var(--on-night-rgb), 0.05);
+  box-shadow: inset 0 0 0 1px rgba(var(--on-night-rgb), 0.08);
 }
 
 .crafted {
@@ -189,7 +189,7 @@
 
 .owner {
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(var(--on-night-rgb), 0.9);
   text-decoration: none;
   background: linear-gradient(var(--accent), var(--accent)) 0 100% / 0 1px no-repeat;
   transition: color 0.3s, background-size 0.35s var(--ease-out);
@@ -211,7 +211,7 @@ a.owner:focus-visible {
   height: 4px;
   margin: 0 0.35em;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.25);
+  background: rgba(var(--on-night-rgb), 0.25);
 }
 
 /* Bleeds to the footer's edges: a clean break from the light area above, no fade. */

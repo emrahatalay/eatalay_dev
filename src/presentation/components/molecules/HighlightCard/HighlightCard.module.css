@@ -20,7 +20,7 @@
 
 
 .night {
-  color: #fff;
+  color: var(--on-night);
   background: linear-gradient(180deg, var(--night-2), var(--night));
   box-shadow: inset 0 0 0 1px var(--night-edge);
 }
@@ -31,8 +31,9 @@
 }
 
 .photo {
-  color: #fff;
+  color: var(--on-night);
   background: linear-gradient(180deg, var(--night-2), var(--night));
+  box-shadow: inset 0 0 0 1px var(--night-edge);
 }
 
 .card > * {

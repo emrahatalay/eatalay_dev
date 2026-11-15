@@ -46,7 +46,7 @@
 }
 
 .dark .word {
-  color: #fff;
+  color: var(--on-night);
 }
 
 .light .word {

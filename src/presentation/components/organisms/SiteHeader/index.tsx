@@ -42,7 +42,7 @@ export function SiteHeader({ brand, locale, items, cta, logoHref, localeHref = l
       <div className={styles.actions}>
         <LocaleSwitcher current={locale} options={localeOptions} label={t("Locale.label")} />
         <ThemeToggle label={t("Theme.toggle")} />
-        <ButtonLink href={cta.href} variant="light" className={styles.cta}>
+        <ButtonLink href={cta.href} variant="inverse" className={styles.cta}>
           {cta.label}
         </ButtonLink>
         <span className={styles.menu}>

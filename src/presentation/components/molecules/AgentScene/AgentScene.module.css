@@ -10,7 +10,7 @@
   translate: 0 -50%;
   height: 520px;
   font-family: var(--font-body);
-  color: #fff;
+  color: var(--on-night);
   opacity: 0.72;
   -webkit-mask: linear-gradient(90deg, transparent, #000 8%);
   mask: linear-gradient(90deg, transparent, #000 8%);
@@ -29,7 +29,7 @@
 
 .wire {
   fill: none;
-  stroke: rgba(255, 255, 255, 0.14);
+  stroke: rgba(var(--on-night-rgb), 0.14);
   stroke-width: 1.5;
   vector-effect: non-scaling-stroke;
 }
@@ -59,8 +59,8 @@
   padding: 12px 14px;
   border-radius: 14px;
   font-size: 12px;
-  background: rgba(255, 255, 255, 0.035);
-  border: 1px solid rgba(255, 255, 255, 0.09);
+  background: var(--night-card);
+  border: 1px solid rgba(var(--on-night-rgb), 0.09);
   opacity: 0.6;
   transform: translateY(-50%);
   transition:
@@ -72,7 +72,7 @@
 
 .busy {
   opacity: 1;
-  background-color: rgba(255, 255, 255, 0.06);
+  background-color: rgba(var(--on-night-rgb), 0.06);
   border-color: color-mix(in srgb, var(--accent) 55%, transparent);
   box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 10%, transparent), 0 20px 50px -20px var(--accent);
 }
@@ -133,7 +133,7 @@
   width: 20px;
   height: 20px;
   border-radius: 6px;
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(var(--on-night-rgb), 0.08);
 }
 
 .glyph svg {
@@ -156,7 +156,7 @@
 
 .agent .status {
   font-size: 10.5px;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(var(--on-night-rgb), 0.5);
 }
 
 .agent.busy .status {
@@ -167,7 +167,7 @@
 .avatar {
   width: 26px;
   height: 26px;
-  box-shadow: 0 0 0 1.5px rgba(255, 255, 255, 0.18);
+  box-shadow: 0 0 0 1.5px rgba(var(--on-night-rgb), 0.18);
   transition: box-shadow 0.5s var(--ease-out);
 }
 
@@ -185,7 +185,7 @@
 
 .who small {
   font-size: 10px;
-  color: rgba(255, 255, 255, 0.55);
+  color: rgba(var(--on-night-rgb), 0.55);
 }
 
 .prompt {
@@ -194,8 +194,8 @@
   font-family: ui-monospace, "SF Mono", Menlo, monospace;
   font-size: 11px;
   line-height: 1.45;
-  color: rgba(255, 255, 255, 0.82);
-  background: rgba(0, 0, 0, 0.35);
+  color: rgba(var(--on-night-rgb), 0.82);
+  background: var(--night-well);
 }
 
 .prompt::before {
@@ -218,8 +218,8 @@
   border-radius: 999px;
   font-size: 11px;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: rgba(var(--on-night-rgb), 0.5);
+  border: 1px solid rgba(var(--on-night-rgb), 0.14);
   transition: all 0.4s ease;
 }
 
@@ -241,7 +241,7 @@
   top: 60%;
   width: 14px;
   height: 16px;
-  fill: #fff;
+  fill: var(--on-night);
   stroke: var(--night);
   stroke-width: 1;
   animation: cursor-in 2s var(--ease-out) both;
@@ -257,7 +257,7 @@
   display: block;
   height: 5px;
   border-radius: 3px;
-  background: rgba(255, 255, 255, 0.28);
+  background: rgba(var(--on-night-rgb), 0.28);
   transform-origin: left;
   transform: scaleX(0);
   transition: transform 0.6s var(--ease-out);
@@ -289,7 +289,7 @@
 .checks i {
   height: 8px;
   border-radius: 2px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(var(--on-night-rgb), 0.1);
   transition: background-color 0.25s ease;
 }
 
@@ -299,7 +299,7 @@
 }
 
 .tester.done .checks i {
-  background: rgba(255, 255, 255, 0.45);
+  background: rgba(var(--on-night-rgb), 0.45);
 }
 
 .diff {
@@ -313,7 +313,7 @@
   height: 5px;
   margin-left: 14px;
   border-radius: 3px;
-  background: rgba(255, 255, 255, 0.22);
+  background: rgba(var(--on-night-rgb), 0.22);
 }
 
 .diff i:first-child {
@@ -333,12 +333,12 @@
   font-size: 10px;
   font-style: normal;
   line-height: 1;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(var(--on-night-rgb), 0.5);
   transform: translateY(-50%);
 }
 
 .reviewer.busy .diff i {
-  background-image: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.7), transparent);
+  background-image: linear-gradient(90deg, transparent, rgba(var(--on-night-rgb), 0.7), transparent);
   background-size: 50% 100%;
   background-repeat: no-repeat;
   animation: scan 1.4s linear infinite;
@@ -349,7 +349,7 @@
   height: 6px;
   overflow: hidden;
   border-radius: 3px;
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(var(--on-night-rgb), 0.08);
 }
 
 .bar i {
@@ -367,7 +367,7 @@
 
 .deploy.done .bar i {
   width: 100%;
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(var(--on-night-rgb), 0.6);
 }
 
 .status {
@@ -375,7 +375,7 @@
   align-items: center;
   gap: 6px;
   font-size: 11px;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(var(--on-night-rgb), 0.7);
 }
 
 .liveDot {
@@ -389,7 +389,7 @@
 
 .deploy.done {
   opacity: 1;
-  border-color: rgba(255, 255, 255, 0.22);
+  border-color: rgba(var(--on-night-rgb), 0.22);
 }
 
 /* ---------- Motion ---------- */

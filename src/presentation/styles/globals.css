@@ -27,10 +27,28 @@
   --accordion: #ffffff;
   --footer: #f4f3ef;
 
-  /* Dark blocks inside the sheet (hero, services, FAQ…) and their lighter step. */
-  --night: #161514;
-  --night-2: #262422;
-  --night-edge: transparent;
+  /* Feature blocks inside the sheet (hero, services, FAQ…): a tinted panel in light,
+     a deep panel in dark. --on-night is the text colour on them, --on-night-rgb feeds
+     its translucent lines and fills, --inverse is a solid pill that stands out on them. */
+  --night: #f1f0ec;
+  --night-2: #fbfaf8;
+  --night-edge: rgba(22, 21, 20, 0.07);
+  --night-well: rgba(22, 21, 20, 0.05);
+  --night-card: rgba(255, 255, 255, 0.72);
+  --night-shadow: 0 18px 40px -28px rgba(20, 18, 16, 0.35);
+  --on-night: #161514;
+  --on-night-rgb: 22, 21, 20;
+  --inverse: #161514;
+  --inverse-ink: #ffffff;
+  /* Project pages: how much of the brand's dark replaces the soft brand tint. */
+  --p-dark-mix: 0%;
+  --p-ink-mix: 55%;
+
+  /* Product mock-ups (terminals, editors, flows) inside service cards. */
+  --mock-frame: #e9e7e2;
+  --mock-canvas: #f4f3f0;
+  --mock-panel: #ffffff;
+  --mock-panel-2: #ffffff;
 
   --accent: #f05a1a;
   --accent-strong: #c2410c;
@@ -88,6 +106,19 @@
   --night: #0f0f10;
   --night-2: #1f1f21;
   --night-edge: rgba(255, 255, 255, 0.08);
+  --night-well: rgba(0, 0, 0, 0.35);
+  --night-card: rgba(255, 255, 255, 0.035);
+  --night-shadow: 0 18px 40px -24px rgba(0, 0, 0, 0.75);
+  --on-night: #ffffff;
+  --on-night-rgb: 255, 255, 255;
+  --inverse: #ffffff;
+  --inverse-ink: #15131f;
+  --p-dark-mix: 100%;
+  --p-ink-mix: 100%;
+  --mock-frame: #1f1d1b;
+  --mock-canvas: #161514;
+  --mock-panel: #211f1d;
+  --mock-panel-2: #252321;
 
   --accent: #ff7a3d;
   --accent-strong: #ff9a66;
@@ -123,6 +154,19 @@
     --night: #0f0f10;
     --night-2: #1f1f21;
     --night-edge: rgba(255, 255, 255, 0.08);
+    --night-well: rgba(0, 0, 0, 0.35);
+    --night-card: rgba(255, 255, 255, 0.035);
+    --night-shadow: 0 18px 40px -24px rgba(0, 0, 0, 0.75);
+    --on-night: #ffffff;
+    --on-night-rgb: 255, 255, 255;
+    --inverse: #ffffff;
+    --inverse-ink: #15131f;
+    --p-dark-mix: 100%;
+    --p-ink-mix: 100%;
+    --mock-frame: #1f1d1b;
+    --mock-canvas: #161514;
+    --mock-panel: #211f1d;
+    --mock-panel-2: #252321;
 
     --accent: #ff7a3d;
     --accent-strong: #ff9a66;

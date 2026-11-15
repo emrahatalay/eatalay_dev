@@ -6,7 +6,7 @@
   margin-top: 60px;
   padding: 56px clamp(18px, 4vw, 56px) 56px;
   border-radius: var(--radius-lg);
-  color: #fff;
+  color: var(--on-night);
   background:
     radial-gradient(520px 320px at 0% 100%, color-mix(in srgb, var(--accent) 8%, transparent), transparent 70%),
     linear-gradient(180deg, var(--night-2), var(--night) 70%);
@@ -34,7 +34,7 @@
   padding: 14px 16px;
   border-radius: 14px;
   font-size: 12px;
-  background: rgba(255, 255, 255, 0.035);
+  background: var(--night-card);
   border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
   box-shadow: 0 20px 50px -28px var(--accent);
 }
@@ -60,7 +60,7 @@
   font-style: normal;
   font-size: 11px;
   color: var(--accent);
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(var(--on-night-rgb), 0.06);
 }
 
 .live {
@@ -80,7 +80,7 @@
   height: 4px;
   overflow: hidden;
   border-radius: 2px;
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(var(--on-night-rgb), 0.08);
 }
 
 .scan i {
@@ -95,13 +95,13 @@
 .agent small {
   font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
   font-size: 10.5px;
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(var(--on-night-rgb), 0.45);
 }
 
 .list {
   position: relative;
   isolation: isolate;
-  border-top: 1px solid rgba(255, 255, 255, 0.09);
+  border-top: 1px solid rgba(var(--on-night-rgb), 0.09);
 }
 
 @keyframes scan {

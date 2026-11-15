@@ -22,8 +22,8 @@
   border-radius: 6px;
   font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
   font-size: 11px;
-  color: rgba(255, 255, 255, 0.4);
-  background: rgba(255, 255, 255, 0.06);
+  color: rgba(var(--on-night-rgb), 0.4);
+  background: rgba(var(--on-night-rgb), 0.06);
 }
 
 .code {
@@ -35,7 +35,7 @@
   font-size: 13px;
   line-height: 1.75;
   white-space: pre;
-  color: rgba(255, 255, 255, 0.2);
+  color: rgba(var(--on-night-rgb), 0.2);
   counter-reset: line;
 }
 
@@ -44,7 +44,7 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(var(--on-night-rgb), 0.2);
   transition: background-color 0.3s;
 }
 
@@ -62,12 +62,12 @@
 
 /* The line being written: a soft highlight band, as in an editor. */
 .active {
-  color: rgba(255, 255, 255, 0.42);
-  background: rgba(255, 255, 255, 0.045);
+  color: rgba(var(--on-night-rgb), 0.42);
+  background: rgba(var(--on-night-rgb), 0.045);
 }
 
 .active::before {
-  color: rgba(255, 255, 255, 0.45) !important;
+  color: rgba(var(--on-night-rgb), 0.45) !important;
 }
 
 /* Line numbers in the gutter. */
@@ -78,7 +78,7 @@
   width: 2.2em;
   margin-right: 1em;
   text-align: right;
-  color: rgba(255, 255, 255, 0.1);
+  color: rgba(var(--on-night-rgb), 0.1);
 }
 
 .keyword {
@@ -86,12 +86,12 @@
 }
 
 .string {
-  color: rgba(255, 255, 255, 0.34);
+  color: rgba(var(--on-night-rgb), 0.34);
 }
 
 .comment {
   font-style: italic;
-  color: rgba(255, 255, 255, 0.28);
+  color: rgba(var(--on-night-rgb), 0.28);
 }
 
 .caret {

@@ -22,7 +22,7 @@
 
 .onDark,
 .onDark .muted {
-  color: #fff;
+  color: var(--on-night);
 }
 
 @keyframes lit {
