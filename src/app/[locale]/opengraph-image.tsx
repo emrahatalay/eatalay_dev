@@ -21,6 +21,10 @@ export default async function OpenGraphImage({ params }: { params: Promise<{ loc
     readFile(join(process.cwd(), "src/assets/fonts/ArchivoBlack-Regular.ttf")),
   ]);
 
+  const dot = profile.brand.indexOf(".");
+  const [brandName, brandTld] =
+    dot > 0 ? [profile.brand.slice(0, dot), profile.brand.slice(dot)] : [profile.brand, ""];
+
   return new ImageResponse(
     (
       <div
@@ -53,9 +57,11 @@ export default async function OpenGraphImage({ params }: { params: Promise<{ loc
               />
               <path d="M23 5.2l1.15 3.65L27.8 10l-3.65 1.15L23 14.8l-1.15-3.65L18.2 10l3.65-1.15z" fill="#fff" />
             </svg>
-            {profile.brand}
+            <div style={{ display: "flex", alignItems: "baseline" }}>
+              {brandName}
+              {brandTld && <div style={{ display: "flex", color: "#ff7a3d" }}>{brandTld}</div>}
+            </div>
           </div>
-          <div style={{ display: "flex", fontSize: 22, color: "rgba(255,255,255,.7)" }}>eatalay.dev</div>
         </div>
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div style={{ display: "flex", fontSize: 30, color: "rgba(255,255,255,.75)" }}>

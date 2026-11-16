@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     ],
     apple: { url: "/icons/apple-touch-icon.png", sizes: "180x180" },
   },
-  appleWebApp: { capable: true, title: "eatalay", statusBarStyle: "default" },
+  appleWebApp: { capable: true, title: "eatalay.dev", statusBarStyle: "default" },
 };
 
 export const viewport: Viewport = {

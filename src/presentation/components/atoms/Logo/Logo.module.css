@@ -45,6 +45,23 @@
   letter-spacing: -0.04em;
 }
 
+/* ".dev": just the code font and the accent, no box around it. */
+.tld {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-weight: 500;
+  font-size: 0.86em;
+  letter-spacing: -0.04em;
+  color: var(--accent-strong);
+}
+
+/* The dot stays in the wordmark's font: a monospace "." floats in a full-width cell. */
+.dot {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: calc(1em / 0.86);
+  margin-right: 0.04em;
+}
+
 .dark .word {
   color: var(--on-night);
 }

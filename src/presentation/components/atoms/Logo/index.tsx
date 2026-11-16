@@ -36,11 +36,27 @@ export function LogoMark({ className }: { readonly className?: string }) {
   );
 }
 
+/** Splits "eatalay.dev" into the name and the ".dev" domain, which gets its own type. */
+function splitDomain(text: string): readonly [string, string] {
+  const dot = text.indexOf(".");
+  return dot > 0 ? [text.slice(0, dot), text.slice(dot)] : [text, ""];
+}
+
 export function Logo({ text, href = "#top", tone = "dark", label }: LogoProps) {
+  const [name, tld] = splitDomain(text);
+
   return (
     <a href={href} className={cx(styles.logo, styles[tone])} aria-label={label ?? text}>
       <LogoMark />
-      <span className={styles.word}>{text}</span>
+      <span className={styles.word}>
+        {name}
+        {tld && (
+          <span className={styles.tld}>
+            <span className={styles.dot}>.</span>
+            {tld.slice(1)}
+          </span>
+        )}
+      </span>
     </a>
   );
 }

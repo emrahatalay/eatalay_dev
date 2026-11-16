@@ -8,7 +8,7 @@ import { AVATAR, EMAIL, KNOWS_ABOUT, PHOTO, SOCIALS } from "./shared";
 const en: LocaleDictionary = {
   profile: {
     name: "Emrah Atalay",
-    brand: "eatalay",
+    brand: "eatalay.dev",
     jobTitle: "AI-driven web, mobile app, game and software developer",
     email: EMAIL,
     location: { city: "Bitlis", countryCode: "TR", label: "Bitlis, TR · remote" },

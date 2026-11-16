@@ -8,7 +8,7 @@ import { AVATAR, EMAIL, KNOWS_ABOUT, PHOTO, SOCIALS } from "./shared";
 const tr: LocaleDictionary = {
   profile: {
     name: "Emrah Atalay",
-    brand: "eatalay",
+    brand: "eatalay.dev",
     jobTitle: "Yapay zeka destekli web, mobil uygulama, oyun ve yazılım geliştirici",
     email: EMAIL,
     location: { city: "Bitlis", countryCode: "TR", label: "Bitlis, TR · uzaktan" },
