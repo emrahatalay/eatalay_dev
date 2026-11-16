@@ -10,6 +10,19 @@ import enRevive from "@/assets/images/out-of-office/en-revive.webp";
 import enSettings from "@/assets/images/out-of-office/en-settings.webp";
 import enStore from "@/assets/images/out-of-office/en-store.webp";
 import stumble from "@/assets/images/out-of-office/stumble.webp";
+import enDataCenter from "@/assets/images/out-of-office/en-datacenter.webp";
+import enDriverPod from "@/assets/images/out-of-office/en-driver-pod.webp";
+import enLogistics from "@/assets/images/out-of-office/en-logistics.webp";
+import enMissions from "@/assets/images/out-of-office/en-missions.webp";
+import enTown from "@/assets/images/out-of-office/en-town.webp";
+import trCity from "@/assets/images/out-of-office/tr-city.webp";
+import trDataCenter from "@/assets/images/out-of-office/tr-datacenter.webp";
+import trDriverMenu from "@/assets/images/out-of-office/tr-driver-menu.webp";
+import trDriverPod from "@/assets/images/out-of-office/tr-driver-pod.webp";
+import trLogistics from "@/assets/images/out-of-office/tr-logistics.webp";
+import trMissions from "@/assets/images/out-of-office/tr-missions.webp";
+import trTown from "@/assets/images/out-of-office/tr-town.webp";
+import trTutorial from "@/assets/images/out-of-office/tr-tutorial.webp";
 import trCollection from "@/assets/images/out-of-office/tr-collection.webp";
 import trDrone from "@/assets/images/out-of-office/tr-drone.webp";
 import trGameOver from "@/assets/images/out-of-office/tr-gameover.webp";
@@ -37,6 +50,14 @@ export const SHOTS = {
     settings: trSettings,
     revive: trRevive,
     gameOver: trGameOver,
+    city: trCity,
+    logistics: trLogistics,
+    dataCenter: trDataCenter,
+    town: trTown,
+    driverMenu: trDriverMenu,
+    driverPod: trDriverPod,
+    missions: trMissions,
+    tutorial: trTutorial,
   },
   en: {
     menu: enMenu,
@@ -47,6 +68,11 @@ export const SHOTS = {
     revive: enRevive,
     gameOver: enGameOver,
     pause: enPause,
+    driverPod: enDriverPod,
+    logistics: enLogistics,
+    dataCenter: enDataCenter,
+    town: enTown,
+    missions: enMissions,
   },
 } as const;
 

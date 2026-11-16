@@ -11,7 +11,7 @@ const outOfOfficeEn: Project = {
     nav: "Game",
     galleryTitle: "Straight from the game",
     galleryHint: "All captured in-game on a 20:9 portrait phone screen. Scroll to browse.",
-    mechanicsEyebrow: "Two mechanics that set it apart",
+    mechanicsEyebrow: "Three mechanics that set it apart",
     rosterTitle: "Who's who, and what it does",
   },
   palette: PALETTE,
@@ -23,18 +23,18 @@ const outOfOfficeEn: Project = {
     accent: "Son Mesai",
     slogan: "AI took your job. You're next.",
     summary:
-      "You are the company's last human employee. HR-9000, the HR robot, is on your heels with a termination form. Run three lanes, dodge, grab coins. But watch out: the game is watching you, and it learns.",
+      "You are the company's last human employee. HR-9000, the HR robot, is on your heels with a termination form. Run three lanes across five worlds, dodge, grab coins. But watch out: the game is watching you, and it learns.",
     phones: [
       { image: { ...SHOTS.automatedRobot, alt: "Out of Office gameplay: the Intern runs while an automated Developer robot charges down the road" }, caption: "Run" },
-      { image: { ...SHOTS.en.menu, alt: "Out of Office main menu with the Developer and a big PLAY button" }, caption: "Main menu" },
+      { image: { ...SHOTS.en.driverPod, alt: "The Driver rides an autonomous pod into Autonomous City at sunset, under the NEW AREA banner" }, caption: "Autonomous City" },
     ],
   },
 
   facts: [
-    { value: "3", label: "Professions, each with its own ability" },
-    { value: "8", label: "Power-ups, from CAPTCHA to cargo drone" },
-    { value: "7", label: "Assemblies: 6 layers plus editor tools, one-way dependencies" },
-    { value: "10K+", label: "Lines of C#, built for zero allocations per run" },
+    { value: "5", label: "Worlds, crossed by distance in a single run" },
+    { value: "4", label: "Professions, three with their own ability" },
+    { value: "10", label: "Power-ups, from CAPTCHA to Pull the Plug" },
+    { value: "13K+", label: "Lines of C#, 7 assemblies, one-way dependencies" },
   ],
 
   story: {
@@ -45,7 +45,7 @@ const outOfOfficeEn: Project = {
     ],
     paragraphs: [
       "You are the last human working in a giant corporate plaza. HR-9000 wants one thing: your signature on the exit form. Sign it and you get \"optimized\".",
-      "Your goal is the legendary Analog Town, where there is no signal. On the way, server racks, robot vacuums, self-driving taxis and \"Accept cookies\" walls try to stop you.",
+      "Your goal is the legendary Analog Village, where there is no signal. You leave the Plaza and cross Autonomous City, the Logistics Depot and the Data Center to get there. On the way, server racks, forklift robots, self-driving buses and \"Accept cookies\" walls try to stop you.",
       "The humour pokes fun at corporate life and AI buzzwords: the shield is called Seniority Shield, the magnet is a Salary Magnet, and what stops the robot is a CAPTCHA box. Nobody is the target; office culture and tech fads are.",
     ],
     punchline: { text: "YOU'VE BEEN OPTIMIZED", caption: "What the screen says when you get caught." },
@@ -54,14 +54,18 @@ const outOfOfficeEn: Project = {
 
   gallery: [
     { image: { ...SHOTS.en.menu, alt: "Main menu with the Developer, the profession picker and the PLAY button" }, caption: "Pick a profession, hit PLAY." },
+    { image: { ...SHOTS.en.driverPod, alt: "The Driver in an autonomous pod entering Autonomous City at sunset" }, caption: "1200 m: Autonomous City. The Driver's Drive ability in action." },
+    { image: { ...SHOTS.en.logistics, alt: "Logistics Depot: morning haze, hangars, a crate wall and a crane gate" }, caption: "2600 m: the Logistics Depot in the morning haze." },
+    { image: { ...SHOTS.en.dataCenter, alt: "Data Center: cool light, cooling towers and disk stacks" }, caption: "4200 m: disk stacks in the Data Center." },
+    { image: { ...SHOTS.en.town, alt: "Analog Village: golden hour, gas lamps, hay bales and a windmill" }, caption: "6000 m: Analog Village, where there is no signal." },
     { image: { ...SHOTS.en.drone, alt: "The player carried through the air by the Cargo Drone power-up" }, caption: "Cargo Drone: fly over everything." },
     { image: { ...SHOTS.cookieWall, alt: "A cookie wall obstacle with HR-9000 right next to the player" }, caption: "Slide under the Cookie Wall. HR-9000 is right behind you." },
     { image: { ...SHOTS.stumble, alt: "The Designer stumbles after hitting an obstacle" }, caption: "First hit: you stumble and HR-9000 closes in." },
+    { image: { ...SHOTS.en.missions, alt: "Daily missions: Jump 20/20 and Run meters done with CLAIM buttons, Slide 9/15" }, caption: "Three new missions every day. Claim the reward." },
     { image: { ...SHOTS.en.collection, alt: "Collection screen: the Designer is automated and locked" }, caption: "Get caught and your profession gets automated." },
     { image: { ...SHOTS.en.store, alt: "Store with chair and keycard bundles priced in coins" }, caption: "The store only takes in-game coins." },
     { image: { ...SHOTS.en.revive, alt: "Continue offer: scan your keycard and keep running" }, caption: "Scan your keycard to keep running." },
     { image: { ...SHOTS.en.pause, alt: "Pause screen with Resume and Main menu buttons" }, caption: "Take a break. HR-9000 won't." },
-    { image: { ...SHOTS.en.settings, alt: "Settings: language, sound, graphics quality and the developer card" }, caption: "Language, sound and graphics quality." },
   ],
 
   mechanics: [
@@ -82,12 +86,24 @@ const outOfOfficeEn: Project = {
       title: "Get caught, and your job becomes a robot",
       text: "Characters are professions. When you get caught, the profession you played gets \"automated\": it locks, and its robot shows up as an obstacle in your next runs.",
       bullets: [
-        "The Developer's robot charges at you; the Designer's sweeps between lanes.",
+        "The Developer's robot charges at you, the Designer's sweeps between lanes, the Driver's speeds straight at you.",
         "Buy the job back with coins: it starts at 100 and grows 1.5x with every automation.",
         "The Intern never gets automated; if your pick is locked, the Intern runs instead.",
       ],
       codeName: "Workforce.cs",
       screenshot: { image: { ...SHOTS.automatedRobot, alt: "The automated Developer's blue robot charging at the Intern" }, caption: "Your old job, coming at you" },
+    },
+    {
+      tag: "Five worlds, one run",
+      title: "The world changes as you run",
+      text: "No loading screens. The further you go, the more the world changes: from the Plaza to Autonomous City, the Logistics Depot, the Data Center and Analog Village, all in the same run. Sky, fog, road and obstacles shift along the way.",
+      bullets: [
+        "Borders sit at 1200, 2600, 4200 and 6000 metres. A banner announces each new area.",
+        "Weather and light blend over a few seconds; the road, the roadside and the obstacle pool follow the world.",
+        "Every world brings three obstacles of its own: 12 new ones, from buses to tractors. A new world is just a new asset.",
+      ],
+      codeName: "WorldTimeline.cs",
+      screenshot: { image: { ...SHOTS.en.town, alt: "Entering Analog Village under the NEW AREA banner, with gas lamps and hay bales" }, caption: "Last stop: Analog Village" },
     },
   ],
 
@@ -98,12 +114,24 @@ const outOfOfficeEn: Project = {
       items: [
         { name: "Developer", detail: "Debug: deletes every obstacle in the next 45 metres.", hint: "18 s cooldown" },
         { name: "Designer", detail: "Redraw: pass through obstacles for 3 seconds.", hint: "22 s cooldown" },
+        { name: "Driver", detail: "Drive: ride an open-top autonomous pod for 6 seconds; it forgives one crash.", hint: "25 s cooldown" },
         { name: "Intern", detail: "No ability, but never gets automated. Always playable.", hint: "Last resort" },
       ],
     },
     {
+      id: "worlds",
+      title: "Worlds",
+      items: [
+        { name: "Plaza", detail: "Daylight and candy-coloured towers. Server racks, cookie walls, robot vacuums, drones and taxis.", hint: "0 m" },
+        { name: "Autonomous City", detail: "Sunset and neon. Self-driving bus, checkpoint barrier, traffic cone robot.", hint: "1200 m" },
+        { name: "Logistics Depot", detail: "Morning haze and hangars. Forklift robot, crate wall, crane gate.", hint: "2600 m" },
+        { name: "Data Center", detail: "Cool artificial light. Backup robot, disk stack, cable gate.", hint: "4200 m" },
+        { name: "Analog Village", detail: "Golden hour, no signal. Old tractor, hay bales, village gate.", hint: "6000 m" },
+      ],
+    },
+    {
       id: "obstacles",
-      title: "Obstacles",
+      title: "Plaza obstacles",
       items: [
         { name: "Server Rack", detail: "A huge cabinet that stays put.", hint: "Change lane" },
         { name: "Cookie Wall", detail: "A wall that says \"Accept cookies\".", hint: "Slide" },
@@ -123,6 +151,8 @@ const outOfOfficeEn: Project = {
         { name: "Salary Magnet", detail: "Pulls coins toward you.", hint: "10 s" },
         { name: "Overtime x2", detail: "Doubles your score.", hint: "12 s" },
         { name: "Double Espresso", detail: "Makes you jump higher.", hint: "10 s" },
+        { name: "Prompt Injection", detail: "Grabs every coin in the next 30 metres, whatever the lane.", hint: "8 s" },
+        { name: "Pull the Plug", detail: "HR-9000 and every robot freeze and can't hurt you.", hint: "5 s" },
         { name: "Mystery Package", detail: "Opens after the run: coins, a chair or a keycard.", hint: "Instant" },
       ],
     },
@@ -144,9 +174,9 @@ const outOfOfficeEn: Project = {
       { name: "Bootstrap", role: "The only place that knows concrete classes (VContainer).", dependsOn: ["All"] },
     ],
     principles: [
-      { title: "Systems don't know each other", text: "49 typed signals, all readonly structs. The UI sends requests, gameplay decides and announces the result as an event." },
+      { title: "Systems don't know each other", text: "57 typed signals, all readonly structs. The UI sends requests, gameplay decides and announces the result as an event." },
       { title: "One owner for game state", text: "Only GameFlow changes the state (StateMachine<GameState>). Invalid requests are quietly ignored." },
-      { title: "Content is data", text: "Professions, obstacles, power-ups, accessories, worlds and store items are ScriptableObjects. New content means a new asset." },
+      { title: "Content is data", text: "Professions, obstacles, power-ups, accessories, worlds, missions and store items are ScriptableObjects. New content means a new asset." },
       { title: "New behaviour, one new class", text: "Every effect derives from EffectDefinition, every movement from MovementPattern. Existing code stays untouched (open/closed)." },
       { title: "No allocations during a run", text: "Obstacles, coins, road and effects come from pools. No LINQ, new lists or captured lambdas in the frame loop." },
       { title: "A curved-world shader", text: "The road bends left and right and drops away in the distance. It is purely visual: a custom HLSL shader bends vertices while collisions stay in a flat world." },
@@ -178,17 +208,18 @@ const outOfOfficeEn: Project = {
     done: [
       "Three-lane running, jumping, sliding and rising difficulty",
       "HR-9000 the chaser and the adaptive obstacle director",
-      "3 professions, 5 obstacles, 8 power-ups, job automation",
+      "5 worlds crossed by distance in one run: Autonomous City, Logistics Depot, Data Center, Analog Village",
+      "4 professions (new: the Driver), 17 obstacles, 10 power-ups, job automation",
+      "Daily missions and a first-run tutorial that slows time and points the way",
       "Office chair, mystery packages, keycard continues, store",
       "Real 3D models and animations, the curved world",
-      "Daytime scene, sound effects, English and Turkish UI",
+      "Sound effects, a Settings tab, English and Turkish UI",
     ],
     next: [
       "Music",
-      "New worlds: autonomous city, logistics warehouse, data centre, Analog Town",
       "The final twist: an even newer model comes for HR-9000's job",
-      "The Driver profession, Prompt Injection and Pull the Plug power-ups",
-      "Missions, daily rewards and leaderboards",
+      "Daily login rewards, achievements and leaderboards",
+      "More professions",
       "iOS build and store release",
     ],
     note: "An Android test build has been installed and played on a real device (Android 16). The game is not in the stores yet.",
@@ -205,7 +236,7 @@ const outOfOfficeEn: Project = {
     ctaLabel: "See the game",
     phones: [
       { image: { ...SHOTS.en.menu, alt: "Out of Office main menu" }, caption: "Main menu" },
-      { image: { ...SHOTS.en.drone, alt: "The player flying with the Cargo Drone" }, caption: "Cargo Drone" },
+      { image: { ...SHOTS.en.driverPod, alt: "The Driver's pod in Autonomous City" }, caption: "Autonomous City" },
       { image: { ...SHOTS.en.gameOver, alt: "YOU'VE BEEN OPTIMIZED game over screen" }, caption: "Game over" },
     ],
   },
@@ -213,7 +244,7 @@ const outOfOfficeEn: Project = {
   seo: {
     title: "Out of Office: a mobile endless runner built with Unity 6",
     description:
-      "AI took your job. You're next. A mobile endless runner about the last human employee running from an HR robot: adaptive obstacles, job automation, a layered C# architecture and open source code.",
+      "AI took your job. You're next. A mobile endless runner about the last human employee running from an HR robot: five worlds, adaptive obstacles, job automation, daily missions, a layered C# architecture and open source code.",
     keywords: [
       "Out of Office game",
       "Son Mesai",
