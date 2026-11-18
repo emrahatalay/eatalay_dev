@@ -22,7 +22,7 @@ Ortak olanlar: nginx, certbot, root'un bun'ı (`/root/.bun/bin/bun`, en az 1.4.2
 5. `current` yeni sürüme çevrilir, ardından `pm2 startOrReload` çalışır.
 6. Sağlık kontrolü: önce `localhost:3030` üzerinden sayfalar, OG görselleri, robots, sitemap, manifest;
    sonra nginx üzerinden `https://eatalay.dev/`. Biri 200 dönmezse önceki sürüme kendiliğinden dönülür.
-7. Son 5 sürüm tutulur, eskileri silinir.
+7. Yayın başarılıysa yalnızca canlı sürüm kalır; önceki sürüm yalnızca geçiş sırasında (geri dönüş için) tutulur.
 
 Yalnız `.md` dosyası değişen gönderimler yayın başlatmaz. Elle başlatmak için: **Actions → deploy → Run workflow**.
 

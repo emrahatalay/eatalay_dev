@@ -186,5 +186,12 @@ jobs:
       - name: Eski sürümleri temizle
         if: success() && steps.sir.outputs.var == 'true'
         run: |
-          # Son 5 sürüm tutulur.
-          ssh "$DEPLOY_USER@$DEPLOY_HOST" "cd $KOK/releases && ls -1t | tail -n +6 | xargs -r rm -rf"
+          # Yayın hatasız tamamlandıysa yalnızca canlı sürüm kalır. Önceki sürüm yalnızca geçiş sırasında,
+          # sağlık kontrolü başarısız olursa geri dönmek için tutulur; başarıdan sonra gerek kalmaz.
+          ssh "$DEPLOY_USER@$DEPLOY_HOST" "set -e
+            cd $KOK/releases
+            simdiki=\"\$(basename \"\$(readlink $KOK/current)\")\"
+            [ -n \"\$simdiki\" ] && [ -d \"\$simdiki\" ] || { echo '::warning::current okunamadı, temizlik atlandı'; exit 0; }
+            for d in *; do [ \"\$d\" = \"\$simdiki\" ] || rm -rf -- \"\$d\"; done
+            : > $KOK/onceki
+            echo \"Kalan sürüm: \$simdiki\""
